@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="4066222675">
+    <data-source source="LOCAL" name="PostgreSQL - Endomondo@localhost" uuid="07926f2f-cf71-48f1-8040-f4d461eb8ec9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/Endomondo</jdbc-url>
+    </data-source>
+  </component>
+</project>
