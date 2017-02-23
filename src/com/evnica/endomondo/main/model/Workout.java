@@ -17,6 +17,8 @@ public class Workout
     private DateTime localStartTime;
     private int userId;
 
+    Workout(){}
+
     public Workout( int id, int sport, DateTime localStartTime, int userId )
     {
         this.id = id;
