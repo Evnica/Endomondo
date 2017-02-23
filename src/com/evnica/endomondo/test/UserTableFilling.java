@@ -7,8 +7,7 @@ import com.evnica.endomondo.main.model.UserRepository;
 import org.joda.time.DateTime;
 
 import java.io.IOException;
-import java.sql.Time;
-import java.util.Timer;
+import java.util.ArrayList;
 
 /**
  * Class: UserTableFilling
@@ -24,13 +23,14 @@ public class UserTableFilling
         //3130468 filled in as test
         // first iteration - 1 to 707
         // second from 26400086 to 26400750 excl.
-        int start = 26401092                                                                                   ;
+        int start = 26412323;
+        ArrayList<Integer> rejectedIds = new ArrayList<>( );
         int end = start + 25;
         String urlContent;
         User user = null;
         System.out.println("Start: " + new DateTime( ));
         DbConnector.connectToDb();
-        for (int j = 1; j < 11; j ++)
+        for (int j = 0; j < 200; j ++)
         {
             System.out.println("Start: " + start + ", end: " + end);
             for (int i = start; i < end; i++)
@@ -44,8 +44,18 @@ public class UserTableFilling
                     }
                     catch ( IOException e )
                     {
-                        System.out.print(i + " user: ");
-                        System.out.println(e);
+                        System.out.println(i + ": " + e);
+                        if (e.getMessage().contains( "429" ))
+                        {
+                            System.out.println("Rejected due to multiple requests on ID " + i );
+                            rejectedIds.add( i );
+                            Thread.sleep( 20000 );
+                            user = null;
+                        }
+                        else
+                        {
+                        user = null;
+                        }
                     }
 
                     if (user != null)
@@ -56,12 +66,48 @@ public class UserTableFilling
                 }
                 catch ( Exception e )
                 {
-                    System.out.println(i);
+                    System.out.println("DB Except " + i + ": " + e);
                 }
+                System.out.println("Processed " + i);
             }
             Thread.sleep( 15000 );
             start = end;
             end = start + 25;
+        }
+        System.out.println("Processing rejected:");
+        for (int id: rejectedIds)
+        {
+            try
+            {
+                UrlConnector.setUrlUser( id );
+                try{
+                    urlContent = UrlConnector.getUrlContent();
+                    user = UrlConnector.parseUser( urlContent );
+                }
+                catch ( IOException e )
+                {
+                    System.out.println(id + ": " + e);
+                    if (e.getMessage().contains( "429" ))
+                    {
+                        System.out.println(id + " rejected" );
+                        Thread.sleep( 15000 );
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+
+                if (user != null)
+                {
+                    UserRepository userRepository = new UserRepository( DbConnector.getConnection() );
+                    userRepository.insert( user );
+                }
+            }
+            catch ( Exception e )
+            {
+                System.out.println(id + ": " + e);
+            }
         }
 
         System.out.println("End: " + new DateTime( ));
