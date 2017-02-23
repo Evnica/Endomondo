@@ -1,6 +1,8 @@
 package com.evnica.endomondo.main.model;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class: UserRepository
@@ -17,6 +19,7 @@ public class UserRepository
             "(id, gender, ccl_sp, ccl_tr, mnt_bk, dt_crtd) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SELECT_BY_ID_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
             " WHERE id = ?";
+    private static final String SELECT_USER_IDS = "SELECT (id) FROM " + SCHEMA_NAME + "." + TABLE_NAME;
 
     private Connection connection;
     protected ResultSet resultSet;
@@ -43,5 +46,19 @@ public class UserRepository
 
         return rowsAffected;
 
+    }
+
+    public List<Integer> getUserIdsFromDB() throws SQLException
+    {
+        PreparedStatement statement = connection.prepareStatement( SELECT_USER_IDS );
+        ResultSet resultSet = statement.executeQuery();
+        List<Integer> userIds = new ArrayList<>();
+
+        while ( resultSet.next() )
+        {
+            userIds.add( resultSet.getInt( "id" ) );
+        }
+
+        return userIds;
     }
 }
