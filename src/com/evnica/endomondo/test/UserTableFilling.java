@@ -2,6 +2,7 @@ package com.evnica.endomondo.test;
 
 import com.evnica.endomondo.main.connect.DbConnector;
 import com.evnica.endomondo.main.connect.UrlConnector;
+import com.evnica.endomondo.main.decode.JSONContentParser;
 import com.evnica.endomondo.main.model.User;
 import com.evnica.endomondo.main.model.UserRepository;
 import org.joda.time.DateTime;
@@ -40,7 +41,7 @@ public class UserTableFilling
                     UrlConnector.setUrlUser( i );
                     try{
                         urlContent = UrlConnector.getUrlContent();
-                        user = UrlConnector.parseUser( urlContent );
+                        user = JSONContentParser.parseUser( urlContent );
                     }
                     catch ( IOException e )
                     {
@@ -82,7 +83,7 @@ public class UserTableFilling
                 UrlConnector.setUrlUser( id );
                 try{
                     urlContent = UrlConnector.getUrlContent();
-                    user = UrlConnector.parseUser( urlContent );
+                    user = JSONContentParser.parseUser( urlContent );
                 }
                 catch ( IOException e )
                 {
