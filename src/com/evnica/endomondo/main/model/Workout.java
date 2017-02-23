@@ -44,4 +44,11 @@ public class Workout
     {
         return userId;
     }
+
+    @Override
+    public String toString()
+    {
+        return id + " [user: " + userId + ", sport: " + sport + "] started on "
+                + localStartTime.toString( "yyyy-MM-dd'T'HH:mm:ss" );
+    }
 }

@@ -26,7 +26,7 @@ public class WorkoutRepository
         WorkoutRepository.connection = connection;
     }
 
-    public int insert(Workout workout) throws SQLException
+    public static int insert(Workout workout) throws SQLException
     {
         PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT );
 
