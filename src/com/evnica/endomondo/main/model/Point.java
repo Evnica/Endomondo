@@ -1,5 +1,7 @@
 package com.evnica.endomondo.main.model;
 
+import org.joda.time.DateTime;
+
 /**
  * Class: Point
  * Version: 0.1
@@ -11,6 +13,7 @@ package com.evnica.endomondo.main.model;
 public class Point
 {
     private double lat, lon;
+    private DateTime timeCaptured;
 
     public Point( double lat, double lon )
     {
@@ -31,7 +34,27 @@ public class Point
     @Override
     public String toString()
     {
+        return "(" + lat + ", " + lon + "), " + timeCaptured.toString( "yyyy-MM-dd'T'HH:mm:ss" );
+    }
+
+    public String toStringTimeOnly()
+    {
+        return timeCaptured.toString( "HH:mm:ss" ) + " (" + lat + ", " + lon + ")";
+    }
+
+    public String toWKTString()
+    {
         return "POINT(" + lon + " " + lat + ")";
+    }
+
+    public DateTime getTimeCaptured()
+    {
+        return timeCaptured;
+    }
+
+    public void setTimeCaptured( DateTime timeCaptured )
+    {
+        this.timeCaptured = timeCaptured;
     }
 
     @Override

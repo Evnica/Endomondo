@@ -1,0 +1,6019 @@
+{
+"expand": "full",
+"id": 540092518,
+"sport": 2,
+"start_time": "2015-06-10T17:40:06.000Z",
+"local_start_time": "2015-06-10T20:40:06.000+03:00",
+"distance": 12.391785621643066,
+"duration": 3327,
+"speed_avg": 13.408604820533526,
+"speed_max": 23.9424,
+"altitude_min": 19,
+"altitude_max": 55,
+"ascent": 73,
+"descent": 67,
+"pb_count": 0,
+"calories": 435,
+"is_live": false,
+"include_in_stats": true,
+"author": {
+"expand": "abs",
+"id": 10097237,
+"first_name": "Karoliina",
+"last_name": "Vasli",
+"picture": {
+"url": "https://www.endomondo.com/resources/gfx/image/4562378/1e96d7b40ee43ac631fa9bc59fffb1b1/thumbnail.jpg"
+},
+"gender": 1,
+"is_premium": false,
+"name": "Karoliina Vasli",
+"viewer_friendship": 1
+},
+"is_peptalk_allowed": false,
+"can_copy": true,
+"weather": {
+"type": 1
+},
+"feed_id": 281475494165077,
+"laps": {
+"metric": [
+{
+"average_pace": 334.109,
+"distance": 1,
+"duration": 334109,
+"begin_latitude": 59.433352,
+"begin_longitude": 24.732012,
+"end_latitude": 59.4404529540814,
+"end_longitude": 24.738598129102613,
+"small_encoded_polyline": "mawiJan}uC[^y@Bm@CqAe@qA[MeAOa@_@LmBVg@Se@CmAPEPA?SkAaBqAm@o@c@Qu@s@{A{A{BkEa@wAe@_Ak@y@]wACe@g@aCi@mAk@u@a@}@GB"
+},
+{
+"average_pace": 260.62,
+"distance": 1,
+"duration": 260620,
+"begin_latitude": 59.4404529540814,
+"begin_longitude": 24.738598129102613,
+"end_latitude": 59.44617870289883,
+"end_longitude": 24.73746857994293,
+"small_encoded_polyline": "ymxiJew~uCYHe@`@k@FOqASF]qCq@sDuByC_@qAy@cDQa@kBiBi@c@e@Ho@Ns@o@s@][j@Ux@c@t@WlBi@hCuAvI]dBKnAiAnG"
+},
+{
+"average_pace": 243.291,
+"distance": 1,
+"duration": 243291,
+"begin_latitude": 59.44617870289883,
+"begin_longitude": 24.73746857994293,
+"end_latitude": 59.450162942880624,
+"end_longitude": 24.72312829689747,
+"small_encoded_polyline": "qqyiJcp~uCgAjHIvAKvG[|FCxAMnBOdBNf@Lz@o@`C[x@[fAu@hB_@rAItAm@z@a@fAeA~DcAjC_@v@Y`@OpAg@x@Q~@_@hAq@rAg@xA"
+},
+{
+"average_pace": 209.074,
+"distance": 1,
+"duration": 209074,
+"begin_latitude": 59.450162942880624,
+"begin_longitude": 24.72312829689747,
+"end_latitude": 59.453845854867474,
+"end_longitude": 24.70783450147248,
+"small_encoded_polyline": "ojziJov{uC{@xBS|@aBtEkBdGg@jAy@bC}@zCS`AM|@aAjDc@|@cAhFSnE_@tK@vBAfB[dL?rBE|@"
+},
+{
+"average_pace": 218.628,
+"distance": 1,
+"duration": 218628,
+"begin_latitude": 59.453845854867474,
+"begin_longitude": 24.70783450147248,
+"end_latitude": 59.454800945113604,
+"end_longitude": 24.691024939638652,
+"small_encoded_polyline": "oa{iJ}vxuCCd@ApDRjETrJFr@M`AAx@GjATt@Dr@ObCInCGrCOpEw@zLChAQ~BKpCKpBQbBc@zFOrDQjC"
+},
+{
+"average_pace": 267.859,
+"distance": 1,
+"duration": 267859,
+"begin_latitude": 59.454800945113604,
+"begin_longitude": 24.691024939638652,
+"end_latitude": 59.44884832654968,
+"end_longitude": 24.696066490291674,
+"small_encoded_polyline": "og{iJ{muuCMpBRj@\\_@DKrAqBb@k@l@}@t@qAr@cAp@oAl@{@r@uAhE{Gf@aAnAaBzAqCvBeDnAyBf@k@JWDAV|@Z~@BzAArBBzA"
+},
+{
+"average_pace": 202.89200000000002,
+"distance": 1,
+"duration": 202892,
+"begin_latitude": 59.44884832654968,
+"begin_longitude": 24.696066490291674,
+"end_latitude": 59.44426643189455,
+"end_longitude": 24.687346775924087,
+"small_encoded_polyline": "gbziJkmvuCHlFPnEN|H?fBDhA@tAFnAV|LFjBDnEFf@p@OxBWfDg@nBUh@Kj@Gf@C`@K\\Gt@E~ASPD"
+},
+{
+"average_pace": 211.64300000000003,
+"distance": 1,
+"duration": 211643,
+"begin_latitude": 59.44426643189455,
+"begin_longitude": 24.687346775924087,
+"end_latitude": 59.43566930272251,
+"end_longitude": 24.683388557262703,
+"small_encoded_polyline": "seyiJ{vtuC|@Pj@^\\PvB~@l@Rl@\\hBt@v@b@VUZo@bBfAx@Z`CnAx@VhEfBn@Zj@NfAj@n@TtAr@dCz@xAv@b@Ll@?DI"
+},
+{
+"average_pace": 315.897,
+"distance": 1,
+"duration": 315897,
+"begin_latitude": 59.43566930272251,
+"begin_longitude": 24.683388557262703,
+"end_latitude": 59.43028262070535,
+"end_longitude": 24.695620713865445,
+"small_encoded_polyline": "{owiJc~suC~@kCTg@\\yBb@gB\\cA~@sEp@qCj@sDf@iCZ}@TsAX_@N_@Lc@VgBb@aBxA_IJ{APiAZo@h@AZDj@mAtAeF`@s@d@?v@P^DTN"
+},
+{
+"average_pace": 326.098,
+"distance": 1,
+"duration": 326098,
+"begin_latitude": 59.43028262070535,
+"begin_longitude": 24.695620713865445,
+"end_latitude": 59.428351666666664,
+"end_longitude": 24.708941222222222,
+"small_encoded_polyline": "gnviJsjvuCVPNrAt@AJaARoGYuAa@WBBd@cJ@cARqAv@cIFyJCmBGoA^OXXTuBRo@GyCB}ALsBVwBPcATeA\\oC"
+},
+{
+"average_pace": 241.096,
+"distance": 1,
+"duration": 241096,
+"begin_latitude": 59.428351666666664,
+"begin_longitude": 24.708941222222222,
+"end_latitude": 59.42843411314644,
+"end_longitude": 24.72521194310289,
+"small_encoded_polyline": "ebviJ{}xuCZ{BH}B`AaGR_BE}ABsHFmBBeDQSQ}APgNWe@CiAH{@KoAh@FJ_ABkAYiAWkEm@uDg@qD@oDI_BOkA"
+},
+{
+"average_pace": 335.775,
+"distance": 1,
+"duration": 335775,
+"begin_latitude": 59.42843411314644,
+"begin_longitude": 24.72521194310289,
+"end_latitude": 59.431720658364185,
+"end_longitude": 24.736835966004712,
+"small_encoded_polyline": "ubviJqc|uCAIMKScA{@wB[i@OeBSa@KuAOoAGy@NqA@y@J_BVgA^_APiAWoDCuAKyAWgBOeBWgBkBcI_AiDw@}BYgASkAUe@i@}Ae@|@uAhF"
+},
+{
+"average_pace": 413.522282509639,
+"distance": 0.3917999267578125,
+"duration": 162018,
+"begin_latitude": 59.431720658364185,
+"begin_longitude": 24.736835966004712,
+"end_latitude": 59.433346,
+"end_longitude": 24.73182,
+"small_encoded_polyline": "gwviJel~uCI^StAY~A[tAg@xAmA`Ao@`@mAbAGvALrBHxBJxAWZ"
+}
+],
+"imperial": []
+},
+"small_encoded_polyline": "mawiJan}uCcC^cDaA]gBqHp@SkAeIcHqL_ZsBv@sBoKaFqLuCmCuAXgBmAuAzCsI`i@sA|[\\bB_`@hjAiGnVyAno@r@j_@}FtgARj@fb@wp@r@|BnB`dAvWkDnOtGr@eApa@vQl@?zA}DbQoz@Zo@dABbDgJ|BV|@tBt@A^qI{@mBvByXCwPx@Hh@eDHkJxEm^e@{n@h@FNkCaDc^yBqFgAgJfB}L[eGkAoKqIc[wFlTkEfDBzL",
+"records": [],
+"sharing": [
+{
+"type": 0,
+"share_id": 10153372748409708,
+"share_time": "2015-06-10T18:46:43.000Z"
+}
+],
+"hashtags": [],
+"tagged_users": [],
+"pictures": [],
+"points": {
+"expand": "full",
+"id": 2199563348070,
+"points": [
+{
+"time": "2015-06-10T17:40:06.000Z",
+"instruction": 2,
+"latitude": 59.433352,
+"longitude": 24.732012,
+"distance": 0,
+"duration": 0,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:41:27.000Z",
+"latitude": 59.433352,
+"longitude": 24.732012,
+"altitude": 37,
+"distance": 0,
+"speed": 0,
+"duration": 81000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:41:40.000Z",
+"latitude": 59.43349,
+"longitude": 24.731855,
+"altitude": 39,
+"distance": 0.035499,
+"speed": 0,
+"duration": 94000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:41:47.000Z",
+"latitude": 59.433783,
+"longitude": 24.73183,
+"altitude": 46,
+"distance": 0.068153,
+"speed": 0,
+"duration": 101000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:41:52.000Z",
+"latitude": 59.43401,
+"longitude": 24.731855,
+"altitude": 48,
+"distance": 0.093498,
+"speed": 13.2655,
+"duration": 106000,
+"sensor_data": {
+"speed": 13.2655
+}
+},
+{
+"time": "2015-06-10T17:41:59.000Z",
+"latitude": 59.434422,
+"longitude": 24.73204,
+"altitude": 42,
+"distance": 0.140549,
+"speed": 19.7558,
+"duration": 113000,
+"sensor_data": {
+"speed": 19.7558
+}
+},
+{
+"time": "2015-06-10T17:42:04.000Z",
+"latitude": 59.434688,
+"longitude": 24.732135,
+"altitude": 42,
+"distance": 0.170728,
+"speed": 21.3756,
+"duration": 118000,
+"sensor_data": {
+"speed": 21.3756
+}
+},
+{
+"time": "2015-06-10T17:42:11.000Z",
+"latitude": 59.434837,
+"longitude": 24.732188,
+"altitude": 42,
+"distance": 0.187596,
+"speed": 18.246,
+"duration": 125000,
+"sensor_data": {
+"speed": 18.246
+}
+},
+{
+"time": "2015-06-10T17:42:19.000Z",
+"latitude": 59.434901,
+"longitude": 24.732535,
+"altitude": 44,
+"distance": 0.208508,
+"speed": 13.2558,
+"duration": 133000,
+"sensor_data": {
+"speed": 13.2558
+}
+},
+{
+"time": "2015-06-10T17:42:25.000Z",
+"latitude": 59.434984,
+"longitude": 24.732701,
+"altitude": 44,
+"distance": 0.221779,
+"speed": 8.6816,
+"duration": 139000,
+"sensor_data": {
+"speed": 8.6816
+}
+},
+{
+"time": "2015-06-10T17:42:31.000Z",
+"latitude": 59.435144,
+"longitude": 24.732638,
+"altitude": 38,
+"distance": 0.239959,
+"speed": 9.42465,
+"duration": 145000,
+"sensor_data": {
+"speed": 9.42465
+}
+},
+{
+"time": "2015-06-10T17:42:37.000Z",
+"latitude": 59.435429,
+"longitude": 24.732564,
+"altitude": 38,
+"distance": 0.271909,
+"speed": 12.6775,
+"duration": 151000,
+"sensor_data": {
+"speed": 12.6775
+}
+},
+{
+"time": "2015-06-10T17:42:43.000Z",
+"latitude": 59.435695,
+"longitude": 24.732511,
+"altitude": 36,
+"distance": 0.301686,
+"speed": 15.9825,
+"duration": 157000,
+"sensor_data": {
+"speed": 15.9825
+}
+},
+{
+"time": "2015-06-10T17:42:48.000Z",
+"latitude": 59.435897,
+"longitude": 24.732611,
+"altitude": 40,
+"distance": 0.324966,
+"speed": 17.9337,
+"duration": 162000,
+"sensor_data": {
+"speed": 17.9337
+}
+},
+{
+"time": "2015-06-10T17:42:54.000Z",
+"latitude": 59.436082,
+"longitude": 24.732632,
+"altitude": 44,
+"distance": 0.345544,
+"speed": 15.6579,
+"duration": 168000,
+"sensor_data": {
+"speed": 15.6579
+}
+},
+{
+"time": "2015-06-10T17:43:02.000Z",
+"latitude": 59.436348,
+"longitude": 24.732582,
+"altitude": 41,
+"distance": 0.375396,
+"speed": 14.1825,
+"duration": 176000,
+"sensor_data": {
+"speed": 14.1825
+}
+},
+{
+"time": "2015-06-10T17:43:08.000Z",
+"latitude": 59.436479,
+"longitude": 24.732549,
+"altitude": 42,
+"distance": 0.390071,
+"speed": 11.508,
+"duration": 182000,
+"sensor_data": {
+"speed": 11.508
+}
+},
+{
+"time": "2015-06-10T17:43:11.000Z",
+"latitude": 59.436505,
+"longitude": 24.732455,
+"altitude": 39,
+"distance": 0.396148,
+"duration": 185000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:43:20.000Z",
+"latitude": 59.436515,
+"longitude": 24.732457,
+"altitude": 39,
+"distance": 0.397266,
+"duration": 194000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:43:44.000Z",
+"latitude": 59.436613,
+"longitude": 24.732836,
+"altitude": 36,
+"distance": 0.445454,
+"speed": 3.82322,
+"duration": 218000,
+"sensor_data": {
+"speed": 3.82322
+}
+},
+{
+"time": "2015-06-10T17:43:49.000Z",
+"latitude": 59.436805,
+"longitude": 24.73299,
+"altitude": 36,
+"distance": 0.468494,
+"speed": 6.87955,
+"duration": 223000,
+"sensor_data": {
+"speed": 6.87955
+}
+},
+{
+"time": "2015-06-10T17:43:56.000Z",
+"latitude": 59.437101,
+"longitude": 24.733249,
+"altitude": 38,
+"distance": 0.50466,
+"speed": 12.9345,
+"duration": 230000,
+"sensor_data": {
+"speed": 12.9345
+}
+},
+{
+"time": "2015-06-10T17:44:02.000Z",
+"latitude": 59.43733,
+"longitude": 24.733488,
+"altitude": 37,
+"distance": 0.533574,
+"speed": 17.5123,
+"duration": 236000,
+"sensor_data": {
+"speed": 17.5123
+}
+},
+{
+"time": "2015-06-10T17:44:07.000Z",
+"latitude": 59.43751,
+"longitude": 24.733575,
+"altitude": 34,
+"distance": 0.554217,
+"speed": 16.9396,
+"duration": 241000,
+"sensor_data": {
+"speed": 16.9396
+}
+},
+{
+"time": "2015-06-10T17:44:14.000Z",
+"latitude": 59.437789,
+"longitude": 24.733831,
+"altitude": 36,
+"distance": 0.588514,
+"speed": 16.6273,
+"duration": 248000,
+"sensor_data": {
+"speed": 16.6273
+}
+},
+{
+"time": "2015-06-10T17:44:19.000Z",
+"latitude": 59.438014,
+"longitude": 24.734059,
+"altitude": 36,
+"distance": 0.616694,
+"speed": 17.5986,
+"duration": 253000,
+"sensor_data": {
+"speed": 17.5986
+}
+},
+{
+"time": "2015-06-10T17:44:25.000Z",
+"latitude": 59.43824,
+"longitude": 24.734296,
+"altitude": 33,
+"distance": 0.645216,
+"speed": 18.346,
+"duration": 259000,
+"sensor_data": {
+"speed": 18.346
+}
+},
+{
+"time": "2015-06-10T17:44:32.000Z",
+"latitude": 59.43848,
+"longitude": 24.734698,
+"altitude": 34,
+"distance": 0.680436,
+"speed": 18.4969,
+"duration": 266000,
+"sensor_data": {
+"speed": 18.4969
+}
+},
+{
+"time": "2015-06-10T17:44:37.000Z",
+"latitude": 59.438656,
+"longitude": 24.734995,
+"altitude": 35,
+"distance": 0.706188,
+"speed": 17.9172,
+"duration": 271000,
+"sensor_data": {
+"speed": 17.9172
+}
+},
+{
+"time": "2015-06-10T17:44:42.000Z",
+"latitude": 59.438861,
+"longitude": 24.735315,
+"altitude": 34,
+"distance": 0.735399,
+"speed": 19.2254,
+"duration": 276000,
+"sensor_data": {
+"speed": 19.2254
+}
+},
+{
+"time": "2015-06-10T17:44:47.000Z",
+"latitude": 59.439037,
+"longitude": 24.735756,
+"altitude": 33,
+"distance": 0.76721,
+"speed": 20.8179,
+"duration": 281000,
+"sensor_data": {
+"speed": 20.8179
+}
+},
+{
+"time": "2015-06-10T17:44:53.000Z",
+"latitude": 59.439221,
+"longitude": 24.736075,
+"altitude": 31,
+"distance": 0.794574,
+"speed": 20.071,
+"duration": 287000,
+"sensor_data": {
+"speed": 20.071
+}
+},
+{
+"time": "2015-06-10T17:45:01.000Z",
+"latitude": 59.439445,
+"longitude": 24.736364,
+"altitude": 31,
+"distance": 0.824423,
+"speed": 17.5675,
+"duration": 295000,
+"sensor_data": {
+"speed": 17.5675
+}
+},
+{
+"time": "2015-06-10T17:45:08.000Z",
+"latitude": 59.439599,
+"longitude": 24.736807,
+"altitude": 35,
+"distance": 0.854875,
+"speed": 15.163,
+"duration": 302000,
+"sensor_data": {
+"speed": 15.163
+}
+},
+{
+"time": "2015-06-10T17:45:13.000Z",
+"latitude": 59.439614,
+"longitude": 24.736996,
+"altitude": 42,
+"distance": 0.865692,
+"speed": 12.3247,
+"duration": 307000,
+"sensor_data": {
+"speed": 12.3247
+}
+},
+{
+"time": "2015-06-10T17:45:23.000Z",
+"latitude": 59.439816,
+"longitude": 24.737648,
+"altitude": 44,
+"distance": 0.909016,
+"speed": 13.0256,
+"duration": 317000,
+"sensor_data": {
+"speed": 13.0256
+}
+},
+{
+"time": "2015-06-10T17:45:29.000Z",
+"latitude": 59.440021,
+"longitude": 24.738032,
+"altitude": 41,
+"distance": 0.940568,
+"speed": 14.0942,
+"duration": 323000,
+"sensor_data": {
+"speed": 14.0942
+}
+},
+{
+"time": "2015-06-10T17:45:34.000Z",
+"latitude": 59.440249,
+"longitude": 24.738309,
+"altitude": 39,
+"distance": 0.970414,
+"speed": 18.6655,
+"duration": 328000,
+"sensor_data": {
+"speed": 18.6655
+}
+},
+{
+"time": "2015-06-10T17:45:39.000Z",
+"latitude": 59.440415,
+"longitude": 24.738613,
+"altitude": 38,
+"distance": 0.995681,
+"speed": 19.5245,
+"duration": 333000,
+"sensor_data": {
+"speed": 19.5245
+}
+},
+{
+"time": "2015-06-10T17:45:44.000Z",
+"latitude": 59.440586,
+"longitude": 24.738546,
+"altitude": 36,
+"distance": 1.01514,
+"speed": 17.8946,
+"duration": 338000,
+"sensor_data": {
+"speed": 17.8946
+}
+},
+{
+"time": "2015-06-10T17:45:49.000Z",
+"latitude": 59.440772,
+"longitude": 24.738378,
+"altitude": 37,
+"distance": 1.03791,
+"speed": 16.1974,
+"duration": 343000,
+"sensor_data": {
+"speed": 16.1974
+}
+},
+{
+"time": "2015-06-10T17:45:56.000Z",
+"latitude": 59.44099,
+"longitude": 24.738338,
+"altitude": 36,
+"distance": 1.06229,
+"speed": 14.3135,
+"duration": 350000,
+"sensor_data": {
+"speed": 14.3135
+}
+},
+{
+"time": "2015-06-10T17:46:02.000Z",
+"latitude": 59.441071,
+"longitude": 24.738744,
+"altitude": 36,
+"distance": 1.08704,
+"speed": 14.5726,
+"duration": 356000,
+"sensor_data": {
+"speed": 14.5726
+}
+},
+{
+"time": "2015-06-10T17:46:11.000Z",
+"latitude": 59.441174,
+"longitude": 24.738703,
+"altitude": 36,
+"distance": 1.09885,
+"speed": 10.6875,
+"duration": 365000,
+"sensor_data": {
+"speed": 10.6875
+}
+},
+{
+"time": "2015-06-10T17:46:22.000Z",
+"latitude": 59.441325,
+"longitude": 24.73943,
+"altitude": 36,
+"distance": 1.14338,
+"speed": 11.3637,
+"duration": 376000,
+"sensor_data": {
+"speed": 11.3637
+}
+},
+{
+"time": "2015-06-10T17:46:27.000Z",
+"latitude": 59.441452,
+"longitude": 24.739873,
+"altitude": 37,
+"distance": 1.17223,
+"speed": 13.3597,
+"duration": 381000,
+"sensor_data": {
+"speed": 13.3597
+}
+},
+{
+"time": "2015-06-10T17:46:32.000Z",
+"latitude": 59.441578,
+"longitude": 24.740334,
+"altitude": 36,
+"distance": 1.20192,
+"speed": 18.9057,
+"duration": 386000,
+"sensor_data": {
+"speed": 18.9057
+}
+},
+{
+"time": "2015-06-10T17:46:38.000Z",
+"latitude": 59.441876,
+"longitude": 24.740734,
+"altitude": 35,
+"distance": 1.24212,
+"speed": 22.09,
+"duration": 392000,
+"sensor_data": {
+"speed": 22.09
+}
+},
+{
+"time": "2015-06-10T17:46:45.000Z",
+"latitude": 59.442166,
+"longitude": 24.741105,
+"altitude": 38,
+"distance": 1.2807,
+"speed": 21.7746,
+"duration": 399000,
+"sensor_data": {
+"speed": 21.7746
+}
+},
+{
+"time": "2015-06-10T17:46:50.000Z",
+"latitude": 59.442329,
+"longitude": 24.741513,
+"altitude": 38,
+"distance": 1.31011,
+"speed": 21.708,
+"duration": 404000,
+"sensor_data": {
+"speed": 21.708
+}
+},
+{
+"time": "2015-06-10T17:46:53.000Z",
+"latitude": 59.442425,
+"longitude": 24.741799,
+"altitude": 38,
+"distance": 1.32952,
+"speed": 21.3005,
+"duration": 407000,
+"sensor_data": {
+"speed": 21.3005
+}
+},
+{
+"time": "2015-06-10T17:47:00.000Z",
+"latitude": 59.442614,
+"longitude": 24.742331,
+"altitude": 33,
+"distance": 1.36633,
+"speed": 21.0402,
+"duration": 414000,
+"sensor_data": {
+"speed": 21.0402
+}
+},
+{
+"time": "2015-06-10T17:47:06.000Z",
+"latitude": 59.442705,
+"longitude": 24.742507,
+"altitude": 33,
+"distance": 1.38057,
+"speed": 16.8286,
+"duration": 420000,
+"sensor_data": {
+"speed": 16.8286
+}
+},
+{
+"time": "2015-06-10T17:47:15.000Z",
+"latitude": 59.442973,
+"longitude": 24.742756,
+"altitude": 35,
+"distance": 1.41363,
+"speed": 13.6011,
+"duration": 429000,
+"sensor_data": {
+"speed": 13.6011
+}
+},
+{
+"time": "2015-06-10T17:47:22.000Z",
+"latitude": 59.443241,
+"longitude": 24.743032,
+"altitude": 36,
+"distance": 1.44736,
+"speed": 13.0258,
+"duration": 436000,
+"sensor_data": {
+"speed": 13.0258
+}
+},
+{
+"time": "2015-06-10T17:47:28.000Z",
+"latitude": 59.443428,
+"longitude": 24.743192,
+"altitude": 34,
+"distance": 1.47005,
+"speed": 14.7181,
+"duration": 442000,
+"sensor_data": {
+"speed": 14.7181
+}
+},
+{
+"time": "2015-06-10T17:47:29.000Z",
+"latitude": 59.443457,
+"longitude": 24.743216,
+"altitude": 34,
+"distance": 1.47356,
+"duration": 443000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:47:35.000Z",
+"latitude": 59.44349,
+"longitude": 24.743208,
+"altitude": 33,
+"distance": 1.47721,
+"duration": 449000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:48:22.000Z",
+"latitude": 59.443646,
+"longitude": 24.743169,
+"altitude": 32,
+"distance": 1.51229,
+"speed": 5.39376,
+"duration": 496000,
+"sensor_data": {
+"speed": 5.39376
+}
+},
+{
+"time": "2015-06-10T17:48:32.000Z",
+"latitude": 59.443884,
+"longitude": 24.743085,
+"altitude": 35,
+"distance": 1.53924,
+"speed": 4.41126,
+"duration": 506000,
+"sensor_data": {
+"speed": 4.41126
+}
+},
+{
+"time": "2015-06-10T17:48:39.000Z",
+"latitude": 59.444146,
+"longitude": 24.743323,
+"altitude": 38,
+"distance": 1.57144,
+"speed": 9.20193,
+"duration": 513000,
+"sensor_data": {
+"speed": 9.20193
+}
+},
+{
+"time": "2015-06-10T17:48:45.000Z",
+"latitude": 59.444403,
+"longitude": 24.743477,
+"altitude": 33,
+"distance": 1.6014,
+"speed": 14.746,
+"duration": 519000,
+"sensor_data": {
+"speed": 14.746
+}
+},
+{
+"time": "2015-06-10T17:48:50.000Z",
+"latitude": 59.444547,
+"longitude": 24.743256,
+"altitude": 31,
+"distance": 1.6217,
+"speed": 16.3824,
+"duration": 524000,
+"sensor_data": {
+"speed": 16.3824
+}
+},
+{
+"time": "2015-06-10T17:48:54.000Z",
+"latitude": 59.444655,
+"longitude": 24.742961,
+"altitude": 31,
+"distance": 1.64232,
+"speed": 17.0478,
+"duration": 528000,
+"sensor_data": {
+"speed": 17.0478
+}
+},
+{
+"time": "2015-06-10T17:49:00.000Z",
+"latitude": 59.444831,
+"longitude": 24.742693,
+"altitude": 31,
+"distance": 1.66714,
+"speed": 16.0189,
+"duration": 534000,
+"sensor_data": {
+"speed": 16.0189
+}
+},
+{
+"time": "2015-06-10T17:49:07.000Z",
+"latitude": 59.444958,
+"longitude": 24.742149,
+"altitude": 33,
+"distance": 1.70114,
+"speed": 16.9758,
+"duration": 541000,
+"sensor_data": {
+"speed": 16.9758
+}
+},
+{
+"time": "2015-06-10T17:49:14.000Z",
+"latitude": 59.445169,
+"longitude": 24.741457,
+"altitude": 33,
+"distance": 1.7469,
+"speed": 18.6364,
+"duration": 548000,
+"sensor_data": {
+"speed": 18.6364
+}
+},
+{
+"time": "2015-06-10T17:49:19.000Z",
+"latitude": 59.445293,
+"longitude": 24.740937,
+"altitude": 33,
+"distance": 1.77942,
+"speed": 21.478,
+"duration": 553000,
+"sensor_data": {
+"speed": 21.478
+}
+},
+{
+"time": "2015-06-10T17:49:24.000Z",
+"latitude": 59.445437,
+"longitude": 24.740412,
+"altitude": 33,
+"distance": 1.81324,
+"speed": 23.7677,
+"duration": 558000,
+"sensor_data": {
+"speed": 23.7677
+}
+},
+{
+"time": "2015-06-10T17:49:31.000Z",
+"latitude": 59.445598,
+"longitude": 24.739732,
+"altitude": 34,
+"distance": 1.85585,
+"speed": 23.239,
+"duration": 565000,
+"sensor_data": {
+"speed": 23.239
+}
+},
+{
+"time": "2015-06-10T17:49:36.000Z",
+"latitude": 59.44574,
+"longitude": 24.739224,
+"altitude": 34,
+"distance": 1.88871,
+"speed": 23.3034,
+"duration": 570000,
+"sensor_data": {
+"speed": 23.3034
+}
+},
+{
+"time": "2015-06-10T17:49:41.000Z",
+"latitude": 59.445803,
+"longitude": 24.73882,
+"altitude": 32,
+"distance": 1.91265,
+"speed": 20.8234,
+"duration": 575000,
+"sensor_data": {
+"speed": 20.8234
+}
+},
+{
+"time": "2015-06-10T17:49:49.000Z",
+"latitude": 59.44594,
+"longitude": 24.738332,
+"altitude": 34,
+"distance": 1.94427,
+"speed": 18.3022,
+"duration": 583000,
+"sensor_data": {
+"speed": 18.3022
+}
+},
+{
+"time": "2015-06-10T17:49:58.000Z",
+"latitude": 59.446111,
+"longitude": 24.737711,
+"altitude": 41,
+"distance": 1.98433,
+"speed": 15.7793,
+"duration": 592000,
+"sensor_data": {
+"speed": 15.7793
+}
+},
+{
+"time": "2015-06-10T17:50:03.000Z",
+"latitude": 59.446235,
+"longitude": 24.737267,
+"altitude": 40,
+"distance": 2.01303,
+"speed": 17.0271,
+"duration": 597000,
+"sensor_data": {
+"speed": 17.0271
+}
+},
+{
+"time": "2015-06-10T17:50:09.000Z",
+"latitude": 59.446372,
+"longitude": 24.73663,
+"altitude": 37,
+"distance": 2.05229,
+"speed": 20.0859,
+"duration": 603000,
+"sensor_data": {
+"speed": 20.0859
+}
+},
+{
+"time": "2015-06-10T17:50:12.000Z",
+"latitude": 59.446448,
+"longitude": 24.736331,
+"altitude": 36,
+"distance": 2.07124,
+"speed": 22.3121,
+"duration": 606000,
+"sensor_data": {
+"speed": 22.3121
+}
+},
+{
+"time": "2015-06-10T17:50:17.000Z",
+"latitude": 59.446533,
+"longitude": 24.735964,
+"altitude": 34,
+"distance": 2.09411,
+"speed": 20.9201,
+"duration": 611000,
+"sensor_data": {
+"speed": 20.9201
+}
+},
+{
+"time": "2015-06-10T17:50:23.000Z",
+"latitude": 59.446587,
+"longitude": 24.735523,
+"altitude": 34,
+"distance": 2.11984,
+"speed": 18.2118,
+"duration": 617000,
+"sensor_data": {
+"speed": 18.2118
+}
+},
+{
+"time": "2015-06-10T17:50:28.000Z",
+"latitude": 59.446609,
+"longitude": 24.735052,
+"altitude": 33,
+"distance": 2.14667,
+"speed": 17.0625,
+"duration": 622000,
+"sensor_data": {
+"speed": 17.0625
+}
+},
+{
+"time": "2015-06-10T17:50:34.000Z",
+"latitude": 59.446626,
+"longitude": 24.73443,
+"altitude": 31,
+"distance": 2.18204,
+"speed": 18.6692,
+"duration": 628000,
+"sensor_data": {
+"speed": 18.6692
+}
+},
+{
+"time": "2015-06-10T17:50:37.000Z",
+"latitude": 59.446649,
+"longitude": 24.734123,
+"altitude": 31,
+"distance": 2.19961,
+"speed": 20.5291,
+"duration": 631000,
+"sensor_data": {
+"speed": 20.5291
+}
+},
+{
+"time": "2015-06-10T17:50:43.000Z",
+"latitude": 59.446686,
+"longitude": 24.733763,
+"altitude": 31,
+"distance": 2.22046,
+"speed": 18.2762,
+"duration": 637000,
+"sensor_data": {
+"speed": 18.2762
+}
+},
+{
+"time": "2015-06-10T17:50:49.000Z",
+"latitude": 59.446722,
+"longitude": 24.733394,
+"altitude": 28,
+"distance": 2.24177,
+"speed": 15.4372,
+"duration": 643000,
+"sensor_data": {
+"speed": 15.4372
+}
+},
+{
+"time": "2015-06-10T17:50:55.000Z",
+"latitude": 59.446783,
+"longitude": 24.732859,
+"altitude": 27,
+"distance": 2.27287,
+"speed": 14.6512,
+"duration": 649000,
+"sensor_data": {
+"speed": 14.6512
+}
+},
+{
+"time": "2015-06-10T17:51:00.000Z",
+"latitude": 59.446805,
+"longitude": 24.732401,
+"altitude": 30,
+"distance": 2.29897,
+"speed": 16.7452,
+"duration": 654000,
+"sensor_data": {
+"speed": 16.7452
+}
+},
+{
+"time": "2015-06-10T17:51:05.000Z",
+"latitude": 59.446873,
+"longitude": 24.731848,
+"altitude": 29,
+"distance": 2.33122,
+"speed": 20.2232,
+"duration": 659000,
+"sensor_data": {
+"speed": 20.2232
+}
+},
+{
+"time": "2015-06-10T17:51:11.000Z",
+"latitude": 59.446957,
+"longitude": 24.731337,
+"altitude": 28,
+"distance": 2.36169,
+"speed": 20.1029,
+"duration": 665000,
+"sensor_data": {
+"speed": 20.1029
+}
+},
+{
+"time": "2015-06-10T17:51:18.000Z",
+"latitude": 59.446876,
+"longitude": 24.731132,
+"altitude": 28,
+"distance": 2.37637,
+"speed": 16.3532,
+"duration": 672000,
+"sensor_data": {
+"speed": 16.3532
+}
+},
+{
+"time": "2015-06-10T17:51:27.000Z",
+"latitude": 59.446805,
+"longitude": 24.730836,
+"altitude": 32,
+"distance": 2.39493,
+"speed": 11.0893,
+"duration": 681000,
+"sensor_data": {
+"speed": 11.0893
+}
+},
+{
+"time": "2015-06-10T17:51:38.000Z",
+"latitude": 59.447046,
+"longitude": 24.730187,
+"altitude": 28,
+"distance": 2.44049,
+"speed": 9.95973,
+"duration": 692000,
+"sensor_data": {
+"speed": 9.95973
+}
+},
+{
+"time": "2015-06-10T17:51:43.000Z",
+"latitude": 59.447184,
+"longitude": 24.72989,
+"altitude": 32,
+"distance": 2.4633,
+"speed": 12.9211,
+"duration": 697000,
+"sensor_data": {
+"speed": 12.9211
+}
+},
+{
+"time": "2015-06-10T17:51:49.000Z",
+"latitude": 59.44732,
+"longitude": 24.729533,
+"altitude": 32,
+"distance": 2.48858,
+"speed": 15.5008,
+"duration": 703000,
+"sensor_data": {
+"speed": 15.5008
+}
+},
+{
+"time": "2015-06-10T17:51:56.000Z",
+"latitude": 59.447469,
+"longitude": 24.729248,
+"altitude": 39,
+"distance": 2.51178,
+"speed": 14.5086,
+"duration": 710000,
+"sensor_data": {
+"speed": 14.5086
+}
+},
+{
+"time": "2015-06-10T17:52:01.000Z",
+"latitude": 59.447597,
+"longitude": 24.729009,
+"altitude": 39,
+"distance": 2.53145,
+"speed": 13.7518,
+"duration": 715000,
+"sensor_data": {
+"speed": 13.7518
+}
+},
+{
+"time": "2015-06-10T17:52:08.000Z",
+"latitude": 59.447757,
+"longitude": 24.728583,
+"altitude": 38,
+"distance": 2.56142,
+"speed": 13.8394,
+"duration": 722000,
+"sensor_data": {
+"speed": 13.8394
+}
+},
+{
+"time": "2015-06-10T17:52:16.000Z",
+"latitude": 59.4478,
+"longitude": 24.728156,
+"altitude": 32,
+"distance": 2.58615,
+"speed": 13.5695,
+"duration": 730000,
+"sensor_data": {
+"speed": 13.5695
+}
+},
+{
+"time": "2015-06-10T17:52:24.000Z",
+"latitude": 59.448037,
+"longitude": 24.727854,
+"altitude": 35,
+"distance": 2.61765,
+"speed": 13.5745,
+"duration": 738000,
+"sensor_data": {
+"speed": 13.5745
+}
+},
+{
+"time": "2015-06-10T17:52:30.000Z",
+"latitude": 59.448207,
+"longitude": 24.727494,
+"altitude": 37,
+"distance": 2.64546,
+"speed": 13.9951,
+"duration": 744000,
+"sensor_data": {
+"speed": 13.9951
+}
+},
+{
+"time": "2015-06-10T17:52:35.000Z",
+"latitude": 59.448398,
+"longitude": 24.726983,
+"altitude": 35,
+"distance": 2.68143,
+"speed": 18.9142,
+"duration": 749000,
+"sensor_data": {
+"speed": 18.9142
+}
+},
+{
+"time": "2015-06-10T17:52:41.000Z",
+"latitude": 59.448554,
+"longitude": 24.726536,
+"altitude": 33,
+"distance": 2.71217,
+"speed": 20.3399,
+"duration": 755000,
+"sensor_data": {
+"speed": 20.3399
+}
+},
+{
+"time": "2015-06-10T17:52:46.000Z",
+"latitude": 59.44871,
+"longitude": 24.726228,
+"altitude": 35,
+"distance": 2.7368,
+"speed": 20.6868,
+"duration": 760000,
+"sensor_data": {
+"speed": 20.6868
+}
+},
+{
+"time": "2015-06-10T17:52:53.000Z",
+"latitude": 59.44889,
+"longitude": 24.725837,
+"altitude": 36,
+"distance": 2.76674,
+"speed": 17.194,
+"duration": 767000,
+"sensor_data": {
+"speed": 17.194
+}
+},
+{
+"time": "2015-06-10T17:52:59.000Z",
+"latitude": 59.44905,
+"longitude": 24.725558,
+"altitude": 36,
+"distance": 2.79055,
+"speed": 15.8062,
+"duration": 773000,
+"sensor_data": {
+"speed": 15.8062
+}
+},
+{
+"time": "2015-06-10T17:53:05.000Z",
+"latitude": 59.449181,
+"longitude": 24.725385,
+"altitude": 35,
+"distance": 2.80817,
+"speed": 13.4184,
+"duration": 779000,
+"sensor_data": {
+"speed": 13.4184
+}
+},
+{
+"time": "2015-06-10T17:53:14.000Z",
+"latitude": 59.449267,
+"longitude": 24.724977,
+"altitude": 35,
+"distance": 2.83318,
+"speed": 11.62,
+"duration": 788000,
+"sensor_data": {
+"speed": 11.62
+}
+},
+{
+"time": "2015-06-10T17:53:22.000Z",
+"latitude": 59.449461,
+"longitude": 24.724686,
+"altitude": 35,
+"distance": 2.86035,
+"speed": 10.9321,
+"duration": 796000,
+"sensor_data": {
+"speed": 10.9321
+}
+},
+{
+"time": "2015-06-10T17:53:27.000Z",
+"latitude": 59.449461,
+"longitude": 24.724686,
+"altitude": 35,
+"distance": 2.86035,
+"speed": 0,
+"duration": 801000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:53:28.000Z",
+"latitude": 59.449461,
+"longitude": 24.724686,
+"altitude": 35,
+"distance": 2.86035,
+"speed": 0,
+"duration": 802000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:53:34.000Z",
+"latitude": 59.449555,
+"longitude": 24.724369,
+"altitude": 35,
+"distance": 2.90205,
+"speed": 0,
+"duration": 808000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:53:40.000Z",
+"latitude": 59.449716,
+"longitude": 24.723994,
+"altitude": 35,
+"distance": 2.92987,
+"speed": 0,
+"duration": 814000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T17:53:45.000Z",
+"latitude": 59.449866,
+"longitude": 24.723728,
+"altitude": 34,
+"distance": 2.95238,
+"speed": 15.135,
+"duration": 819000,
+"sensor_data": {
+"speed": 15.135
+}
+},
+{
+"time": "2015-06-10T17:53:55.000Z",
+"latitude": 59.449966,
+"longitude": 24.723575,
+"altitude": 34,
+"distance": 2.96646,
+"speed": 12.6552,
+"duration": 829000,
+"sensor_data": {
+"speed": 12.6552
+}
+},
+{
+"time": "2015-06-10T17:54:02.000Z",
+"latitude": 59.450103,
+"longitude": 24.723263,
+"altitude": 34,
+"distance": 2.98984,
+"speed": 11.0967,
+"duration": 836000,
+"sensor_data": {
+"speed": 11.0967
+}
+},
+{
+"time": "2015-06-10T17:54:08.000Z",
+"latitude": 59.450281,
+"longitude": 24.722863,
+"altitude": 34,
+"distance": 3.02001,
+"speed": 11.7383,
+"duration": 842000,
+"sensor_data": {
+"speed": 11.7383
+}
+},
+{
+"time": "2015-06-10T17:54:13.000Z",
+"latitude": 59.450461,
+"longitude": 24.722511,
+"altitude": 32,
+"distance": 3.04824,
+"speed": 16.8179,
+"duration": 847000,
+"sensor_data": {
+"speed": 16.8179
+}
+},
+{
+"time": "2015-06-10T17:54:18.000Z",
+"latitude": 59.450562,
+"longitude": 24.722204,
+"altitude": 31,
+"distance": 3.06901,
+"speed": 17.7898,
+"duration": 852000,
+"sensor_data": {
+"speed": 17.7898
+}
+},
+{
+"time": "2015-06-10T17:54:23.000Z",
+"latitude": 59.450692,
+"longitude": 24.721922,
+"altitude": 30,
+"distance": 3.09053,
+"speed": 16.9156,
+"duration": 857000,
+"sensor_data": {
+"speed": 16.9156
+}
+},
+{
+"time": "2015-06-10T17:54:26.000Z",
+"latitude": 59.450781,
+"longitude": 24.721737,
+"altitude": 32,
+"distance": 3.10503,
+"speed": 15.9421,
+"duration": 860000,
+"sensor_data": {
+"speed": 15.9421
+}
+},
+{
+"time": "2015-06-10T17:54:30.000Z",
+"latitude": 59.450905,
+"longitude": 24.72146,
+"altitude": 33,
+"distance": 3.12592,
+"speed": 17.235,
+"duration": 864000,
+"sensor_data": {
+"speed": 17.235
+}
+},
+{
+"time": "2015-06-10T17:54:35.000Z",
+"latitude": 59.451054,
+"longitude": 24.72113,
+"altitude": 35,
+"distance": 3.15091,
+"speed": 18.0629,
+"duration": 869000,
+"sensor_data": {
+"speed": 18.0629
+}
+},
+{
+"time": "2015-06-10T17:54:39.000Z",
+"latitude": 59.451146,
+"longitude": 24.720912,
+"altitude": 33,
+"distance": 3.16698,
+"speed": 17.0892,
+"duration": 873000,
+"sensor_data": {
+"speed": 17.0892
+}
+},
+{
+"time": "2015-06-10T17:54:44.000Z",
+"latitude": 59.451208,
+"longitude": 24.720751,
+"altitude": 32,
+"distance": 3.17845,
+"speed": 13.572,
+"duration": 878000,
+"sensor_data": {
+"speed": 13.572
+}
+},
+{
+"time": "2015-06-10T17:54:50.000Z",
+"latitude": 59.451288,
+"longitude": 24.720584,
+"altitude": 34,
+"distance": 3.19148,
+"speed": 10.1807,
+"duration": 884000,
+"sensor_data": {
+"speed": 10.1807
+}
+},
+{
+"time": "2015-06-10T17:54:57.000Z",
+"latitude": 59.45145,
+"longitude": 24.720165,
+"altitude": 35,
+"distance": 3.22132,
+"speed": 10.4734,
+"duration": 891000,
+"sensor_data": {
+"speed": 10.4734
+}
+},
+{
+"time": "2015-06-10T17:55:02.000Z",
+"latitude": 59.451592,
+"longitude": 24.719826,
+"altitude": 35,
+"distance": 3.24619,
+"speed": 13.6844,
+"duration": 896000,
+"sensor_data": {
+"speed": 13.6844
+}
+},
+{
+"time": "2015-06-10T17:55:08.000Z",
+"latitude": 59.451792,
+"longitude": 24.719449,
+"altitude": 39,
+"distance": 3.27714,
+"speed": 17.2801,
+"duration": 902000,
+"sensor_data": {
+"speed": 17.2801
+}
+},
+{
+"time": "2015-06-10T17:55:12.000Z",
+"latitude": 59.451913,
+"longitude": 24.719172,
+"altitude": 40,
+"distance": 3.29782,
+"speed": 18.3625,
+"duration": 906000,
+"sensor_data": {
+"speed": 18.3625
+}
+},
+{
+"time": "2015-06-10T17:55:18.000Z",
+"latitude": 59.452089,
+"longitude": 24.718781,
+"altitude": 38,
+"distance": 3.3274,
+"speed": 18.3159,
+"duration": 912000,
+"sensor_data": {
+"speed": 18.3159
+}
+},
+{
+"time": "2015-06-10T17:55:23.000Z",
+"latitude": 59.452221,
+"longitude": 24.718418,
+"altitude": 36,
+"distance": 3.35271,
+"speed": 18.1054,
+"duration": 917000,
+"sensor_data": {
+"speed": 18.1054
+}
+},
+{
+"time": "2015-06-10T17:55:30.000Z",
+"latitude": 59.452392,
+"longitude": 24.718,
+"altitude": 38,
+"distance": 3.38314,
+"speed": 17.175,
+"duration": 924000,
+"sensor_data": {
+"speed": 17.175
+}
+},
+{
+"time": "2015-06-10T17:55:36.000Z",
+"latitude": 59.452497,
+"longitude": 24.717673,
+"altitude": 36,
+"distance": 3.40507,
+"speed": 15.6441,
+"duration": 930000,
+"sensor_data": {
+"speed": 15.6441
+}
+},
+{
+"time": "2015-06-10T17:55:42.000Z",
+"latitude": 59.45256,
+"longitude": 24.717361,
+"altitude": 34,
+"distance": 3.42412,
+"speed": 13.4631,
+"duration": 936000,
+"sensor_data": {
+"speed": 13.4631
+}
+},
+{
+"time": "2015-06-10T17:55:50.000Z",
+"latitude": 59.452734,
+"longitude": 24.716926,
+"altitude": 33,
+"distance": 3.45548,
+"speed": 12.8968,
+"duration": 944000,
+"sensor_data": {
+"speed": 12.8968
+}
+},
+{
+"time": "2015-06-10T17:55:56.000Z",
+"latitude": 59.452892,
+"longitude": 24.716507,
+"altitude": 31,
+"distance": 3.48505,
+"speed": 14.4265,
+"duration": 950000,
+"sensor_data": {
+"speed": 14.4265
+}
+},
+{
+"time": "2015-06-10T17:56:02.000Z",
+"latitude": 59.453071,
+"longitude": 24.716192,
+"altitude": 32,
+"distance": 3.51182,
+"speed": 15.9677,
+"duration": 956000,
+"sensor_data": {
+"speed": 15.9677
+}
+},
+{
+"time": "2015-06-10T17:56:10.000Z",
+"latitude": 59.45323,
+"longitude": 24.715663,
+"altitude": 31,
+"distance": 3.54668,
+"speed": 16.4995,
+"duration": 964000,
+"sensor_data": {
+"speed": 16.4995
+}
+},
+{
+"time": "2015-06-10T17:56:17.000Z",
+"latitude": 59.453415,
+"longitude": 24.715028,
+"altitude": 33,
+"distance": 3.58814,
+"speed": 17.6904,
+"duration": 971000,
+"sensor_data": {
+"speed": 17.6904
+}
+},
+{
+"time": "2015-06-10T17:56:22.000Z",
+"latitude": 59.453463,
+"longitude": 24.714556,
+"altitude": 34,
+"distance": 3.61548,
+"speed": 18.8924,
+"duration": 976000,
+"sensor_data": {
+"speed": 18.8924
+}
+},
+{
+"time": "2015-06-10T17:56:28.000Z",
+"latitude": 59.453516,
+"longitude": 24.713983,
+"altitude": 34,
+"distance": 3.64847,
+"speed": 20.2614,
+"duration": 982000,
+"sensor_data": {
+"speed": 20.2614
+}
+},
+{
+"time": "2015-06-10T17:56:32.000Z",
+"latitude": 59.453544,
+"longitude": 24.713593,
+"altitude": 32,
+"distance": 3.6708,
+"speed": 19.8523,
+"duration": 986000,
+"sensor_data": {
+"speed": 19.8523
+}
+},
+{
+"time": "2015-06-10T17:56:37.000Z",
+"latitude": 59.453581,
+"longitude": 24.71313,
+"altitude": 31,
+"distance": 3.69739,
+"speed": 19.682,
+"duration": 991000,
+"sensor_data": {
+"speed": 19.682
+}
+},
+{
+"time": "2015-06-10T17:56:42.000Z",
+"latitude": 59.453621,
+"longitude": 24.712688,
+"altitude": 31,
+"distance": 3.72288,
+"speed": 19.1994,
+"duration": 996000,
+"sensor_data": {
+"speed": 19.1994
+}
+},
+{
+"time": "2015-06-10T17:56:47.000Z",
+"latitude": 59.453644,
+"longitude": 24.712249,
+"altitude": 31,
+"distance": 3.74788,
+"speed": 18.5013,
+"duration": 1001000,
+"sensor_data": {
+"speed": 18.5013
+}
+},
+{
+"time": "2015-06-10T17:56:51.000Z",
+"latitude": 59.453671,
+"longitude": 24.711955,
+"altitude": 31,
+"distance": 3.76483,
+"speed": 17.145,
+"duration": 1005000,
+"sensor_data": {
+"speed": 17.145
+}
+},
+{
+"time": "2015-06-10T17:56:58.000Z",
+"latitude": 59.453661,
+"longitude": 24.711351,
+"altitude": 30,
+"distance": 3.79913,
+"speed": 16.9475,
+"duration": 1012000,
+"sensor_data": {
+"speed": 16.9475
+}
+},
+{
+"time": "2015-06-10T17:57:03.000Z",
+"latitude": 59.453671,
+"longitude": 24.710835,
+"altitude": 31,
+"distance": 3.82839,
+"speed": 17.9708,
+"duration": 1017000,
+"sensor_data": {
+"speed": 17.9708
+}
+},
+{
+"time": "2015-06-10T17:57:07.000Z",
+"latitude": 59.453696,
+"longitude": 24.710443,
+"altitude": 31,
+"distance": 3.85084,
+"speed": 19.6753,
+"duration": 1021000,
+"sensor_data": {
+"speed": 19.6753
+}
+},
+{
+"time": "2015-06-10T17:57:11.000Z",
+"latitude": 59.453725,
+"longitude": 24.710027,
+"altitude": 31,
+"distance": 3.87461,
+"speed": 20.8895,
+"duration": 1025000,
+"sensor_data": {
+"speed": 20.8895
+}
+},
+{
+"time": "2015-06-10T17:57:14.000Z",
+"latitude": 59.453744,
+"longitude": 24.709702,
+"altitude": 32,
+"distance": 3.89321,
+"speed": 21.3105,
+"duration": 1028000,
+"sensor_data": {
+"speed": 21.3105
+}
+},
+{
+"time": "2015-06-10T17:57:19.000Z",
+"latitude": 59.45378,
+"longitude": 24.709211,
+"altitude": 32,
+"distance": 3.92134,
+"speed": 21.3228,
+"duration": 1033000,
+"sensor_data": {
+"speed": 21.3228
+}
+},
+{
+"time": "2015-06-10T17:57:24.000Z",
+"latitude": 59.453819,
+"longitude": 24.708729,
+"altitude": 34,
+"distance": 3.94901,
+"speed": 20.8278,
+"duration": 1038000,
+"sensor_data": {
+"speed": 20.8278
+}
+},
+{
+"time": "2015-06-10T17:57:30.000Z",
+"latitude": 59.453818,
+"longitude": 24.708144,
+"altitude": 36,
+"distance": 3.98221,
+"speed": 20.0279,
+"duration": 1044000,
+"sensor_data": {
+"speed": 20.0279
+}
+},
+{
+"time": "2015-06-10T17:57:35.000Z",
+"latitude": 59.453863,
+"longitude": 24.707644,
+"altitude": 34,
+"distance": 4.01095,
+"speed": 20.1807,
+"duration": 1049000,
+"sensor_data": {
+"speed": 20.1807
+}
+},
+{
+"time": "2015-06-10T17:57:39.000Z",
+"latitude": 59.453869,
+"longitude": 24.707265,
+"altitude": 35,
+"distance": 4.03251,
+"speed": 20.0053,
+"duration": 1053000,
+"sensor_data": {
+"speed": 20.0053
+}
+},
+{
+"time": "2015-06-10T17:57:44.000Z",
+"latitude": 59.45387,
+"longitude": 24.706753,
+"altitude": 31,
+"distance": 4.06152,
+"speed": 20.3216,
+"duration": 1058000,
+"sensor_data": {
+"speed": 20.3216
+}
+},
+{
+"time": "2015-06-10T17:57:50.000Z",
+"latitude": 59.453824,
+"longitude": 24.706169,
+"altitude": 33,
+"distance": 4.09503,
+"speed": 20.1273,
+"duration": 1064000,
+"sensor_data": {
+"speed": 20.1273
+}
+},
+{
+"time": "2015-06-10T17:57:55.000Z",
+"latitude": 59.453773,
+"longitude": 24.705733,
+"altitude": 32,
+"distance": 4.12044,
+"speed": 19.7608,
+"duration": 1069000,
+"sensor_data": {
+"speed": 19.7608
+}
+},
+{
+"time": "2015-06-10T17:58:01.000Z",
+"latitude": 59.453742,
+"longitude": 24.705193,
+"altitude": 31,
+"distance": 4.15125,
+"speed": 18.9647,
+"duration": 1075000,
+"sensor_data": {
+"speed": 18.9647
+}
+},
+{
+"time": "2015-06-10T17:58:06.000Z",
+"latitude": 59.453716,
+"longitude": 24.704718,
+"altitude": 30,
+"distance": 4.17835,
+"speed": 18.7468,
+"duration": 1080000,
+"sensor_data": {
+"speed": 18.7468
+}
+},
+{
+"time": "2015-06-10T17:58:13.000Z",
+"latitude": 59.453683,
+"longitude": 24.704263,
+"altitude": 29,
+"distance": 4.20439,
+"speed": 17.1225,
+"duration": 1087000,
+"sensor_data": {
+"speed": 17.1225
+}
+},
+{
+"time": "2015-06-10T17:58:19.000Z",
+"latitude": 59.453669,
+"longitude": 24.703876,
+"altitude": 29,
+"distance": 4.22643,
+"speed": 15.3651,
+"duration": 1093000,
+"sensor_data": {
+"speed": 15.3651
+}
+},
+{
+"time": "2015-06-10T17:58:25.000Z",
+"latitude": 59.453624,
+"longitude": 24.703612,
+"altitude": 30,
+"distance": 4.24221,
+"speed": 12.0443,
+"duration": 1099000,
+"sensor_data": {
+"speed": 12.0443
+}
+},
+{
+"time": "2015-06-10T17:58:30.000Z",
+"latitude": 59.453691,
+"longitude": 24.70328,
+"altitude": 32,
+"distance": 4.26247,
+"speed": 12.4203,
+"duration": 1104000,
+"sensor_data": {
+"speed": 12.4203
+}
+},
+{
+"time": "2015-06-10T17:58:33.000Z",
+"latitude": 59.453703,
+"longitude": 24.703068,
+"altitude": 31,
+"distance": 4.27457,
+"duration": 1107000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:58:39.000Z",
+"latitude": 59.4537,
+"longitude": 24.702991,
+"altitude": 31,
+"distance": 4.27894,
+"duration": 1113000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T17:58:57.000Z",
+"latitude": 59.453748,
+"longitude": 24.702616,
+"altitude": 31,
+"distance": 4.32276,
+"speed": 7.18018,
+"duration": 1131000,
+"sensor_data": {
+"speed": 7.18018
+}
+},
+{
+"time": "2015-06-10T17:59:05.000Z",
+"latitude": 59.453639,
+"longitude": 24.702343,
+"altitude": 29,
+"distance": 4.34247,
+"speed": 5.29222,
+"duration": 1139000,
+"sensor_data": {
+"speed": 5.29222
+}
+},
+{
+"time": "2015-06-10T17:59:11.000Z",
+"latitude": 59.453605,
+"longitude": 24.702081,
+"altitude": 29,
+"distance": 4.35782,
+"speed": 7.48441,
+"duration": 1145000,
+"sensor_data": {
+"speed": 7.48441
+}
+},
+{
+"time": "2015-06-10T17:59:18.000Z",
+"latitude": 59.45368,
+"longitude": 24.701421,
+"altitude": 30,
+"distance": 4.39614,
+"speed": 12.5931,
+"duration": 1152000,
+"sensor_data": {
+"speed": 12.5931
+}
+},
+{
+"time": "2015-06-10T17:59:24.000Z",
+"latitude": 59.453736,
+"longitude": 24.7007,
+"altitude": 28,
+"distance": 4.43748,
+"speed": 17.905,
+"duration": 1158000,
+"sensor_data": {
+"speed": 17.905
+}
+},
+{
+"time": "2015-06-10T17:59:30.000Z",
+"latitude": 59.45377,
+"longitude": 24.699965,
+"altitude": 26,
+"distance": 4.47936,
+"speed": 23.2143,
+"duration": 1164000,
+"sensor_data": {
+"speed": 23.2143
+}
+},
+{
+"time": "2015-06-10T17:59:35.000Z",
+"latitude": 59.453812,
+"longitude": 24.699435,
+"altitude": 24,
+"distance": 4.50977,
+"speed": 23.9424,
+"duration": 1169000,
+"sensor_data": {
+"speed": 23.9424
+}
+},
+{
+"time": "2015-06-10T17:59:40.000Z",
+"latitude": 59.453859,
+"longitude": 24.698912,
+"altitude": 21,
+"distance": 4.53989,
+"speed": 22.898,
+"duration": 1174000,
+"sensor_data": {
+"speed": 22.898
+}
+},
+{
+"time": "2015-06-10T17:59:47.000Z",
+"latitude": 59.453933,
+"longitude": 24.698335,
+"altitude": 22,
+"distance": 4.57363,
+"speed": 20.309,
+"duration": 1181000,
+"sensor_data": {
+"speed": 20.309
+}
+},
+{
+"time": "2015-06-10T17:59:53.000Z",
+"latitude": 59.453996,
+"longitude": 24.697813,
+"altitude": 20,
+"distance": 4.6041,
+"speed": 19.1046,
+"duration": 1187000,
+"sensor_data": {
+"speed": 19.1046
+}
+},
+{
+"time": "2015-06-10T17:59:59.000Z",
+"latitude": 59.454068,
+"longitude": 24.697216,
+"altitude": 20,
+"distance": 4.63889,
+"speed": 18.8407,
+"duration": 1193000,
+"sensor_data": {
+"speed": 18.8407
+}
+},
+{
+"time": "2015-06-10T18:00:04.000Z",
+"latitude": 59.454135,
+"longitude": 24.696695,
+"altitude": 22,
+"distance": 4.66935,
+"speed": 20.3625,
+"duration": 1198000,
+"sensor_data": {
+"speed": 20.3625
+}
+},
+{
+"time": "2015-06-10T18:00:08.000Z",
+"latitude": 59.454157,
+"longitude": 24.696322,
+"altitude": 20,
+"distance": 4.69063,
+"speed": 20.6473,
+"duration": 1202000,
+"sensor_data": {
+"speed": 20.6473
+}
+},
+{
+"time": "2015-06-10T18:00:14.000Z",
+"latitude": 59.454247,
+"longitude": 24.695687,
+"altitude": 20,
+"distance": 4.72802,
+"speed": 21.1731,
+"duration": 1208000,
+"sensor_data": {
+"speed": 21.1731
+}
+},
+{
+"time": "2015-06-10T18:00:17.000Z",
+"latitude": 59.454273,
+"longitude": 24.695384,
+"altitude": 20,
+"distance": 4.7455,
+"speed": 20.8454,
+"duration": 1211000,
+"sensor_data": {
+"speed": 20.8454
+}
+},
+{
+"time": "2015-06-10T18:00:22.000Z",
+"latitude": 59.454302,
+"longitude": 24.69495,
+"altitude": 19,
+"distance": 4.77029,
+"speed": 20.4195,
+"duration": 1216000,
+"sensor_data": {
+"speed": 20.4195
+}
+},
+{
+"time": "2015-06-10T18:00:28.000Z",
+"latitude": 59.454368,
+"longitude": 24.694387,
+"altitude": 20,
+"distance": 4.80305,
+"speed": 19.4867,
+"duration": 1222000,
+"sensor_data": {
+"speed": 19.4867
+}
+},
+{
+"time": "2015-06-10T18:00:35.000Z",
+"latitude": 59.454455,
+"longitude": 24.693881,
+"altitude": 22,
+"distance": 4.83336,
+"speed": 17.6983,
+"duration": 1229000,
+"sensor_data": {
+"speed": 17.6983
+}
+},
+{
+"time": "2015-06-10T18:00:40.000Z",
+"latitude": 59.454505,
+"longitude": 24.693482,
+"altitude": 23,
+"distance": 4.85664,
+"speed": 17.3349,
+"duration": 1234000,
+"sensor_data": {
+"speed": 17.3349
+}
+},
+{
+"time": "2015-06-10T18:00:46.000Z",
+"latitude": 59.454579,
+"longitude": 24.693007,
+"altitude": 25,
+"distance": 4.88483,
+"speed": 16.4194,
+"duration": 1240000,
+"sensor_data": {
+"speed": 16.4194
+}
+},
+{
+"time": "2015-06-10T18:00:51.000Z",
+"latitude": 59.45463,
+"longitude": 24.692622,
+"altitude": 26,
+"distance": 4.90739,
+"speed": 16.6419,
+"duration": 1245000,
+"sensor_data": {
+"speed": 16.6419
+}
+},
+{
+"time": "2015-06-10T18:00:57.000Z",
+"latitude": 59.454668,
+"longitude": 24.692208,
+"altitude": 26,
+"distance": 4.93125,
+"speed": 15.8263,
+"duration": 1251000,
+"sensor_data": {
+"speed": 15.8263
+}
+},
+{
+"time": "2015-06-10T18:01:03.000Z",
+"latitude": 59.454714,
+"longitude": 24.691723,
+"altitude": 25,
+"distance": 4.95921,
+"speed": 15.778,
+"duration": 1257000,
+"sensor_data": {
+"speed": 15.778
+}
+},
+{
+"time": "2015-06-10T18:01:08.000Z",
+"latitude": 59.45476,
+"longitude": 24.691319,
+"altitude": 25,
+"distance": 4.98271,
+"speed": 16.0027,
+"duration": 1262000,
+"sensor_data": {
+"speed": 16.0027
+}
+},
+{
+"time": "2015-06-10T18:01:14.000Z",
+"latitude": 59.454826,
+"longitude": 24.690845,
+"altitude": 27,
+"distance": 5.01058,
+"speed": 16.8048,
+"duration": 1268000,
+"sensor_data": {
+"speed": 16.8048
+}
+},
+{
+"time": "2015-06-10T18:01:20.000Z",
+"latitude": 59.454875,
+"longitude": 24.690454,
+"altitude": 26,
+"distance": 5.03343,
+"speed": 15.7849,
+"duration": 1274000,
+"sensor_data": {
+"speed": 15.7849
+}
+},
+{
+"time": "2015-06-10T18:01:27.000Z",
+"latitude": 59.454773,
+"longitude": 24.690234,
+"altitude": 28,
+"distance": 5.0503,
+"speed": 13.0359,
+"duration": 1281000,
+"sensor_data": {
+"speed": 13.0359
+}
+},
+{
+"time": "2015-06-10T18:01:33.000Z",
+"latitude": 59.454628,
+"longitude": 24.690391,
+"altitude": 27,
+"distance": 5.06878,
+"speed": 11.156,
+"duration": 1287000,
+"sensor_data": {
+"speed": 11.156
+}
+},
+{
+"time": "2015-06-10T18:01:37.000Z",
+"latitude": 59.454591,
+"longitude": 24.690456,
+"altitude": 28,
+"distance": 5.07433,
+"duration": 1291000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:01:44.000Z",
+"latitude": 59.454597,
+"longitude": 24.690457,
+"altitude": 28,
+"distance": 5.07504,
+"duration": 1298000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:02:36.000Z",
+"latitude": 59.454448,
+"longitude": 24.690652,
+"altitude": 30,
+"distance": 5.11493,
+"speed": 2.24327,
+"duration": 1350000,
+"sensor_data": {
+"speed": 2.24327
+}
+},
+{
+"time": "2015-06-10T18:02:43.000Z",
+"latitude": 59.454178,
+"longitude": 24.691026,
+"altitude": 28,
+"distance": 5.15175,
+"speed": 6.90671,
+"duration": 1357000,
+"sensor_data": {
+"speed": 6.90671
+}
+},
+{
+"time": "2015-06-10T18:02:47.000Z",
+"latitude": 59.453991,
+"longitude": 24.691247,
+"altitude": 27,
+"distance": 5.17603,
+"speed": 14.0452,
+"duration": 1361000,
+"sensor_data": {
+"speed": 14.0452
+}
+},
+{
+"time": "2015-06-10T18:02:52.000Z",
+"latitude": 59.45376,
+"longitude": 24.691558,
+"altitude": 27,
+"distance": 5.20731,
+"speed": 21.0914,
+"duration": 1366000,
+"sensor_data": {
+"speed": 21.0914
+}
+},
+{
+"time": "2015-06-10T18:02:58.000Z",
+"latitude": 59.453497,
+"longitude": 24.691967,
+"altitude": 27,
+"distance": 5.24465,
+"speed": 22.2302,
+"duration": 1372000,
+"sensor_data": {
+"speed": 22.2302
+}
+},
+{
+"time": "2015-06-10T18:03:04.000Z",
+"latitude": 59.453232,
+"longitude": 24.692305,
+"altitude": 26,
+"distance": 5.2798,
+"speed": 22.0055,
+"duration": 1378000,
+"sensor_data": {
+"speed": 22.0055
+}
+},
+{
+"time": "2015-06-10T18:03:10.000Z",
+"latitude": 59.45298,
+"longitude": 24.692704,
+"altitude": 26,
+"distance": 5.31587,
+"speed": 21.7144,
+"duration": 1384000,
+"sensor_data": {
+"speed": 21.7144
+}
+},
+{
+"time": "2015-06-10T18:03:15.000Z",
+"latitude": 59.452753,
+"longitude": 24.693003,
+"altitude": 27,
+"distance": 5.34638,
+"speed": 21.5692,
+"duration": 1389000,
+"sensor_data": {
+"speed": 21.5692
+}
+},
+{
+"time": "2015-06-10T18:03:22.000Z",
+"latitude": 59.452498,
+"longitude": 24.693437,
+"altitude": 25,
+"distance": 5.38397,
+"speed": 20.9789,
+"duration": 1396000,
+"sensor_data": {
+"speed": 20.9789
+}
+},
+{
+"time": "2015-06-10T18:03:28.000Z",
+"latitude": 59.45229,
+"longitude": 24.693723,
+"altitude": 26,
+"distance": 5.41218,
+"speed": 19.4057,
+"duration": 1402000,
+"sensor_data": {
+"speed": 19.4057
+}
+},
+{
+"time": "2015-06-10T18:03:34.000Z",
+"latitude": 59.452114,
+"longitude": 24.693965,
+"altitude": 26,
+"distance": 5.43611,
+"speed": 16.8732,
+"duration": 1408000,
+"sensor_data": {
+"speed": 16.8732
+}
+},
+{
+"time": "2015-06-10T18:03:39.000Z",
+"latitude": 59.451954,
+"longitude": 24.694208,
+"altitude": 27,
+"distance": 5.45866,
+"speed": 15.8408,
+"duration": 1413000,
+"sensor_data": {
+"speed": 15.8408
+}
+},
+{
+"time": "2015-06-10T18:03:45.000Z",
+"latitude": 59.451733,
+"longitude": 24.69451,
+"altitude": 26,
+"distance": 5.48871,
+"speed": 16.205,
+"duration": 1419000,
+"sensor_data": {
+"speed": 16.205
+}
+},
+{
+"time": "2015-06-10T18:03:51.000Z",
+"latitude": 59.451487,
+"longitude": 24.69485,
+"altitude": 27,
+"distance": 5.52219,
+"speed": 18.126,
+"duration": 1425000,
+"sensor_data": {
+"speed": 18.126
+}
+},
+{
+"time": "2015-06-10T18:03:56.000Z",
+"latitude": 59.451287,
+"longitude": 24.69518,
+"altitude": 28,
+"distance": 5.55128,
+"speed": 19.692,
+"duration": 1430000,
+"sensor_data": {
+"speed": 19.692
+}
+},
+{
+"time": "2015-06-10T18:04:01.000Z",
+"latitude": 59.451119,
+"longitude": 24.695383,
+"altitude": 28,
+"distance": 5.57324,
+"speed": 18.9466,
+"duration": 1435000,
+"sensor_data": {
+"speed": 18.9466
+}
+},
+{
+"time": "2015-06-10T18:04:08.000Z",
+"latitude": 59.450887,
+"longitude": 24.695676,
+"altitude": 28,
+"distance": 5.60395,
+"speed": 17.44,
+"duration": 1442000,
+"sensor_data": {
+"speed": 17.44
+}
+},
+{
+"time": "2015-06-10T18:04:14.000Z",
+"latitude": 59.450671,
+"longitude": 24.696028,
+"altitude": 27,
+"distance": 5.63531,
+"speed": 16.8299,
+"duration": 1448000,
+"sensor_data": {
+"speed": 16.8299
+}
+},
+{
+"time": "2015-06-10T18:04:20.000Z",
+"latitude": 59.450429,
+"longitude": 24.696406,
+"altitude": 26,
+"distance": 5.66969,
+"speed": 18.45,
+"duration": 1454000,
+"sensor_data": {
+"speed": 18.45
+}
+},
+{
+"time": "2015-06-10T18:04:26.000Z",
+"latitude": 59.450233,
+"longitude": 24.696677,
+"altitude": 26,
+"distance": 5.69636,
+"speed": 18.5763,
+"duration": 1460000,
+"sensor_data": {
+"speed": 18.5763
+}
+},
+{
+"time": "2015-06-10T18:04:32.000Z",
+"latitude": 59.45002,
+"longitude": 24.696966,
+"altitude": 28,
+"distance": 5.72526,
+"speed": 17.989,
+"duration": 1466000,
+"sensor_data": {
+"speed": 17.989
+}
+},
+{
+"time": "2015-06-10T18:04:38.000Z",
+"latitude": 59.449821,
+"longitude": 24.697237,
+"altitude": 27,
+"distance": 5.75224,
+"speed": 16.481,
+"duration": 1472000,
+"sensor_data": {
+"speed": 16.481
+}
+},
+{
+"time": "2015-06-10T18:04:44.000Z",
+"latitude": 59.449597,
+"longitude": 24.697559,
+"altitude": 27,
+"distance": 5.78311,
+"speed": 17.3523,
+"duration": 1478000,
+"sensor_data": {
+"speed": 17.3523
+}
+},
+{
+"time": "2015-06-10T18:04:49.000Z",
+"latitude": 59.449421,
+"longitude": 24.697841,
+"altitude": 27,
+"distance": 5.80848,
+"speed": 17.5924,
+"duration": 1483000,
+"sensor_data": {
+"speed": 17.5924
+}
+},
+{
+"time": "2015-06-10T18:04:55.000Z",
+"latitude": 59.449223,
+"longitude": 24.698066,
+"altitude": 26,
+"distance": 5.83388,
+"speed": 17.3558,
+"duration": 1489000,
+"sensor_data": {
+"speed": 17.3558
+}
+},
+{
+"time": "2015-06-10T18:04:58.000Z",
+"latitude": 59.449168,
+"longitude": 24.698188,
+"altitude": 27,
+"distance": 5.84317,
+"duration": 1492000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:05:04.000Z",
+"latitude": 59.449131,
+"longitude": 24.698196,
+"altitude": 27,
+"distance": 5.84732,
+"duration": 1498000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:05:14.000Z",
+"latitude": 59.449017,
+"longitude": 24.697887,
+"altitude": 29,
+"distance": 5.89056,
+"speed": 7.13565,
+"duration": 1508000,
+"sensor_data": {
+"speed": 7.13565
+}
+},
+{
+"time": "2015-06-10T18:05:21.000Z",
+"latitude": 59.448875,
+"longitude": 24.697569,
+"altitude": 28,
+"distance": 5.91456,
+"speed": 7.53831,
+"duration": 1515000,
+"sensor_data": {
+"speed": 7.53831
+}
+},
+{
+"time": "2015-06-10T18:05:27.000Z",
+"latitude": 59.448852,
+"longitude": 24.697102,
+"altitude": 30,
+"distance": 5.94117,
+"speed": 12.0281,
+"duration": 1521000,
+"sensor_data": {
+"speed": 12.0281
+}
+},
+{
+"time": "2015-06-10T18:05:34.000Z",
+"latitude": 59.448866,
+"longitude": 24.696526,
+"altitude": 31,
+"distance": 5.97389,
+"speed": 15.0404,
+"duration": 1528000,
+"sensor_data": {
+"speed": 15.0404
+}
+},
+{
+"time": "2015-06-10T18:05:40.000Z",
+"latitude": 59.448847,
+"longitude": 24.696032,
+"altitude": 33,
+"distance": 6.00196,
+"speed": 16.5553,
+"duration": 1534000,
+"sensor_data": {
+"speed": 16.5553
+}
+},
+{
+"time": "2015-06-10T18:05:47.000Z",
+"latitude": 59.448828,
+"longitude": 24.695445,
+"altitude": 37,
+"distance": 6.03536,
+"speed": 16.9518,
+"duration": 1541000,
+"sensor_data": {
+"speed": 16.9518
+}
+},
+{
+"time": "2015-06-10T18:05:53.000Z",
+"latitude": 59.448794,
+"longitude": 24.694873,
+"altitude": 38,
+"distance": 6.06803,
+"speed": 17.8775,
+"duration": 1547000,
+"sensor_data": {
+"speed": 17.8775
+}
+},
+{
+"time": "2015-06-10T18:06:00.000Z",
+"latitude": 59.448761,
+"longitude": 24.69436,
+"altitude": 34,
+"distance": 6.09736,
+"speed": 17.2767,
+"duration": 1554000,
+"sensor_data": {
+"speed": 17.2767
+}
+},
+{
+"time": "2015-06-10T18:06:07.000Z",
+"latitude": 59.448709,
+"longitude": 24.69383,
+"altitude": 38,
+"distance": 6.12795,
+"speed": 16.8097,
+"duration": 1561000,
+"sensor_data": {
+"speed": 16.8097
+}
+},
+{
+"time": "2015-06-10T18:06:13.000Z",
+"latitude": 59.448688,
+"longitude": 24.693293,
+"altitude": 39,
+"distance": 6.15849,
+"speed": 16.3867,
+"duration": 1567000,
+"sensor_data": {
+"speed": 16.3867
+}
+},
+{
+"time": "2015-06-10T18:06:21.000Z",
+"latitude": 59.448658,
+"longitude": 24.692725,
+"altitude": 37,
+"distance": 6.19089,
+"speed": 16.2157,
+"duration": 1575000,
+"sensor_data": {
+"speed": 16.2157
+}
+},
+{
+"time": "2015-06-10T18:06:27.000Z",
+"latitude": 59.448628,
+"longitude": 24.692246,
+"altitude": 35,
+"distance": 6.21826,
+"speed": 16.4393,
+"duration": 1581000,
+"sensor_data": {
+"speed": 16.4393
+}
+},
+{
+"time": "2015-06-10T18:06:33.000Z",
+"latitude": 59.448627,
+"longitude": 24.691721,
+"altitude": 30,
+"distance": 6.24806,
+"speed": 16.2919,
+"duration": 1587000,
+"sensor_data": {
+"speed": 16.2919
+}
+},
+{
+"time": "2015-06-10T18:06:38.000Z",
+"latitude": 59.448595,
+"longitude": 24.691355,
+"altitude": 29,
+"distance": 6.26916,
+"speed": 16.4971,
+"duration": 1592000,
+"sensor_data": {
+"speed": 16.4971
+}
+},
+{
+"time": "2015-06-10T18:06:43.000Z",
+"latitude": 59.448585,
+"longitude": 24.690929,
+"altitude": 31,
+"distance": 6.29333,
+"speed": 16.8263,
+"duration": 1597000,
+"sensor_data": {
+"speed": 16.8263
+}
+},
+{
+"time": "2015-06-10T18:06:48.000Z",
+"latitude": 59.448542,
+"longitude": 24.690526,
+"altitude": 32,
+"distance": 6.31665,
+"speed": 16.4588,
+"duration": 1602000,
+"sensor_data": {
+"speed": 16.4588
+}
+},
+{
+"time": "2015-06-10T18:06:53.000Z",
+"latitude": 59.448522,
+"longitude": 24.690041,
+"altitude": 31,
+"distance": 6.34426,
+"speed": 18.028,
+"duration": 1607000,
+"sensor_data": {
+"speed": 18.028
+}
+},
+{
+"time": "2015-06-10T18:06:59.000Z",
+"latitude": 59.448485,
+"longitude": 24.689397,
+"altitude": 30,
+"distance": 6.38104,
+"speed": 19.5791,
+"duration": 1613000,
+"sensor_data": {
+"speed": 19.5791
+}
+},
+{
+"time": "2015-06-10T18:07:04.000Z",
+"latitude": 59.448455,
+"longitude": 24.688907,
+"altitude": 29,
+"distance": 6.40905,
+"speed": 20.6842,
+"duration": 1618000,
+"sensor_data": {
+"speed": 20.6842
+}
+},
+{
+"time": "2015-06-10T18:07:10.000Z",
+"latitude": 59.448427,
+"longitude": 24.688298,
+"altitude": 25,
+"distance": 6.44374,
+"speed": 21.0209,
+"duration": 1624000,
+"sensor_data": {
+"speed": 21.0209
+}
+},
+{
+"time": "2015-06-10T18:07:15.000Z",
+"latitude": 59.448382,
+"longitude": 24.687759,
+"altitude": 24,
+"distance": 6.47471,
+"speed": 21.089,
+"duration": 1629000,
+"sensor_data": {
+"speed": 21.089
+}
+},
+{
+"time": "2015-06-10T18:07:20.000Z",
+"latitude": 59.448367,
+"longitude": 24.687222,
+"altitude": 23,
+"distance": 6.50522,
+"speed": 21.7072,
+"duration": 1634000,
+"sensor_data": {
+"speed": 21.7072
+}
+},
+{
+"time": "2015-06-10T18:07:26.000Z",
+"latitude": 59.448355,
+"longitude": 24.686713,
+"altitude": 23,
+"distance": 6.5341,
+"speed": 20.5212,
+"duration": 1640000,
+"sensor_data": {
+"speed": 20.5212
+}
+},
+{
+"time": "2015-06-10T18:07:31.000Z",
+"latitude": 59.448313,
+"longitude": 24.686517,
+"altitude": 25,
+"distance": 6.54614,
+"speed": 15.9866,
+"duration": 1645000,
+"sensor_data": {
+"speed": 15.9866
+}
+},
+{
+"time": "2015-06-10T18:07:38.000Z",
+"latitude": 59.448068,
+"longitude": 24.686599,
+"altitude": 25,
+"distance": 6.57384,
+"speed": 13.4162,
+"duration": 1652000,
+"sensor_data": {
+"speed": 13.4162
+}
+},
+{
+"time": "2015-06-10T18:07:44.000Z",
+"latitude": 59.447807,
+"longitude": 24.686652,
+"altitude": 26,
+"distance": 6.60312,
+"speed": 13.4912,
+"duration": 1658000,
+"sensor_data": {
+"speed": 13.4912
+}
+},
+{
+"time": "2015-06-10T18:07:51.000Z",
+"latitude": 59.447455,
+"longitude": 24.686716,
+"altitude": 26,
+"distance": 6.64245,
+"speed": 17.353,
+"duration": 1665000,
+"sensor_data": {
+"speed": 17.353
+}
+},
+{
+"time": "2015-06-10T18:07:57.000Z",
+"latitude": 59.447131,
+"longitude": 24.686788,
+"altitude": 25,
+"distance": 6.6788,
+"speed": 19.8836,
+"duration": 1671000,
+"sensor_data": {
+"speed": 19.8836
+}
+},
+{
+"time": "2015-06-10T18:08:02.000Z",
+"latitude": 59.446875,
+"longitude": 24.68685,
+"altitude": 24,
+"distance": 6.70758,
+"speed": 20.9251,
+"duration": 1676000,
+"sensor_data": {
+"speed": 20.9251
+}
+},
+{
+"time": "2015-06-10T18:08:08.000Z",
+"latitude": 59.44661,
+"longitude": 24.686911,
+"altitude": 24,
+"distance": 6.73729,
+"speed": 20.1198,
+"duration": 1682000,
+"sensor_data": {
+"speed": 20.1198
+}
+},
+{
+"time": "2015-06-10T18:08:14.000Z",
+"latitude": 59.44633,
+"longitude": 24.686971,
+"altitude": 24,
+"distance": 6.76865,
+"speed": 19.1092,
+"duration": 1688000,
+"sensor_data": {
+"speed": 19.1092
+}
+},
+{
+"time": "2015-06-10T18:08:20.000Z",
+"latitude": 59.44605,
+"longitude": 24.68702,
+"altitude": 23,
+"distance": 6.79998,
+"speed": 18.4816,
+"duration": 1694000,
+"sensor_data": {
+"speed": 18.4816
+}
+},
+{
+"time": "2015-06-10T18:08:25.000Z",
+"latitude": 59.445848,
+"longitude": 24.687086,
+"altitude": 22,
+"distance": 6.82275,
+"speed": 17.9984,
+"duration": 1699000,
+"sensor_data": {
+"speed": 17.9984
+}
+},
+{
+"time": "2015-06-10T18:08:30.000Z",
+"latitude": 59.445628,
+"longitude": 24.687127,
+"altitude": 24,
+"distance": 6.84741,
+"speed": 17.6442,
+"duration": 1704000,
+"sensor_data": {
+"speed": 17.6442
+}
+},
+{
+"time": "2015-06-10T18:08:35.000Z",
+"latitude": 59.445421,
+"longitude": 24.687145,
+"altitude": 24,
+"distance": 6.87053,
+"speed": 16.9208,
+"duration": 1709000,
+"sensor_data": {
+"speed": 16.9208
+}
+},
+{
+"time": "2015-06-10T18:08:39.000Z",
+"latitude": 59.445257,
+"longitude": 24.687208,
+"altitude": 23,
+"distance": 6.88914,
+"speed": 17.0485,
+"duration": 1713000,
+"sensor_data": {
+"speed": 17.0485
+}
+},
+{
+"time": "2015-06-10T18:08:43.000Z",
+"latitude": 59.445102,
+"longitude": 24.68724,
+"altitude": 24,
+"distance": 6.90647,
+"speed": 16.3319,
+"duration": 1717000,
+"sensor_data": {
+"speed": 16.3319
+}
+},
+{
+"time": "2015-06-10T18:08:49.000Z",
+"latitude": 59.444836,
+"longitude": 24.68727,
+"altitude": 26,
+"distance": 6.9361,
+"speed": 16.6983,
+"duration": 1723000,
+"sensor_data": {
+"speed": 16.6983
+}
+},
+{
+"time": "2015-06-10T18:08:55.000Z",
+"latitude": 59.444571,
+"longitude": 24.68732,
+"altitude": 26,
+"distance": 6.96581,
+"speed": 17.0648,
+"duration": 1729000,
+"sensor_data": {
+"speed": 17.0648
+}
+},
+{
+"time": "2015-06-10T18:09:00.000Z",
+"latitude": 59.444355,
+"longitude": 24.687373,
+"altitude": 25,
+"distance": 6.99003,
+"speed": 17.6788,
+"duration": 1734000,
+"sensor_data": {
+"speed": 17.6788
+}
+},
+{
+"time": "2015-06-10T18:09:05.000Z",
+"latitude": 59.444176,
+"longitude": 24.68732,
+"altitude": 27,
+"distance": 7.01018,
+"speed": 16.6005,
+"duration": 1739000,
+"sensor_data": {
+"speed": 16.6005
+}
+},
+{
+"time": "2015-06-10T18:09:11.000Z",
+"latitude": 59.443958,
+"longitude": 24.687253,
+"altitude": 26,
+"distance": 7.03478,
+"speed": 15.5712,
+"duration": 1745000,
+"sensor_data": {
+"speed": 15.5712
+}
+},
+{
+"time": "2015-06-10T18:09:16.000Z",
+"latitude": 59.443735,
+"longitude": 24.687091,
+"altitude": 24,
+"distance": 7.06132,
+"speed": 16.1249,
+"duration": 1750000,
+"sensor_data": {
+"speed": 16.1249
+}
+},
+{
+"time": "2015-06-10T18:09:19.000Z",
+"latitude": 59.443585,
+"longitude": 24.687003,
+"altitude": 24,
+"distance": 7.07867,
+"speed": 18.2327,
+"duration": 1753000,
+"sensor_data": {
+"speed": 18.2327
+}
+},
+{
+"time": "2015-06-10T18:09:26.000Z",
+"latitude": 59.443257,
+"longitude": 24.686828,
+"altitude": 24,
+"distance": 7.11661,
+"speed": 19.8108,
+"duration": 1760000,
+"sensor_data": {
+"speed": 19.8108
+}
+},
+{
+"time": "2015-06-10T18:09:32.000Z",
+"latitude": 59.442983,
+"longitude": 24.686684,
+"altitude": 26,
+"distance": 7.14825,
+"speed": 19.7758,
+"duration": 1766000,
+"sensor_data": {
+"speed": 19.7758
+}
+},
+{
+"time": "2015-06-10T18:09:38.000Z",
+"latitude": 59.442756,
+"longitude": 24.68658,
+"altitude": 25,
+"distance": 7.1742,
+"speed": 18.022,
+"duration": 1772000,
+"sensor_data": {
+"speed": 18.022
+}
+},
+{
+"time": "2015-06-10T18:09:44.000Z",
+"latitude": 59.442523,
+"longitude": 24.686439,
+"altitude": 26,
+"distance": 7.20127,
+"speed": 16.9321,
+"duration": 1778000,
+"sensor_data": {
+"speed": 16.9321
+}
+},
+{
+"time": "2015-06-10T18:09:50.000Z",
+"latitude": 59.442243,
+"longitude": 24.686297,
+"altitude": 24,
+"distance": 7.23358,
+"speed": 17.0614,
+"duration": 1784000,
+"sensor_data": {
+"speed": 17.0614
+}
+},
+{
+"time": "2015-06-10T18:09:56.000Z",
+"latitude": 59.441991,
+"longitude": 24.686162,
+"altitude": 26,
+"distance": 7.2626,
+"speed": 17.6792,
+"duration": 1790000,
+"sensor_data": {
+"speed": 17.6792
+}
+},
+{
+"time": "2015-06-10T18:10:02.000Z",
+"latitude": 59.441718,
+"longitude": 24.685987,
+"altitude": 25,
+"distance": 7.29461,
+"speed": 18.6681,
+"duration": 1796000,
+"sensor_data": {
+"speed": 18.6681
+}
+},
+{
+"time": "2015-06-10T18:10:07.000Z",
+"latitude": 59.441593,
+"longitude": 24.686095,
+"altitude": 25,
+"distance": 7.30979,
+"speed": 15.8483,
+"duration": 1801000,
+"sensor_data": {
+"speed": 15.8483
+}
+},
+{
+"time": "2015-06-10T18:10:14.000Z",
+"latitude": 59.441454,
+"longitude": 24.686335,
+"altitude": 24,
+"distance": 7.33046,
+"speed": 13.5768,
+"duration": 1808000,
+"sensor_data": {
+"speed": 13.5768
+}
+},
+{
+"time": "2015-06-10T18:10:22.000Z",
+"latitude": 59.441164,
+"longitude": 24.686121,
+"altitude": 24,
+"distance": 7.36503,
+"speed": 12.3799,
+"duration": 1816000,
+"sensor_data": {
+"speed": 12.3799
+}
+},
+{
+"time": "2015-06-10T18:10:27.000Z",
+"latitude": 59.440953,
+"longitude": 24.685977,
+"altitude": 23,
+"distance": 7.38984,
+"speed": 14.6913,
+"duration": 1821000,
+"sensor_data": {
+"speed": 14.6913
+}
+},
+{
+"time": "2015-06-10T18:10:33.000Z",
+"latitude": 59.440665,
+"longitude": 24.685832,
+"altitude": 22,
+"distance": 7.423,
+"speed": 17.7894,
+"duration": 1827000,
+"sensor_data": {
+"speed": 17.7894
+}
+},
+{
+"time": "2015-06-10T18:10:38.000Z",
+"latitude": 59.440425,
+"longitude": 24.685678,
+"altitude": 25,
+"distance": 7.45113,
+"speed": 19.3348,
+"duration": 1832000,
+"sensor_data": {
+"speed": 19.3348
+}
+},
+{
+"time": "2015-06-10T18:10:43.000Z",
+"latitude": 59.440158,
+"longitude": 24.685524,
+"altitude": 22,
+"distance": 7.48218,
+"speed": 20.8324,
+"duration": 1837000,
+"sensor_data": {
+"speed": 20.8324
+}
+},
+{
+"time": "2015-06-10T18:10:46.000Z",
+"latitude": 59.440019,
+"longitude": 24.685435,
+"altitude": 23,
+"distance": 7.49847,
+"speed": 20.5973,
+"duration": 1840000,
+"sensor_data": {
+"speed": 20.5973
+}
+},
+{
+"time": "2015-06-10T18:10:52.000Z",
+"latitude": 59.439725,
+"longitude": 24.685312,
+"altitude": 24,
+"distance": 7.53192,
+"speed": 20.5981,
+"duration": 1846000,
+"sensor_data": {
+"speed": 20.5981
+}
+},
+{
+"time": "2015-06-10T18:10:58.000Z",
+"latitude": 59.439433,
+"longitude": 24.685161,
+"altitude": 24,
+"distance": 7.56553,
+"speed": 19.873,
+"duration": 1852000,
+"sensor_data": {
+"speed": 19.873
+}
+},
+{
+"time": "2015-06-10T18:11:05.000Z",
+"latitude": 59.43915,
+"longitude": 24.685008,
+"altitude": 24,
+"distance": 7.59821,
+"speed": 19.0779,
+"duration": 1859000,
+"sensor_data": {
+"speed": 19.0779
+}
+},
+{
+"time": "2015-06-10T18:11:10.000Z",
+"latitude": 59.438928,
+"longitude": 24.684897,
+"altitude": 24,
+"distance": 7.62372,
+"speed": 18.4498,
+"duration": 1864000,
+"sensor_data": {
+"speed": 18.4498
+}
+},
+{
+"time": "2015-06-10T18:11:15.000Z",
+"latitude": 59.438716,
+"longitude": 24.684797,
+"altitude": 24,
+"distance": 7.64812,
+"speed": 17.5828,
+"duration": 1869000,
+"sensor_data": {
+"speed": 17.5828
+}
+},
+{
+"time": "2015-06-10T18:11:21.000Z",
+"latitude": 59.43847,
+"longitude": 24.684653,
+"altitude": 24,
+"distance": 7.67672,
+"speed": 17.6951,
+"duration": 1875000,
+"sensor_data": {
+"speed": 17.6951
+}
+},
+{
+"time": "2015-06-10T18:11:26.000Z",
+"latitude": 59.438254,
+"longitude": 24.684575,
+"altitude": 23,
+"distance": 7.7011,
+"speed": 17.413,
+"duration": 1880000,
+"sensor_data": {
+"speed": 17.413
+}
+},
+{
+"time": "2015-06-10T18:11:29.000Z",
+"latitude": 59.438119,
+"longitude": 24.684491,
+"altitude": 23,
+"distance": 7.71686,
+"speed": 17.8762,
+"duration": 1883000,
+"sensor_data": {
+"speed": 17.8762
+}
+},
+{
+"time": "2015-06-10T18:11:35.000Z",
+"latitude": 59.437897,
+"longitude": 24.684357,
+"altitude": 24,
+"distance": 7.74281,
+"speed": 17.3642,
+"duration": 1889000,
+"sensor_data": {
+"speed": 17.3642
+}
+},
+{
+"time": "2015-06-10T18:11:40.000Z",
+"latitude": 59.437658,
+"longitude": 24.684242,
+"altitude": 24,
+"distance": 7.77014,
+"speed": 18.066,
+"duration": 1894000,
+"sensor_data": {
+"speed": 18.066
+}
+},
+{
+"time": "2015-06-10T18:11:45.000Z",
+"latitude": 59.437466,
+"longitude": 24.684131,
+"altitude": 25,
+"distance": 7.79245,
+"speed": 17.1003,
+"duration": 1899000,
+"sensor_data": {
+"speed": 17.1003
+}
+},
+{
+"time": "2015-06-10T18:11:51.000Z",
+"latitude": 59.437224,
+"longitude": 24.683988,
+"altitude": 24,
+"distance": 7.82069,
+"speed": 17.5486,
+"duration": 1905000,
+"sensor_data": {
+"speed": 17.5486
+}
+},
+{
+"time": "2015-06-10T18:11:56.000Z",
+"latitude": 59.437026,
+"longitude": 24.683897,
+"altitude": 24,
+"distance": 7.84329,
+"speed": 16.4295,
+"duration": 1910000,
+"sensor_data": {
+"speed": 16.4295
+}
+},
+{
+"time": "2015-06-10T18:12:02.000Z",
+"latitude": 59.436773,
+"longitude": 24.683783,
+"altitude": 22,
+"distance": 7.87219,
+"speed": 16.8476,
+"duration": 1916000,
+"sensor_data": {
+"speed": 16.8476
+}
+},
+{
+"time": "2015-06-10T18:12:08.000Z",
+"latitude": 59.436551,
+"longitude": 24.683682,
+"altitude": 24,
+"distance": 7.89759,
+"speed": 16.2794,
+"duration": 1922000,
+"sensor_data": {
+"speed": 16.2794
+}
+},
+{
+"time": "2015-06-10T18:12:14.000Z",
+"latitude": 59.43632,
+"longitude": 24.683542,
+"altitude": 26,
+"distance": 7.92457,
+"speed": 16.2507,
+"duration": 1928000,
+"sensor_data": {
+"speed": 16.2507
+}
+},
+{
+"time": "2015-06-10T18:12:19.000Z",
+"latitude": 59.436104,
+"longitude": 24.683409,
+"altitude": 27,
+"distance": 7.94981,
+"speed": 16.5346,
+"duration": 1933000,
+"sensor_data": {
+"speed": 16.5346
+}
+},
+{
+"time": "2015-06-10T18:12:25.000Z",
+"latitude": 59.435921,
+"longitude": 24.683337,
+"altitude": 25,
+"distance": 7.97054,
+"speed": 15.5679,
+"duration": 1939000,
+"sensor_data": {
+"speed": 15.5679
+}
+},
+{
+"time": "2015-06-10T18:12:33.000Z",
+"latitude": 59.435694,
+"longitude": 24.683334,
+"altitude": 23,
+"distance": 7.99586,
+"speed": 13.9915,
+"duration": 1947000,
+"sensor_data": {
+"speed": 13.9915
+}
+},
+{
+"time": "2015-06-10T18:12:41.000Z",
+"latitude": 59.435517,
+"longitude": 24.683725,
+"altitude": 25,
+"distance": 8.02553,
+"speed": 12.3844,
+"duration": 1955000,
+"sensor_data": {
+"speed": 12.3844
+}
+},
+{
+"time": "2015-06-10T18:12:48.000Z",
+"latitude": 59.435343,
+"longitude": 24.684084,
+"altitude": 24,
+"distance": 8.0537,
+"speed": 13.0954,
+"duration": 1962000,
+"sensor_data": {
+"speed": 13.0954
+}
+},
+{
+"time": "2015-06-10T18:12:54.000Z",
+"latitude": 59.43523,
+"longitude": 24.684281,
+"altitude": 24,
+"distance": 8.07051,
+"speed": 12.6383,
+"duration": 1968000,
+"sensor_data": {
+"speed": 12.6383
+}
+},
+{
+"time": "2015-06-10T18:13:03.000Z",
+"latitude": 59.435136,
+"longitude": 24.684706,
+"altitude": 25,
+"distance": 8.09681,
+"speed": 11.6992,
+"duration": 1977000,
+"sensor_data": {
+"speed": 11.6992
+}
+},
+{
+"time": "2015-06-10T18:13:09.000Z",
+"latitude": 59.435136,
+"longitude": 24.684706,
+"altitude": 25,
+"distance": 8.09681,
+"speed": 0,
+"duration": 1983000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:13:14.000Z",
+"latitude": 59.435087,
+"longitude": 24.684893,
+"altitude": 26,
+"distance": 8.12063,
+"speed": 0,
+"duration": 1988000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:13:27.000Z",
+"latitude": 59.434903,
+"longitude": 24.685417,
+"altitude": 24,
+"distance": 8.15675,
+"speed": 0,
+"duration": 2001000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:13:35.000Z",
+"latitude": 59.434753,
+"longitude": 24.685757,
+"altitude": 24,
+"distance": 8.18225,
+"speed": 10.0145,
+"duration": 2009000,
+"sensor_data": {
+"speed": 10.0145
+}
+},
+{
+"time": "2015-06-10T18:13:41.000Z",
+"latitude": 59.434653,
+"longitude": 24.68606,
+"altitude": 29,
+"distance": 8.20278,
+"speed": 11.2637,
+"duration": 2015000,
+"sensor_data": {
+"speed": 11.2637
+}
+},
+{
+"time": "2015-06-10T18:13:48.000Z",
+"latitude": 59.434553,
+"longitude": 24.686431,
+"altitude": 28,
+"distance": 8.22655,
+"speed": 12.0061,
+"duration": 2022000,
+"sensor_data": {
+"speed": 12.0061
+}
+},
+{
+"time": "2015-06-10T18:13:54.000Z",
+"latitude": 59.434437,
+"longitude": 24.686818,
+"altitude": 23,
+"distance": 8.25208,
+"speed": 13.2877,
+"duration": 2028000,
+"sensor_data": {
+"speed": 13.2877
+}
+},
+{
+"time": "2015-06-10T18:14:01.000Z",
+"latitude": 59.434313,
+"longitude": 24.687165,
+"altitude": 23,
+"distance": 8.27611,
+"speed": 13.2981,
+"duration": 2035000,
+"sensor_data": {
+"speed": 13.2981
+}
+},
+{
+"time": "2015-06-10T18:14:09.000Z",
+"latitude": 59.43418,
+"longitude": 24.68754,
+"altitude": 27,
+"distance": 8.30207,
+"speed": 13.1189,
+"duration": 2043000,
+"sensor_data": {
+"speed": 13.1189
+}
+},
+{
+"time": "2015-06-10T18:14:17.000Z",
+"latitude": 59.43412,
+"longitude": 24.687748,
+"altitude": 26,
+"distance": 8.31562,
+"speed": 10.0474,
+"duration": 2051000,
+"sensor_data": {
+"speed": 10.0474
+}
+},
+{
+"time": "2015-06-10T18:14:32.000Z",
+"latitude": 59.433963,
+"longitude": 24.688444,
+"altitude": 27,
+"distance": 8.3588,
+"speed": 9.37485,
+"duration": 2066000,
+"sensor_data": {
+"speed": 9.37485
+}
+},
+{
+"time": "2015-06-10T18:14:42.000Z",
+"latitude": 59.433848,
+"longitude": 24.688839,
+"altitude": 25,
+"distance": 8.3846,
+"speed": 8.58484,
+"duration": 2076000,
+"sensor_data": {
+"speed": 8.58484
+}
+},
+{
+"time": "2015-06-10T18:14:49.000Z",
+"latitude": 59.433763,
+"longitude": 24.689133,
+"altitude": 26,
+"distance": 8.4038,
+"speed": 9.84177,
+"duration": 2083000,
+"sensor_data": {
+"speed": 9.84177
+}
+},
+{
+"time": "2015-06-10T18:14:56.000Z",
+"latitude": 59.433627,
+"longitude": 24.689442,
+"altitude": 26,
+"distance": 8.42699,
+"speed": 10.3717,
+"duration": 2090000,
+"sensor_data": {
+"speed": 10.3717
+}
+},
+{
+"time": "2015-06-10T18:15:04.000Z",
+"latitude": 59.433517,
+"longitude": 24.689861,
+"altitude": 25,
+"distance": 8.45374,
+"speed": 11.2747,
+"duration": 2098000,
+"sensor_data": {
+"speed": 11.2747
+}
+},
+{
+"time": "2015-06-10T18:15:12.000Z",
+"latitude": 59.433382,
+"longitude": 24.690025,
+"altitude": 25,
+"distance": 8.47141,
+"speed": 10.6423,
+"duration": 2106000,
+"sensor_data": {
+"speed": 10.6423
+}
+},
+{
+"time": "2015-06-10T18:15:20.000Z",
+"latitude": 59.433303,
+"longitude": 24.69018,
+"altitude": 25,
+"distance": 8.48384,
+"speed": 8.52344,
+"duration": 2114000,
+"sensor_data": {
+"speed": 8.52344
+}
+},
+{
+"time": "2015-06-10T18:15:33.000Z",
+"latitude": 59.433235,
+"longitude": 24.690364,
+"altitude": 25,
+"distance": 8.4967,
+"speed": 5.70008,
+"duration": 2127000,
+"sensor_data": {
+"speed": 5.70008
+}
+},
+{
+"time": "2015-06-10T18:15:49.000Z",
+"latitude": 59.433117,
+"longitude": 24.690881,
+"altitude": 26,
+"distance": 8.52889,
+"speed": 5.45744,
+"duration": 2143000,
+"sensor_data": {
+"speed": 5.45744
+}
+},
+{
+"time": "2015-06-10T18:15:54.000Z",
+"latitude": 59.433016,
+"longitude": 24.69117,
+"altitude": 26,
+"distance": 8.54877,
+"speed": 8.3724,
+"duration": 2148000,
+"sensor_data": {
+"speed": 8.3724
+}
+},
+{
+"time": "2015-06-10T18:15:57.000Z",
+"latitude": 59.432938,
+"longitude": 24.691373,
+"altitude": 25,
+"distance": 8.56316,
+"speed": 12.9264,
+"duration": 2151000,
+"sensor_data": {
+"speed": 12.9264
+}
+},
+{
+"time": "2015-06-10T18:16:02.000Z",
+"latitude": 59.432844,
+"longitude": 24.691726,
+"altitude": 25,
+"distance": 8.58581,
+"speed": 15.9476,
+"duration": 2156000,
+"sensor_data": {
+"speed": 15.9476
+}
+},
+{
+"time": "2015-06-10T18:16:08.000Z",
+"latitude": 59.432718,
+"longitude": 24.692123,
+"altitude": 24,
+"distance": 8.61238,
+"speed": 16.5389,
+"duration": 2162000,
+"sensor_data": {
+"speed": 16.5389
+}
+},
+{
+"time": "2015-06-10T18:16:11.000Z",
+"latitude": 59.432654,
+"longitude": 24.692356,
+"altitude": 24,
+"distance": 8.62737,
+"speed": 16.7087,
+"duration": 2165000,
+"sensor_data": {
+"speed": 16.7087
+}
+},
+{
+"time": "2015-06-10T18:16:14.000Z",
+"latitude": 59.432593,
+"longitude": 24.692599,
+"altitude": 24,
+"distance": 8.64278,
+"speed": 17.4199,
+"duration": 2168000,
+"sensor_data": {
+"speed": 17.4199
+}
+},
+{
+"time": "2015-06-10T18:16:20.000Z",
+"latitude": 59.432481,
+"longitude": 24.692973,
+"altitude": 24,
+"distance": 8.66738,
+"speed": 16.9751,
+"duration": 2174000,
+"sensor_data": {
+"speed": 16.9751
+}
+},
+{
+"time": "2015-06-10T18:16:27.000Z",
+"latitude": 59.432422,
+"longitude": 24.693437,
+"altitude": 28,
+"distance": 8.69447,
+"speed": 15.7381,
+"duration": 2181000,
+"sensor_data": {
+"speed": 15.7381
+}
+},
+{
+"time": "2015-06-10T18:16:33.000Z",
+"latitude": 59.432333,
+"longitude": 24.6938,
+"altitude": 27,
+"distance": 8.71737,
+"speed": 14.1704,
+"duration": 2187000,
+"sensor_data": {
+"speed": 14.1704
+}
+},
+{
+"time": "2015-06-10T18:16:39.000Z",
+"latitude": 59.432194,
+"longitude": 24.694049,
+"altitude": 27,
+"distance": 8.73833,
+"speed": 13.4453,
+"duration": 2193000,
+"sensor_data": {
+"speed": 13.4453
+}
+},
+{
+"time": "2015-06-10T18:16:46.000Z",
+"latitude": 59.431987,
+"longitude": 24.694056,
+"altitude": 27,
+"distance": 8.76144,
+"speed": 12.7345,
+"duration": 2200000,
+"sensor_data": {
+"speed": 12.7345
+}
+},
+{
+"time": "2015-06-10T18:16:53.000Z",
+"latitude": 59.431841,
+"longitude": 24.694021,
+"altitude": 28,
+"distance": 8.77783,
+"speed": 10.9533,
+"duration": 2207000,
+"sensor_data": {
+"speed": 10.9533
+}
+},
+{
+"time": "2015-06-10T18:17:03.000Z",
+"latitude": 59.431625,
+"longitude": 24.694414,
+"altitude": 26,
+"distance": 8.81065,
+"speed": 10.7072,
+"duration": 2217000,
+"sensor_data": {
+"speed": 10.7072
+}
+},
+{
+"time": "2015-06-10T18:17:09.000Z",
+"latitude": 59.431476,
+"longitude": 24.694813,
+"altitude": 27,
+"distance": 8.83871,
+"speed": 12.3602,
+"duration": 2223000,
+"sensor_data": {
+"speed": 12.3602
+}
+},
+{
+"time": "2015-06-10T18:17:15.000Z",
+"latitude": 59.431332,
+"longitude": 24.695212,
+"altitude": 27,
+"distance": 8.86645,
+"speed": 15.1099,
+"duration": 2229000,
+"sensor_data": {
+"speed": 15.1099
+}
+},
+{
+"time": "2015-06-10T18:17:22.000Z",
+"latitude": 59.431196,
+"longitude": 24.695561,
+"altitude": 26,
+"distance": 8.89139,
+"speed": 15.4395,
+"duration": 2236000,
+"sensor_data": {
+"speed": 15.4395
+}
+},
+{
+"time": "2015-06-10T18:17:28.000Z",
+"latitude": 59.431028,
+"longitude": 24.695829,
+"altitude": 26,
+"distance": 8.91549,
+"speed": 14.6428,
+"duration": 2242000,
+"sensor_data": {
+"speed": 14.6428
+}
+},
+{
+"time": "2015-06-10T18:17:34.000Z",
+"latitude": 59.430836,
+"longitude": 24.695822,
+"altitude": 23,
+"distance": 8.93693,
+"speed": 13.3826,
+"duration": 2248000,
+"sensor_data": {
+"speed": 13.3826
+}
+},
+{
+"time": "2015-06-10T18:17:41.000Z",
+"latitude": 59.430553,
+"longitude": 24.695731,
+"altitude": 25,
+"distance": 8.96892,
+"speed": 14.5912,
+"duration": 2255000,
+"sensor_data": {
+"speed": 14.5912
+}
+},
+{
+"time": "2015-06-10T18:17:46.000Z",
+"latitude": 59.430397,
+"longitude": 24.695707,
+"altitude": 25,
+"distance": 8.98634,
+"speed": 13.9529,
+"duration": 2260000,
+"sensor_data": {
+"speed": 13.9529
+}
+},
+{
+"time": "2015-06-10T18:17:54.000Z",
+"latitude": 59.430169,
+"longitude": 24.695535,
+"altitude": 28,
+"distance": 9.01357,
+"speed": 13.7493,
+"duration": 2268000,
+"sensor_data": {
+"speed": 13.7493
+}
+},
+{
+"time": "2015-06-10T18:18:02.000Z",
+"latitude": 59.430086,
+"longitude": 24.695114,
+"altitude": 27,
+"distance": 9.03914,
+"speed": 12.1015,
+"duration": 2276000,
+"sensor_data": {
+"speed": 12.1015
+}
+},
+{
+"time": "2015-06-10T18:18:09.000Z",
+"latitude": 59.429812,
+"longitude": 24.695128,
+"altitude": 26,
+"distance": 9.06969,
+"speed": 13.1578,
+"duration": 2283000,
+"sensor_data": {
+"speed": 13.1578
+}
+},
+{
+"time": "2015-06-10T18:18:15.000Z",
+"latitude": 59.429752,
+"longitude": 24.695455,
+"altitude": 27,
+"distance": 9.08943,
+"speed": 13.0191,
+"duration": 2289000,
+"sensor_data": {
+"speed": 13.0191
+}
+},
+{
+"time": "2015-06-10T18:18:21.000Z",
+"latitude": 59.429703,
+"longitude": 24.695981,
+"altitude": 27,
+"distance": 9.11975,
+"speed": 15.2488,
+"duration": 2295000,
+"sensor_data": {
+"speed": 15.2488
+}
+},
+{
+"time": "2015-06-10T18:18:26.000Z",
+"latitude": 59.429672,
+"longitude": 24.696463,
+"altitude": 29,
+"distance": 9.14731,
+"speed": 16.6243,
+"duration": 2300000,
+"sensor_data": {
+"speed": 16.6243
+}
+},
+{
+"time": "2015-06-10T18:18:31.000Z",
+"latitude": 59.429651,
+"longitude": 24.696811,
+"altitude": 28,
+"distance": 9.16723,
+"speed": 17.459,
+"duration": 2305000,
+"sensor_data": {
+"speed": 17.459
+}
+},
+{
+"time": "2015-06-10T18:18:38.000Z",
+"latitude": 59.429788,
+"longitude": 24.697245,
+"altitude": 28,
+"distance": 9.19624,
+"speed": 16.3682,
+"duration": 2312000,
+"sensor_data": {
+"speed": 16.3682
+}
+},
+{
+"time": "2015-06-10T18:18:46.000Z",
+"latitude": 59.429953,
+"longitude": 24.697364,
+"altitude": 28,
+"distance": 9.21587,
+"speed": 12.6985,
+"duration": 2320000,
+"sensor_data": {
+"speed": 12.6985
+}
+},
+{
+"time": "2015-06-10T18:18:54.000Z",
+"latitude": 59.429953,
+"longitude": 24.697364,
+"altitude": 28,
+"distance": 9.21587,
+"speed": 0,
+"duration": 2328000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:18:55.000Z",
+"latitude": 59.429953,
+"longitude": 24.697364,
+"altitude": 28,
+"distance": 9.21587,
+"speed": 0,
+"duration": 2329000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:19:05.000Z",
+"instruction": 0,
+"latitude": 59.429953,
+"longitude": 24.697364,
+"distance": 9.21587,
+"duration": 2339000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:29:03.000Z",
+"instruction": 1,
+"latitude": 59.429953,
+"longitude": 24.697364,
+"distance": 9.21587,
+"duration": 2339000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:29:05.000Z",
+"latitude": 59.429939,
+"longitude": 24.697348,
+"altitude": 27,
+"distance": 9.21587,
+"speed": 0,
+"duration": 2341000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:29:32.000Z",
+"latitude": 59.429902,
+"longitude": 24.697683,
+"altitude": 34,
+"distance": 9.25482,
+"speed": 0,
+"duration": 2368000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:29:39.000Z",
+"latitude": 59.429846,
+"longitude": 24.698233,
+"altitude": 29,
+"distance": 9.28665,
+"speed": 0,
+"duration": 2375000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:29:46.000Z",
+"latitude": 59.429784,
+"longitude": 24.69878,
+"altitude": 30,
+"distance": 9.31844,
+"speed": 11.7767,
+"duration": 2382000,
+"sensor_data": {
+"speed": 11.7767
+}
+},
+{
+"time": "2015-06-10T18:29:51.000Z",
+"latitude": 59.429746,
+"longitude": 24.699129,
+"altitude": 29,
+"distance": 9.33868,
+"speed": 15.7646,
+"duration": 2387000,
+"sensor_data": {
+"speed": 15.7646
+}
+},
+{
+"time": "2015-06-10T18:29:56.000Z",
+"latitude": 59.429738,
+"longitude": 24.69946,
+"altitude": 28,
+"distance": 9.35752,
+"speed": 14.8297,
+"duration": 2392000,
+"sensor_data": {
+"speed": 14.8297
+}
+},
+{
+"time": "2015-06-10T18:30:03.000Z",
+"latitude": 59.429639,
+"longitude": 24.699876,
+"altitude": 27,
+"distance": 9.38356,
+"speed": 13.8438,
+"duration": 2399000,
+"sensor_data": {
+"speed": 13.8438
+}
+},
+{
+"time": "2015-06-10T18:30:10.000Z",
+"latitude": 59.429573,
+"longitude": 24.70027,
+"altitude": 26,
+"distance": 9.40712,
+"speed": 13.0285,
+"duration": 2406000,
+"sensor_data": {
+"speed": 13.0285
+}
+},
+{
+"time": "2015-06-10T18:30:15.000Z",
+"latitude": 59.429527,
+"longitude": 24.700564,
+"altitude": 27,
+"distance": 9.42454,
+"speed": 12.6821,
+"duration": 2411000,
+"sensor_data": {
+"speed": 12.6821
+}
+},
+{
+"time": "2015-06-10T18:30:23.000Z",
+"latitude": 59.429437,
+"longitude": 24.70105,
+"altitude": 26,
+"distance": 9.4539,
+"speed": 12.6196,
+"duration": 2419000,
+"sensor_data": {
+"speed": 12.6196
+}
+},
+{
+"time": "2015-06-10T18:30:30.000Z",
+"latitude": 59.429352,
+"longitude": 24.701493,
+"altitude": 24,
+"distance": 9.48081,
+"speed": 13.1973,
+"duration": 2426000,
+"sensor_data": {
+"speed": 13.1973
+}
+},
+{
+"time": "2015-06-10T18:30:35.000Z",
+"latitude": 59.429338,
+"longitude": 24.701887,
+"altitude": 25,
+"distance": 9.50321,
+"speed": 14.3939,
+"duration": 2431000,
+"sensor_data": {
+"speed": 14.3939
+}
+},
+{
+"time": "2015-06-10T18:30:40.000Z",
+"latitude": 59.429338,
+"longitude": 24.70234,
+"altitude": 28,
+"distance": 9.52889,
+"speed": 16.1524,
+"duration": 2436000,
+"sensor_data": {
+"speed": 16.1524
+}
+},
+{
+"time": "2015-06-10T18:30:45.000Z",
+"latitude": 59.429332,
+"longitude": 24.702824,
+"altitude": 28,
+"distance": 9.55638,
+"speed": 18.1321,
+"duration": 2441000,
+"sensor_data": {
+"speed": 18.1321
+}
+},
+{
+"time": "2015-06-10T18:30:51.000Z",
+"latitude": 59.429315,
+"longitude": 24.703384,
+"altitude": 26,
+"distance": 9.58822,
+"speed": 19.1303,
+"duration": 2447000,
+"sensor_data": {
+"speed": 19.1303
+}
+},
+{
+"time": "2015-06-10T18:30:57.000Z",
+"latitude": 59.429339,
+"longitude": 24.703938,
+"altitude": 25,
+"distance": 9.61978,
+"speed": 19.2779,
+"duration": 2453000,
+"sensor_data": {
+"speed": 19.2779
+}
+},
+{
+"time": "2015-06-10T18:31:03.000Z",
+"latitude": 59.429378,
+"longitude": 24.704332,
+"altitude": 26,
+"distance": 9.6426,
+"speed": 17.2553,
+"duration": 2459000,
+"sensor_data": {
+"speed": 17.2553
+}
+},
+{
+"time": "2015-06-10T18:31:08.000Z",
+"latitude": 59.429378,
+"longitude": 24.704332,
+"altitude": 26,
+"distance": 9.6426,
+"speed": 0,
+"duration": 2464000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:31:09.000Z",
+"latitude": 59.429378,
+"longitude": 24.704332,
+"altitude": 26,
+"distance": 9.6426,
+"speed": 0,
+"duration": 2465000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:31:44.000Z",
+"latitude": 59.429211,
+"longitude": 24.70441,
+"altitude": 25,
+"distance": 9.68082,
+"speed": 0,
+"duration": 2500000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:31:48.000Z",
+"latitude": 59.429112,
+"longitude": 24.704303,
+"altitude": 24,
+"distance": 9.69346,
+"speed": 0,
+"duration": 2504000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:31:55.000Z",
+"latitude": 59.429084,
+"longitude": 24.704281,
+"altitude": 23,
+"distance": 9.69674,
+"speed": 5.01314,
+"duration": 2511000,
+"sensor_data": {
+"speed": 5.01314
+}
+},
+{
+"time": "2015-06-10T18:32:06.000Z",
+"latitude": 59.429026,
+"longitude": 24.704602,
+"altitude": 23,
+"distance": 9.73534,
+"speed": 6.46314,
+"duration": 2522000,
+"sensor_data": {
+"speed": 6.46314
+}
+},
+{
+"time": "2015-06-10T18:32:13.000Z",
+"latitude": 59.428976,
+"longitude": 24.70487,
+"altitude": 22,
+"distance": 9.75157,
+"speed": 5.45021,
+"duration": 2529000,
+"sensor_data": {
+"speed": 5.45021
+}
+},
+{
+"time": "2015-06-10T18:32:21.000Z",
+"latitude": 59.428873,
+"longitude": 24.705114,
+"altitude": 24,
+"distance": 9.76955,
+"speed": 7.58259,
+"duration": 2537000,
+"sensor_data": {
+"speed": 7.58259
+}
+},
+{
+"time": "2015-06-10T18:32:32.000Z",
+"latitude": 59.428914,
+"longitude": 24.705884,
+"altitude": 28,
+"distance": 9.81353,
+"speed": 10.275,
+"duration": 2548000,
+"sensor_data": {
+"speed": 10.275
+}
+},
+{
+"time": "2015-06-10T18:32:39.000Z",
+"latitude": 59.428897,
+"longitude": 24.706359,
+"altitude": 30,
+"distance": 9.84053,
+"speed": 12.1226,
+"duration": 2555000,
+"sensor_data": {
+"speed": 12.1226
+}
+},
+{
+"time": "2015-06-10T18:32:46.000Z",
+"latitude": 59.428825,
+"longitude": 24.706933,
+"altitude": 29,
+"distance": 9.8741,
+"speed": 15.1829,
+"duration": 2562000,
+"sensor_data": {
+"speed": 15.1829
+}
+},
+{
+"time": "2015-06-10T18:32:53.000Z",
+"latitude": 59.428706,
+"longitude": 24.707536,
+"altitude": 29,
+"distance": 9.9108,
+"speed": 16.6777,
+"duration": 2569000,
+"sensor_data": {
+"speed": 16.6777
+}
+},
+{
+"time": "2015-06-10T18:32:58.000Z",
+"latitude": 59.428617,
+"longitude": 24.707878,
+"altitude": 31,
+"distance": 9.93259,
+"speed": 17.2785,
+"duration": 2574000,
+"sensor_data": {
+"speed": 17.2785
+}
+},
+{
+"time": "2015-06-10T18:33:04.000Z",
+"latitude": 59.428505,
+"longitude": 24.708225,
+"altitude": 28,
+"distance": 9.9559,
+"speed": 16.1846,
+"duration": 2580000,
+"sensor_data": {
+"speed": 16.1846
+}
+},
+{
+"time": "2015-06-10T18:33:11.000Z",
+"latitude": 59.428401,
+"longitude": 24.708711,
+"altitude": 29,
+"distance": 9.98584,
+"speed": 15.0255,
+"duration": 2587000,
+"sensor_data": {
+"speed": 15.0255
+}
+},
+{
+"time": "2015-06-10T18:33:18.000Z",
+"latitude": 59.42829,
+"longitude": 24.709229,
+"altitude": 27,
+"distance": 10.0177,
+"speed": 15.2544,
+"duration": 2594000,
+"sensor_data": {
+"speed": 15.2544
+}
+},
+{
+"time": "2015-06-10T18:33:24.000Z",
+"latitude": 59.428213,
+"longitude": 24.709569,
+"altitude": 26,
+"distance": 10.0388,
+"speed": 14.8231,
+"duration": 2600000,
+"sensor_data": {
+"speed": 14.8231
+}
+},
+{
+"time": "2015-06-10T18:33:33.000Z",
+"latitude": 59.428168,
+"longitude": 24.710191,
+"altitude": 28,
+"distance": 10.0745,
+"speed": 14.4434,
+"duration": 2609000,
+"sensor_data": {
+"speed": 14.4434
+}
+},
+{
+"time": "2015-06-10T18:33:38.000Z",
+"latitude": 59.428059,
+"longitude": 24.710594,
+"altitude": 28,
+"distance": 10.1004,
+"speed": 15.1973,
+"duration": 2614000,
+"sensor_data": {
+"speed": 15.1973
+}
+},
+{
+"time": "2015-06-10T18:33:43.000Z",
+"latitude": 59.427961,
+"longitude": 24.711025,
+"altitude": 28,
+"distance": 10.1272,
+"speed": 17.3996,
+"duration": 2619000,
+"sensor_data": {
+"speed": 17.3996
+}
+},
+{
+"time": "2015-06-10T18:33:49.000Z",
+"latitude": 59.427839,
+"longitude": 24.71148,
+"altitude": 23,
+"distance": 10.1564,
+"speed": 18.4664,
+"duration": 2625000,
+"sensor_data": {
+"speed": 18.4664
+}
+},
+{
+"time": "2015-06-10T18:33:55.000Z",
+"latitude": 59.427734,
+"longitude": 24.711961,
+"altitude": 25,
+"distance": 10.1861,
+"speed": 18.2051,
+"duration": 2631000,
+"sensor_data": {
+"speed": 18.2051
+}
+},
+{
+"time": "2015-06-10T18:34:03.000Z",
+"latitude": 59.427761,
+"longitude": 24.712434,
+"altitude": 32,
+"distance": 10.2131,
+"speed": 15.8341,
+"duration": 2639000,
+"sensor_data": {
+"speed": 15.8341
+}
+},
+{
+"time": "2015-06-10T18:34:10.000Z",
+"latitude": 59.427758,
+"longitude": 24.713008,
+"altitude": 27,
+"distance": 10.2457,
+"speed": 15.5968,
+"duration": 2646000,
+"sensor_data": {
+"speed": 15.5968
+}
+},
+{
+"time": "2015-06-10T18:34:15.000Z",
+"latitude": 59.427744,
+"longitude": 24.713483,
+"altitude": 30,
+"distance": 10.2727,
+"speed": 16.1244,
+"duration": 2651000,
+"sensor_data": {
+"speed": 16.1244
+}
+},
+{
+"time": "2015-06-10T18:34:20.000Z",
+"latitude": 59.427744,
+"longitude": 24.713974,
+"altitude": 31,
+"distance": 10.3006,
+"speed": 18.754,
+"duration": 2656000,
+"sensor_data": {
+"speed": 18.754
+}
+},
+{
+"time": "2015-06-10T18:34:26.000Z",
+"latitude": 59.427708,
+"longitude": 24.714529,
+"altitude": 29,
+"distance": 10.3323,
+"speed": 19.5254,
+"duration": 2662000,
+"sensor_data": {
+"speed": 19.5254
+}
+},
+{
+"time": "2015-06-10T18:34:30.000Z",
+"latitude": 59.427695,
+"longitude": 24.714869,
+"altitude": 30,
+"distance": 10.3517,
+"speed": 18.7598,
+"duration": 2666000,
+"sensor_data": {
+"speed": 18.7598
+}
+},
+{
+"time": "2015-06-10T18:34:37.000Z",
+"latitude": 59.427681,
+"longitude": 24.715359,
+"altitude": 29,
+"distance": 10.3795,
+"speed": 16.8821,
+"duration": 2673000,
+"sensor_data": {
+"speed": 16.8821
+}
+},
+{
+"time": "2015-06-10T18:34:46.000Z",
+"latitude": 59.42777,
+"longitude": 24.715454,
+"altitude": 31,
+"distance": 10.3909,
+"speed": 12.0422,
+"duration": 2682000,
+"sensor_data": {
+"speed": 12.0422
+}
+},
+{
+"time": "2015-06-10T18:34:57.000Z",
+"latitude": 59.42786,
+"longitude": 24.715927,
+"altitude": 28,
+"distance": 10.4195,
+"speed": 9.44832,
+"duration": 2693000,
+"sensor_data": {
+"speed": 9.44832
+}
+},
+{
+"time": "2015-06-10T18:35:00.000Z",
+"latitude": 59.427851,
+"longitude": 24.71616,
+"altitude": 28,
+"distance": 10.4327,
+"speed": 9.93532,
+"duration": 2696000,
+"sensor_data": {
+"speed": 9.93532
+}
+},
+{
+"time": "2015-06-10T18:35:05.000Z",
+"latitude": 59.427833,
+"longitude": 24.716564,
+"altitude": 26,
+"distance": 10.4558,
+"speed": 13.9484,
+"duration": 2701000,
+"sensor_data": {
+"speed": 13.9484
+}
+},
+{
+"time": "2015-06-10T18:35:11.000Z",
+"latitude": 59.427825,
+"longitude": 24.717124,
+"altitude": 24,
+"distance": 10.4876,
+"speed": 17.1943,
+"duration": 2707000,
+"sensor_data": {
+"speed": 17.1943
+}
+},
+{
+"time": "2015-06-10T18:35:14.000Z",
+"latitude": 59.4278,
+"longitude": 24.717395,
+"altitude": 26,
+"distance": 10.5032,
+"speed": 18.1468,
+"duration": 2710000,
+"sensor_data": {
+"speed": 18.1468
+}
+},
+{
+"time": "2015-06-10T18:35:19.000Z",
+"latitude": 59.427789,
+"longitude": 24.717901,
+"altitude": 26,
+"distance": 10.532,
+"speed": 19.5141,
+"duration": 2715000,
+"sensor_data": {
+"speed": 19.5141
+}
+},
+{
+"time": "2015-06-10T18:35:25.000Z",
+"latitude": 59.427776,
+"longitude": 24.718363,
+"altitude": 28,
+"distance": 10.5582,
+"speed": 18.3958,
+"duration": 2721000,
+"sensor_data": {
+"speed": 18.3958
+}
+},
+{
+"time": "2015-06-10T18:35:33.000Z",
+"latitude": 59.42789,
+"longitude": 24.718557,
+"altitude": 29,
+"distance": 10.5749,
+"speed": 14.6529,
+"duration": 2729000,
+"sensor_data": {
+"speed": 14.6529
+}
+},
+{
+"time": "2015-06-10T18:35:39.000Z",
+"latitude": 59.427911,
+"longitude": 24.718924,
+"altitude": 31,
+"distance": 10.5959,
+"speed": 11.9518,
+"duration": 2735000,
+"sensor_data": {
+"speed": 11.9518
+}
+},
+{
+"time": "2015-06-10T18:35:44.000Z",
+"latitude": 59.427864,
+"longitude": 24.719228,
+"altitude": 33,
+"distance": 10.614,
+"speed": 11.0352,
+"duration": 2740000,
+"sensor_data": {
+"speed": 11.0352
+}
+},
+{
+"time": "2015-06-10T18:35:51.000Z",
+"latitude": 59.42792,
+"longitude": 24.719627,
+"altitude": 33,
+"distance": 10.6374,
+"speed": 12.5488,
+"duration": 2747000,
+"sensor_data": {
+"speed": 12.5488
+}
+},
+{
+"time": "2015-06-10T18:35:58.000Z",
+"latitude": 59.427718,
+"longitude": 24.719581,
+"altitude": 30,
+"distance": 10.6601,
+"speed": 12.2355,
+"duration": 2754000,
+"sensor_data": {
+"speed": 12.2355
+}
+},
+{
+"time": "2015-06-10T18:36:05.000Z",
+"latitude": 59.427653,
+"longitude": 24.719901,
+"altitude": 27,
+"distance": 10.6796,
+"speed": 11.262,
+"duration": 2761000,
+"sensor_data": {
+"speed": 11.262
+}
+},
+{
+"time": "2015-06-10T18:36:11.000Z",
+"latitude": 59.427637,
+"longitude": 24.720283,
+"altitude": 28,
+"distance": 10.7014,
+"speed": 11.5826,
+"duration": 2767000,
+"sensor_data": {
+"speed": 11.5826
+}
+},
+{
+"time": "2015-06-10T18:36:18.000Z",
+"latitude": 59.427762,
+"longitude": 24.720656,
+"altitude": 29,
+"distance": 10.7267,
+"speed": 12.0447,
+"duration": 2774000,
+"sensor_data": {
+"speed": 12.0447
+}
+},
+{
+"time": "2015-06-10T18:36:25.000Z",
+"latitude": 59.427837,
+"longitude": 24.721224,
+"altitude": 28,
+"distance": 10.76,
+"speed": 14.3979,
+"duration": 2781000,
+"sensor_data": {
+"speed": 14.3979
+}
+},
+{
+"time": "2015-06-10T18:36:30.000Z",
+"latitude": 59.427887,
+"longitude": 24.721677,
+"altitude": 31,
+"distance": 10.7863,
+"speed": 16.3639,
+"duration": 2786000,
+"sensor_data": {
+"speed": 16.3639
+}
+},
+{
+"time": "2015-06-10T18:36:35.000Z",
+"latitude": 59.428006,
+"longitude": 24.722143,
+"altitude": 34,
+"distance": 10.8159,
+"speed": 19.1316,
+"duration": 2791000,
+"sensor_data": {
+"speed": 19.1316
+}
+},
+{
+"time": "2015-06-10T18:36:40.000Z",
+"latitude": 59.428116,
+"longitude": 24.722582,
+"altitude": 29,
+"distance": 10.8437,
+"speed": 20.0791,
+"duration": 2796000,
+"sensor_data": {
+"speed": 20.0791
+}
+},
+{
+"time": "2015-06-10T18:36:45.000Z",
+"latitude": 59.428198,
+"longitude": 24.722979,
+"altitude": 29,
+"distance": 10.868,
+"speed": 19.6136,
+"duration": 2801000,
+"sensor_data": {
+"speed": 19.6136
+}
+},
+{
+"time": "2015-06-10T18:36:52.000Z",
+"latitude": 59.428318,
+"longitude": 24.723476,
+"altitude": 29,
+"distance": 10.8992,
+"speed": 17.8501,
+"duration": 2808000,
+"sensor_data": {
+"speed": 17.8501
+}
+},
+{
+"time": "2015-06-10T18:36:58.000Z",
+"latitude": 59.428314,
+"longitude": 24.723925,
+"altitude": 29,
+"distance": 10.9247,
+"speed": 16.2343,
+"duration": 2814000,
+"sensor_data": {
+"speed": 16.2343
+}
+},
+{
+"time": "2015-06-10T18:37:04.000Z",
+"latitude": 59.428307,
+"longitude": 24.724356,
+"altitude": 28,
+"distance": 10.9492,
+"speed": 15.3376,
+"duration": 2820000,
+"sensor_data": {
+"speed": 15.3376
+}
+},
+{
+"time": "2015-06-10T18:37:10.000Z",
+"latitude": 59.428356,
+"longitude": 24.724837,
+"altitude": 29,
+"distance": 10.977,
+"speed": 15.555,
+"duration": 2826000,
+"sensor_data": {
+"speed": 15.555
+}
+},
+{
+"time": "2015-06-10T18:37:16.000Z",
+"latitude": 59.428446,
+"longitude": 24.725269,
+"altitude": 28,
+"distance": 11.0035,
+"speed": 15.8082,
+"duration": 2832000,
+"sensor_data": {
+"speed": 15.8082
+}
+},
+{
+"time": "2015-06-10T18:37:22.000Z",
+"latitude": 59.428519,
+"longitude": 24.725324,
+"altitude": 30,
+"distance": 11.0122,
+"speed": 12.6049,
+"duration": 2838000,
+"sensor_data": {
+"speed": 12.6049
+}
+},
+{
+"time": "2015-06-10T18:37:42.000Z",
+"latitude": 59.428619,
+"longitude": 24.725662,
+"altitude": 31,
+"distance": 11.0344,
+"speed": 8.37062,
+"duration": 2858000,
+"sensor_data": {
+"speed": 8.37062
+}
+},
+{
+"time": "2015-06-10T18:37:46.000Z",
+"latitude": 59.42871,
+"longitude": 24.725843,
+"altitude": 30,
+"distance": 11.0488,
+"speed": 7.41088,
+"duration": 2862000,
+"sensor_data": {
+"speed": 7.41088
+}
+},
+{
+"time": "2015-06-10T18:37:55.000Z",
+"latitude": 59.428912,
+"longitude": 24.726268,
+"altitude": 29,
+"distance": 11.0818,
+"speed": 10.0658,
+"duration": 2871000,
+"sensor_data": {
+"speed": 10.0658
+}
+},
+{
+"time": "2015-06-10T18:38:04.000Z",
+"latitude": 59.429053,
+"longitude": 24.726475,
+"altitude": 30,
+"distance": 11.1015,
+"speed": 11.3586,
+"duration": 2880000,
+"sensor_data": {
+"speed": 11.3586
+}
+},
+{
+"time": "2015-06-10T18:38:11.000Z",
+"latitude": 59.429137,
+"longitude": 24.726988,
+"altitude": 30,
+"distance": 11.1321,
+"speed": 12.2678,
+"duration": 2887000,
+"sensor_data": {
+"speed": 12.2678
+}
+},
+{
+"time": "2015-06-10T18:38:18.000Z",
+"latitude": 59.429236,
+"longitude": 24.727158,
+"altitude": 33,
+"distance": 11.1467,
+"speed": 10.3681,
+"duration": 2894000,
+"sensor_data": {
+"speed": 10.3681
+}
+},
+{
+"time": "2015-06-10T18:38:29.000Z",
+"latitude": 59.42929,
+"longitude": 24.727585,
+"altitude": 31,
+"distance": 11.1716,
+"speed": 10.4694,
+"duration": 2905000,
+"sensor_data": {
+"speed": 10.4694
+}
+},
+{
+"time": "2015-06-10T18:38:35.000Z",
+"latitude": 59.429372,
+"longitude": 24.727982,
+"altitude": 34,
+"distance": 11.196,
+"speed": 10.0944,
+"duration": 2911000,
+"sensor_data": {
+"speed": 10.0944
+}
+},
+{
+"time": "2015-06-10T18:38:42.000Z",
+"latitude": 59.429411,
+"longitude": 24.728275,
+"altitude": 35,
+"distance": 11.2132,
+"speed": 10.5361,
+"duration": 2918000,
+"sensor_data": {
+"speed": 10.5361
+}
+},
+{
+"time": "2015-06-10T18:38:50.000Z",
+"latitude": 59.429332,
+"longitude": 24.728686,
+"altitude": 33,
+"distance": 11.2381,
+"speed": 11.5561,
+"duration": 2926000,
+"sensor_data": {
+"speed": 11.5561
+}
+},
+{
+"time": "2015-06-10T18:38:55.000Z",
+"latitude": 59.429324,
+"longitude": 24.728975,
+"altitude": 36,
+"distance": 11.2545,
+"speed": 10.6231,
+"duration": 2931000,
+"sensor_data": {
+"speed": 10.6231
+}
+},
+{
+"time": "2015-06-10T18:39:02.000Z",
+"latitude": 59.429269,
+"longitude": 24.729451,
+"altitude": 36,
+"distance": 11.2822,
+"speed": 12.4322,
+"duration": 2938000,
+"sensor_data": {
+"speed": 12.4322
+}
+},
+{
+"time": "2015-06-10T18:39:10.000Z",
+"latitude": 59.42914,
+"longitude": 24.729818,
+"altitude": 30,
+"distance": 11.3075,
+"speed": 12.4803,
+"duration": 2946000,
+"sensor_data": {
+"speed": 12.4803
+}
+},
+{
+"time": "2015-06-10T18:39:17.000Z",
+"latitude": 59.428983,
+"longitude": 24.730135,
+"altitude": 32,
+"distance": 11.3326,
+"speed": 12.8479,
+"duration": 2953000,
+"sensor_data": {
+"speed": 12.8479
+}
+},
+{
+"time": "2015-06-10T18:39:23.000Z",
+"latitude": 59.428891,
+"longitude": 24.730503,
+"altitude": 32,
+"distance": 11.3559,
+"speed": 12.7547,
+"duration": 2959000,
+"sensor_data": {
+"speed": 12.7547
+}
+},
+{
+"time": "2015-06-10T18:39:30.000Z",
+"latitude": 59.428944,
+"longitude": 24.730895,
+"altitude": 35,
+"distance": 11.3789,
+"speed": 12.9052,
+"duration": 2966000,
+"sensor_data": {
+"speed": 12.9052
+}
+},
+{
+"time": "2015-06-10T18:39:38.000Z",
+"latitude": 59.42901,
+"longitude": 24.731382,
+"altitude": 42,
+"distance": 11.4076,
+"speed": 12.8959,
+"duration": 2974000,
+"sensor_data": {
+"speed": 12.8959
+}
+},
+{
+"time": "2015-06-10T18:39:45.000Z",
+"latitude": 59.429039,
+"longitude": 24.731811,
+"altitude": 43,
+"distance": 11.4321,
+"speed": 12.4468,
+"duration": 2981000,
+"sensor_data": {
+"speed": 12.4468
+}
+},
+{
+"time": "2015-06-10T18:39:52.000Z",
+"latitude": 59.429098,
+"longitude": 24.732263,
+"altitude": 41,
+"distance": 11.4586,
+"speed": 13.0446,
+"duration": 2988000,
+"sensor_data": {
+"speed": 13.0446
+}
+},
+{
+"time": "2015-06-10T18:40:00.000Z",
+"latitude": 59.429214,
+"longitude": 24.732781,
+"altitude": 36,
+"distance": 11.4907,
+"speed": 13.5705,
+"duration": 2996000,
+"sensor_data": {
+"speed": 13.5705
+}
+},
+{
+"time": "2015-06-10T18:40:08.000Z",
+"latitude": 59.429297,
+"longitude": 24.733293,
+"altitude": 41,
+"distance": 11.5212,
+"speed": 13.9347,
+"duration": 3004000,
+"sensor_data": {
+"speed": 13.9347
+}
+},
+{
+"time": "2015-06-10T18:40:17.000Z",
+"latitude": 59.429413,
+"longitude": 24.73381,
+"altitude": 45,
+"distance": 11.5533,
+"speed": 13.6741,
+"duration": 3013000,
+"sensor_data": {
+"speed": 13.6741
+}
+},
+{
+"time": "2015-06-10T18:40:25.000Z",
+"latitude": 59.429566,
+"longitude": 24.734254,
+"altitude": 45,
+"distance": 11.5837,
+"speed": 13.4116,
+"duration": 3021000,
+"sensor_data": {
+"speed": 13.4116
+}
+},
+{
+"time": "2015-06-10T18:40:33.000Z",
+"latitude": 59.429715,
+"longitude": 24.734726,
+"altitude": 46,
+"distance": 11.6153,
+"speed": 13.5698,
+"duration": 3029000,
+"sensor_data": {
+"speed": 13.5698
+}
+},
+{
+"time": "2015-06-10T18:40:39.000Z",
+"latitude": 59.429844,
+"longitude": 24.735098,
+"altitude": 45,
+"distance": 11.6408,
+"speed": 14.3943,
+"duration": 3035000,
+"sensor_data": {
+"speed": 14.3943
+}
+},
+{
+"time": "2015-06-10T18:40:45.000Z",
+"latitude": 59.429959,
+"longitude": 24.735438,
+"altitude": 46,
+"distance": 11.6639,
+"speed": 14.4175,
+"duration": 3041000,
+"sensor_data": {
+"speed": 14.4175
+}
+},
+{
+"time": "2015-06-10T18:40:52.000Z",
+"latitude": 59.430118,
+"longitude": 24.73584,
+"altitude": 45,
+"distance": 11.6928,
+"speed": 14.6802,
+"duration": 3048000,
+"sensor_data": {
+"speed": 14.6802
+}
+},
+{
+"time": "2015-06-10T18:41:00.000Z",
+"latitude": 59.430277,
+"longitude": 24.736283,
+"altitude": 46,
+"distance": 11.7236,
+"speed": 14.1871,
+"duration": 3056000,
+"sensor_data": {
+"speed": 14.1871
+}
+},
+{
+"time": "2015-06-10T18:41:07.000Z",
+"latitude": 59.430445,
+"longitude": 24.736685,
+"altitude": 46,
+"distance": 11.753,
+"speed": 14.6673,
+"duration": 3063000,
+"sensor_data": {
+"speed": 14.6673
+}
+},
+{
+"time": "2015-06-10T18:41:12.000Z",
+"latitude": 59.430557,
+"longitude": 24.736918,
+"altitude": 48,
+"distance": 11.7713,
+"speed": 14.0407,
+"duration": 3068000,
+"sensor_data": {
+"speed": 14.0407
+}
+},
+{
+"time": "2015-06-10T18:41:19.000Z",
+"latitude": 59.430684,
+"longitude": 24.737271,
+"altitude": 52,
+"distance": 11.7958,
+"speed": 13.6286,
+"duration": 3075000,
+"sensor_data": {
+"speed": 13.6286
+}
+},
+{
+"time": "2015-06-10T18:41:27.000Z",
+"latitude": 59.43078,
+"longitude": 24.737655,
+"altitude": 46,
+"distance": 11.82,
+"speed": 12.2101,
+"duration": 3083000,
+"sensor_data": {
+"speed": 12.2101
+}
+},
+{
+"time": "2015-06-10T18:41:34.000Z",
+"latitude": 59.430896,
+"longitude": 24.737846,
+"altitude": 48,
+"distance": 11.8369,
+"speed": 10.7386,
+"duration": 3090000,
+"sensor_data": {
+"speed": 10.7386
+}
+},
+{
+"time": "2015-06-10T18:41:41.000Z",
+"latitude": 59.431001,
+"longitude": 24.7381,
+"altitude": 48,
+"distance": 11.8555,
+"speed": 9.72568,
+"duration": 3097000,
+"sensor_data": {
+"speed": 9.72568
+}
+},
+{
+"time": "2015-06-10T18:41:49.000Z",
+"latitude": 59.431107,
+"longitude": 24.738312,
+"altitude": 48,
+"distance": 11.8724,
+"speed": 8.61156,
+"duration": 3105000,
+"sensor_data": {
+"speed": 8.61156
+}
+},
+{
+"time": "2015-06-10T18:41:57.000Z",
+"latitude": 59.431292,
+"longitude": 24.738002,
+"altitude": 47,
+"distance": 11.8994,
+"speed": 9.74212,
+"duration": 3113000,
+"sensor_data": {
+"speed": 9.74212
+}
+},
+{
+"time": "2015-06-10T18:42:06.000Z",
+"latitude": 59.431472,
+"longitude": 24.737496,
+"altitude": 49,
+"distance": 11.9345,
+"speed": 11.2604,
+"duration": 3122000,
+"sensor_data": {
+"speed": 11.2604
+}
+},
+{
+"time": "2015-06-10T18:42:11.000Z",
+"latitude": 59.431472,
+"longitude": 24.737496,
+"altitude": 49,
+"distance": 11.9345,
+"speed": 0,
+"duration": 3127000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:42:12.000Z",
+"latitude": 59.431497,
+"longitude": 24.737422,
+"altitude": 50,
+"distance": 11.9395,
+"speed": 0,
+"duration": 3128000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:42:45.000Z",
+"latitude": 59.431605,
+"longitude": 24.737163,
+"altitude": 49,
+"distance": 11.9774,
+"speed": 0,
+"duration": 3161000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:42:54.000Z",
+"latitude": 59.431779,
+"longitude": 24.736671,
+"altitude": 48,
+"distance": 12.0114,
+"speed": 11.2541,
+"duration": 3170000,
+"sensor_data": {
+"speed": 11.2541
+}
+},
+{
+"time": "2015-06-10T18:43:00.000Z",
+"latitude": 59.431871,
+"longitude": 24.73624,
+"altitude": 44,
+"distance": 12.038,
+"speed": 10.5303,
+"duration": 3176000,
+"sensor_data": {
+"speed": 10.5303
+}
+},
+{
+"time": "2015-06-10T18:43:07.000Z",
+"latitude": 59.432002,
+"longitude": 24.73576,
+"altitude": 40,
+"distance": 12.0689,
+"speed": 15.1404,
+"duration": 3183000,
+"sensor_data": {
+"speed": 15.1404
+}
+},
+{
+"time": "2015-06-10T18:43:14.000Z",
+"latitude": 59.432146,
+"longitude": 24.735334,
+"altitude": 42,
+"distance": 12.0979,
+"speed": 15.5911,
+"duration": 3190000,
+"sensor_data": {
+"speed": 15.5911
+}
+},
+{
+"time": "2015-06-10T18:43:20.000Z",
+"latitude": 59.43228,
+"longitude": 24.735036,
+"altitude": 46,
+"distance": 12.1205,
+"speed": 14.7945,
+"duration": 3196000,
+"sensor_data": {
+"speed": 14.7945
+}
+},
+{
+"time": "2015-06-10T18:43:29.000Z",
+"latitude": 59.432349,
+"longitude": 24.73488,
+"altitude": 55,
+"distance": 12.1322,
+"speed": 11.0598,
+"duration": 3205000,
+"sensor_data": {
+"speed": 11.0598
+}
+},
+{
+"time": "2015-06-10T18:43:43.000Z",
+"latitude": 59.432736,
+"longitude": 24.734554,
+"altitude": 52,
+"distance": 12.179,
+"speed": 10.0749,
+"duration": 3219000,
+"sensor_data": {
+"speed": 10.0749
+}
+},
+{
+"time": "2015-06-10T18:43:52.000Z",
+"latitude": 59.432978,
+"longitude": 24.734389,
+"altitude": 47,
+"distance": 12.2076,
+"speed": 9.39809,
+"duration": 3228000,
+"sensor_data": {
+"speed": 9.39809
+}
+},
+{
+"time": "2015-06-10T18:43:58.000Z",
+"latitude": 59.433148,
+"longitude": 24.734225,
+"altitude": 40,
+"distance": 12.2288,
+"speed": 12.0483,
+"duration": 3234000,
+"sensor_data": {
+"speed": 12.0483
+}
+},
+{
+"time": "2015-06-10T18:44:05.000Z",
+"latitude": 59.433362,
+"longitude": 24.734048,
+"altitude": 40,
+"distance": 12.2546,
+"speed": 12.4846,
+"duration": 3241000,
+"sensor_data": {
+"speed": 12.4846
+}
+},
+{
+"time": "2015-06-10T18:44:13.000Z",
+"latitude": 59.433407,
+"longitude": 24.733606,
+"altitude": 41,
+"distance": 12.2802,
+"speed": 12.4896,
+"duration": 3249000,
+"sensor_data": {
+"speed": 12.4896
+}
+},
+{
+"time": "2015-06-10T18:44:20.000Z",
+"latitude": 59.433337,
+"longitude": 24.733024,
+"altitude": 43,
+"distance": 12.3141,
+"speed": 14.0909,
+"duration": 3256000,
+"sensor_data": {
+"speed": 14.0909
+}
+},
+{
+"time": "2015-06-10T18:44:27.000Z",
+"latitude": 59.433284,
+"longitude": 24.732411,
+"altitude": 45,
+"distance": 12.3494,
+"speed": 15.6582,
+"duration": 3263000,
+"sensor_data": {
+"speed": 15.6582
+}
+},
+{
+"time": "2015-06-10T18:44:33.000Z",
+"latitude": 59.433222,
+"longitude": 24.731962,
+"altitude": 43,
+"distance": 12.3758,
+"speed": 17.1461,
+"duration": 3269000,
+"sensor_data": {
+"speed": 17.1461
+}
+},
+{
+"time": "2015-06-10T18:44:39.000Z",
+"latitude": 59.433346,
+"longitude": 24.73182,
+"altitude": 44,
+"distance": 12.3918,
+"speed": 14.528,
+"duration": 3275000,
+"sensor_data": {
+"speed": 14.528
+}
+},
+{
+"time": "2015-06-10T18:44:45.000Z",
+"latitude": 59.433346,
+"longitude": 24.73182,
+"altitude": 44,
+"distance": 12.3918,
+"speed": 0,
+"duration": 3281000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:44:46.000Z",
+"latitude": 59.433346,
+"longitude": 24.73182,
+"altitude": 44,
+"distance": 12.3918,
+"speed": 0,
+"duration": 3282000,
+"sensor_data": {
+"speed": 0
+}
+},
+{
+"time": "2015-06-10T18:45:33.000Z",
+"instruction": 0,
+"latitude": 59.433346,
+"longitude": 24.73182,
+"distance": 12.3918,
+"duration": 3329000,
+"sensor_data": {}
+},
+{
+"time": "2015-06-10T18:45:44.000Z",
+"instruction": 3,
+"latitude": 59.433346,
+"longitude": 24.73182,
+"distance": 12.3918,
+"duration": 3340000,
+"sensor_data": {}
+}
+]
+},
+"show_map": 0,
+"show_workout": 0,
+"admin_rejected": false,
+"hydration": 0.307379,
+"personal_bests": []
+}

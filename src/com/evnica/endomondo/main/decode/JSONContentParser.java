@@ -1,6 +1,7 @@
 package com.evnica.endomondo.main.decode;
 
 import com.evnica.endomondo.main.model.*;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
@@ -8,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,52 +26,122 @@ public class JSONContentParser
     public static WorkoutJSON parseWorkoutUrl( String jsonContent, Workout workout)
     {
         WorkoutJSON result = null;
-        List<Lap> laps = null;
+        List<Lap> laps;
         try
         {
             JSONObject workoutObject = new JSONObject( jsonContent );
+            DateTime offset = workout.getLocalStartTime();
             try
-            {
-                // try to get metric laps; "laps" are not always present in workout JSON
+            {   // try to get metric laps; "laps" are not always present in workout JSON
                 JSONArray metricLaps = workoutObject.getJSONObject( "laps" ).getJSONArray( "metric" );
                 if (metricLaps.length() > 0)
                 {
-                    try
+                    // polyline is not always present in JSON; without polyline we rely on points in {catch}
+                    ((JSONObject) metricLaps.get(0)).getString( "small_encoded_polyline");
+                    // no exception - polylines present
+                    laps = new ArrayList<>();
+                    double beginLatitude, beginLongitude, endLatitude, endLongitude;
+                    int duration;
+                    for (int i = 0; i < metricLaps.length(); i++)
                     {
-                        // polyline is not always present in JSON
-                        ((JSONObject) metricLaps.get(0)).getString( "small_encoded_polyline");
+                        String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
+                                .getString( "small_encoded_polyline");
+                        Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
+                        beginLatitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_latitude");
+                        beginLongitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_longitude");
+                        endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
+                        endLongitude = ((JSONObject) metricLaps.get(i)).getDouble("end_longitude");
 
-                        double beginLatitude, beginLongitude, endLatitude, endLongitude;
-                        for (int i = 0; i < metricLaps.length(); i++)
+                        Lap lap = new Lap( beginLatitude, beginLongitude, endLatitude, endLongitude );
+                        lap.setSmallPolyline( lapGeometry );
+                        lap.setWorkoutId( workout.getId() );
+                        lap.setId( i );
+                        lap.setOffset( offset );
+
+                        try
                         {
-                            String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
-                                    .getString( "small_encoded_polyline");
-                            Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
-                            beginLatitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_latitude");
-                            beginLongitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_longitude");
-                            endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
-                            endLongitude = ((JSONObject) metricLaps.get(i)).getDouble("end_longitude");
-
-                            Lap lap = new Lap( beginLatitude, beginLongitude, endLatitude, endLongitude );
-                            lap.setSmallPolyline( lapGeometry );
-                            lap.setWorkoutId( workout.getId() );
-                            lap.setId( workout.getId()*1000 + i );
+                            duration =  ((JSONObject) metricLaps.get(i)).getInt("duration");
+                            lap.setDuration( duration );
+                            offset = offset.plusMillis( duration );
+                            // add a lap only if time is known; geometry without time of no interest?
+                            laps.add( lap );
                         }
-
-
+                        catch ( Exception e )
+                        {
+                            // have no idea why I have catch here... if you know, drop me a line
+                            e.printStackTrace();
+                        }
                     }
-                    catch ( JSONException e )
+                    int diff = metricLaps.length() - laps.size();
+                    if (diff != 0)
                     {
-                        e.printStackTrace();
+                        System.out.println(workout.getId() + " workout: " + diff + " laps lost");
                     }
+                    result = new WorkoutJSON( laps );
+                }
+            }
+            catch ( Exception e ) // expecting JSONException, but theoretically one can also occur during polyline decoding
+            {
+                JSONArray pointsJSONArray = workoutObject.getJSONObject( "points" ).getJSONArray( "points" );
+                if (pointsJSONArray.length() > 0)
+                {
+                    List<Point> points = new ArrayList<>(  );
+                    double lat, lon, distanceToPrevious;
+                    JSONObject pointJSONObject;
+                    String timestampString;
 
+                    for ( int i = 0; i < pointsJSONArray.length(); i++ )
+                    {
+                        pointJSONObject = pointsJSONArray.getJSONObject( i );
+                        lat = pointJSONObject.getDouble( "latitude" );
+                        lon = pointJSONObject.getDouble( "longitude" );
+                        distanceToPrevious = pointJSONObject.getDouble( "distance" );
+
+                        timestampString = pointJSONObject.getString( "time" );
+                        try
+                        {
+                            timestampString = timestampString.substring( 0, 19 );
+                            DateTime timeCaptured = formatter.parseDateTime( timestampString );
+                            Point point = new Point( lat, lon );
+                            point.setTimeCaptured( timeCaptured );
+                            points.add( point );
+                        }
+                        catch ( Exception ex )
+                        {
+                            System.out.println(workout.getId() + " workout: time in point ("
+                                    + lat + ", " + lon + ") not parsed");
+                        }
+                    }
+                    if (points.size() > 0)
+                    {
+                        result = new WorkoutJSON( null );
+                        result.setPoints( points );
+                        int diff = pointsJSONArray.length() - points.size();
+                        if (diff != 0)
+                        {
+                            System.out.println(workout.getId() + " workout: " + diff + " points lost");
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println(workout.getId() + " workout: no points detected");
                 }
 
-            } catch ( JSONException e )
-            {
-                e.printStackTrace();
             }
-        } catch ( JSONException e )
+            if (result != null)
+            {
+                try
+                {
+                    result.setUserGender(workoutObject.getJSONObject( "author" ).getInt( "gender" ));
+                    result.setId( workout.getId() );
+                } catch ( JSONException e )
+                {
+                    System.out.println("Gender not set: " + e);
+                }
+            }
+        }
+        catch ( JSONException e )
         {
             System.out.println("Non-JSON content: " + e);
         }
@@ -120,7 +192,7 @@ public class JSONContentParser
         }
         catch ( JSONException e )
         {
-            System.out.println(e);
+            System.out.println("Except: " + e);
         }
         return user;
     }

@@ -14,7 +14,7 @@ public class Polyline
 {
     private List<Point> polyline = new ArrayList<>();
 
-    public Polyline(){}
+    Polyline(){}
 
     public Polyline( List<Point> polyline )
     {

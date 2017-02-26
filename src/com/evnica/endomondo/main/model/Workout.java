@@ -32,6 +32,11 @@ public class Workout
         return id;
     }
 
+    public void setId( int id )
+    {
+        this.id = id;
+    }
+
     public int getSport()
     {
         return sport;

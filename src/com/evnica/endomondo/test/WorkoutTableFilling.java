@@ -10,7 +10,6 @@ import org.joda.time.DateTime;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,12 +33,11 @@ public class WorkoutTableFilling
         //userIds.add( 26405811 );
         WorkoutRepository.setConnection( DbConnector.getConnection() );
         //for (int id: userIds)
-        for (int j = 26396186; j > 26300099; j--)
+        for (int id = 25475909; id > 25450002; id--)
         {
-            int id = j;
             try
             {
-                String workoutsUrlContent = UrlConnector.getWorkoutsUrlContent( id );
+                 String workoutsUrlContent = UrlConnector.getWorkoutsUrlContent( id );
                 List<Workout> workouts = UrlConnector.parseWorkoutsInInterval( id, workoutsUrlContent );
                 if (workouts != null && workouts.size() > 0)
                 {
@@ -60,9 +58,22 @@ public class WorkoutTableFilling
             {
                 if (e.getMessage().contains( "429" ))
                 {
-                    System.out.println("Rejected due to multiple requests on ID " + id );
-                    rejectedIds.add( id );
+                    System.out.println(id + " rejected (429). Retry in 20\"" );
                     Thread.sleep( 20000 );
+                    try
+                    {
+                        String workoutsUrlContent = UrlConnector.getWorkoutsUrlContent( id );
+                        List<Workout> workouts = UrlConnector.parseWorkoutsInInterval( id, workoutsUrlContent );
+                        if (workouts != null && workouts.size() > 0)
+                        {
+                            for (Workout w: workouts) WorkoutRepository.insert( w );
+                        }
+                    }
+                    catch ( Exception ex )
+                    {
+                        System.out.println("Rejected: " + e);
+                        rejectedIds.add( id );
+                    }
                 }
                 else
                 {

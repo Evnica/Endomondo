@@ -1,5 +1,7 @@
 package com.evnica.endomondo.main.model;
 
+import org.joda.time.DateTime;
+
 /**
  * Class: Lap
  * Version: 0.1
@@ -9,12 +11,14 @@ package com.evnica.endomondo.main.model;
  */
 public class Lap
 {
-    private int id;
+    private long id;
     private double beginLat, beginLon, endLat, endLon;
     private boolean containsPolyline; // in JSON "show_map" = 1 means false,
                                       // 0 means true, e.g. track is displayed on the map
     private int workoutId;
     private Polyline smallPolyline;
+    private DateTime offset;
+    private long duration; // in millis
 
     public Lap( double beginLat, double beginLon, double endLat, double endLon )
     {
@@ -28,7 +32,7 @@ public class Lap
     public void setSmallPolyline( Polyline smallPolyline )
     {
         this.smallPolyline = smallPolyline;
-        containsPolyline = true;
+        containsPolyline = (smallPolyline != null);
     }
 
     public void setWorkoutId( int workoutId )
@@ -38,7 +42,7 @@ public class Lap
 
     public void setId (int order)
     {
-        this.id = workoutId * 1000 + order;
+        this.id = ( long ) ( workoutId * 100L + order );
     }
 
     public double getBeginLat()
@@ -61,9 +65,19 @@ public class Lap
         return endLon;
     }
 
-    public int getId()
+    public long getId()
     {
         return id;
+    }
+
+    public DateTime getOffset()
+    {
+        return offset;
+    }
+
+    public void setOffset( DateTime offset )
+    {
+        this.offset = offset;
     }
 
     public Polyline getSmallPolyline()
@@ -71,7 +85,7 @@ public class Lap
         return smallPolyline;
     }
 
-    public boolean isContainsPolyline()
+    public boolean containsPolyline()
     {
         return containsPolyline;
     }
@@ -79,5 +93,30 @@ public class Lap
     public int getWorkoutId()
     {
         return workoutId;
+    }
+
+    public long getDuration()
+    {
+        return duration;
+    }
+
+    public void setDuration( long duration )
+    {
+        this.duration = duration;
+    }
+
+    @Override
+    public String toString()
+    {
+        String lapString = id + ": ";
+        if (offset != null)
+            lapString +=  "[" + offset.toString("yyyy-MM-dd'T'HH:mm:ss") + ", " + duration + " ms], ";
+        lapString += "start (" + beginLat + ", " + beginLon + "), end (" + endLat + ", " + endLon + ")";
+
+        if (containsPolyline)
+        {
+            lapString += ": " + smallPolyline.size() + " points\n"  + smallPolyline;
+        }
+        return lapString;
     }
 }
