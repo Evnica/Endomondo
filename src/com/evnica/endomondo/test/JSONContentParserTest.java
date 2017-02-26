@@ -1,6 +1,7 @@
 package com.evnica.endomondo.test;
 
 import com.evnica.endomondo.main.decode.JSONContentParser;
+import com.evnica.endomondo.main.model.TargetGeometry;
 import com.evnica.endomondo.main.model.Workout;
 import com.evnica.endomondo.main.model.WorkoutJSON;
 import org.joda.time.DateTime;
@@ -42,14 +43,13 @@ public class JSONContentParserTest
     @Test
     public void parseWorkoutUrl() throws Exception
     {
-        WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentVasli, workoutVasli );
+        WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentVasli, workoutVasli, TargetGeometry.BOTH );
         System.out.println(workoutJSON);
 
         System.out.println('\n');
 
-        workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentKari, workoutKari );
+        workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentKari, workoutKari, TargetGeometry.BOTH );
         System.out.println(workoutJSON);
-
     }
 
 }
