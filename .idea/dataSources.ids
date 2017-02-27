@@ -21,8 +21,8 @@
       </schema>
       <schema id="4" parent="1" name="spatial">
         <object-id>111185</object-id>
-        <introspection-state-number>180696</introspection-state-number>
-        <introspection-timestamp>2017-02-26.22:02:04.687</introspection-timestamp>
+        <introspection-state-number>183720</introspection-state-number>
+        <introspection-timestamp>2017-02-27.00:16:19.858</introspection-timestamp>
       </schema>
       <object-type id="5" parent="2" name="geometry_dump">
         <object-id>110096</object-id>
@@ -26168,7 +26168,7 @@
       </operator>
       <table id="4739" parent="4" name="lap">
         <object-id>111206</object-id>
-        <state-number>180696</state-number>
+        <state-number>183720</state-number>
       </table>
       <table id="4740" parent="4" name="sport">
         <object-id>111219</object-id>
@@ -81510,23 +81510,21 @@ umserver</columns>
         <state-number>1259</state-number>
         <data-type>geometry(LineString,4326)</data-type>
       </column>
-      <index id="18247" parent="4739" name="lap_pkey">
+      <column id="18247" parent="4739" name="timestamp">
+        <state-number>183720</state-number>
+        <data-type>timestamp</data-type>
+      </column>
+      <index id="18248" parent="4739" name="lap_pkey">
         <object-id>111232</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18248" parent="4739" name="lap_pkey">
+      <key id="18249" parent="4739" name="lap_pkey">
         <columns>id</columns>
         <underlying-index>lap_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="18249" parent="4739" name="lap_workout_id_fkey">
-        <columns>workout_id</columns>
-        <ref-key>~.workout.workout_pkey</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
       <column id="18250" parent="4740" name="id">
         <state-number>1260</state-number>
         <mandatory>1</mandatory>

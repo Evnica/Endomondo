@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.postgis.PGgeometry;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ public class LapRepository
     private static final String TABLE_NAME = "lap";
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
-       "(id, workout_id, b_lat, b_lon, e_lat, e_lon, with_geom, geom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+       "(id, workout_id, b_lat, b_lon, e_lat, e_lon, with_geom, geom, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static Connection connection;
 
@@ -77,8 +79,8 @@ public class LapRepository
         statement.setBoolean( 7, lap.containsPolyline() );
         PGgeometry lineString = new PGgeometry(lap.getSmallPolyline().toLineString());
         lineString.getGeometry().setSrid( 4326 );
-
         statement.setObject( 8, lineString);
+        statement.setTimestamp( 9, new Timestamp( lap.getOffset().getMillis() ));
 
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
