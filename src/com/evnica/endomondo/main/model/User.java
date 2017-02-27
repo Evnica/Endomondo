@@ -13,9 +13,9 @@ public class User
 {
     private int id;
     private int gender; // in JSON 1 - female
-    private int cyclingTransportCount = 0;
-    private int cyclingSportCount = 0;
-    private int mountainBikingCount = 0;
+    private int cyclingTransportCount = -1;
+    private int cyclingSportCount = -1;
+    private int mountainBikingCount = -1;
     private DateTime dateCreated;
 
     public void setId( int id )

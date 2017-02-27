@@ -1,5 +1,8 @@
 package com.evnica.endomondo.main.model;
 
+import org.postgis.LineString;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +44,11 @@ public class Polyline
     public boolean isEmpty()
     {
         return polyline.size() == 0;
+    }
+
+    public LineString toLineString() throws SQLException
+    {
+        return new LineString(toString());
     }
 
     @Override

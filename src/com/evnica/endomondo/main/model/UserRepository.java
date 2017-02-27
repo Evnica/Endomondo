@@ -37,8 +37,14 @@ public class UserRepository
         statement.setInt( 3, user.getCyclingSportCount() );
         statement.setInt( 4, user.getCyclingTransportCount() );
         statement.setInt( 5, user.getMountainBikingCount() );
-        // convert joda datetime in millis and create sql timestamp
-        statement.setTimestamp( 6, new Timestamp( user.getDateCreated().getMillis() ) );
+        if ( user.getDateCreated() != null )
+        {   // convert joda datetime in millis and create sql timestamp
+            statement.setTimestamp( 6, new Timestamp( user.getDateCreated().getMillis() ) );
+        }
+        else
+        {
+            statement.setNull( 6, Types.TIMESTAMP );
+        }
 
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
@@ -51,7 +57,7 @@ public class UserRepository
     public List<Integer> getUserIdsFromDB() throws SQLException
     {
         PreparedStatement statement = connection.prepareStatement( SELECT_USER_IDS );
-        ResultSet resultSet = statement.executeQuery();
+        resultSet = statement.executeQuery();
         List<Integer> userIds = new ArrayList<>();
 
         while ( resultSet.next() )
@@ -59,6 +65,20 @@ public class UserRepository
             userIds.add( resultSet.getInt( "id" ) );
         }
 
+        statement.clearParameters();
+        statement.close();
         return userIds;
     }
+
+    public boolean userInDb(int id) throws SQLException
+    {
+        PreparedStatement statement = connection.prepareStatement( SELECT_BY_ID_STATEMENT );
+        statement.setInt( 1, id );
+        resultSet = statement.executeQuery();
+        boolean inDb = resultSet.next();
+        statement.clearParameters();
+        statement.close();
+        return inDb;
+    }
+
 }

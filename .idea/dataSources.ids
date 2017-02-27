@@ -21,8 +21,8 @@
       </schema>
       <schema id="4" parent="1" name="spatial">
         <object-id>111185</object-id>
-        <introspection-state-number>1262</introspection-state-number>
-        <introspection-timestamp>2017-02-21.12:53:23.495</introspection-timestamp>
+        <introspection-state-number>180696</introspection-state-number>
+        <introspection-timestamp>2017-02-26.22:02:04.687</introspection-timestamp>
       </schema>
       <object-type id="5" parent="2" name="geometry_dump">
         <object-id>110096</object-id>
@@ -26168,7 +26168,7 @@
       </operator>
       <table id="4739" parent="4" name="lap">
         <object-id>111206</object-id>
-        <state-number>1259</state-number>
+        <state-number>180696</state-number>
       </table>
       <table id="4740" parent="4" name="sport">
         <object-id>111219</object-id>
@@ -81478,9 +81478,9 @@ umserver</columns>
         <data-type>xml[]</data-type>
       </argument>
       <column id="18239" parent="4739" name="id">
-        <state-number>1259</state-number>
+        <state-number>180696</state-number>
         <mandatory>1</mandatory>
-        <data-type>integer</data-type>
+        <data-type>bigint</data-type>
       </column>
       <column id="18240" parent="4739" name="b_lat">
         <state-number>1259</state-number>
@@ -81511,7 +81511,7 @@ umserver</columns>
         <data-type>geometry(LineString,4326)</data-type>
       </column>
       <index id="18247" parent="4739" name="lap_pkey">
-        <object-id>111209</object-id>
+        <object-id>111232</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>

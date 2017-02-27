@@ -34,7 +34,12 @@ public class Point
     @Override
     public String toString()
     {
-        return "(" + lat + ", " + lon + "), " + timeCaptured.toString( "yyyy-MM-dd'T'HH:mm:ss" );
+        String result;
+        if (timeCaptured != null)
+            result = "(" + lat + ", " + lon + "), " + timeCaptured.toString( "yyyy-MM-dd'T'HH:mm:ss" );
+        else
+            result = "(" + lat + ", " + lon + ")";
+        return result;
     }
 
     public String toStringTimeOnly()

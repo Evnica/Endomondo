@@ -1,6 +1,8 @@
 package com.evnica.endomondo.test;
 
+import com.evnica.endomondo.main.connect.DbConnector;
 import com.evnica.endomondo.main.decode.JSONContentParser;
+import com.evnica.endomondo.main.model.LapRepository;
 import com.evnica.endomondo.main.model.TargetGeometry;
 import com.evnica.endomondo.main.model.Workout;
 import com.evnica.endomondo.main.model.WorkoutJSON;
@@ -46,10 +48,15 @@ public class JSONContentParserTest
         WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentVasli, workoutVasli, TargetGeometry.BOTH );
         System.out.println(workoutJSON);
 
-        System.out.println('\n');
+        DbConnector.connectToDb();
+        LapRepository.setConnection( DbConnector.getConnection() );
+        LapRepository.insert( workoutJSON, true, TargetGeometry.LAPS );
+
+        DbConnector.closeConnection();
+        /*System.out.println('\n');
 
         workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentKari, workoutKari, TargetGeometry.BOTH );
-        System.out.println(workoutJSON);
+        System.out.println(workoutJSON);*/
     }
 
 }
