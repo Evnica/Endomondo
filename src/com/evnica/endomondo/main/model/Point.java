@@ -14,6 +14,7 @@ public class Point
 {
     private double lat, lon;
     private DateTime timeCaptured;
+    private double distance;
 
     public Point( double lat, double lon )
     {
@@ -29,6 +30,16 @@ public class Point
     public double getLon()
     {
         return lon;
+    }
+
+    public double getDistance()
+    {
+        return distance;
+    }
+
+    public void setDistance( double distance )
+    {
+        this.distance = distance;
     }
 
     @Override

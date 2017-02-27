@@ -102,7 +102,7 @@ public class JSONContentParser
                         pointsJSONArray.getJSONObject( 0 ).getDouble( "latitude" );
                         // if no exception occurred
                         List<Point> points = new ArrayList<>(  );
-                        double lat, lon;
+                        double lat, lon, distance;
                         JSONObject pointJSONObject;
                         String timestampString;
 
@@ -111,6 +111,7 @@ public class JSONContentParser
                             pointJSONObject = pointsJSONArray.getJSONObject( i );
                             lat = pointJSONObject.getDouble( "latitude" );
                             lon = pointJSONObject.getDouble( "longitude" );
+                            distance = pointJSONObject.getDouble( "distance" );
 
                             timestampString = pointJSONObject.getString( "time" );
                             try
@@ -119,6 +120,7 @@ public class JSONContentParser
                                 DateTime timeCaptured = formatter.parseDateTime( timestampString );
                                 Point point = new Point( lat, lon );
                                 point.setTimeCaptured( timeCaptured );
+                                point.setDistance( distance );
                                 points.add( point );
                             }
                             catch ( Exception ex )

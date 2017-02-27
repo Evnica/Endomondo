@@ -29,6 +29,23 @@ public class Lap
         containsPolyline = false;
     }
 
+    public Lap(double beginLat, double beginLon)
+    {
+        this.beginLat = beginLat;
+        this.beginLon = beginLon;
+        containsPolyline = false;
+    }
+
+    public void setEndLat( double endLat )
+    {
+        this.endLat = endLat;
+    }
+
+    public void setEndLon( double endLon )
+    {
+        this.endLon = endLon;
+    }
+
     public void setSmallPolyline( Polyline smallPolyline )
     {
         this.smallPolyline = smallPolyline;
@@ -42,7 +59,7 @@ public class Lap
 
     public void setId (int order)
     {
-        this.id = ( long ) ( workoutId * 100L + order );
+        this.id =  workoutId * 1000L + order ;
     }
 
     public double getBeginLat()

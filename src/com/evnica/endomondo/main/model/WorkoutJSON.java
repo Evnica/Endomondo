@@ -54,29 +54,33 @@ public class WorkoutJSON extends Workout
         // less than 2 points is not a line/polyline
         if (points != null && points.size() > 1)
         {
-            laps = new ArrayList<>(  );
-            int i = 0;
+            laps = new ArrayList<>();
             int order = 0; // for lap id
             Polyline polyline = new Polyline();
-
-            for ( Point point: points )
+            Point previous = points.get( 0 );
+            polyline.addPoint( previous );
+            Lap lap = new Lap(previous.getLat(), previous.getLon());
+            double tolerance = 1E-6;
+            for (int i = 1; i < points.size(); i++)
             {
-                i++;
-                polyline.addPoint( point );
-                // each polyline should contain no more than 10 points
-                if ( polyline.size() == 10 || i == points.size())
+                Point current = points.get( i );
+                if (Math.abs( current.getDistance() - previous.getDistance() ) >= tolerance)
                 {
-                    Lap lap = new Lap(  polyline.getPoint( 0 ).getLat(),
-                            polyline.getPoint( 0 ).getLon(),
-                            polyline.getPoint( polyline.size() - 1 ).getLat(),
-                            polyline.getPoint( polyline.size() - 1 ).getLon());
+                    lap.setEndLat( current.getLat() );
+                    lap.setEndLon( current.getLon() );
+                    polyline.addPoint( current );
+                    lap.setWorkoutId( getId() );
                     lap.setId( order );
                     lap.setSmallPolyline( polyline );
-                    lap.setOffset( polyline.getPoint( 0 ).getTimeCaptured() );
-                    lap.setDuration( polyline.getPoint( polyline.size() - 1 ).getTimeCaptured().getMillis() -
-                            polyline.getPoint( 0 ).getTimeCaptured().getMillis() );
+                    lap.setOffset( previous.getTimeCaptured());
+                    lap.setDuration( current.getTimeCaptured().getMillis() - previous.getTimeCaptured().getMillis() );
                     laps.add( lap );
-                    polyline = new Polyline(  );
+                    order++;
+
+                    previous = current;
+                    lap = new Lap(previous.getLat(), previous.getLon());
+                    polyline = new Polyline();
+                    polyline.addPoint( previous );
                 }
             }
         }
