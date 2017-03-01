@@ -50,8 +50,8 @@ public class JSONContentParserTest
 
         //System.out.println('\n');
 
-        workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentKari, workoutKari, TargetGeometry.BOTH );
-        System.out.println(workoutJSON);
+        //workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentKari, workoutKari, TargetGeometry.BOTH );
+        //System.out.println(workoutJSON);
 
         DbConnector.connectToDb();
         LapRepository.setConnection( DbConnector.getConnection() );
