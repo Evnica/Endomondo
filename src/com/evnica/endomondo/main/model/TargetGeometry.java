@@ -9,5 +9,5 @@ package com.evnica.endomondo.main.model;
  */
 public enum TargetGeometry
 {
-    POINTS, LAPS, BOTH;
+    POINTS, LAPS, BOTH
 }
