@@ -26,9 +26,9 @@ public class WorkoutTableFilling
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(WorkoutTableFilling.class.getName());
     private static int iterationSize = 5000;
-    private static int startId = 25239950;
-    private static int workoutsBefore = 197601;
-    private static int endId = 25238995;//startId - iterationSize;
+    private static int startId = 23305000;
+    private static int workoutsBefore = 225236;
+    private static int endId = startId - iterationSize;
     private static int cycle = 0;
     private static DateTime start = new DateTime(  ), end;
     private static int invalidUserCount = 0, rejectedIdCount = 0, addedUserCount = 0, addedWorkoutCount = 0;
@@ -44,18 +44,19 @@ public class WorkoutTableFilling
             DbConnector.connectToDb();
             WorkoutRepository.setConnection( DbConnector.getConnection() );
 
-            while ( cycle < 1 )
+            while ( cycle < 2 )
             {
                 //start = new DateTime( );
-                System.out.println("Iteration " + cycle /*+ ". Start: " + start*/);
+                System.out.println("Iteration " + cycle + ". Start: " + start);
                 rejectedIds = new ArrayList<>(  );
 /*                invalidUserCount = 0;
                 addedUserCount = 0;
                 rejectedIdCount = 0;
                 addedWorkoutCount = 0;*/
-                System.out.println("Decreasing from "+ startId + " to " + endId + "(" + (startId - endId) /*iterationSize*/ + " users)");
-                //System.out.println("Number of workouts before processing: " + workoutsBefore);
-                for (int id = startId; id > endId; id--)
+                System.out.println("Decreasing from "+ startId + " to " + endId + "(" + /*(startId - endId)*/ iterationSize + " users)");
+                System.out.println("Number of workouts before processing: " + workoutsBefore);
+                int id;
+                for (id = startId; id > endId; id--)
                 {
                     retrieveWorkoutsForUser( id );
                     if (id%499 == 0)
@@ -71,7 +72,8 @@ public class WorkoutTableFilling
                         /*LOGGER.debug( "Processed: " + (startId - id ) + "ids, elapsed from iteration start " + duration);
                         LOGGER.debug( "Users added from iteration start: " + addedUserCount + ", rejected: " + rejectedIdCount + ", invalid: " + invalidUserCount );
                         LOGGER.debug( "Workouts added from iteration start: " + addedWorkoutCount );*/
-                        LOGGER.debug( ( idOffset - id) +";" + duration + ";" + addedUserCount + ";" +
+                        LOGGER.debug( cycle + ";" + startId + ";" + endId + ";" +
+                                ( idOffset - id) +";" + duration + ";" + addedUserCount + ";" +
                                 rejectedIdCount + ";" + invalidUserCount + ";" + addedWorkoutCount );
                     }
                 }
@@ -91,6 +93,10 @@ public class WorkoutTableFilling
                 }*/
 
                 printStatistics();
+                duration = new DateTime().getMillis() - start.getMillis();
+                LOGGER.debug( cycle + ";" + startId + ";" + endId + ";" +
+                        ( idOffset - id) +";" + duration + ";" + addedUserCount + ";" +
+                        rejectedIdCount + ";" + invalidUserCount + ";" + addedWorkoutCount );
                 workoutsBefore += addedWorkoutCount;
                 startId = endId;
                 endId -= iterationSize;
