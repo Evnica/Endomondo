@@ -7,7 +7,9 @@ import com.evnica.endomondo.main.model.WorkoutRepository;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
@@ -26,17 +28,57 @@ public class WorkoutTableFilling
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(WorkoutTableFilling.class.getName());
     private static int iterationSize = 5000;
-    private static int startId = 23305000;
-    private static int workoutsBefore = 225236;
+    private static int startId = 27747900; //2016-03-31T23:58:40 //2015-01-01T00:54:51 is 19628000
+    private static int workoutsBefore;
+    private static int numOfIterations = 1;
     private static int endId = startId - iterationSize;
     private static int cycle = 0;
     private static DateTime start = new DateTime(  ), end;
     private static int invalidUserCount = 0, rejectedIdCount = 0, addedUserCount = 0, addedWorkoutCount = 0;
     private static double duration;
     private static List<Integer> rejectedIds;
-    private static List<Workout> notInsertedWorkouts = new ArrayList<>();
+    //private static List<Workout> notInsertedWorkouts = new ArrayList<>();
 
     public static void main( String[] args )
+    {
+        readParameters();
+        retrieve();
+    }
+
+    private static void readParameters()
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("IDs processed in DESCENDANT order");
+        System.out.print("Enter start id:");
+        try
+        {
+            startId = Integer.parseInt(reader.readLine());
+            System.out.print("Enter number of iterations:");
+            numOfIterations = Integer.parseInt(reader.readLine());
+            System.out.println("Iteration size 5000. Want to change? (Y)");
+            if (reader.readLine().toLowerCase().equals( "y" ))
+            {
+                System.out.print("Enter iteration size:");
+                iterationSize = Integer.parseInt(reader.readLine());
+            }
+
+            System.out.println("Start: " + startId + ", end after: " + numOfIterations + " iterations (end id " +
+                    (startId - numOfIterations*iterationSize) + "), iteration size: " + iterationSize);
+            System.out.println("Please input db password:");
+            DbConnector.setPwd( reader.readLine() );
+        }
+        catch(NumberFormatException nfe)
+        {
+            System.err.println("Invalid Format!");
+        }
+        catch ( IOException e )
+        {
+            e.printStackTrace();
+            System.exit( -1 );
+        }
+    }
+
+    private static void retrieve()
     {
         int idOffset = startId;
         try
@@ -44,7 +86,7 @@ public class WorkoutTableFilling
             DbConnector.connectToDb();
             WorkoutRepository.setConnection( DbConnector.getConnection() );
 
-            while ( cycle < 2 )
+            while ( cycle < numOfIterations )
             {
                 //start = new DateTime( );
                 System.out.println("Iteration " + cycle + ". Start: " + start);
@@ -188,6 +230,7 @@ public class WorkoutTableFilling
                 rejectedIds.add( id );
                 try
                 {
+                    LOGGER.error( "AAAAAAAAA!!! Connection lost! Trying to sleep for 30s, id cause: " + id );
                     Thread.sleep( 30000 );
                 } catch ( InterruptedException e1 )
                 {
@@ -200,23 +243,6 @@ public class WorkoutTableFilling
                 LOGGER.error( "X3 what is that: ", e );
             }
         }
-    }
-
-    private static void processNotInserted()
-    {
-        for (Workout w: notInsertedWorkouts)
-        {
-            try
-            {
-                WorkoutRepository.insert( w );
-                addedWorkoutCount++;
-            }
-            catch ( SQLException e )
-            {
-                System.out.println(w.getId() + " " + e);
-            }
-        }
-        notInsertedWorkouts = new ArrayList<>(  );
     }
 
     private static void processRejectedUser(int id)
@@ -267,4 +293,21 @@ public class WorkoutTableFilling
                 LOGGER.debug( "Users added from iteration start: " + addedUserCount + ", rejected: " + rejectedIdCount + ", invalid: " + invalidUserCount );
                 LOGGER.debug( "Workouts added from iteration start: " + addedWorkoutCount );*/
     }
+
+/*    private static void processNotInserted()
+    {
+        for (Workout w: notInsertedWorkouts)
+        {
+            try
+            {
+                WorkoutRepository.insert( w );
+                addedWorkoutCount++;
+            }
+            catch ( SQLException e )
+            {
+                System.out.println(w.getId() + " " + e);
+            }
+        }
+        notInsertedWorkouts = new ArrayList<>(  );
+    }*/
 }
