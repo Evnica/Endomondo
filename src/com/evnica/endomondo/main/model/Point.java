@@ -2,6 +2,8 @@ package com.evnica.endomondo.main.model;
 
 import org.joda.time.DateTime;
 
+import java.sql.SQLException;
+
 /**
  * Class: Point
  * Version: 0.1
@@ -14,12 +16,42 @@ public class Point
 {
     private double lat, lon;
     private DateTime timeCaptured;
-    private double distance;
+    private double distance, duration;
+    private int order;
 
     public Point( double lat, double lon )
     {
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public Point( double lat, double lon, DateTime timeCaptured, double distance, double duration )
+    {
+        this.lat = lat;
+        this.lon = lon;
+        this.timeCaptured = timeCaptured;
+        this.distance = distance;
+        this.duration = duration;
+    }
+
+    public int getOrder()
+    {
+        return order;
+    }
+
+    public void setOrder( int order )
+    {
+        this.order = order;
+    }
+
+    public double getDuration()
+    {
+        return duration;
+    }
+
+    public void setDuration( double duration )
+    {
+        this.duration = duration;
     }
 
     public double getLat()
@@ -87,5 +119,10 @@ public class Point
             }
         }
         return equal;
+    }
+
+    public org.postgis.Point toGeom() throws SQLException
+    {
+        return new org.postgis.Point( toWKTString() );
     }
 }
