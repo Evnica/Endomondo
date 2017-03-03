@@ -29,7 +29,10 @@ public class DbConnector
 
     public static void connectToDb() throws ClassNotFoundException, SQLException
     {
-        readPassword ();
+        if ( pwd == null )
+        {
+            readPassword ();
+        }
         connection = DriverManager.getConnection( DB_URL, USER, pwd );
     }
 
@@ -65,6 +68,11 @@ public class DbConnector
 
             pwd = new String(passwordField.getPassword());
         }
+    }
+
+    public static void setPwd(String pwd)
+    {
+        DbConnector.pwd = pwd;
     }
 
 }
