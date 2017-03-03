@@ -1,9 +1,8 @@
 package com.evnica.endomondo.main.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.io.*;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Class: WorkoutRepository
@@ -18,6 +17,7 @@ public class WorkoutRepository
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, sport, user_id, start_dt) VALUES (?, ?, ?, ?)";
+    private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME;
 
     private static Connection connection;
 
@@ -40,6 +40,35 @@ public class WorkoutRepository
         statement.close();
 
         return rowsAffected;
+    }
+
+    public static void toCsv(String filename)
+    {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try (
+             PrintWriter writer = new PrintWriter(new OutputStreamWriter
+                        (new BufferedOutputStream(new FileOutputStream(filename)), "UTF-8"));
+             Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)
+        )
+        {
+            statement.setFetchSize(1);
+
+            try (ResultSet resultSet = statement.executeQuery(SELECT_ALL_STATEMENT))
+            {
+                while (resultSet.next())
+                {
+                    String time = format.format(resultSet.getTimestamp("start_dt"));
+                    writer.append(Integer.toString(resultSet.getInt("id"))).append(",")
+                          .append((Integer.toString(resultSet.getInt("sport")))).append(",")
+                          .append((Integer.toString(resultSet.getInt("user_id")))).append(",")
+                          .append(time).append("\n");
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
     }
 }

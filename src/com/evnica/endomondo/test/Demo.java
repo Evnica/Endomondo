@@ -1,10 +1,13 @@
 package com.evnica.endomondo.test;
 
+import com.evnica.endomondo.main.connect.DbConnector;
+import com.evnica.endomondo.main.model.WorkoutRepository;
 import com.sun.deploy.net.HttpResponse;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +29,20 @@ public class Demo
 
     public static void main( String[] args )
     {
+        try
+        {
+            DbConnector.connectToDb();
+            System.out.println("Connected");
+            WorkoutRepository.setConnection(DbConnector.getConnection());
+            WorkoutRepository.toCsv("workout-user.txt");
+            System.out.println("Done");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
         /*SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
         Date workoutDate = dateFormat.parse( "24.10.2015 10:01" );
         System.out.println(workoutDate.getTime()/1000);*/
