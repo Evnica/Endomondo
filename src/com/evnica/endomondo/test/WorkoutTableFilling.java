@@ -31,7 +31,7 @@ public class WorkoutTableFilling
     private static int startId = 27747900; //2016-03-31T23:58:40 //2015-01-01T00:54:51 is 19628000
     private static int workoutsBefore;
     private static int numOfIterations = 1;
-    private static int endId = startId - iterationSize;
+    private static int endId;
     private static int cycle = 0;
     private static DateTime start = new DateTime(  ), end;
     private static int invalidUserCount = 0, rejectedIdCount = 0, addedUserCount = 0, addedWorkoutCount = 0;
@@ -61,6 +61,7 @@ public class WorkoutTableFilling
                 System.out.print("Enter iteration size:");
                 iterationSize = Integer.parseInt(reader.readLine());
             }
+            endId = startId - iterationSize;
 
             System.out.println("Start: " + startId + ", end after: " + numOfIterations + " iterations (end id " +
                     (startId - numOfIterations*iterationSize) + "), iteration size: " + iterationSize);
