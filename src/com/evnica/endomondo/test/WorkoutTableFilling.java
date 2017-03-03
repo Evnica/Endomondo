@@ -26,8 +26,8 @@ public class WorkoutTableFilling
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(WorkoutTableFilling.class.getName());
     private static int iterationSize = 5000;
-    private static int startId = 23305000;
-    private static int workoutsBefore = 225236;
+    private static int startId = 22000000; // 22mi created on 2015-04-30 // 13603000; //13738000; // 2014-01-02T18:26:24 - 13738047
+    private static int workoutsBefore = 24943;
     private static int endId = startId - iterationSize;
     private static int cycle = 0;
     private static DateTime start = new DateTime(  ), end;
@@ -44,7 +44,7 @@ public class WorkoutTableFilling
             DbConnector.connectToDb();
             WorkoutRepository.setConnection( DbConnector.getConnection() );
 
-            while ( cycle < 2 )
+            while ( cycle < 40 )
             {
                 //start = new DateTime( );
                 System.out.println("Iteration " + cycle + ". Start: " + start);
@@ -93,7 +93,7 @@ public class WorkoutTableFilling
                 }*/
 
                 printStatistics();
-                duration = new DateTime().getMillis() - start.getMillis();
+                duration = (new DateTime().getMillis() - start.getMillis())/1000;
                 LOGGER.debug( cycle + ";" + startId + ";" + endId + ";" +
                         ( idOffset - id) +";" + duration + ";" + addedUserCount + ";" +
                         rejectedIdCount + ";" + invalidUserCount + ";" + addedWorkoutCount );
@@ -101,6 +101,7 @@ public class WorkoutTableFilling
                 startId = endId;
                 endId -= iterationSize;
                 cycle++;
+                start = new DateTime();
             }
             DbConnector.closeConnection();
         }
@@ -183,6 +184,12 @@ public class WorkoutTableFilling
                 invalidUserCount++;
                  System.out.println(id + " invalid (500)");
             }
+            else if (e.getMessage().contains("403"))
+            {
+                LOGGER.error("FATAL: we are being kicked out! Last processed id: " + id);
+                System.out.println("FATAL: we are being kicked out! Last processed id: " + id);
+                System.exit(0);
+            }
             else if (e instanceof UnknownHostException || e instanceof ConnectException)
             {
                 rejectedIds.add( id );
@@ -260,9 +267,9 @@ public class WorkoutTableFilling
         sec = (int) (duration - min * 60);
         System.out.println("Duration: " + hour + ":" + min + ":" + sec);
         System.out.println("Users with cycling activities: " + addedUserCount);
-        System.out.println("Workouts added: " + addedWorkoutCount);
-        System.out.println("No user with such ID: " + invalidUserCount);
         System.out.println("Rejected due to multiple requests: " + rejectedIdCount);
+        System.out.println("No user with such ID: " + invalidUserCount);
+        System.out.println("Workouts added: " + addedWorkoutCount);
                 /*LOGGER.debug( "ITERATION ENDED. Duration: " + hour + ":" + min + ":" + sec);
                 LOGGER.debug( "Users added from iteration start: " + addedUserCount + ", rejected: " + rejectedIdCount + ", invalid: " + invalidUserCount );
                 LOGGER.debug( "Workouts added from iteration start: " + addedWorkoutCount );*/
