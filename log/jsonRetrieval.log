@@ -1,0 +1,24 @@
+[{"time":"2017-03-05 21-56-08
+","start_user":0
+,"end_user":1
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-05 21-57-15
+","start_user":1
+,"end_user":2
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-05 22-41-19
+","start_user":3
+,"end_user":13
+,"rejected_users":[13573476]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-05 22-46-39
+","start_user":13
+,"end_user":23
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},

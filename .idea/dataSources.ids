@@ -21,8 +21,8 @@
       </schema>
       <schema id="4" parent="1" name="spatial">
         <object-id>111185</object-id>
-        <introspection-state-number>279974</introspection-state-number>
-        <introspection-timestamp>2017-03-02.19:06:54.667</introspection-timestamp>
+        <introspection-state-number>348919</introspection-state-number>
+        <introspection-timestamp>2017-03-05.17:49:10.024</introspection-timestamp>
       </schema>
       <object-type id="5" parent="2" name="geometry_dump">
         <object-id>110096</object-id>
@@ -26168,7 +26168,7 @@
       </operator>
       <table id="4739" parent="4" name="athlete">
         <object-id>111241</object-id>
-        <state-number>279970</state-number>
+        <state-number>348919</state-number>
       </table>
       <table id="4740" parent="4" name="lap">
         <object-id>111206</object-id>
@@ -81518,267 +81518,271 @@ umserver</columns>
         <state-number>279970</state-number>
         <data-type>timestamp</data-type>
       </column>
-      <index id="18249" parent="4739" name="athlete_pkey">
+      <column id="18249" parent="4739" name="invalid">
+        <state-number>348919</state-number>
+        <data-type>boolean</data-type>
+      </column>
+      <index id="18250" parent="4739" name="athlete_pkey">
         <object-id>111244</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18250" parent="4739" name="athlete_pkey">
+      <key id="18251" parent="4739" name="athlete_pkey">
         <columns>id</columns>
         <underlying-index>athlete_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18251" parent="4740" name="id">
+      <column id="18252" parent="4740" name="id">
         <state-number>180696</state-number>
         <mandatory>1</mandatory>
         <data-type>bigint</data-type>
       </column>
-      <column id="18252" parent="4740" name="b_lat">
+      <column id="18253" parent="4740" name="b_lat">
         <state-number>1259</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18253" parent="4740" name="b_lon">
+      <column id="18254" parent="4740" name="b_lon">
         <state-number>1259</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18254" parent="4740" name="e_lat">
+      <column id="18255" parent="4740" name="e_lat">
         <state-number>1259</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18255" parent="4740" name="e_lon">
+      <column id="18256" parent="4740" name="e_lon">
         <state-number>1259</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18256" parent="4740" name="with_geom">
+      <column id="18257" parent="4740" name="with_geom">
         <state-number>1259</state-number>
         <data-type>boolean</data-type>
       </column>
-      <column id="18257" parent="4740" name="workout_id">
+      <column id="18258" parent="4740" name="workout_id">
         <state-number>1259</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18258" parent="4740" name="geom">
+      <column id="18259" parent="4740" name="geom">
         <state-number>1259</state-number>
         <data-type>geometry(LineString,4326)</data-type>
       </column>
-      <column id="18259" parent="4740" name="timestamp">
+      <column id="18260" parent="4740" name="timestamp">
         <state-number>183720</state-number>
         <data-type>timestamp</data-type>
       </column>
-      <index id="18260" parent="4740" name="lap_pkey">
+      <index id="18261" parent="4740" name="lap_pkey">
         <object-id>111232</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18261" parent="4740" name="lap_pkey">
+      <key id="18262" parent="4740" name="lap_pkey">
         <columns>id</columns>
         <underlying-index>lap_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18262" parent="4741" name="id">
+      <column id="18263" parent="4741" name="id">
         <state-number>279973</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18263" parent="4741" name="wrkt_id">
+      <column id="18264" parent="4741" name="wrkt_id">
         <state-number>279973</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18264" parent="4741" name="distance">
+      <column id="18265" parent="4741" name="distance">
         <state-number>279973</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18265" parent="4741" name="duration">
+      <column id="18266" parent="4741" name="duration">
         <state-number>279973</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18266" parent="4741" name="time">
+      <column id="18267" parent="4741" name="time">
         <state-number>279973</state-number>
         <data-type>timestamp</data-type>
       </column>
-      <column id="18267" parent="4741" name="geom">
+      <column id="18268" parent="4741" name="geom">
         <state-number>279974</state-number>
         <data-type>geometry(Point,4326)</data-type>
       </column>
-      <index id="18268" parent="4741" name="pk_point">
+      <index id="18269" parent="4741" name="pk_point">
         <object-id>111259</object-id>
         <columns>id
 wrkt_id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18269" parent="4741" name="pk_point">
+      <key id="18270" parent="4741" name="pk_point">
         <columns>id
 wrkt_id</columns>
         <underlying-index>pk_point</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18270" parent="4742" name="id">
+      <column id="18271" parent="4742" name="id">
         <state-number>1260</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18271" parent="4742" name="name">
+      <column id="18272" parent="4742" name="name">
         <state-number>1260</state-number>
         <data-type>varchar</data-type>
       </column>
-      <index id="18272" parent="4742" name="sport_pkey">
+      <index id="18273" parent="4742" name="sport_pkey">
         <object-id>111225</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18273" parent="4742" name="sport_pkey">
+      <key id="18274" parent="4742" name="sport_pkey">
         <columns>id</columns>
         <underlying-index>sport_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18274" parent="4743" name="user_id">
+      <column id="18275" parent="4743" name="user_id">
         <state-number>279971</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18275" parent="4743" name="sport">
+      <column id="18276" parent="4743" name="sport">
         <state-number>279971</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18276" parent="4743" name="count">
+      <column id="18277" parent="4743" name="count">
         <state-number>279971</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18277" parent="4743" name="duration">
+      <column id="18278" parent="4743" name="duration">
         <state-number>279971</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18278" parent="4743" name="distance">
+      <column id="18279" parent="4743" name="distance">
         <state-number>279971</state-number>
         <data-type>double precision</data-type>
       </column>
-      <index id="18279" parent="4743" name="pk_summary">
+      <index id="18280" parent="4743" name="pk_summary">
         <object-id>111249</object-id>
         <columns>user_id
 sport</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18280" parent="4743" name="pk_summary">
+      <key id="18281" parent="4743" name="pk_summary">
         <columns>user_id
 sport</columns>
         <underlying-index>pk_summary</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18281" parent="4744" name="id">
+      <column id="18282" parent="4744" name="id">
         <state-number>1256</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18282" parent="4744" name="gender">
+      <column id="18283" parent="4744" name="gender">
         <state-number>1256</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18283" parent="4744" name="ccl_sp">
+      <column id="18284" parent="4744" name="ccl_sp">
         <state-number>1256</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18284" parent="4744" name="ccl_tr">
+      <column id="18285" parent="4744" name="ccl_tr">
         <state-number>1256</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18285" parent="4744" name="mnt_bk">
+      <column id="18286" parent="4744" name="mnt_bk">
         <state-number>1256</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18286" parent="4744" name="dt_crtd">
+      <column id="18287" parent="4744" name="dt_crtd">
         <state-number>1256</state-number>
         <data-type>timestamp</data-type>
       </column>
-      <index id="18287" parent="4744" name="user_pkey">
+      <index id="18288" parent="4744" name="user_pkey">
         <object-id>111189</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18288" parent="4744" name="user_pkey">
+      <key id="18289" parent="4744" name="user_pkey">
         <columns>id</columns>
         <underlying-index>user_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="18289" parent="4745" name="id">
+      <column id="18290" parent="4745" name="id">
         <state-number>1258</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18290" parent="4745" name="sport">
+      <column id="18291" parent="4745" name="sport">
         <state-number>1258</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18291" parent="4745" name="start_dt">
+      <column id="18292" parent="4745" name="start_dt">
         <state-number>1258</state-number>
         <data-type>timestamp</data-type>
       </column>
-      <column id="18292" parent="4745" name="user_id">
+      <column id="18293" parent="4745" name="user_id">
         <state-number>1258</state-number>
         <data-type>integer</data-type>
       </column>
-      <index id="18293" parent="4745" name="workout_pkey">
+      <index id="18294" parent="4745" name="workout_pkey">
         <object-id>111199</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18294" parent="4745" name="workout_pkey">
+      <key id="18295" parent="4745" name="workout_pkey">
         <columns>id</columns>
         <underlying-index>workout_pkey</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="18295" parent="4745" name="fk_sport">
+      <foreign-key id="18296" parent="4745" name="fk_sport">
         <columns>sport</columns>
         <ref-key>~.sport.sport_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="18296" parent="4745" name="workout_user_id_fkey">
+      <foreign-key id="18297" parent="4745" name="workout_user_id_fkey">
         <columns>user_id</columns>
         <ref-key>~.user.user_pkey</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="18297" parent="4746" name="id">
+      <column id="18298" parent="4746" name="id">
         <state-number>279972</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
       </column>
-      <column id="18298" parent="4746" name="distance">
+      <column id="18299" parent="4746" name="distance">
         <state-number>279972</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18299" parent="4746" name="duration">
+      <column id="18300" parent="4746" name="duration">
         <state-number>279972</state-number>
         <data-type>double precision</data-type>
       </column>
-      <column id="18300" parent="4746" name="weather">
+      <column id="18301" parent="4746" name="weather">
         <state-number>279972</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18301" parent="4746" name="athl_id">
+      <column id="18302" parent="4746" name="athl_id">
         <state-number>279972</state-number>
         <data-type>integer</data-type>
       </column>
-      <column id="18302" parent="4746" name="show_map">
+      <column id="18303" parent="4746" name="show_map">
         <state-number>279972</state-number>
         <data-type>boolean</data-type>
       </column>
-      <index id="18303" parent="4746" name="wrkt_dtl_pkey">
+      <index id="18304" parent="4746" name="wrkt_dtl_pkey">
         <object-id>111254</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="18304" parent="4746" name="wrkt_dtl_pkey">
+      <key id="18305" parent="4746" name="wrkt_dtl_pkey">
         <columns>id</columns>
         <underlying-index>wrkt_dtl_pkey</underlying-index>
         <primary>1</primary>

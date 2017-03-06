@@ -18,11 +18,22 @@ public class Point
     private DateTime timeCaptured;
     private double distance, duration;
     private int order;
+    private org.postgis.Point point;
 
     public Point( double lat, double lon )
     {
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public Point ( org.postgis.Point point)
+    {
+        this.point = point;
+    }
+
+    public org.postgis.Point getPoint()
+    {
+        return point;
     }
 
     public Point( double lat, double lon, DateTime timeCaptured, double distance, double duration )
@@ -73,6 +84,16 @@ public class Point
     {
         this.distance = distance;
     }
+
+    public String toJSONString()
+    {
+        return "{\"lat\":" + lat + "," +
+                "\"lon\":" + lon + "," +
+                "\"dist\":"+ distance + "," +
+                "\"dur\":" + duration + "," +
+                "\"time\":"+ timeCaptured + "}";
+    }
+
 
     @Override
     public String toString()

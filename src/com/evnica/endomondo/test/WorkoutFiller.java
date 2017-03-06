@@ -23,10 +23,10 @@ public class WorkoutFiller {
 
     public static void main(String[] args) throws Exception
     {
-        InputStream fileStream = new FileInputStream( new File("testFiles/4000users_26401962_to_26412218.txt"));
+        InputStream fileStream = new FileInputStream( new File("testFiles/workout-user.txt"));
         String userWorkoutPairs = new Scanner(fileStream, "UTF-8").useDelimiter("\\A").next();
         String[] individualPairs = userWorkoutPairs.split("\n");
-        String[] entry; //667465434	2	2016-02-05 18:45:54.000000	26401962
+        String[] entry;
         DateTime timestamp;
         int workoutId, userId, sport;
         DbConnector.connectToDb();
@@ -35,11 +35,13 @@ public class WorkoutFiller {
 
         for (String individualPair : individualPairs)
         {
-            entry = individualPair.split("\t");
-            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(entry[2].substring(0, 19));
+            //id,sport,user_id,start_dt
+            entry = individualPair.split(",");
             workoutId = Integer.parseInt(entry[0]);
             sport = Integer.parseInt(entry[1]);
-            userId = Integer.parseInt(entry[3].trim());
+            userId = Integer.parseInt(entry[2]);
+            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(entry[3].substring(0, 19));
+
 
             WorkoutRepository.insert(new Workout(workoutId, sport, timestamp, userId));
         }

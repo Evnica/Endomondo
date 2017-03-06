@@ -22,10 +22,13 @@ public class JSONContentParser
 {
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
 
+
+
     public static WorkoutJSON parseWorkoutUrl( String jsonContent, Workout workout, TargetGeometry targetGeometry)
     {
         WorkoutJSON result = null;
         List<Lap> laps;
+
         try
         {
             JSONObject workoutObject = new JSONObject( jsonContent );
@@ -170,6 +173,8 @@ public class JSONContentParser
 
         return result;
     }
+
+
 
     public static User parseUser( String urlContent)
     {

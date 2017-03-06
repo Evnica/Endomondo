@@ -1,8 +1,12 @@
 package com.evnica.endomondo.main.model;
 
+import org.joda.time.DateTime;
+
 import java.io.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class: WorkoutRepository
@@ -18,12 +22,36 @@ public class WorkoutRepository
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, sport, user_id, start_dt) VALUES (?, ?, ?, ?)";
     private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME;
+    private static final String SELECT_BY_ID_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
+                                " WHERE user_id = ?";
+    private final static String SELECT_USERS = "SELECT DISTINCT user_id from " +
+            SCHEMA_NAME + "." + TABLE_NAME + " ORDER BY user_id";
 
     private static Connection connection;
 
     public static void setConnection( Connection connection )
     {
         WorkoutRepository.connection = connection;
+    }
+
+    public static List<Workout> selectByUserId(int id) throws SQLException
+    {
+        List<Workout> workouts = new ArrayList<>(  );
+
+        PreparedStatement statement = connection.prepareStatement( SELECT_BY_ID_STATEMENT );
+        statement.setInt( 1, id );
+        ResultSet resultSet = statement.executeQuery();
+
+        while ( resultSet.next() )
+        {
+            workouts.add( new Workout( resultSet.getInt( "id" ), resultSet.getInt( "sport" ),
+                                        new DateTime( resultSet.getTimestamp( "start_dt" ).getTime() ),
+                                        resultSet.getInt( "user_id" )));
+        }
+        statement.clearParameters();
+        statement.close();
+
+        return workouts;
     }
 
     public static int insert(Workout workout) throws SQLException
@@ -70,5 +98,21 @@ public class WorkoutRepository
             e.printStackTrace();
         }
 
+    }
+
+    // load all distinct users from db
+    public static List<Integer> getUserIds() throws SQLException
+    {
+        ResultSet resultSet;
+        List<Integer> ids = new ArrayList<>(  );
+        PreparedStatement statement = connection.prepareStatement( SELECT_USERS );
+        resultSet = statement.executeQuery();
+        while ( resultSet.next() )
+        {
+            ids.add( resultSet.getInt( 1 ) );
+        }
+        statement.close();
+        resultSet.close();
+        return ids;
     }
 }

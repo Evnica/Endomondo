@@ -46,7 +46,18 @@ public class UrlConnector
         url = USER_REST_URL + id;
     }
 
+    public static String getUserUrlContent(int id) throws IOException
+    {
+        setUrlUser( id );
+        return getUrlContent();
+    }
+
     public static String getUrlContent() throws IOException
+    {
+        return getUrlContent( url );
+    }
+
+    private static String getUrlContent(String url) throws IOException
     {
         InputStream inputStream = new URL(url).openStream();
         return new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next();
