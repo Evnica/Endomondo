@@ -38,136 +38,166 @@ public class DataRetrieval
     private static int rejectedIdCount, invalidIdCount;
     private static List<Integer> rejectedUserIds = new ArrayList<>(  );
     private static List<Integer> rejectedWorkoutIds = new ArrayList<>(  );
+    private static int numOfRandoms, iterationSize, start;
 
     public static void main( String[] args )
     {
-        int numOfRandoms = 100;
-        int iterationSize = 10;
-        Random random = new Random();
-        IntStream intStream = random.ints(8, 20);
-        List<Integer> randomBetween8And20 = intStream
-                .limit(numOfRandoms)
-                .boxed()
-                .collect( Collectors.toList());
+        readParameters();
+        // 100, 10, 1003?
+        retrieveData(numOfRandoms, iterationSize, start);
+    }
 
+    private static void readParameters()
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter number of random integers for delay:");
         try
         {
-            DbConnector.connectToDb();
-            WorkoutRepository.setConnection( DbConnector.getConnection() );
-            // get distinct user ids
-            List<Integer> ids = WorkoutRepository.getUserIds();
-            System.out.println( ids.size() + " distinct users in db. Starting data retrieval..." );
-            WorkoutRepository.setConnection( DbConnector.getConnection() );
-            //retrieve data for the first 5 users
-            int start = 3;
-            int end;
-            for (int j = 0; j < numOfRandoms; j++)
-            {
-                end = start + iterationSize;
+            numOfRandoms = Integer.parseInt(reader.readLine());
+            System.out.print("Enter iteration size:");
+            iterationSize = Integer.parseInt(reader.readLine());
+            System.out.println("Enter start id:");
+            start = Integer.parseInt(reader.readLine());
 
-                rejectedIdCount = 0; invalidIdCount = 0;
-                rejectedUserIds = new ArrayList<>(  );
-                rejectedWorkoutIds = new ArrayList<>(  );
-                String logMessage;
-                String notLoadedWorkoutIds = "";
-
-                for ( int i = start; i < end; i++ )
-                {
-                    logMessage = new DateTime( ).toString( "yyyy-MM-dd HH-mm-ss" );
-                    int id = ids.get( i );
-                    logMessage += ";" + id + ";";
-                    // load user data - done by UrlConnector
-                    String userJsonContent;
-                    try
-                    {
-                        userJsonContent = UrlConnector.getUserUrlContent( id );
-                    }
-                    catch ( IOException e )
-                    {
-                        userJsonContent = processUrlIOException( e, id, null );
-                    }
-                    if (userJsonContent != null)
-                    {
-                        writeToJson( id, "user", userJsonContent );
-                        logMessage += "valid;";
-                        System.out.println("User " + id + " json saved");
-                    }
-                    else {logMessage += "invalid;";}
-                    try
-                    {
-                        // select all workouts associated with this user id
-                        List<Workout> workouts = WorkoutRepository.selectByUserId( id );
-                        // for each workout load json content and save to json
-                        logMessage += workouts.size() + ";";
-
-                        for (Workout w: workouts)
-                        {
-                            String workoutContent;
-                            try
-                            {
-                                workoutContent = UrlConnector.getWorkoutJsonUrlContent( w );
-                            }
-                            catch ( IOException e )
-                            {
-                                workoutContent = processUrlIOException( e, w.getId(), w );
-                            }
-                            if (workoutContent != null)
-                            {
-                                writeToJson( w.getId(), "workout", workoutContent );
-                                logMessage += w.getId() + " ";
-                                System.out.println("Workout " + w.getId() + " json saved");
-                            }
-                            else
-                            {
-                                notLoadedWorkoutIds += w.getId() + " ";
-                            }
-                            try { Thread.sleep( 2000 ); }
-                            catch ( InterruptedException e ) { e.printStackTrace(); }
-                        }
-                        if (notLoadedWorkoutIds.length() > 0)
-                        {
-                            logMessage += ";" + notLoadedWorkoutIds;
-                        }
-                        else {logMessage += ";n/a";}
-
-                        LOGGER.info( logMessage );
-
-                    }
-                    catch ( SQLException e )
-                    {
-                        LOGGER.error( "user id " + id + ": " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                    System.out.println("User " + id + " data retrieved. Next!");
-                    Thread.sleep( randomBetween8And20.get( j ) );
-                }
-                jsonLog( start, end );
-                start = end;
-                System.out.println("Iteration " + j + " ended");
-                System.out.println("Rejected users: " + rejectedIdCount);
-                System.out.println("Invalid users: " + invalidIdCount);
-            }
-
+            System.out.println("Start: " + start + ", end id " + (numOfRandoms * iterationSize) + ", iteration size: "
+                    + iterationSize + ". Random delays apply");
+            System.out.println("Please input db password:");
+            DbConnector.setPwd( reader.readLine() );
         }
-        catch ( Exception e )
+        catch(NumberFormatException nfe)
+        {
+            System.err.println("Invalid Format!");
+            System.out.println("");
+        }
+        catch ( IOException e )
         {
             e.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                DbConnector.closeConnection();
-            } catch ( SQLException e )
-            {
-                e.printStackTrace();
-            }
+            System.exit( -1 );
         }
     }
 
-    private static void retrieveData(int start, int end)
+    private static void retrieveData(int numOfRandoms, int iterationSize, int start)
     {
+        {
+            Random random = new Random();
+            IntStream intStream = random.ints(8, 20);
+            List<Integer> randomBetween8And20 = intStream
+                    .limit(numOfRandoms)
+                    .boxed()
+                    .collect( Collectors.toList());
 
+            try
+            {
+                DbConnector.connectToDb();
+                WorkoutRepository.setConnection( DbConnector.getConnection() );
+                // get distinct user ids
+                List<Integer> ids = WorkoutRepository.getUserIds();
+                System.out.println( ids.size() + " distinct users in db. Starting data retrieval..." );
+                WorkoutRepository.setConnection( DbConnector.getConnection() );
+                int end;
+                for (int j = 0; j < numOfRandoms; j++)
+                {
+                    end = start + iterationSize;
+
+                    rejectedIdCount = 0; invalidIdCount = 0;
+                    rejectedUserIds = new ArrayList<>(  );
+                    rejectedWorkoutIds = new ArrayList<>(  );
+                    String logMessage;
+                    String notLoadedWorkoutIds = "";
+
+                    for ( int i = start; i < end; i++ )
+                    {
+                        logMessage = new DateTime( ).toString( "yyyy-MM-dd HH-mm-ss" );
+                        int id = ids.get( i );
+                        logMessage += ";" + id + ";";
+                        // load user data - done by UrlConnector
+                        String userJsonContent;
+                        try
+                        {
+                            userJsonContent = UrlConnector.getUserUrlContent( id );
+                        }
+                        catch ( IOException e )
+                        {
+                            userJsonContent = processUrlIOException( e, id, null );
+                        }
+                        if (userJsonContent != null)
+                        {
+                            writeToJson( id, "user", userJsonContent );
+                            logMessage += "valid;";
+                            System.out.println("User " + id + " json saved");
+                        }
+                        else {logMessage += "invalid;";}
+                        try
+                        {
+                            // select all workouts associated with this user id
+                            List<Workout> workouts = WorkoutRepository.selectByUserId( id );
+                            // for each workout load json content and save to json
+                            logMessage += workouts.size() + ";";
+
+                            for (Workout w: workouts)
+                            {
+                                String workoutContent;
+                                try
+                                {
+                                    workoutContent = UrlConnector.getWorkoutJsonUrlContent( w );
+                                }
+                                catch ( IOException e )
+                                {
+                                    workoutContent = processUrlIOException( e, w.getId(), w );
+                                }
+                                if (workoutContent != null)
+                                {
+                                    writeToJson( w.getId(), "workout", workoutContent );
+                                    logMessage += w.getId() + " ";
+                                    System.out.println("Workout " + w.getId() + " json saved");
+                                }
+                                else
+                                {
+                                    notLoadedWorkoutIds += w.getId() + " ";
+                                }
+                                try { Thread.sleep( 2000 ); }
+                                catch ( InterruptedException e ) { e.printStackTrace(); }
+                            }
+                            if (notLoadedWorkoutIds.length() > 0)
+                            {
+                                logMessage += ";" + notLoadedWorkoutIds;
+                            }
+                            else {logMessage += ";n/a";}
+
+                            LOGGER.info( logMessage );
+
+                        }
+                        catch ( SQLException e )
+                        {
+                            LOGGER.error( "user id " + id + ": " + e.getMessage());
+                            e.printStackTrace();
+                        }
+                        System.out.println("User " + id + " data retrieved. Next!");
+                        Thread.sleep( randomBetween8And20.get( j ) );
+                    }
+                    jsonLog( start, end );
+                    start = end;
+                    System.out.println("Iteration " + j + " ended");
+                    System.out.println("Rejected users: " + rejectedIdCount);
+                    System.out.println("Invalid users: " + invalidIdCount);
+                }
+
+            }
+            catch ( Exception e )
+            {
+                e.printStackTrace();
+            }
+            finally
+            {
+                try
+                {
+                    DbConnector.closeConnection();
+                } catch ( SQLException e )
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 
