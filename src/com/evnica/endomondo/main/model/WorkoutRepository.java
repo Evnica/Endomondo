@@ -21,7 +21,8 @@ public class WorkoutRepository
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, sport, user_id, start_dt) VALUES (?, ?, ?, ?)";
-    private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME;
+    private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
+                                                       " ORDER BY user_id";
     private static final String SELECT_BY_ID_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
                                 " WHERE user_id = ?";
     private final static String SELECT_USERS = "SELECT DISTINCT user_id from " +
@@ -72,32 +73,53 @@ public class WorkoutRepository
 
     public static void toCsv(String filename)
     {
+        String file = filename + "-1.txt";
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try (
-             PrintWriter writer = new PrintWriter(new OutputStreamWriter
-                        (new BufferedOutputStream(new FileOutputStream(filename)), "UTF-8"));
-             Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)
-        )
+        try
         {
-            statement.setFetchSize(1);
-
-            try (ResultSet resultSet = statement.executeQuery(SELECT_ALL_STATEMENT))
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter
+                    (new BufferedOutputStream(new FileOutputStream(file)), "UTF-8"));
+            Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+            try
             {
-                while (resultSet.next())
+                statement.setFetchSize(1);
+                int i = 1;
+                int j = 0;
+
+                try (ResultSet resultSet = statement.executeQuery(SELECT_ALL_STATEMENT))
                 {
-                    String time = format.format(resultSet.getTimestamp("start_dt"));
-                    writer.append(Integer.toString(resultSet.getInt("id"))).append(",")
-                          .append((Integer.toString(resultSet.getInt("sport")))).append(",")
-                          .append((Integer.toString(resultSet.getInt("user_id")))).append(",")
-                          .append(time).append("\n");
+                    while (resultSet.next())
+                    {
+                        String time = format.format(resultSet.getTimestamp("start_dt"));
+                        if (j < 100000)
+                        {
+                            j++;
+                        }
+                        else
+                        {
+                            j = 0;
+                            i++;
+                            file = filename + "-" + i +".txt";
+                            writer = new PrintWriter(new OutputStreamWriter
+                                    (new BufferedOutputStream(new FileOutputStream(file)), "UTF-8"));
+                        }
+                        writer.append(Integer.toString(resultSet.getInt("id"))).append(",")
+                                .append((Integer.toString(resultSet.getInt("sport")))).append(",")
+                                .append((Integer.toString(resultSet.getInt("user_id")))).append(",")
+                                .append(time).append("\n");
+                    }
+                    resultSet.close();
                 }
             }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (Exception e)
+        catch ( Exception e )
         {
             e.printStackTrace();
         }
-
     }
 
     // load all distinct users from db
