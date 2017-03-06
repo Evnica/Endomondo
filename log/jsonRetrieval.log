@@ -616,3 +616,63 @@
 ,"rejected_users":[13614808]
 ,"rejected_wrkt":[]
 },
+{"time":"2017-03-06 11-54-08
+","start_user":1003
+,"end_user":1013
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 11-59-34
+","start_user":1013
+,"end_user":1023
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-01-11
+","start_user":1023
+,"end_user":1033
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-03-38
+","start_user":1033
+,"end_user":1043
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-04-51
+","start_user":1043
+,"end_user":1053
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-06-34
+","start_user":1053
+,"end_user":1063
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-08-14
+","start_user":1063
+,"end_user":1073
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-11-04
+","start_user":1073
+,"end_user":1083
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-13-05
+","start_user":1083
+,"end_user":1093
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 12-14-53
+","start_user":1093
+,"end_user":1103
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},

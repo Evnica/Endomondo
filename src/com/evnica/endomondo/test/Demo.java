@@ -1,6 +1,7 @@
 package com.evnica.endomondo.test;
 
 import com.evnica.endomondo.main.connect.DbConnector;
+import com.evnica.endomondo.main.model.AthleteRepository;
 import com.evnica.endomondo.main.model.WorkoutRepository;
 import com.sun.deploy.net.HttpResponse;
 
@@ -27,9 +28,20 @@ public class Demo
             String.format("https://www.endomondo.com/rest/v1/users/%s/workouts?before=%s&after=%s", userId, END_DATE, START_DATE );
     private static String workoutUrl = String.format("https://www.endomondo.com/rest/v1/users/%s/workouts/%s", userId, workoutId);
 
-    public static void main( String[] args )
+    public static void main( String[] args ) throws Exception
     {
-        try
+
+        int[] ids = {13616651, 13617367, 13617944, 13617947, 13618439};
+        DbConnector.connectToDb();
+        AthleteRepository.setConnection(DbConnector.getConnection());
+        for (int id: ids)
+        {
+            AthleteRepository.insertInvalidity(id, true);
+        }
+        DbConnector.closeConnection();
+        System.out.println("Done");
+
+       /* try
         {
             DbConnector.connectToDb();
             System.out.println("Connected");
@@ -41,7 +53,7 @@ public class Demo
         catch (Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
 
 
 

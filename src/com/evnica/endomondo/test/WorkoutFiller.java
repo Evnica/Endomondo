@@ -23,7 +23,7 @@ public class WorkoutFiller {
 
     public static void main(String[] args) throws Exception
     {
-        InputStream fileStream = new FileInputStream( new File("testFiles/workout-user.txt"));
+        InputStream fileStream = new FileInputStream( new File("interimTables/workout-user-all.txt"));
         String userWorkoutPairs = new Scanner(fileStream, "UTF-8").useDelimiter("\\A").next();
         String[] individualPairs = userWorkoutPairs.split("\n");
         String[] entry;

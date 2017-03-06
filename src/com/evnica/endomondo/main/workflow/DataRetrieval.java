@@ -59,7 +59,7 @@ public class DataRetrieval
             System.out.println("Enter start id:");
             start = Integer.parseInt(reader.readLine());
 
-            System.out.println("Start: " + start + ", end id " + (numOfRandoms * iterationSize) + ", iteration size: "
+            System.out.println("Start: " + start + ", end id " + (numOfRandoms * iterationSize + start) + ", iteration size: "
                     + iterationSize + ". Random delays apply");
             System.out.println("Please input db password:");
             DbConnector.setPwd( reader.readLine() );
@@ -98,6 +98,7 @@ public class DataRetrieval
                 for (int j = 0; j < numOfRandoms; j++)
                 {
                     end = start + iterationSize;
+                    System.out.println("Processing from " + start + " to " + end);
 
                     rejectedIdCount = 0; invalidIdCount = 0;
                     rejectedUserIds = new ArrayList<>(  );
@@ -251,7 +252,7 @@ public class DataRetrieval
                 }
             }
         }
-        else if (e.getMessage().contains( "500" ))
+        else if (e.getMessage().contains( "500" ) || e instanceof java.io.FileNotFoundException)
         {
             invalidIdCount++;
             AthleteRepository.setConnection( DbConnector.getConnection() );
