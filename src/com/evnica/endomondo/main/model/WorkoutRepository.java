@@ -73,43 +73,32 @@ public class WorkoutRepository
 
     public static void toCsv(String filename)
     {
-        String file = filename + "-1.txt";
+        String file = filename + "-all.txt";
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try
         {
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
             PrintWriter writer = new PrintWriter(new OutputStreamWriter
-                    (new BufferedOutputStream(new FileOutputStream(file)), "UTF-8"));
+                    (stream, "UTF-8"));
             Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
             try
             {
-                statement.setFetchSize(1);
-                int i = 1;
-                int j = 0;
+                statement.setFetchSize( 1 );
 
                 try (ResultSet resultSet = statement.executeQuery(SELECT_ALL_STATEMENT))
                 {
                     while (resultSet.next())
                     {
                         String time = format.format(resultSet.getTimestamp("start_dt"));
-                        if (j < 100000)
-                        {
-                            j++;
-                        }
-                        else
-                        {
-                            j = 0;
-                            i++;
-                            file = filename + "-" + i +".txt";
-                            writer = new PrintWriter(new OutputStreamWriter
-                                    (new BufferedOutputStream(new FileOutputStream(file)), "UTF-8"));
-                        }
                         writer.append(Integer.toString(resultSet.getInt("id"))).append(",")
-                                .append((Integer.toString(resultSet.getInt("sport")))).append(",")
-                                .append((Integer.toString(resultSet.getInt("user_id")))).append(",")
-                                .append(time).append("\n");
+                                    .append((Integer.toString(resultSet.getInt("sport")))).append(",")
+                                    .append((Integer.toString(resultSet.getInt("user_id")))).append(",")
+                                    .append(time).append("\n");
+                        }
+
                     }
-                    resultSet.close();
-                }
+                    writer.close();
+                    stream.close();
             }
             catch (Exception e)
             {
