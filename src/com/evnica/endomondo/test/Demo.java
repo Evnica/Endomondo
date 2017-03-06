@@ -34,13 +34,15 @@ public class Demo
             DbConnector.connectToDb();
             System.out.println("Connected");
             WorkoutRepository.setConnection(DbConnector.getConnection());
-            WorkoutRepository.toCsv("workout-user.txt");
+            WorkoutRepository.toCsv("interimTables/workout-user");
             System.out.println("Done");
+            DbConnector.closeConnection();
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+
 
 
         /*SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
