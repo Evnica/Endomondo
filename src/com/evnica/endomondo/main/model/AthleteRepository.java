@@ -1,9 +1,6 @@
 package com.evnica.endomondo.main.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
 /**
  * Class: AthleteRepository
@@ -18,6 +15,8 @@ public class AthleteRepository
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_VALIDITY_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, invalid) VALUES (?, ?)";
+    private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
+            "(id, invalid, gender, born, workout_cnt, country, created) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     private static Connection connection;
 
@@ -32,6 +31,38 @@ public class AthleteRepository
 
         statement.setInt( 1, id );
         statement.setBoolean( 2, invalid );
+        int rowsAffected = statement.executeUpdate();
+        statement.clearParameters();
+        statement.close();
+
+        return rowsAffected;
+    }
+
+    public static int insert(Athlete athlete) throws SQLException
+    {
+        PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT );
+
+        statement.setInt( 1, athlete.getId() );
+        statement.setBoolean( 2, false );
+        statement.setInt(3, athlete.getGender());
+        try {
+            statement.setDate(4, new Date(athlete.getDateOfBirth().getMillis()));
+        } catch (Exception e) {
+            statement.setNull(4, Types.DATE);
+        }
+        statement.setInt(5, athlete.getWorkoutCount());
+        try {
+            statement.setString(6, athlete.getCountry());
+        } catch (Exception e) {
+            statement.setNull(6, Types.VARCHAR);
+        }
+        try {
+            statement.setTimestamp(7, new Timestamp(athlete.getCreatedDate().getMillis()));
+        } catch (Exception e) {
+            statement.setNull(4, Types.TIMESTAMP);
+        }
+
+
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
         statement.close();

@@ -14,5 +14,4 @@ public class SummaryBySport
     public double totalDistance, totalDuration;
 
 
-
 }

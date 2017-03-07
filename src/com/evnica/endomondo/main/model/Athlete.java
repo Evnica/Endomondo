@@ -2,6 +2,9 @@ package com.evnica.endomondo.main.model;
 
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class: Athlete
  * Version: 0.1
@@ -12,12 +15,11 @@ import org.joda.time.DateTime;
 public class Athlete
 {
     private int id,
-                gender,
-                workoutCount,
-                favouriteSport;
+                gender = -1,
+                workoutCount = 0;
     private DateTime dateOfBirth, createdDate;
     private String country;
-    private SummaryBySport[] summaryBySport = new SummaryBySport[3];
+    private List<SummaryBySport> summaryBySport = new ArrayList<>();
 
     public Athlete( int id )
     {
@@ -42,16 +44,6 @@ public class Athlete
     public void setWorkoutCount( int workoutCount )
     {
         this.workoutCount = workoutCount;
-    }
-
-    public int getFavouriteSport()
-    {
-        return favouriteSport;
-    }
-
-    public void setFavouriteSport( int favouriteSport )
-    {
-        this.favouriteSport = favouriteSport;
     }
 
     public DateTime getDateOfBirth()
@@ -84,14 +76,14 @@ public class Athlete
         this.country = country;
     }
 
-    public SummaryBySport[] getSummaryBySport()
+    public void addSummaryBySport(SummaryBySport summary)
     {
-        return summaryBySport;
+        summaryBySport.add(summary);
     }
 
-    public void setSummaryBySport( SummaryBySport[] summaryBySport )
+    public List<SummaryBySport> getSummaryBySport()
     {
-        this.summaryBySport = summaryBySport;
+        return summaryBySport;
     }
 
     public int getId()
