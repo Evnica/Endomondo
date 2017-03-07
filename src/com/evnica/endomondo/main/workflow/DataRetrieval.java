@@ -43,7 +43,7 @@ public class DataRetrieval
     public static void main( String[] args )
     {
         readParameters();
-        // 100, 10, 1003?
+        // 100, 10, 1103 to 3103 started 12:30 Mar 6
         retrieveData(numOfRandoms, iterationSize, start);
     }
 
@@ -108,7 +108,7 @@ public class DataRetrieval
 
                     for ( int i = start; i < end; i++ )
                     {
-                        logMessage = new DateTime( ).toString( "yyyy-MM-dd HH-mm-ss" );
+                        logMessage = new DateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
                         int id = ids.get( i );
                         logMessage += ";" + id + ";";
                         // load user data - done by UrlConnector
