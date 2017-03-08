@@ -17,6 +17,7 @@ public class AthleteRepository
             "(id, invalid) VALUES (?, ?)";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, invalid, gender, born, workout_cnt, country, created) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String GET_COUNTRY = "SELECT country FROM " + SCHEMA_NAME + "." + TABLE_NAME + " WHERE id = ?";
 
     private static Connection connection;
 
@@ -68,6 +69,15 @@ public class AthleteRepository
         statement.close();
 
         return rowsAffected;
+    }
+
+    public static String getCountry(int id) throws SQLException
+    {
+        PreparedStatement statement = connection.prepareStatement(GET_COUNTRY);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet.getString(1);
     }
 
 

@@ -28,22 +28,29 @@ public class PointRepository
         PointRepository.connection = connection;
     }
 
-    public static int insertPoint(String tableName, Point point, int workoutId) throws SQLException
+    public static int insertPoint(String country, Point point, int workoutId) throws SQLException
     {
-        if (tableName == null)
+        if (country == null)
         {
-            tableName = defaultTable;
+            country = defaultTable;
         }
-        generateInsertStatement( tableName );
+       else
+        {
+            country = defaultTable + "_" + country.toLowerCase();
+        }
+
+        insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + country +
+                "(id, wrkt_id, distance, duration, dt, geom ) VALUES (?, ?, ?, ?, ?, ?)";;
+
         PreparedStatement statement = connection.prepareStatement( insertStatement );
         statement.setInt( 1, point.getOrder() );
         statement.setInt( 2, workoutId );
         statement.setDouble( 3, point.getDistance() );
         statement.setDouble( 4, point.getDuration() );
         statement.setTimestamp( 5, new Timestamp( point.getTimeCaptured().getMillis() ) );
-        PGgeometry geom = new PGgeometry(point.toGeom());
+        PGgeometry geom = new PGgeometry(point.getPoint());
         geom.getGeometry().setSrid( 4326 );
-        statement.setObject( 8, geom);
+        statement.setObject( 6, geom);
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
         statement.close();
@@ -51,20 +58,14 @@ public class PointRepository
         return rowsAffected;
     }
 
-    public static int insertPoints(String tableName, List<Point> points, int workoutId) throws SQLException
+    public static int insertPoints(String country, List<Point> points, int workoutId) throws SQLException
     {
         int rowsAffected = 0;
         for (Point p: points)
         {
-            rowsAffected += insertPoint(tableName, p, workoutId  );
+            rowsAffected += insertPoint(country, p, workoutId  );
         }
         return rowsAffected;
-    }
-
-    private static void generateInsertStatement(String tableName)
-    {
-        insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + tableName +
-                "(id, wrkt_id, distance, duration, time, geom) VALUES (?, ?, ?, ?, ?, ?)";
     }
 
 }

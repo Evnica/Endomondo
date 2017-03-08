@@ -24,11 +24,7 @@ public class Point
     {
         this.lat = lat;
         this.lon = lon;
-    }
-
-    public Point ( org.postgis.Point point)
-    {
-        this.point = point;
+        this.point = new org.postgis.Point(lon, lat);
     }
 
     public org.postgis.Point getPoint()

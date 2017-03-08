@@ -1,10 +1,8 @@
 package com.evnica.endomondo.main.workflow;
 
 import com.evnica.endomondo.main.connect.DbConnector;
-import com.evnica.endomondo.main.model.Athlete;
-import com.evnica.endomondo.main.model.AthleteRepository;
-import com.evnica.endomondo.main.model.SummaryBySport;
-import com.evnica.endomondo.main.model.SummaryRepository;
+import com.evnica.endomondo.main.decode.JSONContentParser;
+import com.evnica.endomondo.main.model.*;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -12,10 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,7 +32,8 @@ public class LocalJsonProcessing
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
 
     public static void main(String[] args) {
-        processAthletes("./interimTables/userJson");
+        processWorkouts("./interimTables/wrktJson");
+        //processAthletes("./interimTables/userJson");
     }
 
     private static void processAthletes(String dir)
@@ -188,6 +184,71 @@ public class LocalJsonProcessing
             System.out.println("Except: " + e);
         }
         return athlete;
+    }
+
+    private static void processWorkouts(String dir)
+    {
+        try {
+            DbConnector.connectToDb();
+            LapRepository.setConnection(DbConnector.getConnection());
+            PointRepository.setConnection(DbConnector.getConnection());
+            AthleteRepository.setConnection(DbConnector.getConnection());
+            File[] workoutFiles = getFilesInDir(dir);
+            for (File file: workoutFiles)
+            {
+                try {
+                    int workoutId = Integer.parseInt(file.getName().split(".j")[0]);
+                    String jsonContent = new Scanner(new FileInputStream(file), "UTF-8")
+                            .useDelimiter("\\A").next();
+                    WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl(jsonContent, workoutId, TargetGeometry.BOTH);
+
+                    if (workoutJSON != null) {
+                        try {
+                            if (workoutJSON.getLaps() != null && workoutJSON.getLaps().size() > 0)
+                            {
+                                for (Lap lap: workoutJSON.getLaps())
+                                {
+                                    LapRepository.insert(lap);
+                                }
+                            }
+                        } catch (Exception e) {
+                            LOGGER.error("Not all laps inserted for workout " + workoutId);
+                        }
+                        if (workoutJSON.getPoints() != null && workoutJSON.getPoints().size() > 1)
+                        {
+                            String country = null;
+                            if (workoutJSON.getUserId() != -1)
+                            {
+                                country = AthleteRepository.getCountry(workoutJSON.getUserId());
+                            }
+                            for (Point p: workoutJSON.getPoints())
+                            {
+                                try {
+                                    PointRepository.insertPoint(country, p, workoutId);
+                                } catch (SQLException e) {
+                                    try {
+                                        PointRepository.insertPoint(null, p, workoutId);
+                                    } catch (SQLException e1) {
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                } catch (NumberFormatException e) {
+                    LOGGER.error(file.getName() + " not parsed due to wrong id");
+                }
+                catch (FileNotFoundException e)
+                {
+                    LOGGER.error(file.getName() + " not found");
+                }
+                System.out.println("Processed: " + file.getName());
+            }
+            DbConnector.closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

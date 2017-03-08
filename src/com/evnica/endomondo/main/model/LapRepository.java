@@ -29,19 +29,8 @@ public class LapRepository
         LapRepository.connection = connection;
     }
 
-    public static int insert(WorkoutJSON workoutJSON, boolean insertUser, TargetGeometry targetGeometry) throws SQLException
+    public static int insert(WorkoutJSON workoutJSON, TargetGeometry targetGeometry) throws SQLException
     {
-        if ( insertUser )
-        {
-            UserRepository repository = new UserRepository( connection );
-            if (! repository.userInDb( workoutJSON.getUserId() ))
-            {
-                User user = new User();
-                user.setGender(workoutJSON.getUserGender());
-                user.setId(workoutJSON.getUserId());
-                repository.insert( user );
-            }
-        }
         int rowsAffected = 0;
         if (targetGeometry.equals( TargetGeometry.LAPS ))
         {

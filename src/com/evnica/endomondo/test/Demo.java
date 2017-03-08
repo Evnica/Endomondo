@@ -59,7 +59,7 @@ public class Demo
 
         /*SimpleDateFormat dateFormat = new SimpleDateFormat( "dd.MM.yyyy HH:mm" );
         Date workoutDate = dateFormat.parse( "24.10.2015 10:01" );
-        System.out.println(workoutDate.getTime()/1000);*/
+        System.out.println(workoutDate.getStartAt()/1000);*/
 
         /*System.out.println(userRestIntervalUrl);
         System.out.println(workoutUrl);*/

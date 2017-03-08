@@ -9,14 +9,15 @@ package com.evnica.endomondo.main.model;
  */
 public enum WorkoutGeometryType
 {
-    POINTS("Points", 0),
-    EMPTY_POINTS("Empty points", 1),
-    LAPS("Laps", 2),
-    EMPTY_LAPS("Laps without polylines", 3),
-    LAPS_POINTS("Laps and points", 4),
-    EMPTY_LAPS_POINTS("Laps without polylines, points with coordinates", 5),
-    EMPTY_LAPS_EMPTY_POINTS("Both laps and points empty", 6),
-    NONE("None", 7);
+    VPOINTS_VLAPS("Valid points and valid laps", 0),
+    VPOINTS_ALAPS("Valid points, absent laps", 1),
+    VPOINTS_ILAPS("Valid points, invalid laps", 2),
+    IPOINTS_VLAPS("Invalid points, valid laps", 3),
+    IPOINTS_ALAPS("Invalid points, absent laps", 4),
+    IPOINTS_ILAPS("Invalid points, invalid laps", 5),
+    APOINTS_VLAPS("Absent points, valid laps", 6),
+    APOINTS_ALAPS("Absent points, absent laps", 7),
+    APOINTS_ILAPS("Absent points, invalid laps", 8);
 
     private String name;
     private int code;

@@ -45,7 +45,7 @@ public class JSONContentParserTest
     @Test
     public void parseWorkoutUrl() throws Exception
     {
-        WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentVasli, workoutVasli, TargetGeometry.BOTH );
+        WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl( jsonContentVasli, workoutVasli.getId(), TargetGeometry.BOTH );
         //System.out.println(workoutJSON);
 
         //System.out.println('\n');
@@ -55,7 +55,7 @@ public class JSONContentParserTest
 
         DbConnector.connectToDb();
         LapRepository.setConnection( DbConnector.getConnection() );
-        LapRepository.insert( workoutJSON, true, TargetGeometry.POINTS );
+        LapRepository.insert( workoutJSON, TargetGeometry.POINTS );
 
         DbConnector.closeConnection();
     }

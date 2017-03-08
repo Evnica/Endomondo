@@ -14,23 +14,17 @@ import java.util.List;
  */
 public class WorkoutJSON extends Workout
 {
-    private int userGender;
-    private List<Lap> laps;
-    private List<Point> points;
+    private List<Lap> laps = new ArrayList<>();
+    private List<Point> points = new ArrayList<>();
+    private int userId;
 
-    public WorkoutJSON( List<Lap> laps )
-    {
-        this.laps = laps;
+    @Override
+    public int getUserId() {
+        return userId;
     }
 
-    public int getUserGender()
-    {
-        return userGender;
-    }
-
-    public void setUserGender( int userGender )
-    {
-        this.userGender = userGender;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public List<Lap> getLaps()
@@ -87,26 +81,23 @@ public class WorkoutJSON extends Workout
         return laps;
     }
 
+    public void addPoint(Point point)
+    {
+        points.add(point);
+    }
+
+    public void addLap(Lap lap)
+    {
+        laps.add(lap);
+    }
+
     @Override
     public String toString()
     {
-        String gender;
-        switch (userGender)
-        {
-            case 0:
-                gender = "male";
-                break;
-            case 1:
-                gender = "female";
-                break;
-            default:
-                gender = "unknown";
-        }
         StringBuilder workoutString = new StringBuilder(  );
+        workoutString.append( "[" );
         workoutString.append( this.getId() );
-        workoutString.append( " [" );
-        workoutString.append( gender );
-        workoutString.append( "], " );
+        workoutString.append( "] " );
 
         if (laps != null && laps.size() > 0)
         {
