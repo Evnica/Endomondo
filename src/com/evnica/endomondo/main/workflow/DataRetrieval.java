@@ -7,6 +7,7 @@ import com.evnica.endomondo.main.model.Workout;
 import com.evnica.endomondo.main.model.WorkoutRepository;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import java.io.*;
 import java.net.ConnectException;
@@ -17,10 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -39,12 +37,15 @@ public class DataRetrieval
     private static List<Integer> rejectedUserIds = new ArrayList<>(  );
     private static List<Integer> rejectedWorkoutIds = new ArrayList<>(  );
     private static int numOfRandoms, iterationSize, start;
+    private static boolean withDbUse = false;
+
+    private static Map<Integer, List<Workout>> workoutMap;
 
     public static void main( String[] args )
     {
         readParameters();
-        // 100, 10, 1103 to 3103 started 12:30 Mar 6
-        retrieveData(numOfRandoms, iterationSize, start);
+        // 100, 10, after 10000
+        retrieveData(numOfRandoms, iterationSize, start, withDbUse);
     }
 
     private static void readParameters()
@@ -53,16 +54,21 @@ public class DataRetrieval
         System.out.print("Enter number of random integers for delay:");
         try
         {
-            numOfRandoms = Integer.parseInt(reader.readLine());
-            System.out.print("Enter iteration size:");
-            iterationSize = Integer.parseInt(reader.readLine());
-            System.out.println("Enter start id:");
-            start = Integer.parseInt(reader.readLine());
+            numOfRandoms = Integer.parseInt( reader.readLine() );
+            System.out.print( "Enter iteration size:" );
+            iterationSize = Integer.parseInt( reader.readLine() );
+            System.out.println( "Enter start id:" );
+            start = Integer.parseInt( reader.readLine() );
+            System.out.println( "Do you want to store results in DB? 'Y' for YES: " );
+            if ( reader.readLine().toUpperCase().equals( "Y" ) )
+            {
+                withDbUse = true;
+                System.out.println( "Please input db password:" );
+                DbConnector.setPwd( reader.readLine() );
+            }
 
-            System.out.println("Start: " + start + ", end id " + (numOfRandoms * iterationSize + start) + ", iteration size: "
-                    + iterationSize + ". Random delays apply");
-            System.out.println("Please input db password:");
-            DbConnector.setPwd( reader.readLine() );
+            System.out.println( "Start: " + start + ", end id " + ( numOfRandoms * iterationSize + start ) + ", iteration size: "
+                    + iterationSize + ". Random delays apply" );
         }
         catch(NumberFormatException nfe)
         {
@@ -76,7 +82,7 @@ public class DataRetrieval
         }
     }
 
-    private static void retrieveData(int numOfRandoms, int iterationSize, int start)
+    private static void retrieveData(int numOfRandoms, int iterationSize, int start, boolean withDbUse)
     {
         {
             Random random = new Random();
@@ -88,12 +94,20 @@ public class DataRetrieval
 
             try
             {
-                DbConnector.connectToDb();
-                WorkoutRepository.setConnection( DbConnector.getConnection() );
-                // get distinct user ids
-                List<Integer> ids = WorkoutRepository.getUserIds();
+                List<Integer> ids;
+                if ( withDbUse )
+                {
+                    DbConnector.connectToDb();
+                    WorkoutRepository.setConnection( DbConnector.getConnection() );
+                    // get distinct user ids
+                    ids = WorkoutRepository.getUserIds();
+                    WorkoutRepository.setConnection( DbConnector.getConnection() );
+                }
+                else
+                {
+                    ids = getIdsFromFile();
+                }
                 System.out.println( ids.size() + " distinct users in db. Starting data retrieval..." );
-                WorkoutRepository.setConnection( DbConnector.getConnection() );
                 int end;
                 for (int j = 0; j < numOfRandoms; j++)
                 {
@@ -119,7 +133,7 @@ public class DataRetrieval
                         }
                         catch ( IOException e )
                         {
-                            userJsonContent = processUrlIOException( e, id, null );
+                            userJsonContent = processUrlIOException( e, id, null, withDbUse );
                         }
                         if (userJsonContent != null)
                         {
@@ -131,7 +145,15 @@ public class DataRetrieval
                         try
                         {
                             // select all workouts associated with this user id
-                            List<Workout> workouts = WorkoutRepository.selectByUserId( id );
+                            List<Workout> workouts;
+                            if ( withDbUse )
+                            {
+                                workouts = WorkoutRepository.selectByUserId( id );
+                            }
+                            else
+                            {
+                                workouts = getWorkoutIdsFromFile(id);
+                            }
                             // for each workout load json content and save to json
                             logMessage += workouts.size() + ";";
 
@@ -144,7 +166,7 @@ public class DataRetrieval
                                 }
                                 catch ( IOException e )
                                 {
-                                    workoutContent = processUrlIOException( e, w.getId(), w );
+                                    workoutContent = processUrlIOException( e, w.getId(), w, withDbUse );
                                 }
                                 if (workoutContent != null)
                                 {
@@ -219,7 +241,7 @@ public class DataRetrieval
     }
 
     // use only after DbConnector was connected to DB
-    private static String processUrlIOException(IOException e, int id, Workout workout)
+    private static String processUrlIOException(IOException e, int id, Workout workout, boolean withDbUse)
     {
         String jsonContent = null;
         if (e.getMessage().contains( "429" ))
@@ -255,14 +277,21 @@ public class DataRetrieval
         else if (e.getMessage().contains( "500" ) || e instanceof java.io.FileNotFoundException)
         {
             invalidIdCount++;
-            AthleteRepository.setConnection( DbConnector.getConnection() );
-            try
+            if ( withDbUse )
             {
-                AthleteRepository.insertInvalidity( id, true );
-            } catch ( SQLException e1 )
+                AthleteRepository.setConnection( DbConnector.getConnection() );
+                try
+                {
+                    AthleteRepository.insertInvalidity( id, true );
+                } catch ( SQLException e1 )
+                {
+                    e1.printStackTrace();
+                    LOGGER.error( "Error inserting invalid user " + id + ": ", e1 );
+                }
+            }
+            else
             {
-                e1.printStackTrace();
-                LOGGER.error( "Error inserting invalid user " + id + ": ", e1 );
+                writeInvalidAthleteToFile(id);
             }
         }
         else if (e.getMessage().contains("403"))
@@ -301,8 +330,8 @@ public class DataRetrieval
         {
             Path file = Paths.get( "./log/jsonRetrieval.log" );
             List<String> lines = new ArrayList<>(  );
-            lines.add( "{\"time\":\"" + new DateTime().toString("yyyy-MM-dd HH-mm-ss") );
-            lines.add( "\",\"start_user\":" + Integer.toString( startUser ) );
+            lines.add( "{\"time\":\"" + new DateTime().toString("yyyy-MM-dd HH-mm-ss") + "\"," );
+            lines.add( "\"start_user\":" + Integer.toString( startUser ) );
             lines.add( ",\"end_user\":" + Integer.toString( endUser ) );
             lines.add( ",\"rejected_users\":" + toJsonArray( rejectedUserIds ) );
             lines.add( ",\"rejected_wrkt\":" + toJsonArray( rejectedWorkoutIds ) );
@@ -336,6 +365,55 @@ public class DataRetrieval
 
     }
 
+    private static List<Integer> getIdsFromFile() throws FileNotFoundException
+    {
+        String userWorkoutPairs = new Scanner
+                                 (new FileInputStream
+                                 (new File("./interimTables/workout-user-all.txt")), "UTF-8")
+                                 .useDelimiter("\\A").next();
+        String[] individualPairs = userWorkoutPairs.split("\n");
+        String[] entry;
+        DateTime timestamp;
+        int workoutId, userId, sport;
+        List<Workout> workouts = new ArrayList<>();
+        for (String individualPair : individualPairs)
+        {
+            //id,sport,user_id,start_dt
+            entry = individualPair.split(",");
+            workoutId = Integer.parseInt(entry[0]);
+            sport = Integer.parseInt(entry[1]);
+            userId = Integer.parseInt(entry[2]);
+            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(entry[3].substring(0, 19));
 
+            workouts.add(new Workout(workoutId, sport, timestamp, userId));
+        }
+
+        workoutMap = workouts.stream()
+                .collect( Collectors.groupingBy( Workout::getUserId ) );
+
+        return workoutMap.entrySet().stream()
+                                .sorted(Comparator.comparing( Map.Entry::getKey ))
+                                .map( Map.Entry::getKey ).collect( Collectors.toList());
+    }
+
+    private static List<Workout> getWorkoutIdsFromFile(int userId)
+    {
+        return workoutMap.get( userId );
+    }
+
+    private static void writeInvalidAthleteToFile(int id)
+    {
+        try
+        {
+            Path file = Paths.get( "./log/invalidUsers.log" );
+            List<String> lines = new ArrayList<>(  );
+            lines.add( Integer.toString( id ) );
+            Files.write( file, lines, Charset.forName("UTF-8"), StandardOpenOption.APPEND );
+        }
+        catch ( IOException e )
+        {
+            e.printStackTrace();
+        }
+    }
 
 }

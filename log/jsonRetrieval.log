@@ -673,6 +673,1446 @@
 {"time":"2017-03-06 12-14-53
 ","start_user":1093
 ,"end_user":1103
+,"rejected_users":[ ]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 22-59-17
+","start_user":5500
+,"end_user":5510
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-02-02
+","start_user":5510
+,"end_user":5520
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-04-36
+","start_user":5520
+,"end_user":5530
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-06-34
+","start_user":5530
+,"end_user":5540
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-08-27
+","start_user":5540
+,"end_user":5550
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-12-11
+","start_user":5550
+,"end_user":5560
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-14-52
+","start_user":5560
+,"end_user":5570
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-16-10
+","start_user":5570
+,"end_user":5580
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-17-42
+","start_user":5580
+,"end_user":5590
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-18-40
+","start_user":5590
+,"end_user":5600
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-19-35
+","start_user":5600
+,"end_user":5610
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-20-46
+","start_user":5610
+,"end_user":5620
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-21-31
+","start_user":5620
+,"end_user":5630
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-23-18
+","start_user":5630
+,"end_user":5640
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-24-36
+","start_user":5640
+,"end_user":5650
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-26-22
+","start_user":5650
+,"end_user":5660
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-39-06
+","start_user":5660
+,"end_user":5670
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-42-23
+","start_user":5670
+,"end_user":5680
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-44-31
+","start_user":5680
+,"end_user":5690
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-46-46
+","start_user":5690
+,"end_user":5700
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-47-49
+","start_user":5700
+,"end_user":5710
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-49-11
+","start_user":5710
+,"end_user":5720
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-50-53
+","start_user":5720
+,"end_user":5730
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-54-07
+","start_user":5730
+,"end_user":5740
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-06 23-55-42
+","start_user":5740
+,"end_user":5750
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-00-00
+","start_user":5750
+,"end_user":5760
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-01-29
+","start_user":5760
+,"end_user":5770
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-03-20
+","start_user":5770
+,"end_user":5780
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-04-37
+","start_user":5780
+,"end_user":5790
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-07-40
+","start_user":5790
+,"end_user":5800
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-10-30
+","start_user":5800
+,"end_user":5810
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-13-14
+","start_user":5810
+,"end_user":5820
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-14-28
+","start_user":5820
+,"end_user":5830
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-16-33
+","start_user":5830
+,"end_user":5840
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-17-17
+","start_user":5840
+,"end_user":5850
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-18-47
+","start_user":5850
+,"end_user":5860
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-21-49
+","start_user":5860
+,"end_user":5870
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-23-08
+","start_user":5870
+,"end_user":5880
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-24-57
+","start_user":5880
+,"end_user":5890
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-28-35
+","start_user":5890
+,"end_user":5900
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-31-11
+","start_user":5900
+,"end_user":5910
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-33-44
+","start_user":5910
+,"end_user":5920
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-34-48
+","start_user":5920
+,"end_user":5930
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-36-38
+","start_user":5930
+,"end_user":5940
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-39-35
+","start_user":5940
+,"end_user":5950
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-41-01
+","start_user":5950
+,"end_user":5960
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-42-26
+","start_user":5960
+,"end_user":5970
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-44-01
+","start_user":5970
+,"end_user":5980
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-47-03
+","start_user":5980
+,"end_user":5990
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-49-48
+","start_user":5990
+,"end_user":6000
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-52-49
+","start_user":6000
+,"end_user":6010
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-55-53
+","start_user":6010
+,"end_user":6020
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 00-57-45
+","start_user":6020
+,"end_user":6030
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-01-35
+","start_user":6030
+,"end_user":6040
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-06-36
+","start_user":6040
+,"end_user":6050
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-07-32
+","start_user":6050
+,"end_user":6060
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-09-23
+","start_user":6060
+,"end_user":6070
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-15-18
+","start_user":6070
+,"end_user":6080
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-29-45
+","start_user":6080
+,"end_user":6090
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-31-01
+","start_user":6090
+,"end_user":6100
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-32-54
+","start_user":6100
+,"end_user":6110
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-35-08
+","start_user":6110
+,"end_user":6120
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-44-59
+","start_user":6120
+,"end_user":6130
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-47-48
+","start_user":6130
+,"end_user":6140
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-55-17
+","start_user":6140
+,"end_user":6150
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 01-56-59
+","start_user":6150
+,"end_user":6160
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-01-21
+","start_user":6160
+,"end_user":6170
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-03-35
+","start_user":6170
+,"end_user":6180
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-07-40
+","start_user":6180
+,"end_user":6190
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-09-15
+","start_user":6190
+,"end_user":6200
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-10-35
+","start_user":6200
+,"end_user":6210
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-14-32
+","start_user":6210
+,"end_user":6220
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-16-47
+","start_user":6220
+,"end_user":6230
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-18-36
+","start_user":6230
+,"end_user":6240
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-22-28
+","start_user":6240
+,"end_user":6250
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-25-34
+","start_user":6250
+,"end_user":6260
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-27-26
+","start_user":6260
+,"end_user":6270
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-30-18
+","start_user":6270
+,"end_user":6280
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-32-37
+","start_user":6280
+,"end_user":6290
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-36-54
+","start_user":6290
+,"end_user":6300
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-39-12
+","start_user":6300
+,"end_user":6310
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-40-06
+","start_user":6310
+,"end_user":6320
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-41-18
+","start_user":6320
+,"end_user":6330
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-42-57
+","start_user":6330
+,"end_user":6340
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-45-06
+","start_user":6340
+,"end_user":6350
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-46-39
+","start_user":6350
+,"end_user":6360
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-49-14
+","start_user":6360
+,"end_user":6370
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-51-17
+","start_user":6370
+,"end_user":6380
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-53-29
+","start_user":6380
+,"end_user":6390
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-55-11
+","start_user":6390
+,"end_user":6400
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-56-18
+","start_user":6400
+,"end_user":6410
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 02-59-33
+","start_user":6410
+,"end_user":6420
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-02-39
+","start_user":6420
+,"end_user":6430
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-03-40
+","start_user":6430
+,"end_user":6440
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-05-11
+","start_user":6440
+,"end_user":6450
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-08-22
+","start_user":6450
+,"end_user":6460
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-09-36
+","start_user":6460
+,"end_user":6470
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-13-15
+","start_user":6470
+,"end_user":6480
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-14-28
+","start_user":6480
+,"end_user":6490
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-15-55
+","start_user":6490
+,"end_user":6500
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-17-36
+","start_user":6500
+,"end_user":6510
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-20-46
+","start_user":6510
+,"end_user":6520
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-22-14
+","start_user":6520
+,"end_user":6530
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-24-33
+","start_user":6530
+,"end_user":6540
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-26-15
+","start_user":6540
+,"end_user":6550
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-27-32
+","start_user":6550
+,"end_user":6560
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-28-26
+","start_user":6560
+,"end_user":6570
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-30-13
+","start_user":6570
+,"end_user":6580
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-31-50
+","start_user":6580
+,"end_user":6590
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-33-29
+","start_user":6590
+,"end_user":6600
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-39-50
+","start_user":6600
+,"end_user":6610
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-42-10
+","start_user":6610
+,"end_user":6620
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-43-18
+","start_user":6620
+,"end_user":6630
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-45-12
+","start_user":6630
+,"end_user":6640
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-48-37
+","start_user":6640
+,"end_user":6650
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-50-17
+","start_user":6650
+,"end_user":6660
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 03-55-28
+","start_user":6660
+,"end_user":6670
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-02-46
+","start_user":6670
+,"end_user":6680
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-04-34
+","start_user":6680
+,"end_user":6690
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-13-06
+","start_user":6690
+,"end_user":6700
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-15-23
+","start_user":6700
+,"end_user":6710
+,"rejected_users":[21942994]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-16-54
+","start_user":6710
+,"end_user":6720
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-23-09
+","start_user":6720
+,"end_user":6730
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-25-06
+","start_user":6730
+,"end_user":6740
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-27-30
+","start_user":6740
+,"end_user":6750
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-30-02
+","start_user":6750
+,"end_user":6760
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-35-23
+","start_user":6760
+,"end_user":6770
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-36-51
+","start_user":6770
+,"end_user":6780
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-38-52
+","start_user":6780
+,"end_user":6790
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-40-30
+","start_user":6790
+,"end_user":6800
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-45-14
+","start_user":6800
+,"end_user":6810
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-46-00
+","start_user":6810
+,"end_user":6820
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-49-59
+","start_user":6820
+,"end_user":6830
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-52-28
+","start_user":6830
+,"end_user":6840
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-53-52
+","start_user":6840
+,"end_user":6850
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-55-25
+","start_user":6850
+,"end_user":6860
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-56-32
+","start_user":6860
+,"end_user":6870
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 04-58-32
+","start_user":6870
+,"end_user":6880
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-02-24
+","start_user":6880
+,"end_user":6890
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-06-58
+","start_user":6890
+,"end_user":6900
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-13-09
+","start_user":6900
+,"end_user":6910
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-15-00
+","start_user":6910
+,"end_user":6920
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-15-48
+","start_user":6920
+,"end_user":6930
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-19-11
+","start_user":6930
+,"end_user":6940
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-20-41
+","start_user":6940
+,"end_user":6950
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-22-37
+","start_user":6950
+,"end_user":6960
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-26-28
+","start_user":6960
+,"end_user":6970
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-27-30
+","start_user":6970
+,"end_user":6980
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-28-51
+","start_user":6980
+,"end_user":6990
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-33-13
+","start_user":6990
+,"end_user":7000
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-34-26
+","start_user":7000
+,"end_user":7010
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-37-40
+","start_user":7010
+,"end_user":7020
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-39-18
+","start_user":7020
+,"end_user":7030
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-41-53
+","start_user":7030
+,"end_user":7040
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-42-51
+","start_user":7040
+,"end_user":7050
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-43-41
+","start_user":7050
+,"end_user":7060
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-45-03
+","start_user":7060
+,"end_user":7070
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 05-46-38
+","start_user":7070
+,"end_user":7080
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-03-08
+","start_user":7080
+,"end_user":7090
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-04-42
+","start_user":7090
+,"end_user":7100
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-06-11
+","start_user":7100
+,"end_user":7110
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-13-57
+","start_user":7110
+,"end_user":7120
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-18-03
+","start_user":7120
+,"end_user":7130
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-23-12
+","start_user":7130
+,"end_user":7140
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-25-16
+","start_user":7140
+,"end_user":7150
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-27-41
+","start_user":7150
+,"end_user":7160
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-29-40
+","start_user":7160
+,"end_user":7170
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-31-39
+","start_user":7170
+,"end_user":7180
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-34-21
+","start_user":7180
+,"end_user":7190
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-37-59
+","start_user":7190
+,"end_user":7200
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-39-13
+","start_user":7200
+,"end_user":7210
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-44-48
+","start_user":7210
+,"end_user":7220
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-45-31
+","start_user":7220
+,"end_user":7230
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-50-12
+","start_user":7230
+,"end_user":7240
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-55-43
+","start_user":7240
+,"end_user":7250
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 06-57-53
+","start_user":7250
+,"end_user":7260
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-00-52
+","start_user":7260
+,"end_user":7270
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-04-13
+","start_user":7270
+,"end_user":7280
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-04-56
+","start_user":7280
+,"end_user":7290
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-06-15
+","start_user":7290
+,"end_user":7300
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-08-13
+","start_user":7300
+,"end_user":7310
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-09-30
+","start_user":7310
+,"end_user":7320
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-14-24
+","start_user":7320
+,"end_user":7330
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 07-18-17
+","start_user":7330
+,"end_user":7340
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-36-17
+","start_user":7340
+,"end_user":7350
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-38-39
+","start_user":7350
+,"end_user":7360
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-40-45
+","start_user":7360
+,"end_user":7370
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-43-28
+","start_user":7370
+,"end_user":7380
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-44-31
+","start_user":7380
+,"end_user":7390
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-48-43
+","start_user":7390
+,"end_user":7400
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-51-50
+","start_user":7400
+,"end_user":7410
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-53-00
+","start_user":7410
+,"end_user":7420
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 08-57-26
+","start_user":7420
+,"end_user":7430
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-00-19
+","start_user":7430
+,"end_user":7440
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-01-33
+","start_user":7440
+,"end_user":7450
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-03-20
+","start_user":7450
+,"end_user":7460
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-04-22
+","start_user":7460
+,"end_user":7470
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-05-29
+","start_user":7470
+,"end_user":7480
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-07-31
+","start_user":7480
+,"end_user":7490
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-08-45
+","start_user":7490
+,"end_user":7500
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-27-25
+","start_user":3603
+,"end_user":3612
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-31-05
+","start_user":3612
+,"end_user":3621
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-34-33
+","start_user":3621
+,"end_user":3630
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-36-56
+","start_user":3630
+,"end_user":3640
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-40-10
+","start_user":3640
+,"end_user":3650
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-42-46
+","start_user":3650
+,"end_user":3660
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-48-38
+","start_user":3660
+,"end_user":3670
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 09-51-36
+","start_user":3670
+,"end_user":3680
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-02-15
+","start_user":3680
+,"end_user":3690
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-05-38
+","start_user":3690
+,"end_user":3700
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-11-27
+","start_user":3700
+,"end_user":3710
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-12-43
+","start_user":3710
+,"end_user":3720
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-15-20
+","start_user":3720
+,"end_user":3730
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-16-45
+","start_user":3730
+,"end_user":3740
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-20-10
+","start_user":3740
+,"end_user":3750
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-24-49
+","start_user":3750
+,"end_user":3760
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-39-08
+","start_user":3760
+,"end_user":3770
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-42-24
+","start_user":3770
+,"end_user":3780
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-48-49
+","start_user":3780
+,"end_user":3790
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 10-56-14
+","start_user":3790
+,"end_user":3800
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-00-19
+","start_user":3800
+,"end_user":3810
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-02-34
+","start_user":3810
+,"end_user":3820
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-08-25
+","start_user":3820
+,"end_user":3830
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-12-48
+","start_user":3830
+,"end_user":3840
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-17-49
+","start_user":3840
+,"end_user":3850
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-20-15
+","start_user":3850
+,"end_user":3860
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-24-31
+","start_user":3860
+,"end_user":3870
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-27-15
+","start_user":3870
+,"end_user":3880
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-29-35
+","start_user":3880
+,"end_user":3890
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-34-38
+","start_user":3890
+,"end_user":3900
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-39-45
+","start_user":3900
+,"end_user":3910
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-41-46
+","start_user":3910
+,"end_user":3920
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-45-02
+","start_user":3920
+,"end_user":3930
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-54-53
+","start_user":3930
+,"end_user":3940
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 11-56-02
+","start_user":3940
+,"end_user":3950
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 12-00-07
+","start_user":3950
+,"end_user":3960
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 12-04-10
+","start_user":3960
+,"end_user":3970
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 12-06-49
+","start_user":3970
+,"end_user":3980
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 12-10-01
+","start_user":3980
+,"end_user":3990
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 12-16-54
+","start_user":3990
+,"end_user":4000
 ,"rejected_users":[]
 ,"rejected_wrkt":[]
 },
@@ -1873,6 +3313,12 @@
 {"time":"2017-03-06 22-54-28
 ","start_user":3093
 ,"end_user":3103
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-07 21-01-10
+","start_user":10011
+,"end_user":10020
 ,"rejected_users":[]
 ,"rejected_wrkt":[]
 },
