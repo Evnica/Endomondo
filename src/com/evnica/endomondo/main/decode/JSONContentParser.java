@@ -231,7 +231,7 @@ public class JSONContentParser
                 if (metricLaps.length() > 0)
                 {
                     double beginLatitude, beginLongitude, endLatitude, endLongitude;
-                    int duration;
+                    double duration;
                     // polyline is not always present in JSON; without polyline we rely on points
                     try {
                         ((JSONObject) metricLaps.get(0)).getString( "small_encoded_polyline");
@@ -263,10 +263,10 @@ public class JSONContentParser
 
                             try
                             {
-                                duration =  ((JSONObject) metricLaps.get(i)).getInt("duration");
-                                lap.setDuration( duration );
+                                duration =  ((JSONObject) metricLaps.get(i)).getDouble("duration");
+                                lap.setDuration( (long) duration );
                                 if (offset != null) {
-                                    offset = offset.plusMillis( duration );
+                                    offset = offset.plusMillis( (int) duration );
                                 }
                             }
                             catch ( Exception e )
@@ -297,7 +297,7 @@ public class JSONContentParser
                         pointsJSONArray.getJSONObject( 0 ).getDouble( "latitude" );
                         validPoints = true;
 
-                        double lat, lon, distance;
+                        double lat, lon, distance, duration;
                         JSONObject pointJSONObject;
                         String timestampString;
                         for ( int i = 0; i < pointsJSONArray.length(); i++ )
@@ -308,6 +308,7 @@ public class JSONContentParser
                                 lat = pointJSONObject.getDouble( "latitude" );
                                 lon = pointJSONObject.getDouble( "longitude" );
                                 distance = pointJSONObject.getDouble( "distance" );
+                                duration = pointJSONObject.getDouble( "duration" );
                                 timestampString = pointJSONObject.getString( "time" );
                                 timestampString = timestampString.substring( 0, 19 );
                                 DateTime timeCaptured = formatter.parseDateTime( timestampString );
@@ -315,6 +316,7 @@ public class JSONContentParser
                                 point.setTimeCaptured( timeCaptured );
                                 point.setDistance( distance );
                                 point.setOrder(i);
+                                point.setDuration(duration);
                                 workoutDetail.addPoint( point );
                             } catch (JSONException e) {
                                 LOGGER.error("Invalid point " + i + ", workout " + workoutId);

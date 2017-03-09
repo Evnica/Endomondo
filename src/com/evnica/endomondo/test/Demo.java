@@ -31,7 +31,7 @@ public class Demo
     public static void main( String[] args ) throws Exception
     {
 
-        int[] ids = {13616651, 13617367, 13617944, 13617947, 13618439};
+        int[] ids = {25230188, 25231780, 25231805, 25232356, 25233283, 25235300, 25242106, 25242126};
         DbConnector.connectToDb();
         AthleteRepository.setConnection(DbConnector.getConnection());
         for (int id: ids)

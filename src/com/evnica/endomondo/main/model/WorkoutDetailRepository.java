@@ -18,6 +18,10 @@ public class WorkoutDetailRepository
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, distance, duration, start_at, weather, user_id, show_map, geomtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
+    public static void setConnection(Connection connection) {
+        WorkoutDetailRepository.connection = connection;
+    }
+
     public static int insert(WorkoutDetail workout) throws SQLException
     {
         PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT );
@@ -49,9 +53,14 @@ public class WorkoutDetailRepository
             statement.setNull(6, Types.INTEGER);
         }
         try {
-            statement.setInt(7, workout.getWorkoutGeometryType().getCode());
+            statement.setInt(7, workout.getShowMap());
         } catch (SQLException e) {
             statement.setNull(7, Types.INTEGER);
+        }
+        try {
+            statement.setInt(8, workout.getWorkoutGeometryType().getCode());
+        } catch (SQLException e) {
+            statement.setNull(8, Types.INTEGER);
         }
 
         int rowsAffected = statement.executeUpdate();

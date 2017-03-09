@@ -11,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +31,8 @@ public class LocalJsonProcessing
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
 
     public static void main(String[] args) {
-        processWorkouts("./interimTables/wrktJson");
-        //processAthletes("./interimTables/userJson");
+        //processWorkouts("./interimTables/wrktJson");
+        processAthletes("./interimTables/userJson");
     }
 
     private static void processAthletes(String dir)
@@ -123,7 +122,6 @@ public class LocalJsonProcessing
                 {
                     summaryBySport = userObject.getJSONArray( "summary_by_sport" );
                     JSONObject individualSummary;
-                    List<SummaryBySport> summaries = new ArrayList<>();
                     int sportId = -1;
                     for (int i = 0; i < summaryBySport.length(); i++)
                     {
@@ -193,6 +191,7 @@ public class LocalJsonProcessing
             LapRepository.setConnection(DbConnector.getConnection());
             PointRepository.setConnection(DbConnector.getConnection());
             AthleteRepository.setConnection(DbConnector.getConnection());
+            WorkoutDetailRepository.setConnection(DbConnector.getConnection());
             File[] workoutFiles = getFilesInDir(dir);
             for (File file: workoutFiles)
             {
@@ -200,13 +199,14 @@ public class LocalJsonProcessing
                     int workoutId = Integer.parseInt(file.getName().split(".j")[0]);
                     String jsonContent = new Scanner(new FileInputStream(file), "UTF-8")
                             .useDelimiter("\\A").next();
-                    WorkoutJSON workoutJSON = JSONContentParser.parseWorkoutUrl(jsonContent, workoutId, TargetGeometry.BOTH);
+                    WorkoutDetail workout = JSONContentParser.parseWorkoutDetailUrl(jsonContent, workoutId);
 
-                    if (workoutJSON != null) {
+                    if (workout != null) {
+                        WorkoutDetailRepository.insert(workout);
                         try {
-                            if (workoutJSON.getLaps() != null && workoutJSON.getLaps().size() > 0)
+                            if (workout.getLaps() != null && workout.getLaps().size() > 0)
                             {
-                                for (Lap lap: workoutJSON.getLaps())
+                                for (Lap lap: workout.getLaps())
                                 {
                                     LapRepository.insert(lap);
                                 }
@@ -214,14 +214,14 @@ public class LocalJsonProcessing
                         } catch (Exception e) {
                             LOGGER.error("Not all laps inserted for workout " + workoutId);
                         }
-                        if (workoutJSON.getPoints() != null && workoutJSON.getPoints().size() > 1)
+                        if (workout.getPoints() != null && workout.getPoints().size() > 1)
                         {
                             String country = null;
-                            if (workoutJSON.getUserId() != -1)
+                            if (workout.getUserId() != -1)
                             {
-                                country = AthleteRepository.getCountry(workoutJSON.getUserId());
+                                country = AthleteRepository.getCountry(workout.getUserId());
                             }
-                            for (Point p: workoutJSON.getPoints())
+                            for (Point p: workout.getPoints())
                             {
                                 try {
                                     PointRepository.insertPoint(country, p, workoutId);

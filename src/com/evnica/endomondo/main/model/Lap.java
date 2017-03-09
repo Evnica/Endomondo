@@ -36,12 +36,12 @@ public class Lap
         containsPolyline = false;
     }
 
-    public void setEndLat( double endLat )
+    void setEndLat(double endLat)
     {
         this.endLat = endLat;
     }
 
-    public void setEndLon( double endLon )
+    void setEndLon(double endLon)
     {
         this.endLon = endLon;
     }
@@ -62,22 +62,22 @@ public class Lap
         this.id =  workoutId * 1000L + order ;
     }
 
-    public double getBeginLat()
+    double getBeginLat()
     {
         return beginLat;
     }
 
-    public double getBeginLon()
+    double getBeginLon()
     {
         return beginLon;
     }
 
-    public double getEndLat()
+    double getEndLat()
     {
         return endLat;
     }
 
-    public double getEndLon()
+    double getEndLon()
     {
         return endLon;
     }
@@ -87,7 +87,7 @@ public class Lap
         return id;
     }
 
-    public DateTime getOffset()
+    DateTime getOffset()
     {
         return offset;
     }
@@ -97,17 +97,17 @@ public class Lap
         this.offset = offset;
     }
 
-    public Polyline getSmallPolyline()
+    Polyline getSmallPolyline()
     {
         return smallPolyline;
     }
 
-    public boolean containsPolyline()
+    boolean containsPolyline()
     {
         return containsPolyline;
     }
 
-    public int getWorkoutId()
+    int getWorkoutId()
     {
         return workoutId;
     }
