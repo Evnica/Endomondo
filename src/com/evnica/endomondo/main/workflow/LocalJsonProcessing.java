@@ -12,8 +12,6 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -32,7 +30,7 @@ public class LocalJsonProcessing
 
     public static void main(String[] args) {
         //processWorkouts("./interimTables/wrktJson");
-        processAthletes("./interimTables/userJson");
+        processAthletes("T:\\geomatics\\Dariia\\TO PROCESS\\52000-52700_LAB3\\user_52000-52700_LAB3");
     }
 
     private static void processAthletes(String dir)
