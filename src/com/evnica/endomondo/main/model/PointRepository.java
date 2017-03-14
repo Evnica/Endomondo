@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PointRepository
 {
-    private static String defaultTable = "point";
+    private static String table = "point";
     private static final String SCHEMA_NAME = "spatial";
     private static String insertStatement;
 
@@ -30,16 +30,12 @@ public class PointRepository
 
     public static int insertPoint(String country, Point point, int workoutId) throws SQLException
     {
-        if (country == null)
+        if (country != null)
         {
-            country = defaultTable;
-        }
-       else
-        {
-            country = defaultTable + "_" + country.toLowerCase();
+            table = table + "_" + country.toLowerCase();
         }
 
-        insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + country +
+        insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + table +
                 "(id, wrkt_id, distance, duration, dt, geom ) VALUES (?, ?, ?, ?, ?, ?)";;
 
         PreparedStatement statement = connection.prepareStatement( insertStatement );

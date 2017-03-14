@@ -114,7 +114,8 @@ public class DataRetrieval
                     end = start + iterationSize;
                     System.out.println("Processing from " + start + " to " + end);
 
-                    rejectedIdCount = 0; invalidIdCount = 0;
+                    rejectedIdCount = 0;
+                    invalidIdCount = 0;
                     rejectedUserIds = new ArrayList<>(  );
                     rejectedWorkoutIds = new ArrayList<>(  );
                     String logMessage;
@@ -198,7 +199,7 @@ public class DataRetrieval
                         System.out.println("User " + id + " data retrieved. Next!");
                         Thread.sleep( randomBetween8And20.get( j ) );
                     }
-                    jsonLog( start, end );
+                    jsonLog( start, end, rejectedUserIds, rejectedWorkoutIds );
                     start = end;
                     System.out.println("Iteration " + j + " ended");
                     System.out.println("Rejected users: " + rejectedIdCount);
@@ -226,7 +227,7 @@ public class DataRetrieval
 
     // save to a file if not empty
     // folder = user
-    private static void writeToJson(int id, String folder, String content)
+    static void writeToJson(int id, String folder, String content)
     {
         try
         {
@@ -324,7 +325,7 @@ public class DataRetrieval
         return jsonContent;
     }
 
-    private static void jsonLog(int startUser, int endUser)
+    static void jsonLog(int startUser, int endUser, List<Integer> rejectedUserIds, List<Integer> rejectedWorkoutIds)
     {
         try
         {
@@ -356,7 +357,7 @@ public class DataRetrieval
                 for (int i = 1; i < list.size(); i++)
                 {
                     result.append( "," );
-                    result.append( Integer.toString( rejectedUserIds.get( i ) ) );
+                    result.append( Integer.toString( list.get( i ) ) );
                 }
             }
         }

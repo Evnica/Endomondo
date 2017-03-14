@@ -30,7 +30,7 @@ public class LocalJsonProcessing
 
     public static void main(String[] args) {
         //processWorkouts("./interimTables/wrktJson");
-        processAthletes("T:\\geomatics\\Dariia\\TO PROCESS\\52000-52700_LAB3\\user_52000-52700_LAB3");
+        processAthletes("C:\\Users\\d.strelnikova\\IdeaProjects\\Endomondo\\out\\artifacts\\Endomondo_jar\\jsonResult\\user");
     }
 
     private static void processAthletes(String dir)

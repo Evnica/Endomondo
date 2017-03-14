@@ -36,7 +36,7 @@ public class UrlConnector
     private static String workoutUrl = "https://www.endomondo.com/rest/v1/users/%s/workouts/%s";
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
 
-    static void setUrl( String url )
+    public static void setUrl( String url )
     {
         UrlConnector.url = url;
     }
