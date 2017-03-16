@@ -40,7 +40,7 @@ public class WorkoutJSON extends Workout
         this.points = points;
     }
 
-    public List<Lap> pointsToLaps()
+    List<Lap> pointsToLaps()
     {
         List<Lap> laps = null;
         // less than 2 points is not a line/polyline

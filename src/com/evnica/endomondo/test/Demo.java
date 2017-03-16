@@ -36,7 +36,7 @@ public class Demo
         AthleteRepository.setConnection(DbConnector.getConnection());
         for (int id: ids)
         {
-            AthleteRepository.insertInvalidity(id, true);
+            AthleteRepository.insertInvalidity(id);
         }
         DbConnector.closeConnection();
         System.out.println("Done");

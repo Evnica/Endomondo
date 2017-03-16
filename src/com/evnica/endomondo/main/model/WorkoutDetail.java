@@ -50,7 +50,7 @@ public class WorkoutDetail
         this.duration = duration;
     }
 
-    public DateTime getStartAt() {
+    DateTime getStartAt() {
         return startAt;
     }
 
@@ -66,7 +66,7 @@ public class WorkoutDetail
         this.weather = weather;
     }
 
-    public int getShowMap() {
+    int getShowMap() {
         return showMap;
     }
 
@@ -74,7 +74,7 @@ public class WorkoutDetail
         this.showMap = showMap;
     }
 
-    public WorkoutGeometryType getWorkoutGeometryType() {
+    WorkoutGeometryType getWorkoutGeometryType() {
         return workoutGeometryType;
     }
 
@@ -105,10 +105,10 @@ public class WorkoutDetail
         this.points = points;
     }
 
-    public Point getPoint(int i)
+/*    public Point getPoint(int i)
     {
         return points.get(i);
-    }
+    }*/
 
     public void addPoint(Point point)
     {
@@ -120,7 +120,7 @@ public class WorkoutDetail
         laps.add(lap);
     }
 
-    public String toJSONString()
+/*    public String toJSONString()
     {
         StringBuilder jsonBuilder = new StringBuilder();
         if ( points != null && points.size() > 1 )
@@ -144,7 +144,7 @@ public class WorkoutDetail
         }
 
         return jsonBuilder.toString();
-    }
+    }*/
 
 
 }

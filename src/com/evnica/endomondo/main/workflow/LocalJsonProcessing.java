@@ -4,6 +4,7 @@ import com.evnica.endomondo.main.connect.DbConnector;
 import com.evnica.endomondo.main.decode.JSONContentParser;
 import com.evnica.endomondo.main.model.*;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
@@ -23,13 +24,46 @@ import java.util.Scanner;
  */
 public class LocalJsonProcessing
 {
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
+    private static boolean parseWorkouts = true;
+    private static String dir = "";
+
 
     public static void main(String[] args) {
-        processWorkouts("C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\02-IN_ALL_workout_2017-03-07");
-        //processAthletes("C:\\Users\\d.strelnikova\\IdeaProjects\\Endomondo\\jsonResult\\user");
+        readParameters();
+        if (parseWorkouts) {
+            processWorkouts(dir);
+        } else {
+            processAthletes(dir);
+        }
+
+    }
+
+    private static void readParameters()
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Workouts are parsed/added to DB by default. If you want to parse athletes, press 'A':");
+        try
+        {
+            if ( reader.readLine().toUpperCase().equals( "A" ) )
+            {
+                parseWorkouts = false;
+            }
+            System.out.println( "Enter directory that contains JSON files:" );
+            dir = reader.readLine();
+            System.out.println( "Please input db password:" );
+            DbConnector.setPwd( reader.readLine() );
+
+            System.out.println("Start: " + new DateTime().toString(FORMATTER));
+
+        }
+        catch ( IOException e )
+        {
+            e.printStackTrace();
+            System.exit( -1 );
+        }
     }
 
     private static void processAthletes(String dir)
@@ -111,7 +145,7 @@ public class LocalJsonProcessing
                 }
                 else
                 {
-                    System.out.println(id + " has no workouts ");
+                    System.out.println(id + " has no parseWorkouts ");
                 }
                 JSONArray summaryBySport;
                 try
@@ -144,14 +178,14 @@ public class LocalJsonProcessing
                 try
                 {
                     String date = userObject.getString( "created_date" ).substring( 0, 19 );
-                    athlete.setCreatedDate( formatter.parseDateTime( date ) );
+                    athlete.setCreatedDate( FORMATTER.parseDateTime( date ) );
                 } catch (JSONException e) {
                     System.out.println(id + " has no creation date");
                 }
                 try
                 {
                     String date = userObject.getString( "date_of_birth" ).substring( 0, 19 );
-                    athlete.setDateOfBirth( formatter.parseDateTime( date ) );
+                    athlete.setDateOfBirth( FORMATTER.parseDateTime( date ) );
                 }
                 catch (JSONException e)
                 {
@@ -279,6 +313,7 @@ public class LocalJsonProcessing
             }
             DbConnector.closeConnection();
             System.out.println(fileCounter + " files processed");
+            System.out.println("End: " + new DateTime().toString(FORMATTER));
         } catch (Exception e) {
             e.printStackTrace();
         }

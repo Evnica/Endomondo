@@ -284,7 +284,7 @@ public class DataRetrieval
                 AthleteRepository.setConnection( DbConnector.getConnection() );
                 try
                 {
-                    AthleteRepository.insertInvalidity( id, true );
+                    AthleteRepository.insertInvalidity( id );
                 } catch ( SQLException e1 )
                 {
                     e1.printStackTrace();

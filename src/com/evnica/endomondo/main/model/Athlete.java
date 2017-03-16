@@ -36,7 +36,7 @@ public class Athlete
         this.gender = gender;
     }
 
-    public int getWorkoutCount()
+    int getWorkoutCount()
     {
         return workoutCount;
     }
@@ -46,7 +46,7 @@ public class Athlete
         this.workoutCount = workoutCount;
     }
 
-    public DateTime getDateOfBirth()
+    DateTime getDateOfBirth()
     {
         return dateOfBirth;
     }
@@ -56,7 +56,7 @@ public class Athlete
         this.dateOfBirth = dateOfBirth;
     }
 
-    public DateTime getCreatedDate()
+    DateTime getCreatedDate()
     {
         return createdDate;
     }

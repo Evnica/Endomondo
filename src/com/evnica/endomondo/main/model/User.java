@@ -68,7 +68,7 @@ public class User
         this.mountainBikingCount = mountainBikingCount;
     }
 
-    public DateTime getDateCreated()
+    DateTime getDateCreated()
     {
         return dateCreated;
     }

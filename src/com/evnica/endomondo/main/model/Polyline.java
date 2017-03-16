@@ -24,12 +24,12 @@ public class Polyline
         this.polyline = polyline;
     }
 
-    public List<Point> getPolyline()
+    /*public List<Point> getPolyline()
     {
         return polyline;
-    }
+    }*/
 
-    public void addPoint(Point p)
+    void addPoint(Point p)
     {
         polyline.add( p );
     }
@@ -41,12 +41,12 @@ public class Polyline
 
     public int size() { return polyline.size(); }
 
-    public boolean isEmpty()
+    /*public boolean isEmpty()
     {
         return polyline.size() == 0;
-    }
+    }*/
 
-    public LineString toLineString() throws SQLException
+    LineString toLineString() throws SQLException
     {
         return new LineString(toString());
     }

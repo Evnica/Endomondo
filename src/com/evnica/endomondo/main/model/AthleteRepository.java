@@ -26,12 +26,12 @@ public class AthleteRepository
         AthleteRepository.connection = connection;
     }
 
-    public static int insertInvalidity( int id, boolean invalid) throws SQLException
+    public static int insertInvalidity( int id) throws SQLException
     {
         PreparedStatement statement = connection.prepareStatement( INSERT_VALIDITY_STATEMENT );
 
         statement.setInt( 1, id );
-        statement.setBoolean( 2, invalid );
+        statement.setBoolean( 2, true );
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
         statement.close();

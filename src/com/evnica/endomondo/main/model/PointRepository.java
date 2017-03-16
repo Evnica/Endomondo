@@ -15,7 +15,6 @@ public class PointRepository
 {
     private static final String TABLE = "point";
     private static final String SCHEMA_NAME = "spatial";
-    private static String insertStatement;
 
     private static Connection connection;
 
@@ -26,6 +25,7 @@ public class PointRepository
 
     public static int insertPoint(String country, Point point, int workoutId) throws SQLException
     {
+        String insertStatement;
         if (country != null)
         {
             try
@@ -48,7 +48,7 @@ public class PointRepository
         int rowsAffected = 0;
 
         try {
-            PreparedStatement statement = connection.prepareStatement( insertStatement );
+            PreparedStatement statement = connection.prepareStatement(insertStatement);
             statement.setInt( 1, point.getOrder() );
             statement.setInt( 2, workoutId );
             try {

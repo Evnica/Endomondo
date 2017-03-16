@@ -2,7 +2,7 @@ package com.evnica.endomondo.main.model;
 
 import org.joda.time.DateTime;
 
-import java.sql.SQLException;
+/*import java.sql.SQLException;*/
 
 /**
  * Class: Point
@@ -114,10 +114,10 @@ public class Point
         return timeCaptured.toString( "HH:mm:ss" ) + " (" + lat + ", " + lon + ")";
     }
 
-    private String toWKTString()
+    /*private String toWKTString()
     {
         return "POINT(" + lon + " " + lat + ")";
-    }
+    }*/
 
     DateTime getTimeCaptured()
     {
@@ -145,8 +145,8 @@ public class Point
         return equal;
     }
 
-    public org.postgis.Point toGeom() throws SQLException
+   /* public org.postgis.Point toGeom() throws SQLException
     {
         return new org.postgis.Point( toWKTString() );
-    }
+    }*/
 }

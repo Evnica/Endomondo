@@ -22,7 +22,7 @@ public class UserRepository
     private static final String SELECT_USER_IDS = "SELECT (id) FROM " + SCHEMA_NAME + "." + TABLE_NAME;
 
     private Connection connection;
-    protected ResultSet resultSet;
+    private ResultSet resultSet;
 
     public UserRepository(Connection connection)
     {

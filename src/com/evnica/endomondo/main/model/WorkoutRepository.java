@@ -2,9 +2,11 @@ package com.evnica.endomondo.main.model;
 
 import org.joda.time.DateTime;
 
-import java.io.*;
 import java.sql.*;
+/*
+import java.io.*;
 import java.text.SimpleDateFormat;
+*/
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +23,8 @@ public class WorkoutRepository
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, sport, user_id, start_dt) VALUES (?, ?, ?, ?)";
-    private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
-                                                       " ORDER BY user_id";
+/*    private static final String SELECT_ALL_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
+                                                       " ORDER BY user_id";*/
     private static final String SELECT_BY_ID_STATEMENT = "SELECT * FROM " + SCHEMA_NAME + "." + TABLE_NAME +
                                 " WHERE user_id = ?";
     private final static String SELECT_USERS = "SELECT DISTINCT user_id from " +
@@ -71,7 +73,7 @@ public class WorkoutRepository
         return rowsAffected;
     }
 
-    public static void toCsv(String filename)
+    /*public static void toCsv(String filename)
     {
         String file = filename + "-all.txt";
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -109,7 +111,7 @@ public class WorkoutRepository
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
     // load all distinct users from db
     public static List<Integer> getUserIds() throws SQLException
