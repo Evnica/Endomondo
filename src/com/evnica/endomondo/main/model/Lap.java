@@ -11,13 +11,13 @@ import org.joda.time.DateTime;
  */
 public class Lap
 {
-    private long id;
+    private int id;
     private double beginLat, beginLon, endLat, endLon;
     private boolean containsPolyline; // in JSON "show_map" = 1 means false,
                                       // 0 means true, e.g. track is displayed on the map
     private int workoutId;
-    private Polyline smallPolyline;
-    private DateTime offset;
+    private Polyline smallPolyline = null;
+    private DateTime offset = null;
     private long duration; // in millis
 
     public Lap( double beginLat, double beginLon, double endLat, double endLon )
@@ -59,7 +59,7 @@ public class Lap
 
     public void setId (int order)
     {
-        this.id =  workoutId * 1000L + order ;
+        this.id = order ;
     }
 
     double getBeginLat()
@@ -82,7 +82,7 @@ public class Lap
         return endLon;
     }
 
-    public long getId()
+    public int getId()
     {
         return id;
     }

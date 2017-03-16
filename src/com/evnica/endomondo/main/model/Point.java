@@ -16,7 +16,8 @@ public class Point
 {
     private double lat, lon;
     private DateTime timeCaptured;
-    private double distance, duration;
+    private double distanceFromPrevious, distanceFromOffset;
+    private int durationFromPrevious, durationFromOffset;
     private int order;
     private org.postgis.Point point;
 
@@ -32,15 +33,6 @@ public class Point
         return point;
     }
 
-    public Point( double lat, double lon, DateTime timeCaptured, double distance, double duration )
-    {
-        this.lat = lat;
-        this.lon = lon;
-        this.timeCaptured = timeCaptured;
-        this.distance = distance;
-        this.duration = duration;
-    }
-
     public int getOrder()
     {
         return order;
@@ -51,14 +43,14 @@ public class Point
         this.order = order;
     }
 
-    public double getDuration()
+    public int getDurationFromPrevious()
     {
-        return duration;
+        return durationFromPrevious;
     }
 
-    public void setDuration( double duration )
+    public void setDurationFromPrevious(int durationFromPrevious)
     {
-        this.duration = duration;
+        this.durationFromPrevious = durationFromPrevious;
     }
 
     public double getLat()
@@ -66,30 +58,45 @@ public class Point
         return lat;
     }
 
-    public double getLon()
+    double getLon()
     {
         return lon;
     }
 
-    public double getDistance()
+    public double getDistanceFromPrevious()
     {
-        return distance;
+        return distanceFromPrevious;
     }
 
-    public void setDistance( double distance )
+    public void setDistanceFromPrevious(double distanceFromPrevious)
     {
-        this.distance = distance;
+        this.distanceFromPrevious = distanceFromPrevious;
     }
 
-    public String toJSONString()
+    String toJSONString()
     {
         return "{\"lat\":" + lat + "," +
                 "\"lon\":" + lon + "," +
-                "\"dist\":"+ distance + "," +
-                "\"dur\":" + duration + "," +
+                "\"dist\":"+ distanceFromPrevious + "," +
+                "\"dur\":" + durationFromPrevious + "," +
                 "\"time\":"+ timeCaptured + "}";
     }
 
+    public double getDistanceFromOffset() {
+        return distanceFromOffset;
+    }
+
+    public void setDistanceFromOffset(double distanceFromOffset) {
+        this.distanceFromOffset = distanceFromOffset;
+    }
+
+    public int getDurationFromOffset() {
+        return durationFromOffset;
+    }
+
+    public void setDurationFromOffset(int durationFromOffset) {
+        this.durationFromOffset = durationFromOffset;
+    }
 
     @Override
     public String toString()
@@ -102,17 +109,17 @@ public class Point
         return result;
     }
 
-    public String toStringTimeOnly()
+    String toStringTimeOnly()
     {
         return timeCaptured.toString( "HH:mm:ss" ) + " (" + lat + ", " + lon + ")";
     }
 
-    public String toWKTString()
+    private String toWKTString()
     {
         return "POINT(" + lon + " " + lat + ")";
     }
 
-    public DateTime getTimeCaptured()
+    DateTime getTimeCaptured()
     {
         return timeCaptured;
     }

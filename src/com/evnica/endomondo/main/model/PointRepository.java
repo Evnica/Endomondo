@@ -2,11 +2,7 @@ package com.evnica.endomondo.main.model;
 
 import org.postgis.PGgeometry;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.List;
+import java.sql.*;
 
 /**
  * Class: PointRepository
@@ -17,7 +13,7 @@ import java.util.List;
  */
 public class PointRepository
 {
-    private static String table = "point";
+    private static final String TABLE = "point";
     private static final String SCHEMA_NAME = "spatial";
     private static String insertStatement;
 
@@ -32,34 +28,69 @@ public class PointRepository
     {
         if (country != null)
         {
-            table = table + "_" + country.toLowerCase();
+            try
+            {
+                PreparedStatement s = connection.prepareStatement("SELECT * FROM " + SCHEMA_NAME + "." + TABLE + "_" + country.toLowerCase());
+                s.execute();
+                insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + TABLE + "_" + country.toLowerCase() +
+                        " (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            } catch (SQLException e) {
+                insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + TABLE +
+                        " (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            }
         }
+        else
+            {
+                insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + TABLE +
+                        " (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            }
 
-        insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + table +
-                "(id, wrkt_id, distance, duration, dt, geom ) VALUES (?, ?, ?, ?, ?, ?)";;
-
-        PreparedStatement statement = connection.prepareStatement( insertStatement );
-        statement.setInt( 1, point.getOrder() );
-        statement.setInt( 2, workoutId );
-        statement.setDouble( 3, point.getDistance() );
-        statement.setDouble( 4, point.getDuration() );
-        statement.setTimestamp( 5, new Timestamp( point.getTimeCaptured().getMillis() ) );
-        PGgeometry geom = new PGgeometry(point.getPoint());
-        geom.getGeometry().setSrid( 4326 );
-        statement.setObject( 6, geom);
-        int rowsAffected = statement.executeUpdate();
-        statement.clearParameters();
-        statement.close();
-
-        return rowsAffected;
-    }
-
-    public static int insertPoints(String country, List<Point> points, int workoutId) throws SQLException
-    {
         int rowsAffected = 0;
-        for (Point p: points)
+
+        try {
+            PreparedStatement statement = connection.prepareStatement( insertStatement );
+            statement.setInt( 1, point.getOrder() );
+            statement.setInt( 2, workoutId );
+            try {
+                statement.setDouble( 3, point.getDistanceFromPrevious() );
+            } catch (SQLException e) {
+                statement.setNull(3, Types.DOUBLE);
+            }
+            try {
+                statement.setInt( 4, point.getDurationFromPrevious() );
+            } catch (SQLException e) {
+                statement.setNull(4, Types.INTEGER);
+            }
+            try {
+                statement.setTimestamp( 5, new Timestamp( point.getTimeCaptured().getMillis() ) );
+            } catch (Exception e) {
+                statement.setNull(5, Types.TIMESTAMP);
+            }
+            try {
+                PGgeometry geom = new PGgeometry(point.getPoint());
+                geom.getGeometry().setSrid( 4326 );
+                statement.setObject( 6, geom);
+            } catch (Exception e) {
+                statement.setObject(6, null);
+            }
+            try {
+                statement.setDouble( 7, point.getDistanceFromOffset() );
+            } catch (SQLException e) {
+                statement.setNull(7, Types.DOUBLE);
+            }
+            try {
+                statement.setInt( 8, point.getDurationFromOffset() );
+            } catch (SQLException e) {
+                statement.setNull(8, Types.INTEGER);
+            }
+
+            rowsAffected = statement.executeUpdate();
+            statement.clearParameters();
+            statement.close();
+        }
+        catch (SQLException e)
         {
-            rowsAffected += insertPoint(country, p, workoutId  );
+            System.out.println("Point insertion error: " + e);
         }
         return rowsAffected;
     }

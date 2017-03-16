@@ -22153,6 +22153,63 @@
 ,"end_user":52700
 ,"rejected_users":[]
 ,"rejected_wrkt":[]
+},{"time":"2017-03-15 10-59-53",
+"start_user":0
+,"end_user":20
+,"rejected_users":[]
+,"rejected_wrkt":[]
 },
-
-
+{"time":"2017-03-15 11-07-28",
+"start_user":20
+,"end_user":40
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-14-04",
+"start_user":40
+,"end_user":60
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-20-02",
+"start_user":60
+,"end_user":80
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-27-53",
+"start_user":80
+,"end_user":100
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-37-05",
+"start_user":100
+,"end_user":120
+,"rejected_users":[21942994]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-40-54",
+"start_user":120
+,"end_user":140
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 11-50-30",
+"start_user":140
+,"end_user":160
+,"rejected_users":[25370429,25429794,25429928]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 12-00-53",
+"start_user":160
+,"end_user":180
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-15 12-21-18",
+"start_user":0
+,"end_user":8
+,"rejected_users":[21942994,25370429,25429794,25429928,26334291,26494291]
+,"rejected_wrkt":[]
+},

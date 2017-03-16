@@ -136,7 +136,7 @@ public class JSONContentParser
                                 DateTime timeCaptured = formatter.parseDateTime( timestampString );
                                 Point point = new Point( lat, lon );
                                 point.setTimeCaptured( timeCaptured );
-                                point.setDistance( distance );
+                                point.setDistanceFromPrevious( distance );
                                 point.setOrder(i);
                                 result.addPoint( point );
                             }
@@ -194,44 +194,50 @@ public class JSONContentParser
                 workoutDetail.setStartAt(offset);
             } catch (Exception e) {
                 LOGGER.error("Can't get offset for id " + workoutId, e);
+                System.out.println("Can't get offset for id " + workoutId + ", " + e);
             }
             try {
                 workoutDetail.setDistance(workoutObject.getDouble("distance"));
             } catch (JSONException e) {
                 LOGGER.error("Can't get distance for id " + workoutId);
+                System.out.println("Can't get distance for id " + workoutId);
             }
 
             try {
                 workoutDetail.setDuration(workoutObject.getDouble("duration"));
             } catch (JSONException e) {
                 LOGGER.error("Can't get duration for id " + workoutId);
+                System.out.println("Can't get duration for id " + workoutId);
             }
             try {
                 workoutDetail.setWeather(workoutObject.getJSONObject("weather").getInt("type"));
             } catch (JSONException e) {
                 workoutDetail.setWeather(-1);
-                LOGGER.error("Can't get weather for id " + workoutId);
+                LOGGER.error("No weather, workout is likely to be empty: " + workoutId);
+                System.out.print("workout is likely to be empty, ");
             }
             try {
                 workoutDetail.setUserId(workoutObject.getJSONObject("author").getInt("id"));
             } catch (JSONException e) {
                 workoutDetail.setUserId(-1);
                 LOGGER.error("Can't get user id for workout id " + workoutId);
+                System.out.print("no user: workout is likely to be useless, ");
             }
             try {
                 workoutDetail.setShowMap(workoutObject.getInt("show_map"));
             } catch (JSONException e) {
                 LOGGER.error("Can't get show_map for id " + workoutId);
+                System.out.println("has no show_map, ");
                 workoutDetail.setShowMap(-1);
             }
-
+            // try to get laps if present
             try
             {
                 JSONArray metricLaps = workoutObject.getJSONObject( "laps" ).getJSONArray( "metric" );
                 if (metricLaps.length() > 0)
                 {
                     double beginLatitude, beginLongitude, endLatitude, endLongitude;
-                    double duration;
+                    long duration;
                     // polyline is not always present in JSON; without polyline we rely on points
                     try {
                         ((JSONObject) metricLaps.get(0)).getString( "small_encoded_polyline");
@@ -241,7 +247,8 @@ public class JSONContentParser
                     }
                     for (int i = 0; i < metricLaps.length(); i++)
                     {
-                        try {
+                        try
+                        {
                             beginLatitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_latitude");
                             beginLongitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_longitude");
                             endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
@@ -250,10 +257,15 @@ public class JSONContentParser
 
                             if (validLaps)
                             {
-                                String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
-                                        .getString( "small_encoded_polyline");
-                                Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
-                                lap.setSmallPolyline( lapGeometry );
+                                try {
+                                    String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
+                                            .getString( "small_encoded_polyline");
+                                    Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
+                                    lap.setSmallPolyline( lapGeometry );
+                                } catch (JSONException e) {
+                                    LOGGER.error("Lap " + i + " in workout " + workoutId + " has no geometry");
+                                    System.out.println("Lap " + i + " in workout " + workoutId + " has no geometry");
+                                }
                             }
                             lap.setWorkoutId( workoutId );
                             lap.setId( i );
@@ -263,16 +275,15 @@ public class JSONContentParser
 
                             try
                             {
-                                duration =  ((JSONObject) metricLaps.get(i)).getDouble("duration");
-                                lap.setDuration( (long) duration );
+                                duration =  ((JSONObject) metricLaps.get(i)).getLong("duration");
+                                lap.setDuration( duration );
                                 if (offset != null) {
                                     offset = offset.plusMillis( (int) duration );
                                 }
                             }
                             catch ( Exception e )
                             {
-                                // have no idea why I have catch here... if you know, drop me a line
-                                e.printStackTrace();
+                                lap.setDuration(-1L);
                             }
                             workoutDetail.addLap( lap );
                         } catch (JSONException e) {
@@ -282,7 +293,8 @@ public class JSONContentParser
                     int diff = metricLaps.length() - workoutDetail.getLaps().size();
                     if (diff != 0)
                     {
-                        System.out.println(workoutId + " workout: " + diff + " laps lost");
+                        System.out.println(workoutId + " workout: " + diff + " laps invalid");
+                        LOGGER.info(workoutId + " workout: " + diff + " laps invalid");
                     }
                 }
             } catch (JSONException e) {
@@ -293,44 +305,92 @@ public class JSONContentParser
                 JSONArray pointsJSONArray = workoutObject.getJSONObject( "points" ).getJSONArray( "points" );
                 if (pointsJSONArray.length() > 1) // 1 point is not a lap
                 {
-                    try {
-                        pointsJSONArray.getJSONObject( 0 ).getDouble( "latitude" );
-                        validPoints = true;
+                    try
+                    {
+                        int startIndex = 0;
+                        try // test if first point contains coordinates
+                        {
+                            pointsJSONArray.getJSONObject( 0 ).getDouble( "latitude" );
+                            validPoints = true;
+                        }
+                        // test if second point contains coordinates; if not - points are invalid
+                        catch (JSONException e)
+                        {
+                            pointsJSONArray.getJSONObject( 1 ).getDouble( "latitude" );
+                            validPoints = true;
+                            startIndex = 1;
+                        }
 
-                        double lat, lon, distance, duration;
+                        double lat, lon, distance;
+                        int duration;
                         JSONObject pointJSONObject;
                         String timestampString;
-                        for ( int i = 0; i < pointsJSONArray.length(); i++ )
-                        {
-                            pointJSONObject = pointsJSONArray.getJSONObject( i );
+
+                        Point knownValidPoint = null;
+                        boolean validPointFound = false;
+                        do {
                             try
                             {
-                                lat = pointJSONObject.getDouble( "latitude" );
-                                lon = pointJSONObject.getDouble( "longitude" );
-                                distance = pointJSONObject.getDouble( "distance" );
-                                duration = pointJSONObject.getDouble( "duration" );
+                                pointJSONObject = pointsJSONArray.getJSONObject( startIndex );
+                                knownValidPoint = new Point( pointJSONObject.getDouble( "latitude" ),
+                                        pointJSONObject.getDouble( "longitude" ) );
+                                knownValidPoint.setOrder(startIndex);
                                 timestampString = pointJSONObject.getString( "time" );
                                 timestampString = timestampString.substring( 0, 19 );
                                 DateTime timeCaptured = formatter.parseDateTime( timestampString );
-                                Point point = new Point( lat, lon );
-                                point.setTimeCaptured( timeCaptured );
-                                point.setDistance( distance );
-                                point.setOrder(i);
-                                point.setDuration(duration);
-                                workoutDetail.addPoint( point );
+                                knownValidPoint.setTimeCaptured( timeCaptured );
+                                knownValidPoint.setDistanceFromPrevious( pointJSONObject.getDouble( "distance" ) );
+                                knownValidPoint.setDurationFromPrevious(pointJSONObject.getInt( "duration" ));
+                                knownValidPoint.setDistanceFromOffset(knownValidPoint.getDistanceFromPrevious());
+                                knownValidPoint.setDurationFromOffset(knownValidPoint.getDurationFromPrevious());
+                                workoutDetail.addPoint(knownValidPoint);
+                                validPointFound = true;
                             } catch (JSONException e) {
-                                LOGGER.error("Invalid point " + i + ", workout " + workoutId);
+                                LOGGER.error("Invalid point " + startIndex + ", workout " + workoutId);
                             }
+                            startIndex++;
                         }
-                        if (workoutDetail.getPoints().size() > 1)
-                        {
-                            int diff = pointsJSONArray.length() - workoutDetail.getPoints().size();
-                            if (diff != 0)
+                        while (!validPointFound && startIndex < pointsJSONArray.length());
+                        if (startIndex >= pointsJSONArray.length()) validPoints = false;
+                        if (knownValidPoint != null) {
+                            for ( int i = startIndex; i < pointsJSONArray.length(); i++ )
                             {
-                                System.out.println(workoutId + " workout: " + diff + " points lost");
+                                pointJSONObject = pointsJSONArray.getJSONObject( i );
+                                try
+                                {
+                                    lat = pointJSONObject.getDouble( "latitude" );
+                                    lon = pointJSONObject.getDouble( "longitude" );
+                                    distance = pointJSONObject.getDouble( "distance" );
+                                    duration = pointJSONObject.getInt( "duration" );
+                                    timestampString = pointJSONObject.getString( "time" );
+                                    timestampString = timestampString.substring( 0, 19 );
+                                    DateTime timeCaptured = formatter.parseDateTime( timestampString );
+                                    Point point = new Point( lat, lon );
+                                    point.setOrder(i);
+                                    point.setTimeCaptured( timeCaptured );
+                                    point.setDistanceFromOffset(distance);
+                                    point.setDurationFromOffset(duration);
+                                    point.setDistanceFromPrevious(distance - knownValidPoint.getDistanceFromOffset());
+                                    point.setDurationFromPrevious(duration - knownValidPoint.getDurationFromOffset());
+                                    workoutDetail.addPoint( point );
+                                    knownValidPoint = point;
+                                } catch (JSONException e) {
+                                    LOGGER.error("Invalid point " + i + ", workout " + workoutId);
+                                }
+                            }
+                            if (workoutDetail.getPoints().size() > 1)
+                            {
+                                int diff = pointsJSONArray.length() - workoutDetail.getPoints().size();
+                                if (diff != 0)
+                                {
+                                    System.out.println(workoutId + " workout: " + diff + " points invalid");
+                                    LOGGER.info(workoutId + " workout: " + diff + " points invalid");
+                                }
                             }
                         }
-                    } catch (JSONException e) {
+                    }
+                    catch (JSONException e)
+                    {
                         validPoints = false;
                     }
                 }

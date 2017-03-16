@@ -99,7 +99,7 @@ public class DataRetrieval
                 {
                     DbConnector.connectToDb();
                     WorkoutRepository.setConnection( DbConnector.getConnection() );
-                    // get distinct user ids
+                    //get distinct user ids
                     ids = WorkoutRepository.getUserIds();
                     WorkoutRepository.setConnection( DbConnector.getConnection() );
                 }
@@ -107,6 +107,7 @@ public class DataRetrieval
                 {
                     ids = getIdsFromFile();
                 }
+
                 System.out.println( ids.size() + " distinct users in db. Starting data retrieval..." );
                 int end;
                 for (int j = 0; j < numOfRandoms; j++)

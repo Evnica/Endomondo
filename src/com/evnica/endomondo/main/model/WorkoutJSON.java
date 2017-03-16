@@ -1,7 +1,5 @@
 package com.evnica.endomondo.main.model;
 
-import org.joda.time.DateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class WorkoutJSON extends Workout
             for (int i = 1; i < points.size(); i++)
             {
                 Point current = points.get( i );
-                if (Math.abs( current.getDistance() - previous.getDistance() ) >= tolerance)
+                if (Math.abs( current.getDistanceFromPrevious() - previous.getDistanceFromPrevious() ) >= tolerance)
                 {
                     lap.setEndLat( current.getLat() );
                     lap.setEndLon( current.getLon() );

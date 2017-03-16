@@ -19,7 +19,7 @@ public class WorkoutDetail
                    duration;
     private DateTime startAt;
     private int weather,
-                userId,
+                userId = -1,
                 showMap;
     private WorkoutGeometryType workoutGeometryType;
     private List<Lap> laps = new ArrayList<>();
@@ -105,6 +105,10 @@ public class WorkoutDetail
         this.points = points;
     }
 
+    public Point getPoint(int i)
+    {
+        return points.get(i);
+    }
 
     public void addPoint(Point point)
     {

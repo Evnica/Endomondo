@@ -1,11 +1,9 @@
 package com.evnica.endomondo.main.model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+
 import org.postgis.PGgeometry;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -20,7 +18,7 @@ public class LapRepository
     private static final String TABLE_NAME = "lap";
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
-       "(id, workout_id, b_lat, b_lon, e_lat, e_lon, with_geom, geom, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       "(id, workout_id, b_lat, b_lon, e_lat, e_lon, with_geom, geom, timestamp, duration) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static Connection connection;
 
@@ -59,17 +57,46 @@ public class LapRepository
     public static int insert(Lap lap) throws SQLException
     {
         PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT );
-        statement.setLong( 1, lap.getId() );
+        statement.setInt( 1, lap.getId() );
         statement.setInt( 2, lap.getWorkoutId() );
-        statement.setDouble( 3, lap.getBeginLat() );
-        statement.setDouble( 4, lap.getBeginLon() );
-        statement.setDouble( 5, lap.getEndLat() );
-        statement.setDouble( 6, lap.getEndLon() );
+        try {
+            statement.setDouble( 3, lap.getBeginLat() );
+        } catch (SQLException e) {
+            statement.setNull( 3, Types.DOUBLE);
+        }
+        try {
+            statement.setDouble( 4, lap.getBeginLon() );
+        } catch (SQLException e) {
+            statement.setNull( 4, Types.DOUBLE);
+        }
+        try {
+            statement.setDouble( 5, lap.getEndLat() );
+        } catch (SQLException e) {
+            statement.setNull( 5, Types.DOUBLE);
+        }
+        try {
+            statement.setDouble( 6, lap.getEndLon() );
+        } catch (SQLException e) {
+            statement.setNull( 6, Types.DOUBLE);
+        }
         statement.setBoolean( 7, lap.containsPolyline() );
-        PGgeometry lineString = new PGgeometry(lap.getSmallPolyline().toLineString());
-        lineString.getGeometry().setSrid( 4326 );
-        statement.setObject( 8, lineString);
-        statement.setTimestamp( 9, new Timestamp( lap.getOffset().getMillis() ));
+        try {
+            PGgeometry lineString = new PGgeometry(lap.getSmallPolyline().toLineString());
+            lineString.getGeometry().setSrid( 4326 );
+            statement.setObject( 8, lineString);
+        } catch (Exception e) {
+            statement.setObject(8, null);
+        }
+        try {
+            statement.setTimestamp( 9, new Timestamp( lap.getOffset().getMillis() ));
+        } catch (Exception e) {
+            statement.setNull( 9, Types.TIMESTAMP);
+        }
+        try {
+            statement.setLong(10, lap.getDuration());
+        } catch (SQLException e) {
+            statement.setNull( 3, Types.BIGINT);
+        }
 
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();

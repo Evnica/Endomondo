@@ -23,14 +23,13 @@ import java.util.Scanner;
  */
 public class LocalJsonProcessing
 {
-    private static int noWorkouts = 0, noBirthday = 0, noDateCreated = 0;
     private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
 
     public static void main(String[] args) {
-        //processWorkouts("./interimTables/wrktJson");
-        processAthletes("C:\\Users\\d.strelnikova\\IdeaProjects\\Endomondo\\out\\artifacts\\Endomondo_jar\\jsonResult\\user");
+        processWorkouts("C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\02-IN_ALL_workout_2017-03-07");
+        //processAthletes("C:\\Users\\d.strelnikova\\IdeaProjects\\Endomondo\\jsonResult\\user");
     }
 
     private static void processAthletes(String dir)
@@ -113,7 +112,6 @@ public class LocalJsonProcessing
                 else
                 {
                     System.out.println(id + " has no workouts ");
-                    noWorkouts++;
                 }
                 JSONArray summaryBySport;
                 try
@@ -149,7 +147,6 @@ public class LocalJsonProcessing
                     athlete.setCreatedDate( formatter.parseDateTime( date ) );
                 } catch (JSONException e) {
                     System.out.println(id + " has no creation date");
-                    noDateCreated++;
                 }
                 try
                 {
@@ -159,7 +156,6 @@ public class LocalJsonProcessing
                 catch (JSONException e)
                 {
                     System.out.println(id + " has no birth date");
-                    noBirthday++;
                 }
                 try
                 {
@@ -172,7 +168,7 @@ public class LocalJsonProcessing
             }
             catch (JSONException e)
             {
-                noWorkouts++;
+                System.out.println(e.getMessage());
             }
         }
         catch ( JSONException e )
@@ -184,6 +180,7 @@ public class LocalJsonProcessing
 
     private static void processWorkouts(String dir)
     {
+        int fileCounter = 0;
         try {
             DbConnector.connectToDb();
             LapRepository.setConnection(DbConnector.getConnection());
@@ -195,42 +192,78 @@ public class LocalJsonProcessing
             {
                 try {
                     int workoutId = Integer.parseInt(file.getName().split(".j")[0]);
+                    System.out.print("Starting " + workoutId + ", ");
                     String jsonContent = new Scanner(new FileInputStream(file), "UTF-8")
                             .useDelimiter("\\A").next();
                     WorkoutDetail workout = JSONContentParser.parseWorkoutDetailUrl(jsonContent, workoutId);
 
-                    if (workout != null) {
-                        WorkoutDetailRepository.insert(workout);
-                        try {
-                            if (workout.getLaps() != null && workout.getLaps().size() > 0)
-                            {
-                                for (Lap lap: workout.getLaps())
-                                {
-                                    LapRepository.insert(lap);
-                                }
-                            }
-                        } catch (Exception e) {
-                            LOGGER.error("Not all laps inserted for workout " + workoutId);
-                        }
-                        if (workout.getPoints() != null && workout.getPoints().size() > 1)
+                    if (workout != null)
+                    {
+                        String country = null;
+                        if (workout.getUserId() != -1)
                         {
-                            String country = null;
-                            if (workout.getUserId() != -1)
+                            try
                             {
                                 country = AthleteRepository.getCountry(workout.getUserId());
+                                System.out.println(country);
+                            } catch (SQLException e) {
+                                country = null;
+                                System.out.println("no country");
                             }
-                            for (Point p: workout.getPoints())
+                        }
+                        try
+                        {
+                            WorkoutDetailRepository.insert(workout);
+                            if (workout.getLaps() != null && workout.getLaps().size() > 0)
                             {
-                                try {
-                                    PointRepository.insertPoint(country, p, workoutId);
-                                } catch (SQLException e) {
-                                    try {
-                                        PointRepository.insertPoint(null, p, workoutId);
-                                    } catch (SQLException e1) {
-                                        e1.printStackTrace();
+                                int insertedLapCount = 0;
+                                for (Lap lap: workout.getLaps())
+                                {
+                                    try
+                                    {
+                                        insertedLapCount += LapRepository.insert(lap);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        LOGGER.error("Lap " + lap.getId() + " was not inserted for workout " + workoutId, e);
                                     }
                                 }
+                                System.out.println(insertedLapCount + " laps inserted in DB for workout " + workoutId);
+                                try
+                                {
+                                    WorkoutDetailRepository.update(true, workoutId, insertedLapCount);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                    LOGGER.error("Lap count not inserted for wrkt " + workoutId, e);
+                                }
                             }
+
+                            if (workout.getPoints() != null && workout.getPoints().size() > 1)
+                            {
+                                int insertedPointCount = 0;
+                                for (Point p: workout.getPoints())
+                                {
+                                    try
+                                    {
+                                        insertedPointCount += PointRepository.insertPoint(country, p, workoutId);
+                                    } catch (SQLException e)
+                                    {
+                                        LOGGER.error("Can't insert point " + p.getOrder() +
+                                                            " from workout " + workout.getId(), e);
+                                    }
+                                }
+                                System.out.println(insertedPointCount + " points inserted in DB for workout " + workoutId);
+                                try
+                                {
+                                    WorkoutDetailRepository.update(false, workoutId, insertedPointCount);
+                                } catch (SQLException e) {
+                                    System.out.println("Not inserted workout: " + e);
+                                    LOGGER.error("Point count not inserted for wrkt " + workoutId, e);
+                                }
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            LOGGER.error("Workout " + workout.getId() + " not inserted in DB");
                         }
                     }
 
@@ -242,8 +275,10 @@ public class LocalJsonProcessing
                     LOGGER.error(file.getName() + " not found");
                 }
                 System.out.println("Processed: " + file.getName());
+                fileCounter++;
             }
             DbConnector.closeConnection();
+            System.out.println(fileCounter + " files processed");
         } catch (Exception e) {
             e.printStackTrace();
         }
