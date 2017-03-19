@@ -4,6 +4,7 @@ import com.evnica.endomondo.main.connect.DbConnector;
 import com.evnica.endomondo.main.model.Workout;
 import com.evnica.endomondo.main.model.WorkoutRepository;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 
 import java.io.File;
@@ -40,7 +41,9 @@ public class WorkoutFiller {
             workoutId = Integer.parseInt(entry[0]);
             sport = Integer.parseInt(entry[1]);
             userId = Integer.parseInt(entry[2]);
-            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(entry[3].substring(0, 19));
+            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
+                    .withZone(DateTimeZone.UTC)
+                    .parseDateTime(entry[3].substring(0, 19));
 
 
             WorkoutRepository.insert(new Workout(workoutId, sport, timestamp, userId));

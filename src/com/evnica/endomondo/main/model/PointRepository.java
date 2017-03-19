@@ -1,8 +1,11 @@
 package com.evnica.endomondo.main.model;
 
+import org.joda.time.DateTimeZone;
 import org.postgis.PGgeometry;
 
 import java.sql.*;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * Class: PointRepository
@@ -15,17 +18,17 @@ public class PointRepository
 {
     private static final String TABLE = "point";
     private static final String SCHEMA_NAME = "spatial";
-
+    private static String insertStatement;
     private static Connection connection;
+
 
     public static void setConnection( Connection connection )
     {
         PointRepository.connection = connection;
     }
 
-    public static int insertPoint(String country, Point point, int workoutId) throws SQLException
+    public static void setInsertStatement(String country)
     {
-        String insertStatement;
         if (country != null)
         {
             try
@@ -40,11 +43,14 @@ public class PointRepository
             }
         }
         else
-            {
-                insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + TABLE +
-                        " (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            }
+        {
+            insertStatement = "INSERT INTO " + SCHEMA_NAME + "." + TABLE +
+                    " (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        }
+    }
 
+    public static int insertPoint(Point point, int workoutId) throws SQLException
+    {
         int rowsAffected = 0;
 
         try {
@@ -62,7 +68,11 @@ public class PointRepository
                 statement.setNull(4, Types.INTEGER);
             }
             try {
-                statement.setTimestamp( 5, new Timestamp( point.getTimeCaptured().getMillis() ) );
+                long millis = point.getTimeCaptured().getZone()
+                        .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
+                        point.getTimeCaptured().getMillis());
+                statement.setTimestamp( 5, new Timestamp( millis ));
+                System.out.println(point.getTimeCaptured());
             } catch (Exception e) {
                 statement.setNull(5, Types.TIMESTAMP);
             }

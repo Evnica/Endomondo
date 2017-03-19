@@ -4,9 +4,9 @@ import com.evnica.endomondo.main.connect.UrlConnector;
 import com.evnica.endomondo.main.model.Workout;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
-import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,9 +39,11 @@ public class ComplexRetrieval
     private static final Path RETRIEVED_PAIRS_PATH = Paths.get( "./jsonResult/workout-user_pairs.txt" );
     private static final Path INVALID_USER_PATH = Paths.get( "./jsonResult/invalid_user.txt" );
     private static final Path REJECTED_USER_PATH = Paths.get( "./jsonResult/rejected_user.txt" );
+    private static final Path REJECTED_WRKT_PATH = Paths.get( "./jsonResult/rejected_wrkt.txt" );
     private static final Path STAT_PATH = Paths.get( "./jsonResult/retrieval_statistics.txt" );
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(ComplexRetrieval.class.getName());
+    // first 4 count errors when processing a known user-workout pair, the last one - when retrieving such a pair
     private static List<Integer> rejectedUserIds = new ArrayList<>(),
                                  invalidUserIds = new ArrayList<>(),
                                  rejectedWorkoutIds = new ArrayList<>(),
@@ -61,7 +63,7 @@ public class ComplexRetrieval
         System.out.print("Enter start user id: ");
         try {
             startUserId = Integer.parseInt(reader.readLine());
-            System.out.println("Enter iteration size: ");
+            System.out.println("Interim statistics are saved after each iteration. Enter iteration size: ");
             iterationSize = Integer.parseInt(reader.readLine());
             System.out.println("Enter number of iterations: ");
             numOfIterations = Integer.parseInt(reader.readLine());
@@ -78,26 +80,30 @@ public class ComplexRetrieval
 
     private static void process()
     {
-        int iterationEnd;
+        int endUserId;
 
         for (int j = 0; j < numOfIterations; j++)
         {
             DateTime iterationStart = new DateTime();
-            iterationEnd = startUserId + iterationSize;
-            System.out.println("Processing " + startUserId + " to " + iterationEnd );
+            endUserId = startUserId + iterationSize;
+            System.out.println("Processing " + startUserId + " to " + endUserId );
 
-            for (int i = startUserId; i < iterationEnd; i++)
+            for (int i = startUserId; i < endUserId; i++)
             {
+                System.out.println(i);
                 processOneId(i);
             }
-            DataRetrieval.jsonLog(startUserId, iterationEnd, rejectedUserIds, rejectedWorkoutIds);
-            //time, iteration#, duration mins, sent requests, rejected requests, rejected users for pairs, rejected demographics, invalid user, invalid workouts
+
+            DataRetrieval.jsonLog(startUserId, endUserId, rejectedUserIds, rejectedWorkoutIds);
+            //time, iteration#, startUserId, endUserId, duration mins, sent requests, rejected requests, rejected users for pairs, rejected demographics, invalid user, rejected workouts, invalid workouts
             String statistics = new DateTime().toString(FORMATTER);
             statistics += ";" + (j + 1) + ";";
-            System.out.println("Iteration " + statistics + " ended:");
+            statistics += startUserId + ";";
+            statistics += endUserId + ";";
+            System.out.println("Iteration " + (j + 1) + " ended:");
             long duration = (new DateTime().getMillis() - iterationStart.getMillis()) / 60000; // in minutes
-            System.out.println("Duration: from " + iterationStart + " to " + new DateTime().toString(FORMATTER) +
-            ", " + duration );
+            System.out.println("Duration (mins): " + duration + ", from " + iterationStart + " to "
+                    + new DateTime().toString(FORMATTER));
             statistics += duration + ";";
             System.out.println("Sent requests: " + sentRequests);
             statistics+= sentRequests + ";";
@@ -113,10 +119,19 @@ public class ComplexRetrieval
             if (invalidUserIds.size() > 0) writeIDsToFile(INVALID_USER_PATH, invalidUserIds);
             System.out.println("Rejected workouts: " + rejectedWorkoutIds.size());
             statistics+= rejectedWorkoutIds.size();
+            if(rejectedWorkoutIds.size() > 0) writeIDsToFile(REJECTED_WRKT_PATH,  rejectedWorkoutIds);
+            System.out.println("Invalid workouts: " + invalidWorkoutIds.size());
+            statistics+= invalidWorkoutIds.size();
 
+            try {
+                basicWriteToFile(STAT_PATH, statistics);
+            } catch (IOException e) {
+                LOGGER.error("Can't write statistics to file");
+                System.out.println("Can't write statistics to file: " + e);
+            }
 
             toDefaults();
-            startUserId = iterationEnd;
+            startUserId = endUserId;
             try {
                 Thread.sleep(15000);
             } catch (InterruptedException e) {
@@ -139,14 +154,15 @@ public class ComplexRetrieval
     }
 
     private static void processOneId(int id) {
+        boolean fromUs = false;
         int retrievedWorkoutCount = 0;
         String notLoadedWorkoutIds = "";
-        String workoutsUrlContent = null;
-        // try to retrieve user id - workout id pairs
+        String workoutsUrlContent;
+        // try to retrieve user-workout pairs
         try
         {
             sentRequests++;
-            workoutsUrlContent = UrlConnector.getWorkoutsUrlContent( id );
+            workoutsUrlContent = UrlConnector.getUserWorkoutPairsUrlContent( id );
         } catch (IOException e)
         {
             workoutsUrlContent = processUrlIOException(e, id, true, null);
@@ -173,7 +189,26 @@ public class ComplexRetrieval
                 // if data present, save it
                 if (userJsonContent != null)
                 {
-                    DataRetrieval.writeToJson( id, "user", userJsonContent );
+                    try
+                    {
+                        JSONObject userObject = new JSONObject( userJsonContent );
+                        if (userObject.getString( "country" ).toLowerCase().equals("us"))
+                        {
+                            DataRetrieval.writeToJson( id, "user_us", userJsonContent );
+                            fromUs = true;
+                        }
+                        else
+                        {
+                            fromUs = false;
+                            DataRetrieval.writeToJson( id, "user", userJsonContent );
+                        }
+                    }
+                    catch (Exception e) // JSON or NullPointer
+                    {
+                        fromUs = false;
+                        DataRetrieval.writeToJson( id, "user", userJsonContent );
+                    }
+
                     logMessage += "valid;";
                     System.out.println("User " + id + " json saved");
                     logMessage += workouts.size() + ";";
@@ -186,7 +221,7 @@ public class ComplexRetrieval
                     try
                     {
                         sentRequests++;
-                        workoutContent = UrlConnector.getWorkoutJsonUrlContent( w );
+                        workoutContent = UrlConnector.getWorkoutUrlContent( w );
                     }
                     catch ( IOException e )
                     {
@@ -194,9 +229,18 @@ public class ComplexRetrieval
                     }
                     if (workoutContent != null)
                     {
-                        DataRetrieval.writeToJson( w.getId(), "workout", workoutContent );
+                        if (fromUs)
+                        {
+                            DataRetrieval.writeToJson( w.getId(), "workout_us", workoutContent );
+                        }
+                        else
+                        {
+                            DataRetrieval.writeToJson( w.getId(), "workout", workoutContent );
+                        }
+
                         writePairToFile(id, w.getId(), w.getLocalStartTime(), w.getSport());
                         retrievedWorkoutCount++;
+
                         logMessage += w.getId() + " ";
                         System.out.println("Workout " + w.getId() + " json saved");
                     }
@@ -232,18 +276,18 @@ public class ComplexRetrieval
             try
             {
                 sentRequests++;
-                if (pairs) jsonContent = UrlConnector.getWorkoutsUrlContent( id );
+                if (pairs) jsonContent = UrlConnector.getUserWorkoutPairsUrlContent( id );
                 else if ( workout == null ) jsonContent = UrlConnector.getUserUrlContent( id );
-                else jsonContent = UrlConnector.getWorkoutJsonUrlContent( workout );
+                else jsonContent = UrlConnector.getWorkoutUrlContent( workout );
             }
             catch ( Exception ex )
             {
-                if (workout == null) System.out.println( id + " rejected after sleeping for 13\": " + ex);
-                else System.out.println( workout.getId() + " rejected after sleeping for 13\": " + ex);
+                if (workout == null) System.out.println( id + " user rejected after sleeping for 13\": " + ex);
+                else System.out.println( workout.getId() + " wrkt rejected after sleeping for 13\": " + ex);
 
                 if (pairs) rejectedUsersForPairs.add(id);
                 else if (workout == null) rejectedUserIds.add( id );
-                else rejectedWorkoutIds.add( id );
+                else rejectedWorkoutIds.add( workout.getId() );
             }
         }
         else if (e instanceof java.io.FileNotFoundException || e.getMessage().contains( "500" ))
@@ -261,7 +305,7 @@ public class ComplexRetrieval
         else if (e instanceof UnknownHostException || e instanceof ConnectException)
         {
             if (workout == null) rejectedUserIds.add( id );
-            else rejectedWorkoutIds.add( id );
+            else rejectedWorkoutIds.add( workout.getId() );
             int j = workout != null ? workout.getId() : id;
             LOGGER.error( "NO CONNECTION! Trying to sleep for 30s, id cause: " + j );
             try { Thread.sleep( 30000 ); }
@@ -274,7 +318,7 @@ public class ComplexRetrieval
         else
         {
             if (workout == null) rejectedUserIds.add( id );
-            else rejectedWorkoutIds.add( id );
+            else rejectedWorkoutIds.add( workout.getId() );
             LOGGER.error( "X3 what is that: ", e );
             try { Thread.sleep( 30000 ); }
             catch ( InterruptedException e1 )
@@ -288,7 +332,7 @@ public class ComplexRetrieval
         try
         {
             basicWriteToFile(RETRIEVED_PAIRS_PATH,
-                    (workoutId + ',' + sport + ',' + Integer.toString( id ) + ',' + start.toString(FORMATTER)));
+                    (workoutId + "," + sport + "," + id + "," + start.toString(FORMATTER)));
         }
         catch ( IOException e )
         {
@@ -302,7 +346,7 @@ public class ComplexRetrieval
         String part;
         for (int id: ids)
         {
-            part = id + ",";
+            part = id + ", ";
             contentBuilder.append(part);
         }
         try {

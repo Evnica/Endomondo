@@ -7,7 +7,6 @@ import com.evnica.endomondo.main.model.Workout;
 import com.evnica.endomondo.main.model.WorkoutRepository;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 
 import java.io.*;
 import java.net.ConnectException;
@@ -164,7 +163,7 @@ public class DataRetrieval
                                 String workoutContent;
                                 try
                                 {
-                                    workoutContent = UrlConnector.getWorkoutJsonUrlContent( w );
+                                    workoutContent = UrlConnector.getWorkoutUrlContent( w );
                                 }
                                 catch ( IOException e )
                                 {
@@ -260,7 +259,7 @@ public class DataRetrieval
                 }
                 else
                 {
-                    jsonContent = UrlConnector.getWorkoutJsonUrlContent( workout );
+                    jsonContent = UrlConnector.getWorkoutUrlContent( workout );
                 }
             }
             catch ( Exception ex )
@@ -375,7 +374,7 @@ public class DataRetrieval
                                  .useDelimiter("\\A").next();
         String[] individualPairs = userWorkoutPairs.split("\n");
         String[] entry;
-        DateTime timestamp;
+        //DateTime timestamp;
         int workoutId, userId, sport;
         List<Workout> workouts = new ArrayList<>();
         for (String individualPair : individualPairs)
@@ -385,9 +384,11 @@ public class DataRetrieval
             workoutId = Integer.parseInt(entry[0]);
             sport = Integer.parseInt(entry[1]);
             userId = Integer.parseInt(entry[2]);
-            timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss").parseDateTime(entry[3].substring(0, 19));
+            /*timestamp = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
+                    .withZone(DateTimeZone.UTC)
+                    .parseDateTime(entry[3].substring(0, 19));*/
 
-            workouts.add(new Workout(workoutId, sport, timestamp, userId));
+            workouts.add(new Workout(workoutId, sport, null, userId));
         }
 
         workoutMap = workouts.stream()

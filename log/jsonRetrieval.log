@@ -22213,3 +22213,39 @@
 ,"rejected_users":[21942994,25370429,25429794,25429928,26334291,26494291]
 ,"rejected_wrkt":[]
 },
+{"time":"2017-03-17 11-21-13",
+"start_user":5000000
+,"end_user":5000010
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-17 11-21-31",
+"start_user":5000010
+,"end_user":5000020
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-17 11-26-08",
+"start_user":5000020
+,"end_user":5000070
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-17 11-26-37",
+"start_user":5000070
+,"end_user":5000120
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-17 11-47-02",
+"start_user":5000120
+,"end_user":5000220
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},
+{"time":"2017-03-17 11-48-54",
+"start_user":5000220
+,"end_user":5000320
+,"rejected_users":[]
+,"rejected_wrkt":[]
+},

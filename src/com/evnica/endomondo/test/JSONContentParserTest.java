@@ -23,8 +23,9 @@ import java.util.Scanner;
  */
 public class JSONContentParserTest
 {
-    private String jsonContentVasli = null, jsonContentKari = null;
-    private Workout workoutVasli, workoutKari;
+    private String jsonContentVasli = null;
+    private Workout workoutVasli;
+
     @Before
     public void setUp() throws Exception
     {
@@ -35,10 +36,10 @@ public class JSONContentParserTest
         workoutVasli = new Workout(540092518, 2, dateTime, 10097237);
 
         fileStream = new FileInputStream( (new File( "testFiles/kari1.json" )) );
-        jsonContentKari = new Scanner(fileStream, "UTF-8").useDelimiter("\\A").next();
+        String jsonContentKari = new Scanner(fileStream, "UTF-8").useDelimiter("\\A").next();
         dateTimeStr = "2016-05-15T19:12:03";
         dateTime = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss").parseDateTime( dateTimeStr );
-        workoutKari = new Workout(726778837, 2, dateTime, 23137052);
+        Workout workoutKari = new Workout(726778837, 2, dateTime, 23137052);
 
     }
 

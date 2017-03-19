@@ -1,9 +1,7 @@
 package com.evnica.endomondo.main.connect;
 
-import com.evnica.endomondo.main.model.User;
 import com.evnica.endomondo.main.model.Workout;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.IllegalInstantException;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -31,10 +29,10 @@ public class UrlConnector
     private static final String USER_REST_URL = "https://www.endomondo.com/rest/v1/users/";
     private static final String START_DATE = "2016-01-01T00%3A00%3A00.000Z";
     private static final String END_DATE = "2016-04-01T00%3A00%3A00.000";
-    private static String userRestIntervalUrl =
+    private static final String USER_REST_INTERVAL_URL =
             "https://www.endomondo.com/rest/v1/users/%s/workouts?before=%s&after=%s";
-    private static String workoutUrl = "https://www.endomondo.com/rest/v1/users/%s/workouts/%s";
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
+    private static final String WORKOUT_URL = "https://www.endomondo.com/rest/v1/users/%s/workouts/%s";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 
     public static void setUrl( String url )
     {
@@ -63,9 +61,9 @@ public class UrlConnector
         return new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next();
     }
 
-    public static String getWorkoutsUrlContent(int userId) throws IOException
+    public static String getUserWorkoutPairsUrlContent(int userId) throws IOException
     {
-        InputStream inputStream = new URL(String.format(userRestIntervalUrl, userId, END_DATE, START_DATE)).openStream();
+        InputStream inputStream = new URL(String.format(USER_REST_INTERVAL_URL, userId, END_DATE, START_DATE)).openStream();
         return new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next(); //ISO8859-1
     }
 
@@ -92,15 +90,14 @@ public class UrlConnector
                     {
                         workoutId = workoutObject.getInt( "id" );
                         localStartTime = workoutObject.getString( "local_start_time" );
-                        localStartTime = localStartTime.substring( 0, 19 );
                         DateTime workoutStart;
                         try
                         {
-                            workoutStart = formatter.parseDateTime( localStartTime );
+                            workoutStart = FORMATTER.withOffsetParsed().parseDateTime( localStartTime );
                         }
                         catch ( IllegalInstantException e )
                         {
-                            workoutStart = formatter.withZone( DateTimeZone.UTC).parseDateTime(localStartTime);
+                            workoutStart = null;
                         }
                         workout = new Workout( workoutId, sport, workoutStart, userId );
                     }
@@ -131,9 +128,9 @@ public class UrlConnector
     }
 
 
-    public static String getWorkoutJsonUrlContent(Workout workout) throws IOException
+    public static String getWorkoutUrlContent(Workout workout) throws IOException
     {
-        setUrl( String.format( workoutUrl, workout.getUserId(), workout.getId() ) );
+        setUrl( String.format(WORKOUT_URL, workout.getUserId(), workout.getId() ) );
         return getUrlContent();
 
     }

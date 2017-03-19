@@ -1,6 +1,7 @@
 package com.evnica.endomondo.main.model;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,11 @@ public class WorkoutDetail
     private DateTime startAt;
     private int weather,
                 userId = -1,
-                showMap;
+                showMap, sport;
     private WorkoutGeometryType workoutGeometryType;
     private List<Lap> laps = new ArrayList<>();
     private List<Point> points = new ArrayList<>();
+    private DateTimeZone timeZone = DateTimeZone.UTC;
 
 
     public int getId() {
@@ -34,7 +36,7 @@ public class WorkoutDetail
         this.id = id;
     }
 
-    public double getDistance() {
+    double getDistance() {
         return distance;
     }
 
@@ -58,12 +60,20 @@ public class WorkoutDetail
         this.startAt = startAt;
     }
 
-    public int getWeather() {
+    int getWeather() {
         return weather;
     }
 
     public void setWeather(int weather) {
         this.weather = weather;
+    }
+
+    public int getSport() {
+        return sport;
+    }
+
+    public void setSport(int sport) {
+        this.sport = sport;
     }
 
     int getShowMap() {
@@ -80,6 +90,14 @@ public class WorkoutDetail
 
     public void setWorkoutGeometryType(WorkoutGeometryType workoutGeometryType) {
         this.workoutGeometryType = workoutGeometryType;
+    }
+
+    public DateTimeZone getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(DateTimeZone timeZone) {
+        this.timeZone = timeZone;
     }
 
     public int getUserId() {

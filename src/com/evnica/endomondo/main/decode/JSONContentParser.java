@@ -3,6 +3,7 @@ package com.evnica.endomondo.main.decode;
 import com.evnica.endomondo.main.model.*;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ import org.json.JSONObject;
  */
 public class JSONContentParser
 {
-    private static final DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(JSONContentParser.class.getName());
 
@@ -26,13 +27,20 @@ public class JSONContentParser
     public static WorkoutJSON parseWorkoutUrl( String jsonContent, int workoutId, TargetGeometry targetGeometry)
     {
         WorkoutJSON result = null;
+        DateTimeZone theZone;
 
         try
         {
             JSONObject workoutObject = new JSONObject( jsonContent );
             String date = workoutObject.getString( "local_start_time" );
-            date = date.substring( 0, 19 );
-            DateTime offset = formatter.parseDateTime( date );
+            DateTime offset;
+            try {
+                offset = FORMATTER.withOffsetParsed().parseDateTime( date );
+                theZone = offset.getZone();
+            } catch (Exception e) {
+                offset = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                theZone = DateTimeZone.UTC;
+            }
             int userId;
             try {
                 userId = workoutObject.getJSONObject("author").getInt("id");
@@ -132,8 +140,13 @@ public class JSONContentParser
                             timestampString = pointJSONObject.getString( "time" );
                             try
                             {
-                                timestampString = timestampString.substring( 0, 19 );
-                                DateTime timeCaptured = formatter.parseDateTime( timestampString );
+                                DateTime timeCaptured;
+                                try {
+                                    timeCaptured = FORMATTER.withOffsetParsed().parseDateTime( timestampString );
+                                    timeCaptured = timeCaptured.withZone(theZone);
+                                } catch (Exception e) {
+                                    timeCaptured = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( timestampString );
+                                }
                                 Point point = new Point( lat, lon );
                                 point.setTimeCaptured( timeCaptured );
                                 point.setDistanceFromPrevious( distance );
@@ -177,6 +190,7 @@ public class JSONContentParser
     public static WorkoutDetail parseWorkoutDetailUrl( String jsonContent, int workoutId)
     {
         WorkoutDetail workoutDetail = new WorkoutDetail();
+        DateTimeZone theZone = DateTimeZone.UTC;
         boolean validPoints = false,
                 validLaps = false,
                 pointsAbsent = false,
@@ -189,9 +203,14 @@ public class JSONContentParser
             try
             {
                 String date = workoutObject.getString( "local_start_time" );
-                date = date.substring( 0, 19 );
-                offset = formatter.parseDateTime( date );
+                try {
+                    offset = FORMATTER.withOffsetParsed().parseDateTime( date );
+                    theZone = offset.getZone();
+                } catch (Exception e) {
+                    offset = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                }
                 workoutDetail.setStartAt(offset);
+                workoutDetail.setTimeZone(theZone);
             } catch (Exception e) {
                 LOGGER.error("Can't get offset for id " + workoutId, e);
                 System.out.println("Can't get offset for id " + workoutId + ", " + e);
@@ -201,6 +220,13 @@ public class JSONContentParser
             } catch (JSONException e) {
                 LOGGER.error("Can't get distance for id " + workoutId);
                 System.out.println("Can't get distance for id " + workoutId);
+            }
+
+            try {
+                workoutDetail.setSport(workoutObject.getInt("sport"));
+            } catch (JSONException e) {
+                LOGGER.error("Can't get sport for id " + workoutId);
+                System.out.println("Can't get sport for id " + workoutId);
             }
 
             try {
@@ -325,7 +351,6 @@ public class JSONContentParser
                         int duration;
                         JSONObject pointJSONObject;
                         String timestampString;
-
                         Point knownValidPoint = null;
                         boolean validPointFound = false;
                         do {
@@ -336,8 +361,15 @@ public class JSONContentParser
                                         pointJSONObject.getDouble( "longitude" ) );
                                 knownValidPoint.setOrder(startIndex);
                                 timestampString = pointJSONObject.getString( "time" );
-                                timestampString = timestampString.substring( 0, 19 );
-                                DateTime timeCaptured = formatter.parseDateTime( timestampString );
+                                DateTime timeCaptured;
+                                try {
+                                    timeCaptured = FORMATTER.withOffsetParsed().parseDateTime( timestampString );
+                                    System.out.println(timeCaptured);
+                                    timeCaptured = timeCaptured.withZone(theZone);
+                                    System.out.println(timeCaptured);
+                                } catch (Exception e) {
+                                    timeCaptured = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( timestampString );
+                                }
                                 knownValidPoint.setTimeCaptured( timeCaptured );
                                 knownValidPoint.setDistanceFromPrevious( pointJSONObject.getDouble( "distance" ) );
                                 knownValidPoint.setDurationFromPrevious(pointJSONObject.getInt( "duration" ));
@@ -363,8 +395,14 @@ public class JSONContentParser
                                     distance = pointJSONObject.getDouble( "distance" );
                                     duration = pointJSONObject.getInt( "duration" );
                                     timestampString = pointJSONObject.getString( "time" );
-                                    timestampString = timestampString.substring( 0, 19 );
-                                    DateTime timeCaptured = formatter.parseDateTime( timestampString );
+                                    DateTime timeCaptured;
+                                    try
+                                    {
+                                        timeCaptured = FORMATTER.withOffsetParsed().parseDateTime( timestampString );
+                                        timeCaptured = timeCaptured.withZone(theZone);
+                                    } catch (Exception e) {
+                                        timeCaptured = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( timestampString );
+                                    }
                                     Point point = new Point( lat, lon );
                                     point.setOrder(i);
                                     point.setTimeCaptured( timeCaptured );
@@ -426,47 +464,59 @@ public class JSONContentParser
     public static User parseUser( String urlContent)
     {
         User user = null;
-        JSONObject userObject = new JSONObject( urlContent );
-        try
-        {
-            int id = userObject.getInt( "id" );
-            int gender = userObject.getInt( "gender" );
-            if (userObject.getInt( "workout_count" ) > 0)
+        try {
+            JSONObject userObject = new JSONObject( urlContent );
+            try
             {
-                user = new User();
-                JSONArray summaryBySport = userObject.getJSONArray( "summary_by_sport" );
-                JSONObject individualSummary;
-                int sportId;
-                for (int i = 0; i < summaryBySport.length(); i++)
+                int id = userObject.getInt( "id" );
+                int gender = userObject.getInt( "gender" );
+                if (userObject.getInt( "workout_count" ) > 0)
                 {
-                    individualSummary = summaryBySport.getJSONObject( i );
-                    sportId = individualSummary.getInt( "sport" );
-                    if (sportId == 1)
-                        user.setCyclingTransportCount( individualSummary.getInt( "count" ) );
-                    else if (sportId == 2)
-                        user.setCyclingSportCount( individualSummary.getInt( "count" ) );
-                    else if (sportId == 3)
-                        user.setMountainBikingCount( individualSummary.getInt( "count" ) );
+                    user = new User();
+                    JSONArray summaryBySport = userObject.getJSONArray( "summary_by_sport" );
+                    JSONObject individualSummary;
+                    int sportId;
+                    for (int i = 0; i < summaryBySport.length(); i++)
+                    {
+                        individualSummary = summaryBySport.getJSONObject( i );
+                        sportId = individualSummary.getInt( "sport" );
+                        if (sportId == 1)
+                            user.setCyclingTransportCount( individualSummary.getInt( "count" ) );
+                        else if (sportId == 2)
+                            user.setCyclingSportCount( individualSummary.getInt( "count" ) );
+                        else if (sportId == 3)
+                            user.setMountainBikingCount( individualSummary.getInt( "count" ) );
+                    }
+                    if (user.getCyclingSportCount() > 0 || user.getMountainBikingCount() > 0 ||
+                            user.getCyclingTransportCount() > 0)
+                    {
+                        user.setId( id );
+                        user.setGender( gender );
+                        String date = userObject.getString( "created_date" );
+                        DateTime dateTime;
+                        try
+                        {
+                            dateTime = FORMATTER.withOffsetParsed().parseDateTime(date);
+                        }
+                        catch (Exception e)
+                        {
+                            dateTime = FORMATTER.withZone( DateTimeZone.UTC).parseDateTime(date);
+                        }
+                        user.setDateCreated( dateTime );
+                    }
+                    else
+                    {
+                        user = null;
+                    }
                 }
-                if (user.getCyclingSportCount() > 0 || user.getMountainBikingCount() > 0 ||
-                        user.getCyclingTransportCount() > 0)
-                {
-                    user.setId( id );
-                    user.setGender( gender );
-                    String date = userObject.getString( "created_date" );
-                    date = date.substring( 0, 19 );
-                    user.setDateCreated( formatter.parseDateTime( date ) );
-                }
-                else
-                {
-                    user = null;
-                }
-            }
 
-        }
-        catch ( JSONException e )
-        {
-            System.out.println("Except: " + e);
+            }
+            catch ( JSONException e )
+            {
+                System.out.println("Except: " + e);
+            }
+        } catch (JSONException e) {
+            System.err.println("Invalid JSON user " + e);
         }
         return user;
     }

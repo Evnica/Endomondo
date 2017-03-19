@@ -2,9 +2,11 @@ package com.evnica.endomondo.main.model;
 
 import java.sql.*;
 
+import org.joda.time.DateTimeZone;
 import org.postgis.PGgeometry;
 
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Class: LapRepository
@@ -88,7 +90,10 @@ public class LapRepository
             statement.setObject(8, null);
         }
         try {
-            statement.setTimestamp( 9, new Timestamp( lap.getOffset().getMillis() ));
+            long millis = lap.getOffset().getZone()
+                    .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
+                            lap.getOffset().getMillis());
+            statement.setTimestamp( 9, new Timestamp( millis ));
         } catch (Exception e) {
             statement.setNull( 9, Types.TIMESTAMP);
         }

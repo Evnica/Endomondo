@@ -5,6 +5,7 @@ import com.evnica.endomondo.main.decode.JSONContentParser;
 import com.evnica.endomondo.main.model.*;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
@@ -28,7 +29,7 @@ public class LocalJsonProcessing
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
     private static boolean parseWorkouts = true;
-    private static String dir = "";
+    private static String dir = "C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\___interim";
 
 
     public static void main(String[] args) {
@@ -52,7 +53,10 @@ public class LocalJsonProcessing
                 parseWorkouts = false;
             }
             System.out.println( "Enter directory that contains JSON files:" );
-            dir = reader.readLine();
+            String directory = reader.readLine();
+            if (directory != null && directory.length() > 0) {
+                dir =  directory;
+            }
             System.out.println( "Please input db password:" );
             DbConnector.setPwd( reader.readLine() );
 
@@ -130,84 +134,100 @@ public class LocalJsonProcessing
     private static Athlete parseAthlete( String jsonContent)
     {
         Athlete athlete = null;
-        JSONObject userObject = new JSONObject( jsonContent );
-        try
-        {
-            int id = userObject.getInt( "id" );
-            int gender = userObject.getInt( "gender" );
-            athlete = new Athlete(id);
-            athlete.setGender(gender);
+        try {
+            JSONObject userObject = new JSONObject( jsonContent );
             try
             {
-                if (userObject.getInt( "workout_count" ) > 0)
-                {
-                    athlete.setWorkoutCount(userObject.getInt( "workout_count" ));
-                }
-                else
-                {
-                    System.out.println(id + " has no parseWorkouts ");
-                }
-                JSONArray summaryBySport;
+                int id = userObject.getInt( "id" );
+                int gender = userObject.getInt( "gender" );
+                athlete = new Athlete(id);
+                athlete.setGender(gender);
                 try
                 {
-                    summaryBySport = userObject.getJSONArray( "summary_by_sport" );
-                    JSONObject individualSummary;
-                    int sportId = -1;
-                    for (int i = 0; i < summaryBySport.length(); i++)
+                    if (userObject.getInt( "workout_count" ) > 0)
                     {
-                        try
+                        athlete.setWorkoutCount(userObject.getInt( "workout_count" ));
+                    }
+                    else
+                    {
+                        System.out.println(id + " has no parseWorkouts ");
+                    }
+                    JSONArray summaryBySport;
+                    try
+                    {
+                        summaryBySport = userObject.getJSONArray( "summary_by_sport" );
+                        JSONObject individualSummary;
+                        int sportId = -1;
+                        for (int i = 0; i < summaryBySport.length(); i++)
                         {
-                            individualSummary = summaryBySport.getJSONObject( i );
-                            sportId = individualSummary.getInt( "sport" );
-                            SummaryBySport sportSum = new SummaryBySport();
-                            sportSum.sport = sportId;
-                            sportSum.count = individualSummary.getInt( "count" );
-                            sportSum.totalDistance = individualSummary.getDouble( "total_distance" );
-                            sportSum.totalDuration = individualSummary.getDouble( "total_duration" );
-                            athlete.addSummaryBySport(sportSum);
-                        }
-                        catch (JSONException e) {
-                            System.out.println(id + " has no summary by sport " + sportId);
+                            try
+                            {
+                                individualSummary = summaryBySport.getJSONObject( i );
+                                sportId = individualSummary.getInt( "sport" );
+                                SummaryBySport sportSum = new SummaryBySport();
+                                sportSum.sport = sportId;
+                                sportSum.count = individualSummary.getInt( "count" );
+                                sportSum.totalDistance = individualSummary.getDouble( "total_distance" );
+                                sportSum.totalDuration = individualSummary.getDouble( "total_duration" );
+                                athlete.addSummaryBySport(sportSum);
+                            }
+                            catch (JSONException e) {
+                                System.out.println(id + " has no summary by sport " + sportId);
+                            }
                         }
                     }
-                }
-                catch (JSONException e1)
-                {
-                    System.out.println(id + " has no summary by sport");
-                }
-                try
-                {
-                    String date = userObject.getString( "created_date" ).substring( 0, 19 );
-                    athlete.setCreatedDate( FORMATTER.parseDateTime( date ) );
-                } catch (JSONException e) {
-                    System.out.println(id + " has no creation date");
-                }
-                try
-                {
-                    String date = userObject.getString( "date_of_birth" ).substring( 0, 19 );
-                    athlete.setDateOfBirth( FORMATTER.parseDateTime( date ) );
+                    catch (JSONException e1)
+                    {
+                        System.out.println(id + " has no summary by sport");
+                    }
+                    try
+                    {
+                        String date = userObject.getString( "created_date" ).substring( 0, 19 );
+                        DateTime createdOn;
+                        try {
+                            createdOn = FORMATTER.parseDateTime( date );
+                        } catch (Exception e) {
+                            createdOn = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                        }
+                        athlete.setCreatedDate( createdOn );
+                    } catch (JSONException e) {
+                        System.out.println(id + " has no creation date");
+                    }
+                    try
+                    {
+                        String date = userObject.getString( "date_of_birth" ).substring( 0, 19 );
+                        DateTime dob;
+                        try {
+                            dob = FORMATTER.parseDateTime( date );
+                        } catch (Exception e) {
+                            dob = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                        }
+                        athlete.setDateOfBirth( dob );
+                    }
+                    catch (JSONException e)
+                    {
+                        System.out.println(id + " has no birth date");
+                    }
+                    try
+                    {
+                        athlete.setCountry(userObject.getString( "country" ));
+                    }
+                    catch (JSONException e)
+                    {
+                        System.out.println(id + " has no country");
+                    }
                 }
                 catch (JSONException e)
                 {
-                    System.out.println(id + " has no birth date");
-                }
-                try
-                {
-                    athlete.setCountry(userObject.getString( "country" ));
-                }
-                catch (JSONException e)
-                {
-                    System.out.println(id + " has no country");
+                    System.out.println(e.getMessage());
                 }
             }
-            catch (JSONException e)
+            catch ( JSONException e )
             {
-                System.out.println(e.getMessage());
+                System.out.println("Except: " + e);
             }
-        }
-        catch ( JSONException e )
-        {
-            System.out.println("Except: " + e);
+        } catch (JSONException e) {
+            System.err.println("Invalid JSON athlete: " + e);
         }
         return athlete;
     }
@@ -274,12 +294,13 @@ public class LocalJsonProcessing
 
                             if (workout.getPoints() != null && workout.getPoints().size() > 1)
                             {
+                                PointRepository.setInsertStatement(country);
                                 int insertedPointCount = 0;
                                 for (Point p: workout.getPoints())
                                 {
                                     try
                                     {
-                                        insertedPointCount += PointRepository.insertPoint(country, p, workoutId);
+                                        insertedPointCount += PointRepository.insertPoint(p, workoutId);
                                     } catch (SQLException e)
                                     {
                                         LOGGER.error("Can't insert point " + p.getOrder() +
@@ -296,7 +317,7 @@ public class LocalJsonProcessing
                                 }
                             }
                         } catch (SQLException e) {
-                            e.printStackTrace();
+                            System.out.println(workout.getId() + " wrkt not inserted: " + e);
                             LOGGER.error("Workout " + workout.getId() + " not inserted in DB");
                         }
                     }
