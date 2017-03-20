@@ -364,9 +364,7 @@ public class JSONContentParser
                                 DateTime timeCaptured;
                                 try {
                                     timeCaptured = FORMATTER.withOffsetParsed().parseDateTime( timestampString );
-                                    System.out.println(timeCaptured);
                                     timeCaptured = timeCaptured.withZone(theZone);
-                                    System.out.println(timeCaptured);
                                 } catch (Exception e) {
                                     timeCaptured = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( timestampString );
                                 }

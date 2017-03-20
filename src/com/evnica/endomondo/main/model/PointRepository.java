@@ -4,7 +4,6 @@ import org.joda.time.DateTimeZone;
 import org.postgis.PGgeometry;
 
 import java.sql.*;
-import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
@@ -72,7 +71,6 @@ public class PointRepository
                         .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
                         point.getTimeCaptured().getMillis());
                 statement.setTimestamp( 5, new Timestamp( millis ));
-                System.out.println(point.getTimeCaptured());
             } catch (Exception e) {
                 statement.setNull(5, Types.TIMESTAMP);
             }
