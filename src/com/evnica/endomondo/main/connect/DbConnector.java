@@ -15,33 +15,40 @@ import java.sql.SQLException;
  * Author: Evnica
  * Description:
  */
-public class DbConnector
-{
+public class DbConnector {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Endomondo";
     private static final String USER = "postgres";
     private static String pwd = null;
     private static Connection connection = null;
 
-    public static Connection getConnection()
-    {
+    public static Connection getConnection() {
         return connection;
     }
 
-    public static void connectToDb() throws ClassNotFoundException, SQLException
-    {
-        if ( pwd == null )
-        {
-            readPassword ();
+    public static void connectToDb() throws ClassNotFoundException, SQLException {
+        if (pwd == null) {
+            readPassword();
         }
-        connection = DriverManager.getConnection( DB_URL, USER, pwd );
+        connection = DriverManager.getConnection(DB_URL, USER, pwd);
     }
 
-    public static void closeConnection () throws SQLException
-    {
-        if ( connection != null)
-        {
+    public static void closeConnection() throws SQLException {
+        if (connection != null) {
             connection.close();
         }
+    }
+
+    public static void setAutoCommit(boolean autoCommit) throws SQLException {
+        connection.setAutoCommit(autoCommit);
+    }
+
+    public static void commit() throws SQLException {
+        connection.commit();
+    }
+
+    public static void rollback() throws SQLException
+    {
+        connection.rollback();
     }
 
     private static void readPassword ()

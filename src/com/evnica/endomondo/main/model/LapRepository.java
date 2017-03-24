@@ -2,11 +2,13 @@ package com.evnica.endomondo.main.model;
 
 import java.sql.*;
 
+import com.evnica.endomondo.main.connect.DbConnector;
 import org.joda.time.DateTimeZone;
 import org.postgis.PGgeometry;
 
 import java.util.List;
 import java.util.TimeZone;
+import java.util.stream.IntStream;
 
 /**
  * Class: LapRepository
@@ -106,6 +108,64 @@ public class LapRepository
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
         statement.close();
+
+        return rowsAffected;
+    }
+
+    public static int insertLaps(List<Lap> laps) throws SQLException
+    {
+        int rowsAffected = 0;
+
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT );
+            for (Lap lap: laps)
+            {
+                try
+                {
+                    statement.setInt( 1, lap.getId() );
+                    statement.setInt( 2, lap.getWorkoutId() );
+                    statement.setDouble( 3, lap.getBeginLat() );
+                    statement.setDouble( 4, lap.getBeginLon() );
+                    statement.setDouble( 5, lap.getEndLat() );
+                    statement.setDouble( 6, lap.getEndLon() );
+                    statement.setBoolean( 7, lap.containsPolyline() );
+                    if (lap.getSmallPolyline() != null)
+                    {
+                        PGgeometry lineString = new PGgeometry(lap.getSmallPolyline().toLineString());
+                        lineString.getGeometry().setSrid( 4326 );
+                        statement.setObject( 8, lineString);
+                    }
+                    else
+                    {
+                        statement.setObject(8, null);
+                    }
+                    try {
+                        long millis = lap.getOffset().getZone()
+                                .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
+                                        lap.getOffset().getMillis());
+                        statement.setTimestamp( 9, new Timestamp( millis ));
+                    } catch (Exception e) {
+                        statement.setNull( 9, Types.TIMESTAMP);
+                    }
+                    statement.setLong(10, lap.getDuration());
+                    statement.addBatch();
+                }
+                catch (SQLException e)
+                {
+                    System.out.println("Lap insertion error: " + e);
+                   /* DbConnector.commit();
+                    statement.clearParameters();*/
+                }
+            }
+            int[] affected = statement.executeBatch();
+            rowsAffected = IntStream.of(affected).sum();
+            statement.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
         return rowsAffected;
     }

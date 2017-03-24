@@ -1,10 +1,13 @@
 package com.evnica.endomondo.main.model;
 
+import com.evnica.endomondo.main.connect.DbConnector;
 import org.joda.time.DateTimeZone;
 import org.postgis.PGgeometry;
 
 import java.sql.*;
+import java.util.List;
 import java.util.TimeZone;
+import java.util.stream.IntStream;
 
 /**
  * Class: PointRepository
@@ -48,57 +51,106 @@ public class PointRepository
         }
     }
 
-    public static int insertPoint(Point point, int workoutId) throws SQLException
+    public static int insertPoints(List<Point> points, int workoutId) throws SQLException
+    {
+        int[] rowsAffected = {0};
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement(insertStatement);
+            for (Point point: points)
+            {
+                try {
+                    statement.setInt( 1, point.getOrder() );
+                    statement.setInt( 2, workoutId );
+                    statement.setDouble( 3, point.getDistanceFromPrevious() );
+                    statement.setInt( 4, point.getDurationFromPrevious() );
+                    long millis = point.getTimeCaptured().getZone()
+                                .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
+                                        point.getTimeCaptured().getMillis());
+                    statement.setTimestamp( 5, new Timestamp( millis ));
+                    PGgeometry geom = new PGgeometry(point.getPoint());
+                    statement.setObject( 6, geom);
+                    statement.setDouble( 7, point.getDistanceFromOffset() );
+                    statement.setInt( 8, point.getDurationFromOffset() );
+
+                    statement.addBatch();
+                }
+                catch (SQLException e)
+                {
+                    System.out.println("Point insertion error: " + e);
+                    e.printStackTrace();
+                   // DbConnector.commit();
+                   // statement.clearParameters();
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Invalid point " + point.getOrder() );
+                }
+            }
+            rowsAffected = statement.executeBatch();
+            statement.close();
+        }
+        catch (Exception e)
+        {
+            System.out.println("Insertion error for the list of points: " + e);
+            e.printStackTrace();
+        }
+
+        return IntStream.of(rowsAffected).sum();
+    }
+
+    public static int insertPointsOneByOne(List<Point> points, int workoutId) throws SQLException
     {
         int rowsAffected = 0;
+        PreparedStatement statement = connection.prepareStatement(insertStatement);
+        for (Point p: points)
+        {
+            try {
+                rowsAffected += insertPoint(p, workoutId, statement);
+            } catch (SQLException e) {
+                System.out.println("Exc on point " + p.getOrder());
+                e.printStackTrace();
+            }
+        }
+        statement.close();
+        return rowsAffected;
+    }
 
+    private static int insertPoint(Point point, int workoutId, PreparedStatement statement) throws SQLException
+    {
+        int rowsAffected = 0;
         try {
-            PreparedStatement statement = connection.prepareStatement(insertStatement);
             statement.setInt( 1, point.getOrder() );
             statement.setInt( 2, workoutId );
-            try {
-                statement.setDouble( 3, point.getDistanceFromPrevious() );
-            } catch (SQLException e) {
-                statement.setNull(3, Types.DOUBLE);
-            }
-            try {
-                statement.setInt( 4, point.getDurationFromPrevious() );
-            } catch (SQLException e) {
-                statement.setNull(4, Types.INTEGER);
-            }
+            statement.setDouble( 3, point.getDistanceFromPrevious() );
+            statement.setInt( 4, point.getDurationFromPrevious() );
             try {
                 long millis = point.getTimeCaptured().getZone()
                         .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
-                        point.getTimeCaptured().getMillis());
+                                point.getTimeCaptured().getMillis());
                 statement.setTimestamp( 5, new Timestamp( millis ));
             } catch (Exception e) {
                 statement.setNull(5, Types.TIMESTAMP);
             }
             try {
                 PGgeometry geom = new PGgeometry(point.getPoint());
-                geom.getGeometry().setSrid( 4326 );
                 statement.setObject( 6, geom);
             } catch (Exception e) {
                 statement.setObject(6, null);
             }
-            try {
-                statement.setDouble( 7, point.getDistanceFromOffset() );
-            } catch (SQLException e) {
-                statement.setNull(7, Types.DOUBLE);
-            }
-            try {
-                statement.setInt( 8, point.getDurationFromOffset() );
-            } catch (SQLException e) {
-                statement.setNull(8, Types.INTEGER);
-            }
+            statement.setDouble( 7, point.getDistanceFromOffset() );
+            statement.setInt( 8, point.getDurationFromOffset() );
 
             rowsAffected = statement.executeUpdate();
             statement.clearParameters();
-            statement.close();
+
         }
         catch (SQLException e)
         {
             System.out.println("Point insertion error: " + e);
+            e.printStackTrace();
+            DbConnector.commit();
+            statement.clearParameters();
         }
         return rowsAffected;
     }

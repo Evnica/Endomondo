@@ -1,0 +1,125 @@
+{
+  "expand": "full",
+  "id": 540092518,
+  "sport": 2,
+  "start_time": "2015-06-10T17:40:06.000Z",
+  "local_start_time": "2015-06-10T20:40:06.000+03:00",
+  "distance": 12.391785621643066,
+  "duration": 3327,
+  "speed_avg": 13.408604820533526,
+  "speed_max": 23.9424,
+  "altitude_min": 19,
+  "altitude_max": 55,
+  "ascent": 73,
+  "descent": 67,
+  "pb_count": 0,
+  "calories": 435,
+  "is_live": false,
+  "include_in_stats": true,
+  "author": {
+    "expand": "abs",
+    "id": 10097237,
+    "first_name": "Karoliina",
+    "last_name": "Vasli",
+    "picture": {
+      "url": "https://www.endomondo.com/resources/gfx/image/4562378/1e96d7b40ee43ac631fa9bc59fffb1b1/thumbnail.jpg"
+    },
+    "gender": 1,
+    "is_premium": false,
+    "name": "Karoliina Vasli",
+    "viewer_friendship": 1
+  },
+  "is_peptalk_allowed": false,
+  "can_copy": true,
+  "weather": {
+    "type": 1
+  },
+  "feed_id": 281475494165077,
+  "laps": {
+    "metric": [
+      {
+        "average_pace": 334.109,
+        "distance": 1,
+        "duration": 334109,
+        "begin_latitude": 59.433352,
+        "begin_longitude": 24.732012,
+        "end_latitude": 59.4404529540814,
+        "end_longitude": 24.738598129102613,
+        "small_encoded_polyline": "mawiJan}uC[^y@Bm@CqAe@qA[MeAOa@_@LmBVg@Se@CmAPEPA?SkAaBqAm@o@c@Qu@s@{A{A{BkEa@wAe@_Ak@y@]wACe@g@aCi@mAk@u@a@}@GB"
+      },
+      {
+        "average_pace": 260.62,
+        "distance": 1,
+        "duration": 260620,
+        "begin_latitude": 59.4404529540814,
+        "begin_longitude": 24.738598129102613,
+        "end_latitude": 59.44617870289883,
+        "end_longitude": 24.73746857994293,
+        "small_encoded_polyline": "ymxiJew~uCYHe@`@k@FOqASF]qCq@sDuByC_@qAy@cDQa@kBiBi@c@e@Ho@Ns@o@s@][j@Ux@c@t@WlBi@hCuAvI]dBKnAiAnG"
+      }
+    ]
+  },
+  "points": {
+    "expand": "full",
+    "id": 2199563348070,
+    "points": [
+      {
+        "time": "2015-06-10T17:40:06.000Z",
+        "instruction": 2,
+        "latitude": 59.433352,
+        "longitude": 24.732012,
+        "distance": 0,
+        "duration": 0,
+        "sensor_data": {}
+      },
+      {
+        "time": "2015-06-10T17:41:27.000Z",
+        "latitude": 59.433352,
+        "longitude": 24.732012,
+        "altitude": 37,
+        "distance": 0,
+        "speed": 0,
+        "duration": 81000,
+        "sensor_data": {
+          "speed": 0
+        }
+      },
+      {
+        "time": "2015-06-10T17:41:40.000Z",
+        "latitude": 59.43349,
+        "longitude": 24.731855,
+        "altitude": 39,
+        "distance": 0.035499,
+        "speed": 0,
+        "duration": 94000,
+        "sensor_data": {
+          "speed": 0
+        }
+      },
+      {
+        "time": "2015-06-10T17:41:47.000Z",
+        "latitude": 59.433783,
+        "longitude": 24.73183,
+        "altitude": 46,
+        "distance": 0.068153,
+        "speed": 0,
+        "duration": 101000,
+        "sensor_data": {
+          "speed": 0
+        }
+      },
+      {
+        "time": "2015-06-10T17:41:52.000Z",
+        "latitude": 59.43401,
+        "longitude": 24.731855,
+        "altitude": 48,
+        "distance": 0.093498,
+        "speed": 13.2655,
+        "duration": 106000,
+        "sensor_data": {
+          "speed": 13.2655
+        }
+      }
+    ]
+  }
+}

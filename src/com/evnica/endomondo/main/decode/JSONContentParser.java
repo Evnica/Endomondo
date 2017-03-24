@@ -196,39 +196,32 @@ public class JSONContentParser
                 pointsAbsent = false,
                 lapsAbsent = false;
         workoutDetail.setId(workoutId);
-        DateTime offset = null;
+        DateTime offset;
         try
         {
             JSONObject workoutObject = new JSONObject( jsonContent );
-            try
-            {
-                String date = workoutObject.getString( "local_start_time" );
-                try {
-                    offset = FORMATTER.withOffsetParsed().parseDateTime( date );
-                    theZone = offset.getZone();
-                } catch (Exception e) {
-                    offset = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
-                }
-                workoutDetail.setStartAt(offset);
-                workoutDetail.setTimeZone(theZone);
+            // if there is no start point, we can't use the data
+            String date = workoutObject.getString( "local_start_time" );
+            try {
+                offset = FORMATTER.withOffsetParsed().parseDateTime( date );
+                theZone = offset.getZone();
             } catch (Exception e) {
-                LOGGER.error("Can't get offset for id " + workoutId, e);
-                System.out.println("Can't get offset for id " + workoutId + ", " + e);
+                offset = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
             }
+            workoutDetail.setStartAt(offset);
+            workoutDetail.setTimeZone(theZone);
             try {
                 workoutDetail.setDistance(workoutObject.getDouble("distance"));
             } catch (JSONException e) {
                 LOGGER.error("Can't get distance for id " + workoutId);
                 System.out.println("Can't get distance for id " + workoutId);
             }
-
             try {
                 workoutDetail.setSport(workoutObject.getInt("sport"));
             } catch (JSONException e) {
                 LOGGER.error("Can't get sport for id " + workoutId);
                 System.out.println("Can't get sport for id " + workoutId);
             }
-
             try {
                 workoutDetail.setDuration(workoutObject.getDouble("duration"));
             } catch (JSONException e) {
@@ -240,7 +233,7 @@ public class JSONContentParser
             } catch (JSONException e) {
                 workoutDetail.setWeather(-1);
                 LOGGER.error("No weather, workout is likely to be empty: " + workoutId);
-                System.out.print("workout is likely to be empty, ");
+                System.out.print("No weather, workout is likely to be empty, ");
             }
             try {
                 workoutDetail.setUserId(workoutObject.getJSONObject("author").getInt("id"));
@@ -280,7 +273,6 @@ public class JSONContentParser
                             endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
                             endLongitude = ((JSONObject) metricLaps.get(i)).getDouble("end_longitude");
                             Lap lap = new Lap( beginLatitude, beginLongitude, endLatitude, endLongitude );
-
                             if (validLaps)
                             {
                                 try {
@@ -295,17 +287,13 @@ public class JSONContentParser
                             }
                             lap.setWorkoutId( workoutId );
                             lap.setId( i );
-                            if (offset != null) {
-                                lap.setOffset( offset );
-                            }
+                            lap.setOffset( offset );
 
                             try
                             {
                                 duration =  ((JSONObject) metricLaps.get(i)).getLong("duration");
                                 lap.setDuration( duration );
-                                if (offset != null) {
-                                    offset = offset.plusMillis( (int) duration );
-                                }
+                                offset = offset.plusMillis( (int) duration );
                             }
                             catch ( Exception e )
                             {
@@ -313,7 +301,7 @@ public class JSONContentParser
                             }
                             workoutDetail.addLap( lap );
                         } catch (JSONException e) {
-                            LOGGER.error("Invalid lap " + i + ", workout " + workoutId);
+                            LOGGER.error("Invalid lap " + i + ", workout " + workoutId + ": " +  e.getMessage());
                         }
                     }
                     int diff = metricLaps.length() - workoutDetail.getLaps().size();
@@ -347,7 +335,7 @@ public class JSONContentParser
                             startIndex = 1;
                         }
 
-                        double lat, lon, distance;
+                        double distance;
                         int duration;
                         JSONObject pointJSONObject;
                         String timestampString;
@@ -376,7 +364,7 @@ public class JSONContentParser
                                 workoutDetail.addPoint(knownValidPoint);
                                 validPointFound = true;
                             } catch (JSONException e) {
-                                LOGGER.error("Invalid point " + startIndex + ", workout " + workoutId);
+                                LOGGER.error("Invalid point " + startIndex + ", workout " + workoutId + ": " +  e.getMessage());
                             }
                             startIndex++;
                         }
@@ -388,8 +376,6 @@ public class JSONContentParser
                                 pointJSONObject = pointsJSONArray.getJSONObject( i );
                                 try
                                 {
-                                    lat = pointJSONObject.getDouble( "latitude" );
-                                    lon = pointJSONObject.getDouble( "longitude" );
                                     distance = pointJSONObject.getDouble( "distance" );
                                     duration = pointJSONObject.getInt( "duration" );
                                     timestampString = pointJSONObject.getString( "time" );
@@ -401,7 +387,8 @@ public class JSONContentParser
                                     } catch (Exception e) {
                                         timeCaptured = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( timestampString );
                                     }
-                                    Point point = new Point( lat, lon );
+                                    Point point = new Point( pointJSONObject.getDouble( "latitude" ),
+                                            pointJSONObject.getDouble( "longitude" ) );
                                     point.setOrder(i);
                                     point.setTimeCaptured( timeCaptured );
                                     point.setDistanceFromOffset(distance);
@@ -433,6 +420,7 @@ public class JSONContentParser
             } catch (JSONException e) {
                 pointsAbsent = true;
             }
+
             if (pointsAbsent)
             {
                 if (lapsAbsent) workoutDetail.setWorkoutGeometryType(WorkoutGeometryType.APOINTS_ALAPS);
@@ -454,10 +442,8 @@ public class JSONContentParser
         } catch (JSONException e) {
             LOGGER.error(workoutId + " is not parsable");
         }
-
         return workoutDetail;
     }
-
 
     public static User parseUser( String urlContent)
     {

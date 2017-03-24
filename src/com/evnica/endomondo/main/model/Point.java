@@ -26,6 +26,7 @@ public class Point
         this.lat = lat;
         this.lon = lon;
         this.point = new org.postgis.Point(lon, lat);
+        this.point.setSrid(4326);
     }
 
     public org.postgis.Point getPoint()
@@ -58,7 +59,7 @@ public class Point
         return lat;
     }
 
-    double getLon()
+    public double getLon()
     {
         return lon;
     }
@@ -119,7 +120,7 @@ public class Point
         return "POINT(" + lon + " " + lat + ")";
     }*/
 
-    DateTime getTimeCaptured()
+    public DateTime getTimeCaptured()
     {
         return timeCaptured;
     }

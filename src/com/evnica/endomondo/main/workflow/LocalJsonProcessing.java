@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -29,7 +30,7 @@ public class LocalJsonProcessing
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(LocalJsonProcessing.class.getName());
     private static boolean parseWorkouts = true;
-    private static String dir = "C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\___interim";
+    private static String dir = "C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\big";
 
 
     public static void main(String[] args) {
@@ -237,6 +238,7 @@ public class LocalJsonProcessing
         int fileCounter = 0;
         try {
             DbConnector.connectToDb();
+           // DbConnector.setAutoCommit(false);
             LapRepository.setConnection(DbConnector.getConnection());
             PointRepository.setConnection(DbConnector.getConnection());
             AthleteRepository.setConnection(DbConnector.getConnection());
@@ -244,13 +246,19 @@ public class LocalJsonProcessing
             File[] workoutFiles = getFilesInDir(dir);
             for (File file: workoutFiles)
             {
-                try {
+                try
+                {
+                    int insertedLapCount = 0;
+                    int insertedPointCount = 0;
+                    long startMillis = new Date().getTime();
                     int workoutId = Integer.parseInt(file.getName().split(".j")[0]);
                     System.out.print("Starting " + workoutId + ", ");
                     String jsonContent = new Scanner(new FileInputStream(file), "UTF-8")
                             .useDelimiter("\\A").next();
                     WorkoutDetail workout = JSONContentParser.parseWorkoutDetailUrl(jsonContent, workoutId);
-
+                    long otherMillis = new Date().getTime();
+                    System.out.println("Parsed in " + (otherMillis - startMillis) + " ms");
+                    startMillis = otherMillis;
                     if (workout != null)
                     {
                         String country = null;
@@ -260,68 +268,60 @@ public class LocalJsonProcessing
                             {
                                 country = AthleteRepository.getCountry(workout.getUserId());
                                 System.out.println(country);
-                            } catch (SQLException e) {
+                                otherMillis = new Date().getTime();
+                            }
+                            catch (SQLException e)
+                            {
                                 country = null;
                                 System.out.println("no country");
                             }
+                            System.out.println("Country found in " + (otherMillis - startMillis));
+                            startMillis = otherMillis;
                         }
-                        try
+                        if (workout.getLaps() != null && workout.getLaps().size() > 0)
                         {
-                            WorkoutDetailRepository.insert(workout);
-                            if (workout.getLaps() != null && workout.getLaps().size() > 0)
+                            try
                             {
-                                int insertedLapCount = 0;
-                                for (Lap lap: workout.getLaps())
-                                {
-                                    try
-                                    {
-                                        insertedLapCount += LapRepository.insert(lap);
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        LOGGER.error("Lap " + lap.getId() + " was not inserted for workout " + workoutId, e);
-                                    }
-                                }
-                                System.out.println(insertedLapCount + " laps inserted in DB for workout " + workoutId);
-                                try
-                                {
-                                    WorkoutDetailRepository.update(true, workoutId, insertedLapCount);
-                                } catch (SQLException e) {
-                                    e.printStackTrace();
-                                    LOGGER.error("Lap count not inserted for wrkt " + workoutId, e);
-                                }
-                            }
-
-                            if (workout.getPoints() != null && workout.getPoints().size() > 1)
+                                insertedLapCount = LapRepository.insertLaps(workout.getLaps());
+                                //DbConnector.commit();
+                            } catch (SQLException e)
                             {
-                                PointRepository.setInsertStatement(country);
-                                int insertedPointCount = 0;
-                                for (Point p: workout.getPoints())
-                                {
-                                    try
-                                    {
-                                        insertedPointCount += PointRepository.insertPoint(p, workoutId);
-                                    } catch (SQLException e)
-                                    {
-                                        LOGGER.error("Can't insert point " + p.getOrder() +
-                                                            " from workout " + workout.getId(), e);
-                                    }
-                                }
-                                System.out.println(insertedPointCount + " points inserted in DB for workout " + workoutId);
-                                try
-                                {
-                                    WorkoutDetailRepository.update(false, workoutId, insertedPointCount);
-                                } catch (SQLException e) {
-                                    System.out.println("Not inserted workout: " + e);
-                                    LOGGER.error("Point count not inserted for wrkt " + workoutId, e);
-                                }
+                                e.printStackTrace();
                             }
-                        } catch (SQLException e) {
-                            System.out.println(workout.getId() + " wrkt not inserted: " + e);
-                            LOGGER.error("Workout " + workout.getId() + " not inserted in DB");
+                            workout.setLapCount(insertedLapCount);
+                            otherMillis = new Date().getTime();
+                            System.out.println("Laps inserted in " + (otherMillis - startMillis));
+                            System.out.println(insertedLapCount + " laps prepared for insertion in DB for workout " + workoutId);
+                        }
+                        startMillis = otherMillis;
+                        if (workout.getPoints() != null && workout.getPoints().size() > 1)
+                        {
+                            PointRepository.setInsertStatement(country);
+                            try
+                            {
+                                insertedPointCount = PointRepository.insertPoints(workout.getPoints(), workoutId);
+                                //DbConnector.commit();  // important
+                            } catch (SQLException e)
+                            {
+                                e.printStackTrace();
+                            }
+                            otherMillis = new Date().getTime();
+                            System.out.println("Points inserted in " + (otherMillis - startMillis));
+                            startMillis = otherMillis;
+                            System.out.println(insertedPointCount + " points inserted in DB for workout " + workoutId);
+                            workout.setPointCount(insertedPointCount);
+                            try
+                            {
+                                WorkoutDetailRepository.insertWithCount(workout);
+                                //DbConnector.commit();
+                                otherMillis = new Date().getTime();
+                                System.out.println("Wrkt inserted in " + (otherMillis - startMillis));
+                            } catch (Exception e) {
+                                System.out.println(workoutId + " wrkt not inserted: " + e);
+                                LOGGER.error("Not inserted wrkt " + workoutId, e);
+                            }
                         }
                     }
-
                 } catch (NumberFormatException e) {
                     LOGGER.error(file.getName() + " not parsed due to wrong id");
                 }
@@ -329,9 +329,14 @@ public class LocalJsonProcessing
                 {
                     LOGGER.error(file.getName() + " not found");
                 }
+                catch (Exception e)
+                {
+                    LOGGER.error(file.getName() + " not parsed", e);
+                }
                 System.out.println("Processed: " + file.getName());
                 fileCounter++;
             }
+
             DbConnector.closeConnection();
             System.out.println(fileCounter + " files processed");
             System.out.println("End: " + new DateTime().toString(FORMATTER));

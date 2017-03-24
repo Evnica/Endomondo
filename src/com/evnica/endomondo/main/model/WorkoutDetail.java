@@ -16,17 +16,33 @@ import java.util.List;
 public class WorkoutDetail
 {
     private int id;
-    private double distance,
-                   duration;
+    private double distance = 0,
+                   duration = 0;
     private DateTime startAt;
     private int weather,
                 userId = -1,
-                showMap, sport;
+                showMap = -1, sport = 0;
     private WorkoutGeometryType workoutGeometryType;
     private List<Lap> laps = new ArrayList<>();
     private List<Point> points = new ArrayList<>();
     private DateTimeZone timeZone = DateTimeZone.UTC;
+    private int pointCount = 0, lapCount = 0;
 
+    public int getPointCount() {
+        return pointCount;
+    }
+
+    public void setPointCount(int pointCount) {
+        this.pointCount = pointCount;
+    }
+
+    public int getLapCount() {
+        return lapCount;
+    }
+
+    public void setLapCount(int lapCount) {
+        this.lapCount = lapCount;
+    }
 
     public int getId() {
         return id;
@@ -36,7 +52,7 @@ public class WorkoutDetail
         this.id = id;
     }
 
-    double getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -52,7 +68,7 @@ public class WorkoutDetail
         this.duration = duration;
     }
 
-    DateTime getStartAt() {
+    public DateTime getStartAt() {
         return startAt;
     }
 
@@ -60,7 +76,7 @@ public class WorkoutDetail
         this.startAt = startAt;
     }
 
-    int getWeather() {
+    public int getWeather() {
         return weather;
     }
 
@@ -76,7 +92,7 @@ public class WorkoutDetail
         this.sport = sport;
     }
 
-    int getShowMap() {
+    public int getShowMap() {
         return showMap;
     }
 
@@ -84,7 +100,7 @@ public class WorkoutDetail
         this.showMap = showMap;
     }
 
-    WorkoutGeometryType getWorkoutGeometryType() {
+    public WorkoutGeometryType getWorkoutGeometryType() {
         return workoutGeometryType;
     }
 

@@ -1,5 +1,6 @@
 package com.evnica.endomondo.main.model;
 
+import com.evnica.endomondo.main.connect.DbConnector;
 import org.joda.time.DateTimeZone;
 
 import java.sql.*;
@@ -24,6 +25,9 @@ public class WorkoutDetailRepository
                                                " SET lap_count = ? WHERE id = ?";
     private static final String UPDATE_POINT_COUNT = "UPDATE " + SCHEMA_NAME + "." + TABLE_NAME +
             " SET point_count = ? WHERE id = ?";
+
+    private static final String INSERT_STATEMENT_WITH_COUNTS = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
+            "(id, distance, duration, start_at, weather, user_id, show_map, geomtype, sport, time_zone, lap_count, point_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public static void setConnection(Connection connection) {
         WorkoutDetailRepository.connection = connection;
@@ -105,6 +109,45 @@ public class WorkoutDetailRepository
         int rowsAffected = statement.executeUpdate();
         statement.clearParameters();
         statement.close();
+
+        return rowsAffected;
+    }
+
+    public static int insertWithCount(WorkoutDetail workout) throws SQLException
+    {
+        int rowsAffected = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement( INSERT_STATEMENT_WITH_COUNTS );
+
+            statement.setInt( 1, workout.getId() );
+            statement.setDouble( 2, workout.getDistance() );
+            statement.setDouble( 3, workout.getDuration() );
+            if (workout.getStartAt() != null)
+            {
+                long millis = workout.getStartAt().getZone()
+                        .getMillisKeepLocal(DateTimeZone.forTimeZone(TimeZone.getDefault()),
+                                workout.getStartAt().getMillis());
+                statement.setTimestamp( 4, new Timestamp( millis ) );
+                statement.setString(10, workout.getStartAt().getZone().getID());
+            }
+            else
+            {
+                statement.setNull(4, Types.TIMESTAMP);
+                statement.setNull(10, Types.VARCHAR);
+            }
+            statement.setInt(5, workout.getWeather());
+            statement.setInt(6, workout.getUserId());
+            statement.setInt(7, workout.getShowMap());
+            statement.setInt(8, workout.getWorkoutGeometryType().getCode());
+            statement.setInt(9, workout.getSport());
+            statement.setInt(11, workout.getLapCount());
+            statement.setInt(12, workout.getPointCount());
+
+            rowsAffected = statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            DbConnector.rollback();
+        }
 
         return rowsAffected;
     }
