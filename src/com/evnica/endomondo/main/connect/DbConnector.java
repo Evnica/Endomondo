@@ -15,7 +15,8 @@ import java.sql.SQLException;
  * Author: Evnica
  * Description:
  */
-public class DbConnector {
+public class DbConnector
+{
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Endomondo";
     private static final String USER = "postgres";
     private static String pwd = null;

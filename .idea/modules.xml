@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Endomondo.iml" filepath="$PROJECT_DIR$/Endomondo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../WorkoutUserPairs/WorkoutUserPairs.iml" filepath="$PROJECT_DIR$/../WorkoutUserPairs/WorkoutUserPairs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbhandling/dbhandling.iml" filepath="$PROJECT_DIR$/dbhandling/dbhandling.iml" />
     </modules>
   </component>
 </project>

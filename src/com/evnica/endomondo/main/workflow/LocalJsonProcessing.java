@@ -5,12 +5,8 @@ import com.evnica.endomondo.main.decode.JSONContentParser;
 import com.evnica.endomondo.main.model.*;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.*;
 import java.sql.SQLException;
@@ -73,7 +69,7 @@ public class LocalJsonProcessing
 
     private static void processAthletes(String dir)
     {
-        try {
+        /*try {
 
             DbConnector.connectToDb();
             AthleteRepository.setConnection(DbConnector.getConnection());
@@ -117,7 +113,7 @@ public class LocalJsonProcessing
             DbConnector.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private static Athlete processOneAthlete(File athleteData) throws IOException
@@ -135,7 +131,7 @@ public class LocalJsonProcessing
     private static Athlete parseAthlete( String jsonContent)
     {
         Athlete athlete = null;
-        try {
+        /*try {
             JSONObject userObject = new JSONObject( jsonContent );
             try
             {
@@ -229,7 +225,7 @@ public class LocalJsonProcessing
             }
         } catch (JSONException e) {
             System.err.println("Invalid JSON athlete: " + e);
-        }
+        }*/
         return athlete;
     }
 
@@ -255,7 +251,7 @@ public class LocalJsonProcessing
                     System.out.print("Starting " + workoutId + ", ");
                     String jsonContent = new Scanner(new FileInputStream(file), "UTF-8")
                             .useDelimiter("\\A").next();
-                    WorkoutDetail workout = JSONContentParser.parseWorkoutDetailUrl(jsonContent, workoutId);
+                    WorkoutDetail workout = JSONContentParser.parseWorkoutDetail(jsonContent, workoutId, true);
                     long otherMillis = new Date().getTime();
                     System.out.println("Parsed in " + (otherMillis - startMillis) + " ms");
                     startMillis = otherMillis;

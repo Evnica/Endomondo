@@ -22,10 +22,10 @@ class ImportOptimizer {
     private int processedPointCount = 0;
     private int fileOrderPoints = 1; // fileOrderLaps = 1;
     private static final String OUTPUT_DIR = "C:\\Users\\d.strelnikova\\DATA\\toCopy\\";
-    private static final String OUTPUT_NAME_WRKT = OUTPUT_DIR + "workout-%d.txt";
+    private static final String OUTPUT_NAME_WRKT = OUTPUT_DIR + "workouts.txt";
     //private static final String OUTPUT_NAME_LAP = OUTPUT_DIR + "lap-%d.txt";
-    private static final String OUTPUT_NAME_POINT = OUTPUT_DIR + "point-%d.txt";
-    private static String outNameWrkt, outNamePoint;
+    private static final String OUTPUT_NAME_POINT = OUTPUT_DIR + "points-%d.txt";
+    private static String outNamePoint;
 
     static String composeInsertPointsString(List<Point> points, int workoutId) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -46,24 +46,23 @@ class ImportOptimizer {
     }
 
     void stepByStep(String dir) {
-        outNameWrkt = String.format(OUTPUT_NAME_WRKT, fileOrderPoints);
         //outNameLap = String.format(OUTPUT_NAME_LAP, fileOrderPoints);
         outNamePoint = String.format(OUTPUT_NAME_POINT, fileOrderPoints);
 
         File[] dirs = new File(dir).listFiles();
         if (dirs != null) {
             for (File f : dirs) {
-                doIt(f);
+                convertJSONIntoTableToCopy(f);
             }
         }
     }
 
-    private void doIt(final File file) {
+    private void convertJSONIntoTableToCopy(final File file) {
         if (file.isDirectory()) {
             File[] subDirs = file.listFiles();
             if (subDirs != null) {
                 for (final File subFile : subDirs)
-                    doIt(subFile);
+                    convertJSONIntoTableToCopy(subFile);
             }
         } else {
             try {
@@ -71,7 +70,7 @@ class ImportOptimizer {
                 final String data = new Scanner(new FileInputStream(file), "UTF-8")
                         .useDelimiter("\\A").next();
 
-                final WorkoutDetail workout = JSONContentParser.parseWorkoutDetailUrl(data, workoutId);
+                final WorkoutDetail workout = JSONContentParser.parseWorkoutDetail(data, workoutId, false);
                 StringBuilder pointBuilder;
                 StringBuilder workoutBuilder;
 
@@ -110,11 +109,11 @@ class ImportOptimizer {
                     workoutBuilder.append(workout.getTimeZone());
                     workoutBuilder.append("\n");
 
-                    write(workoutBuilder, outNameWrkt);
+                    write(workoutBuilder, OUTPUT_NAME_WRKT);
 
 
                     if (workout.getPoints() != null) {
-                        pointBuilder = new StringBuilder();
+                        /*pointBuilder = new StringBuilder();
                         for (Point point : workout.getPoints()) {
                             pointBuilder.append(point.getOrder());
                             pointBuilder.append("\t");
@@ -143,7 +142,7 @@ class ImportOptimizer {
                             processedPointCount = 0;
                             fileOrderPoints++;
                             outNamePoint = String.format(OUTPUT_NAME_POINT, fileOrderPoints);
-                        }
+                        }*/
                     }
                 }
 

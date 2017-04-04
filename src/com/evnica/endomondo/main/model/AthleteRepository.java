@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class AthleteRepository
 {
-    private static final String TABLE_NAME = "athlete";
+    private static final String TABLE_NAME = "s_athlete";
     private static final String SCHEMA_NAME = "spatial";
     private static final String INSERT_VALIDITY_STATEMENT = "INSERT INTO " + SCHEMA_NAME + "." + TABLE_NAME +
             "(id, invalid) VALUES (?, ?)";

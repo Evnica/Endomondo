@@ -29,7 +29,7 @@ public class ImportOptimizerTest {
                 ("C:\\Users\\d.strelnikova\\IdeaProjects\\Endomondo\\testFiles\\short_points.json"),
                 "UTF-8")
                 .useDelimiter("\\A").next();
-        workout = JSONContentParser.parseWorkoutDetailUrl(jsonContent, workoutId);
+        workout = JSONContentParser.parseWorkoutDetail(jsonContent, workoutId, false);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ImportOptimizerTest {
     @Test
     public void fromJSONtoDbFilesTest()
     {
-        new ImportOptimizer().stepByStep("C:\\Users\\d.strelnikova\\DATA\\archive\\workout\\01-IN_ALL_workout_2017-03-07_1002_contains 24_dupl");
+        new ImportOptimizer().stepByStep("T:\\geomatics\\Dariia\\complex retrieval\\workout_us\\----19850000-19950000");
     }
 
 }

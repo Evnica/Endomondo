@@ -187,19 +187,22 @@ public class JSONContentParser
         return result;
     }
 
-    public static WorkoutDetail parseWorkoutDetailUrl( String jsonContent, int workoutId)
+    public static WorkoutDetail parseWorkoutDetail(String jsonContent, int workoutId, boolean withLaps)
     {
-        WorkoutDetail workoutDetail = new WorkoutDetail();
-        DateTimeZone theZone = DateTimeZone.UTC;
-        boolean validPoints = false,
-                validLaps = false,
-                pointsAbsent = false,
-                lapsAbsent = false;
-        workoutDetail.setId(workoutId);
-        DateTime offset;
+        WorkoutDetail workoutDetail = null;
         try
         {
             JSONObject workoutObject = new JSONObject( jsonContent );
+            // if not a json file - will not create a valid WorkoutDetail instance
+            workoutDetail = new WorkoutDetail();
+            DateTimeZone theZone = DateTimeZone.UTC;
+            boolean validPoints = false,
+                    validLaps = false,
+                    pointsAbsent = false,
+                    lapsAbsent = false;
+            workoutDetail.setId(workoutId);
+            DateTime offset;
+
             // if there is no start point, we can't use the data
             String date = workoutObject.getString( "local_start_time" );
             try {
@@ -210,43 +213,58 @@ public class JSONContentParser
             }
             workoutDetail.setStartAt(offset);
             workoutDetail.setTimeZone(theZone);
-            try {
+
+            try
+            {
+                workoutDetail.setSpeed(workoutObject.getDouble("speed_avg"));
+            }
+            catch (JSONException e)
+            {
+                workoutDetail.setSpeed(-1);
+                LOGGER.error("Can't get speed for wrkt# " + workoutId);
+                System.out.println("Can't get distance for wrkt# " + workoutId);
+            }
+
+            try
+            {
                 workoutDetail.setDistance(workoutObject.getDouble("distance"));
-            } catch (JSONException e) {
-                LOGGER.error("Can't get distance for id " + workoutId);
-                System.out.println("Can't get distance for id " + workoutId);
+            }
+            catch (JSONException e)
+            {
+                LOGGER.error("Can't get distance for wrkt# " + workoutId);
+                System.out.println("Can't get distance for wrkt# " + workoutId);
             }
             try {
                 workoutDetail.setSport(workoutObject.getInt("sport"));
             } catch (JSONException e) {
-                LOGGER.error("Can't get sport for id " + workoutId);
-                System.out.println("Can't get sport for id " + workoutId);
+                LOGGER.error("Can't get sport for wrkt# " + workoutId);
+                System.out.println("Can't get sport for wrkt# " + workoutId);
             }
             try {
                 workoutDetail.setDuration(workoutObject.getDouble("duration"));
             } catch (JSONException e) {
-                LOGGER.error("Can't get duration for id " + workoutId);
-                System.out.println("Can't get duration for id " + workoutId);
+                LOGGER.error("Can't get duration for wrkt# " + workoutId);
+                System.out.println("Can't get duration for wrkt# " + workoutId);
             }
             try {
                 workoutDetail.setWeather(workoutObject.getJSONObject("weather").getInt("type"));
             } catch (JSONException e) {
                 workoutDetail.setWeather(-1);
-                LOGGER.error("No weather, workout is likely to be empty: " + workoutId);
-                System.out.print("No weather, workout is likely to be empty, ");
+                LOGGER.error("No weather for wrkt#: " + workoutId);
+                System.out.print("no weather for ");
             }
             try {
                 workoutDetail.setUserId(workoutObject.getJSONObject("author").getInt("id"));
             } catch (JSONException e) {
                 workoutDetail.setUserId(-1);
-                LOGGER.error("Can't get user id for workout id " + workoutId);
-                System.out.print("no user: workout is likely to be useless, ");
+                LOGGER.error("No user id for workout wrkt# " + workoutId);
+                System.out.print("Can't get user id for workout wrkt#, ");
             }
             try {
                 workoutDetail.setShowMap(workoutObject.getInt("show_map"));
             } catch (JSONException e) {
-                LOGGER.error("Can't get show_map for id " + workoutId);
-                System.out.println("has no show_map, ");
+                LOGGER.error("No show_map for wrkt# " + workoutId);
+                System.out.println("no show_map ");
                 workoutDetail.setShowMap(-1);
             }
             // try to get laps if present
@@ -255,6 +273,7 @@ public class JSONContentParser
                 JSONArray metricLaps = workoutObject.getJSONObject( "laps" ).getJSONArray( "metric" );
                 if (metricLaps.length() > 0)
                 {
+                    workoutDetail.setLapCount(metricLaps.length());
                     double beginLatitude, beginLongitude, endLatitude, endLongitude;
                     long duration;
                     // polyline is not always present in JSON; without polyline we rely on points
@@ -264,51 +283,54 @@ public class JSONContentParser
                     } catch (JSONException e) {
                         validLaps = false;
                     }
-                    for (int i = 0; i < metricLaps.length(); i++)
+                    if (withLaps)
                     {
-                        try
+                        for (int i = 0; i < metricLaps.length(); i++)
                         {
-                            beginLatitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_latitude");
-                            beginLongitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_longitude");
-                            endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
-                            endLongitude = ((JSONObject) metricLaps.get(i)).getDouble("end_longitude");
-                            Lap lap = new Lap( beginLatitude, beginLongitude, endLatitude, endLongitude );
-                            if (validLaps)
-                            {
-                                try {
-                                    String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
-                                            .getString( "small_encoded_polyline");
-                                    Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
-                                    lap.setSmallPolyline( lapGeometry );
-                                } catch (JSONException e) {
-                                    LOGGER.error("Lap " + i + " in workout " + workoutId + " has no geometry");
-                                    System.out.println("Lap " + i + " in workout " + workoutId + " has no geometry");
-                                }
-                            }
-                            lap.setWorkoutId( workoutId );
-                            lap.setId( i );
-                            lap.setOffset( offset );
-
                             try
                             {
-                                duration =  ((JSONObject) metricLaps.get(i)).getLong("duration");
-                                lap.setDuration( duration );
-                                offset = offset.plusMillis( (int) duration );
+                                beginLatitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_latitude");
+                                beginLongitude = ((JSONObject) metricLaps.get(i)).getDouble("begin_longitude");
+                                endLatitude = ((JSONObject) metricLaps.get(i)).getDouble("end_latitude");
+                                endLongitude = ((JSONObject) metricLaps.get(i)).getDouble("end_longitude");
+                                Lap lap = new Lap( beginLatitude, beginLongitude, endLatitude, endLongitude );
+                                if (validLaps)
+                                {
+                                    try {
+                                        String lapGeometryEncoded = ((JSONObject) metricLaps.get(i))
+                                                .getString( "small_encoded_polyline");
+                                        Polyline lapGeometry = GooglePolylineDecoder.decode( lapGeometryEncoded );
+                                        lap.setSmallPolyline( lapGeometry );
+                                    } catch (JSONException e) {
+                                        LOGGER.error("Lap " + i + " in workout " + workoutId + " has no geometry");
+                                        System.out.println("Lap " + i + " in workout " + workoutId + " has no geometry");
+                                    }
+                                }
+                                lap.setWorkoutId( workoutId );
+                                lap.setId( i );
+                                lap.setOffset( offset );
+
+                                try
+                                {
+                                    duration =  ((JSONObject) metricLaps.get(i)).getLong("duration");
+                                    lap.setDuration( duration );
+                                    offset = offset.plusMillis( (int) duration );
+                                }
+                                catch ( Exception e )
+                                {
+                                    lap.setDuration(-1L);
+                                }
+                                workoutDetail.addLap( lap );
+                            } catch (JSONException e) {
+                                LOGGER.error("Invalid lap " + i + ", workout " + workoutId + ": " +  e.getMessage());
                             }
-                            catch ( Exception e )
-                            {
-                                lap.setDuration(-1L);
-                            }
-                            workoutDetail.addLap( lap );
-                        } catch (JSONException e) {
-                            LOGGER.error("Invalid lap " + i + ", workout " + workoutId + ": " +  e.getMessage());
                         }
-                    }
-                    int diff = metricLaps.length() - workoutDetail.getLaps().size();
-                    if (diff != 0)
-                    {
-                        System.out.println(workoutId + " workout: " + diff + " laps invalid");
-                        LOGGER.info(workoutId + " workout: " + diff + " laps invalid");
+                        int diff = metricLaps.length() - workoutDetail.getLaps().size();
+                        if (diff != 0)
+                        {
+                            System.out.println(workoutId + " workout: " + diff + " laps invalid");
+                            LOGGER.info(workoutId + " workout: " + diff + " laps invalid");
+                        }
                     }
                 }
             } catch (JSONException e) {
@@ -410,6 +432,7 @@ public class JSONContentParser
                                     LOGGER.info(workoutId + " workout: " + diff + " points invalid");
                                 }
                             }
+                            workoutDetail.setPointCount(workoutDetail.getPoints().size());
                         }
                     }
                     catch (JSONException e)

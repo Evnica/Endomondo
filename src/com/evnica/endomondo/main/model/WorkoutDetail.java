@@ -27,6 +27,15 @@ public class WorkoutDetail
     private List<Point> points = new ArrayList<>();
     private DateTimeZone timeZone = DateTimeZone.UTC;
     private int pointCount = 0, lapCount = 0;
+    private double speed = 0;
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
     public int getPointCount() {
         return pointCount;

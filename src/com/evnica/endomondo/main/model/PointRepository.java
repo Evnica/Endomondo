@@ -99,24 +99,44 @@ public class PointRepository
         return IntStream.of(rowsAffected).sum();
     }
 
-    public static int insertPointsOneByOne(List<Point> points, int workoutId) throws SQLException
+    public static String determineRegion(Point point)
     {
-        int rowsAffected = 0;
-        PreparedStatement statement = connection.prepareStatement(insertStatement);
-        for (Point p: points)
+        String region;
+        Statement statement = null;
+        try
         {
-            try {
-                rowsAffected += insertPoint(p, workoutId, statement);
-            } catch (SQLException e) {
-                System.out.println("Exc on point " + p.getOrder());
-                e.printStackTrace();
+            statement = connection.createStatement();
+
+            final String query = String.format(
+                    "SELECT spatial.world.iso FROM spatial.world WHERE  ST_Intersects(ST_SetSRID(ST_MakePoint(%f, %f),4326), spatial.world.geom);",
+                    point.getLon(), point.getLat());
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            region = resultSet.getString("iso");
+        }
+        catch (SQLException e)
+        {
+            region = "all";
+            System.out.println("Unable to determine region for point " + point.toString());
+        }
+        finally
+        {
+            if (statement != null)
+            {
+                try
+                {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        statement.close();
-        return rowsAffected;
+        return region;
+
     }
 
-    private static int insertPoint(Point point, int workoutId, PreparedStatement statement) throws SQLException
+
+/*    private static int insertPoint(Point point, int workoutId, PreparedStatement statement) throws SQLException
     {
         int rowsAffected = 0;
         try {
@@ -153,6 +173,23 @@ public class PointRepository
             statement.clearParameters();
         }
         return rowsAffected;
-    }
+    }*/
+
+/*    public static int insertPointsOneByOne(List<Point> points, int workoutId) throws SQLException
+    {
+        int rowsAffected = 0;
+        PreparedStatement statement = connection.prepareStatement(insertStatement);
+        for (Point p: points)
+        {
+            try {
+                rowsAffected += insertPoint(p, workoutId, statement);
+            } catch (SQLException e) {
+                System.out.println("Exc on point " + p.getOrder());
+                e.printStackTrace();
+            }
+        }
+        statement.close();
+        return rowsAffected;
+    }*/
 
 }
