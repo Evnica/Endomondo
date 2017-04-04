@@ -43,7 +43,7 @@ public class AthleteConverter extends Converter
             AthleteRepository.setConnection(DbConnector.getConnection());
             SummaryRepository.setConnection(DbConnector.getConnection());
 
-            File[] files = getFilesInDir(dir);
+            File[] files = new File(dir).listFiles();
             if (files != null)
             {
                 fileCount = files.length;

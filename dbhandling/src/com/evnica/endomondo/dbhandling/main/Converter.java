@@ -23,6 +23,7 @@ public abstract class Converter
     private static final org.joda.time.format.DateTimeFormatter FORMATTER_STYLE =
             DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
     static final String OUTPUT_DIR = "C:/DATA/toCopy/%s/";
+    static final String STAT_FILE_CONVERSION = "stat_conversion.txt";
     static boolean processAthletes = false;
 
     static String dir;
@@ -61,11 +62,6 @@ public abstract class Converter
         }
     }
 
-    static File[] getFilesInDir(String dir)
-    {
-        return new File(dir).listFiles();
-    }
-
 
     static String readFile(File file) throws IOException
     {
@@ -73,12 +69,23 @@ public abstract class Converter
                 .useDelimiter("\\A").next();
     }
 
-    void write(StringBuilder sb, String path) throws Exception {
-        File file = new File(path);
-        try (Writer writer = Channels.newWriter(new FileOutputStream(
-                file.getAbsoluteFile(), true).getChannel(), "UTF-8")) {
-            writer.append(sb);
+    static void write(StringBuilder sb, String dir, String fileName) throws Exception {
+        File directory = new File((dir));
+        boolean newDirCreated;
+        newDirCreated = directory.exists() || directory.mkdir();
+        if (newDirCreated)
+        {
+            String path = dir + fileName;
+            File file = new File(path);
+            try (Writer writer = Channels.newWriter(new FileOutputStream(
+                    file.getAbsoluteFile(), true).getChannel(), "UTF-8")) {
+                writer.append(sb);
+            }
+        } else {
+            System.out.println("--------------Can't writhe a log--------------");
+            System.out.println(sb.toString());
         }
+
     }
 
 
