@@ -10,8 +10,7 @@ import org.joda.time.DateTime;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Project: Endomondo
@@ -31,42 +30,46 @@ public class WorkoutConverter extends Converter
     private static int processed = 0, full = 0, dubious = 0, invalid = 0;
     private static int processedPointCount = 0;
     private static Map<String, Integer[]> logPointByRegion = new LinkedHashMap<>(); // region - [wrkt_count, pt_cnt]
+    private static Set<String> outputDirectories = new HashSet<>();
 
     @Override
-    public int[] process()
-    {
+    public boolean initialize() {
         try
         {
             DbConnector.connectToDb();
-            initializeLogMap();
-
+            initializeLogMap(logPointByRegion);
             PointRepository.setConnection(DbConnector.getConnection());
-            processDirectory(new File(dir));
+            return true;
         }
         catch (Exception e)
         {
             LOGGER.error("Can't process ", e.getMessage());
             System.out.println("Can't process: ");
             e.printStackTrace();
+            return false;
         }
-        finally
-        {
-            try
-            {
-                DbConnector.closeConnection();
-            }
-            catch (SQLException e)
-            {
-                LOGGER.error("Can't close connection: ", e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        return new int[]{processed, full, dubious, invalid};
     }
 
-    private void processDirectory(File directory)
+    @Override
+    public boolean terminate()
+    {
+        try
+        {
+            DbConnector.closeConnection();
+            return true;
+        }
+        catch (SQLException e)
+        {
+            LOGGER.error("Can't close connection: ", e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    void processDirectory(File directory)
     {
         String outDir = String.format(OUTPUT_DIR, directory.getName());
+        outputDirectories.add(outDir);
         File[] files = directory.listFiles();
         if (files != null)
         {
@@ -116,8 +119,11 @@ public class WorkoutConverter extends Converter
                                     + processPointsInDir + ", total: " + processedPointCount);
                     // processedDirName,  path,  count,  processed,   invalid,  dubious,  full,  ptCount
                     writeStatistics(file.getName(), String.format(OUTPUT_DIR, "stat"), STAT_FILE_CONVERSION, count,
-                            processedInDir, invalidInDir, dubiousInDir, fullInDir, processPointsInDir);
-                    initializeLogMap();
+                            processedInDir, invalidInDir, dubiousInDir, fullInDir, processPointsInDir, logPointByRegion);
+
+                    BulkLoader.loadInDb(String.format(OUTPUT_DIR, file.getName()));
+
+                    initializeLogMap(logPointByRegion);
                 }
                 else
                 {
@@ -265,8 +271,9 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    private static void writeStatistics(String processedDirName, String dir, String fileName,
-                                        int count, int processed,  int invalid, int dubious, int full, int ptCount)
+    public static void writeStatistics(String processedDirName, String dir, String fileName,
+                                        int count, int processed,  int invalid, int dubious, int full, int ptCount,
+                                       Map<String, Integer[]> logPointByRegion)
     {
         StringBuilder logBuilder = new StringBuilder();
         logBuilder.append(processedDirName);
@@ -306,7 +313,7 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    private static void initializeLogMap()
+    public static void initializeLogMap(Map<String, Integer[]> logPointByRegion)
     {
         // could be requested from DB, but now is not necessary
         final String[] regions = {"fl", "us", "ar", "br", "cz", "de", "dk", "es", "fr", "gb", "id", "in",
@@ -318,4 +325,7 @@ public class WorkoutConverter extends Converter
         }
     }
 
+    static Set<String> getOutputDirectories() {
+        return outputDirectories;
+    }
 }

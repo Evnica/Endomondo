@@ -22,13 +22,15 @@ public abstract class Converter
                                                             DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
     private static final org.joda.time.format.DateTimeFormatter FORMATTER_STYLE =
             DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
-    static final String OUTPUT_DIR = "C:/DATA/toCopy/%s/";
+    static final String OUTPUT_DIR = "C:/Endoproject/toCopy/%s/";
     static final String STAT_FILE_CONVERSION = "stat_conversion.txt";
     static boolean processAthletes = false;
 
     static String dir;
 
-    public abstract int[] process();
+    public abstract boolean initialize();
+
+    public abstract boolean terminate();
 
     static void readParameters()
     {

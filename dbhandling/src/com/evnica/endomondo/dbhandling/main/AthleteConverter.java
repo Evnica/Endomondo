@@ -31,9 +31,20 @@ public class AthleteConverter extends Converter
             org.apache.logging.log4j.LogManager.getLogger(AthleteConverter.class.getName());
     private int processed = 0, insertedAthletes = 0, athletesWithSummaries = 0, insertedSummaries = 0, invalid = 0;
 
+
+    @Override
+    public boolean initialize() {
+        return false;
+    }
+
+    @Override
+    public boolean terminate() {
+        return false;
+    }
+
     // outputs the following values: file count, processed files, inserted athletes,
     // inserted athletes with summaries, inserted summary count, invalid athletes;
-    @Override
+
     public int[] process()
     {
         int fileCount = 0;
