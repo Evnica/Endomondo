@@ -20,7 +20,7 @@ import java.util.*;
  * Author: DS
  * Description:
  */
-public class WorkoutConverter extends Converter
+public class WorkoutConverter extends Converter implements Runnable
 {
     private final static Logger LOGGER =
             org.apache.logging.log4j.LogManager.getLogger(WorkoutConverter.class.getName());
@@ -33,21 +33,24 @@ public class WorkoutConverter extends Converter
     private static Set<String> outputDirectories = new HashSet<>();
 
     @Override
-    public boolean initialize() {
+    public boolean initialize()
+    {
+        boolean success;
         try
         {
             DbConnector.connectToDb();
             initializeLogMap(logPointByRegion);
             PointRepository.setConnection(DbConnector.getConnection());
-            return true;
+            success = (workoutDirectory != null);
         }
         catch (Exception e)
         {
             LOGGER.error("Can't process ", e.getMessage());
             System.out.println("Can't process: ");
             e.printStackTrace();
-            return false;
+            success = false;
         }
+        return success;
     }
 
     @Override
@@ -66,7 +69,7 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    void processDirectory(File directory)
+    private void processDirectory(File directory)
     {
         String outDir = String.format(OUTPUT_DIR, directory.getName());
         outputDirectories.add(outDir);
@@ -113,9 +116,9 @@ public class WorkoutConverter extends Converter
                     {
                         System.out.println(entry.getKey() + ": " + entry.getValue()[0] + ", " + entry.getValue()[1]);
                     }
-                    System.out.println("Processed point: in dir "
+                    System.out.println("Processed point: in workoutDirectory "
                                         + processPointsInDir + ", total: " + processedPointCount);
-                    LOGGER.info("Processed point: in dir "
+                    LOGGER.info("Processed point: in workoutDirectory "
                                     + processPointsInDir + ", total: " + processedPointCount);
                     // processedDirName,  path,  count,  processed,   invalid,  dubious,  full,  ptCount
                     writeStatistics(file.getName(), String.format(OUTPUT_DIR, "stat"), STAT_FILE_CONVERSION, count,
@@ -131,7 +134,6 @@ public class WorkoutConverter extends Converter
                 }
             }
         }
-
     }
 
     private void processOneWorkout(File file, String outDir)
@@ -271,7 +273,7 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    public static void writeStatistics(String processedDirName, String dir, String fileName,
+    static void writeStatistics(String processedDirName, String dir, String fileName,
                                         int count, int processed,  int invalid, int dubious, int full, int ptCount,
                                        Map<String, Integer[]> logPointByRegion)
     {
@@ -313,7 +315,7 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    public static void initializeLogMap(Map<String, Integer[]> logPointByRegion)
+    static void initializeLogMap(Map<String, Integer[]> logPointByRegion)
     {
         // could be requested from DB, but now is not necessary
         final String[] regions = {"fl", "us", "ar", "br", "cz", "de", "dk", "es", "fr", "gb", "id", "in",
@@ -325,7 +327,19 @@ public class WorkoutConverter extends Converter
         }
     }
 
-    static Set<String> getOutputDirectories() {
-        return outputDirectories;
+
+    @Override
+    public void run() {
+        WorkoutConverter workoutConverter = new WorkoutConverter();
+        if (workoutConverter.initialize())
+        {
+            workoutConverter.processDirectory(new File(Converter.workoutDirectory));
+            System.out.println("Processed directories:");
+            for (String dir: outputDirectories)
+            {
+                System.out.println(dir);
+            }
+            workoutConverter.terminate();
+        }
     }
 }

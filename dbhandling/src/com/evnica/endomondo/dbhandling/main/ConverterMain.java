@@ -1,10 +1,9 @@
 package com.evnica.endomondo.dbhandling.main;
 
-import java.io.File;
 
 /**
  * Project: Endomondo
- * Class: ${CLASS_NAME}
+ * Class: ConverterMain
  * Version: 0.1
  * Created on 4/2/2017 with the help of IntelliJ IDEA (thanks!)
  * Author: DS
@@ -15,24 +14,18 @@ public class ConverterMain
     public static void main(String[] args) {
 
         Converter.readParameters();
-        if(Converter.processAthletes)
+
+        if(Converter.athleteDirectory != null)
         {
-            int[] result = new AthleteConverter().process();
-            for (int i: result) System.out.print(i + "; ");
+            Thread athleteProcessor = new Thread(new AthleteConverter());
+            athleteProcessor.setName("AthleteConverter");
+            athleteProcessor.start();
         }
-        else
+        if (Converter.workoutDirectory != null)
         {
-            WorkoutConverter workoutConverter = new WorkoutConverter();
-            if (workoutConverter.initialize())
-            {
-                workoutConverter.processDirectory(new File(Converter.dir));
-                System.out.println("Processed directories:");
-                for (String dir: WorkoutConverter.getOutputDirectories())
-                {
-                    System.out.println(dir);
-                }
-                workoutConverter.terminate();
-            }
+            Thread workoutProcessor = new Thread(new WorkoutConverter());
+            workoutProcessor.setName("WorkoutConverter");
+            workoutProcessor.start();
         }
     }
 }

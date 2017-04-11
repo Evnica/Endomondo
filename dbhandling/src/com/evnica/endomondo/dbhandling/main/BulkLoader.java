@@ -32,6 +32,7 @@ class BulkLoader
             "INSERT INTO production.%s (id, wrkt_id, distance, duration, dt, geom, distance_offset, duration_offset)\n" +
             "  SELECT pi.id, pi.wrkt_id, pi.distance, pi.duration, pi.dt, ST_GeomFromText('POINT(' || pi.lon || ' ' || pi.lat || ')', 4326), pi.distance_offset, pi.duration_offset\n" +
             "  FROM interim.%s pi;";
+    private static final String COPY_ATHLETE = "COPY production.%s FROM '%s' WITH NULL 'NULL'";
     private static final String COPY_WRKT_TO_PRODUCTION = "INSERT INTO production.%s\n SELECT * FROM interim.%s;";
     private static final String DELETE = "DELETE FROM interim.%s;";
     private static Map<String, Integer[]> addToDbByRegion = new LinkedHashMap<>();
@@ -59,7 +60,7 @@ class BulkLoader
             } catch (Exception e) {
                 dirToLog = dirWithInterimFiles;
             }
-            WorkoutConverter.writeStatistics(dirToLog, String.format(Converter.OUTPUT_DIR, "stat"),
+            WorkoutConverter.writeStatistics(dirToLog, String.format(Converter.OUTPUT_DIR, "stat_db"),
                    Converter.STAT_FILE_CONVERSION, -1, -1, -1, dubiousInDir, fullInDir,
                    -1, addToDbByRegion);
 
@@ -163,7 +164,7 @@ class BulkLoader
                     sb.append("\n");
                     try
                     {
-                        Converter.write(sb, String.format(Converter.OUTPUT_DIR, "stat"), "copyFailed.txt" );
+                        Converter.write(sb, String.format(Converter.OUTPUT_DIR, "stat_db"), "copyFailed.txt" );
                     }
                     catch (Exception e1)
                     {
@@ -192,6 +193,33 @@ class BulkLoader
         }
 
         return success;
+    }
+
+    static void loadAthletes(String outDir)
+    {
+        Statement statement;
+        try
+        {
+            AthleteConverter.getAthleteConnection().setAutoCommit(false);
+            statement = AthleteConverter.getAthleteConnection().createStatement();
+            String query = String.format(COPY_ATHLETE, "athlete", (outDir + AthleteConverter.OUTPUT_NAME_ATHLETE));
+            statement.execute(query);
+            query = String.format(COPY_ATHLETE, "summary", (outDir + AthleteConverter.OUTPUT_NAME_SUMMARY));
+            statement.execute(query);
+            AthleteConverter.getAthleteConnection().commit();
+            statement.close();
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                AthleteConverter.getAthleteConnection().rollback();
+            } catch (SQLException e1)
+            {
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+        }
     }
 
 }
