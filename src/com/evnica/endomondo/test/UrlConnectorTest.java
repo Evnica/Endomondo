@@ -1,5 +1,3 @@
-package com.evnica.endomondo.test;
-
 import com.evnica.endomondo.main.connect.UrlConnector;
 import com.evnica.endomondo.main.decode.JSONContentParser;
 import com.evnica.endomondo.main.model.User;
