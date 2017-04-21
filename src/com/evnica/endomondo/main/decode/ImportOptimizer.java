@@ -23,7 +23,6 @@ class ImportOptimizer {
     private int fileOrderPoints = 1; // fileOrderLaps = 1;
     private static final String OUTPUT_DIR = "C:\\Users\\d.strelnikova\\DATA\\toCopy\\";
     private static final String OUTPUT_NAME_WRKT = OUTPUT_DIR + "workouts.txt";
-    //private static final String OUTPUT_NAME_LAP = OUTPUT_DIR + "lap-%d.txt";
     private static final String OUTPUT_NAME_POINT = OUTPUT_DIR + "points-%d.txt";
     private static String outNamePoint;
 
@@ -46,7 +45,6 @@ class ImportOptimizer {
     }
 
     void stepByStep(String dir) {
-        //outNameLap = String.format(OUTPUT_NAME_LAP, fileOrderPoints);
         outNamePoint = String.format(OUTPUT_NAME_POINT, fileOrderPoints);
 
         File[] dirs = new File(dir).listFiles();

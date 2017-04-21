@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Endomondo.iml" filepath="$PROJECT_DIR$/Endomondo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../WorkoutUserPairs/WorkoutUserPairs.iml" filepath="$PROJECT_DIR$/../WorkoutUserPairs/WorkoutUserPairs.iml" />
       <module fileurl="file://$PROJECT_DIR$/dbhandling/dbhandling.iml" filepath="$PROJECT_DIR$/dbhandling/dbhandling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/matching/matching.iml" filepath="$PROJECT_DIR$/matching/matching.iml" />
     </modules>
   </component>
 </project>

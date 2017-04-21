@@ -13,5 +13,11 @@ public class SummaryBySport
     public int count;
     public double totalDistance, totalDuration;
 
-
+    @Override
+    public String toString()
+    {
+        //13718401	3	117	1691040	6295.89424697876
+        return sport + "\t" + count + "\t" + String.format("%.2f", totalDistance)
+                + "\t" + String.format("%.2f", totalDuration);
+    }
 }

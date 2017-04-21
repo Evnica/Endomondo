@@ -527,4 +527,113 @@ public class JSONContentParser
         }
         return user;
     }
+
+    public static Athlete parseAthlete(String jsonContent)
+    {
+        Athlete athlete = null;
+        try
+        {
+            JSONObject userObject = new JSONObject( jsonContent );
+            try
+            {
+                int id = userObject.getInt( "id" );
+                athlete = new Athlete(id);
+                try
+                {
+                    int gender = userObject.getInt( "gender" );
+                    athlete.setGender(gender);
+                }
+                catch (JSONException e)
+                {
+                    System.out.println(id + " has no gender ");
+                }
+                try
+                {
+                    if (userObject.getInt( "workout_count" ) > 0)
+                    {
+                        athlete.setWorkoutCount(userObject.getInt( "workout_count" ));
+                    }
+                    else
+                    {
+                        System.out.println(id + " has no workout count ");
+                    }
+                    JSONArray summaryBySport;
+                    try
+                    {
+                        summaryBySport = userObject.getJSONArray( "summary_by_sport" );
+                        JSONObject individualSummary;
+                        int sportId = -1;
+                        for (int i = 0; i < summaryBySport.length(); i++)
+                        {
+                            try
+                            {
+                                individualSummary = summaryBySport.getJSONObject( i );
+                                sportId = individualSummary.getInt( "sport" );
+                                SummaryBySport sportSum = new SummaryBySport();
+                                sportSum.sport = sportId;
+                                sportSum.count = individualSummary.getInt( "count" );
+                                sportSum.totalDistance = individualSummary.getDouble( "total_distance" );
+                                sportSum.totalDuration = individualSummary.getDouble( "total_duration" );
+                                athlete.addSummaryBySport(sportSum);
+                            }
+                            catch (JSONException e) {
+                                System.out.println(id + " has no summary by sport " + sportId);
+                            }
+                        }
+                    }
+                    catch (JSONException e1)
+                    {
+                        System.out.println(id + " has no summary by sport");
+                    }
+                    try
+                    {
+                        String date = userObject.getString( "created_date" );
+                        DateTime createdOn;
+                        try {
+                            createdOn = FORMATTER.parseDateTime( date );
+                        } catch (Exception e) {
+                            createdOn = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                        }
+                        athlete.setCreatedDate( createdOn );
+                    } catch (JSONException e) {
+                        System.out.println(id + " has no creation date");
+                    }
+                    try
+                    {
+                        String date = userObject.getString( "date_of_birth" );
+                        DateTime dob;
+                        try {
+                            dob = FORMATTER.parseDateTime( date );
+                        } catch (Exception e) {
+                            dob = FORMATTER.withZone(DateTimeZone.UTC).parseDateTime( date );
+                        }
+                        athlete.setDateOfBirth( dob );
+                    }
+                    catch (JSONException e)
+                    {
+                        System.out.println(id + " has no birth date");
+                    }
+                    try
+                    {
+                        athlete.setCountry(userObject.getString( "country" ));
+                    }
+                    catch (JSONException e)
+                    {
+                        System.out.println(id + " has no country");
+                    }
+                }
+                catch (JSONException e)
+                {
+                    System.out.println(e.getMessage());
+                }
+            }
+            catch ( JSONException e )
+            {
+                System.out.println("Except: " + e);
+            }
+        } catch (JSONException e) {
+            System.err.println("Invalid JSON athlete: " + e);
+        }
+        return athlete;
+    }
 }

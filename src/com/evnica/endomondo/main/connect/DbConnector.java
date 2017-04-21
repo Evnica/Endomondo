@@ -19,7 +19,7 @@ public class DbConnector
 {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/Endomondo";
     private static final String USER = "postgres";
-    private static String pwd = null;
+    private static String pwd = "Hi, EndoProductioN!";
     private static Connection connection = null;
 
     public static Connection getConnection() {
@@ -33,6 +33,24 @@ public class DbConnector
         connection = DriverManager.getConnection(DB_URL, USER, pwd);
     }
 
+    public static Connection getNewConnection()
+    {
+        Connection connection = null;
+        if (pwd == null)
+        {
+            readPassword();
+        }
+        try
+        {
+            connection = DriverManager.getConnection(DB_URL, USER, pwd);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Can't get  a new connection: " + e);
+        }
+        return connection;
+    }
+
     public static void closeConnection() throws SQLException {
         if (connection != null) {
             connection.close();
@@ -41,10 +59,6 @@ public class DbConnector
 
     public static void setAutoCommit(boolean autoCommit) throws SQLException {
         connection.setAutoCommit(autoCommit);
-    }
-
-    public static void commit() throws SQLException {
-        connection.commit();
     }
 
     public static void rollback() throws SQLException

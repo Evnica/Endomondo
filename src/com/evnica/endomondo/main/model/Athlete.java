@@ -18,8 +18,10 @@ public class Athlete
                 gender = -1,
                 workoutCount = 0;
     private DateTime dateOfBirth, createdDate;
-    private String country;
+    private String country = "all";
     private List<SummaryBySport> summaryBySport = new ArrayList<>();
+    public DateTime retrieved = new DateTime();
+
 
     public Athlete( int id )
     {
@@ -89,5 +91,22 @@ public class Athlete
     public int getId()
     {
         return id;
+    }
+
+    @Override
+    public String toString()
+    {
+        String dob, created, retrieved;
+        //25424028	0	1984-06-16	194	TH	2015-10-27 04:30:41	2017-02-15
+        if (createdDate == null) created = "NULL"; //"1800-01-01 00:00:00";
+            else created = createdDate.toString("yyyy-MM-dd HH:mm:ss");
+        if (dateOfBirth == null) dob = "NULL"; //"1800-01-01";
+            else dob = dateOfBirth.toString("yyyy-MM-dd");
+        if (this.retrieved == null) retrieved = "NULL"; //"1800-01-01";
+        else retrieved  = this.retrieved.toString("yyyy-MM-dd");
+
+        return id + "\t" +  gender + "\t" + dob + "\t" + workoutCount
+                + "\t" + country.toLowerCase() + "\t" + created + "\t"
+                + retrieved;
     }
 }
