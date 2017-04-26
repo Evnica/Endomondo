@@ -14,14 +14,16 @@ import java.sql.*;
  */
 class Communicator
 {
+
     private static Connection connection = null;
-    private static final String CREATE_POINT_VIEW =
-            "CREATE OR REPLACE VIEW interim.points AS SELECT * FROM production.point_fl WHERE wrkt_id = %d";
+    private static final String DELETE_PROCESSED_POINTS_FROM_INTERIM = "DELETE FROM interim.matching";
+    private static final String SELECT_POINT_WRKT_INTO_TABLE =
+            "INSERT INTO interim.matching (id, dt, geom, distance_offset, duration_offset, buffer) SELECT id, dt, geom, distance_offset, duration_offset, st_buffer(geom, 0.00005) FROM production.point_fl WHERE wrkt_id = %d";
     private static final String CREATE_NETWORK_VIEW = "CREATE OR REPLACE VIEW interim.network AS " +
             "SELECT mi.id, mi.geom, mi.buffer, mi.source, mi.target FROM network.miami_dade mi\n" +
             "WHERE st_intersects(mi.buffer, st_geomfromtext('%s', 4326));";
     private static final String CALC_EXTENT =
-            "SELECT st_astext(st_extent(geom)) FROM interim.points";
+            "SELECT st_astext(st_extent(buffer)) FROM interim.matching";
 
     static boolean initialize()
     {
@@ -40,17 +42,38 @@ class Communicator
         return success;
     }
 
-    static boolean createPointViewForWorkout(int wrktId)
+    static boolean terminate()
+    {
+        boolean success;
+
+        try
+        {
+            DbConnector.closeConnection();
+            success = true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            success = false;
+        }
+        return success;
+    }
+
+    static boolean selectWrktPointsIntoTable(int wrktId)
     {
         boolean created;
         Statement statement = null;
-        String query = String.format(CREATE_POINT_VIEW, wrktId);
+        String query = String.format(SELECT_POINT_WRKT_INTO_TABLE, wrktId);
         try
         {
             statement = connection.createStatement();
+            statement.execute(DELETE_PROCESSED_POINTS_FROM_INTERIM);
             statement.execute(query);
             created = true;
-        } catch (SQLException e) {
+
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
             created = false;
         }
@@ -132,21 +155,6 @@ class Communicator
         return created;
     }
 
-    static boolean terminate()
-    {
-        boolean success;
 
-        try
-        {
-            DbConnector.closeConnection();
-            success = true;
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-            success = false;
-        }
-        return success;
-    }
 
 }

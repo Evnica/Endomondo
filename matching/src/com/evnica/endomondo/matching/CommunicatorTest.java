@@ -29,9 +29,9 @@ public class CommunicatorTest
     }
 
     @Test
-    public void createPointViewForWorkout() throws Exception
+    public void selectWrktPointsIntoTable() throws Exception
     {
-        assertTrue(Communicator.createPointViewForWorkout(654772185));
+        assertTrue(Communicator.selectWrktPointsIntoTable(664214853));
     }
 
     @Test
