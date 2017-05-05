@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -31,7 +34,7 @@ public class CommunicatorTest
     @Test
     public void selectWrktPointsIntoTable() throws Exception
     {
-        assertTrue(Communicator.selectWrktPointsIntoTable(664214853));
+        assertTrue(Communicator.selectWrktPointsIntoTable(678690721));
     }
 
     @Test
@@ -45,6 +48,26 @@ public class CommunicatorTest
     {
         String extent = Communicator.calculateExtent();
         assertTrue(Communicator.createNetworkViewForExtent(extent));
+    }
+
+    @Test
+    public void intersectBuffersAndMore()
+    {
+        assertTrue(Communicator.fillInWorkoutDetail(678690721));
+
+        ArrayList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
+        System.out.println("Segments intersected:");
+        segments.forEach(System.out::println);
+
+        Route probableRoute = Communicator.restoreTrip(segments);
+
+        probableRoute.roadSegments.forEach(System.out::println);
+
+        Communicator.insertRouteIntoDb(probableRoute, Communicator.currentWorkout.getId(),
+                Communicator.currentWorkout.getUserId());
+
+        System.out.println("Can you believe it?");
+
     }
 
 }

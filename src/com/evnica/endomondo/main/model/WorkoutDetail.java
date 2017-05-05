@@ -29,6 +29,12 @@ public class WorkoutDetail
     private int pointCount = 0, lapCount = 0;
     private double speed = 0;
 
+    public WorkoutDetail(int id) {
+        this.id = id;
+    }
+
+    public WorkoutDetail() {}
+
     public double getSpeed() {
         return speed;
     }
