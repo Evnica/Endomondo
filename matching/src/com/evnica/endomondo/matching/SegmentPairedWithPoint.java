@@ -23,6 +23,25 @@ class SegmentPairedWithPoint
     Boolean activityInDigitizationDirection = null;
     boolean complete = false;
 
+    SegmentPairedWithPoint() {
+    }
+
+    SegmentPairedWithPoint(int segmentId) {
+        this.segmentId = segmentId;
+    }
+
+    public SegmentPairedWithPoint(SegmentPairedWithPoint s) {
+        this.segmentId = s.segmentId;
+        this.pointId = s.pointId;
+        this.source = s.source;
+        this.target = s.target;
+        this.dt = s.dt;
+        this.distance_offset = s.distance_offset;
+        this.duration_offset = s.duration_offset;
+        this.cost = s.cost;
+        this.activityInDigitizationDirection = s.activityInDigitizationDirection;
+        this.complete = s.complete;
+    }
 
     @Override
     public String toString() {

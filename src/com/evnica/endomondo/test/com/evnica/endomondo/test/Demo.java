@@ -4,13 +4,17 @@ import com.evnica.endomondo.main.connect.DbConnector;
 import com.evnica.endomondo.main.model.AthleteRepository;
 import com.evnica.endomondo.main.model.WorkoutRepository;
 import com.sun.deploy.net.HttpResponse;
+import com.sun.jmx.snmp.SnmpPduBulk;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class: Demo
@@ -30,8 +34,34 @@ public class Demo
 
     public static void main( String[] args ) throws Exception
     {
+        /*Map<String, Integer[]> logPointByRegion = new HashMap<>(); // region - [wrkt_count, pt_cnt]
+        logPointByRegion.put("ar", new Integer[] {1, 100});
+        for (Map.Entry<String, Integer[]> entry: logPointByRegion.entrySet())
+        {
+            System.out.println(entry.getKey() + ": " + entry.getValue()[0] + ", " + entry.getValue()[1]);
+        }
+        System.out.println("--------------");
 
-        int[] ids = {21942994, 25370429, 25429794, 25429928, 26334291, 26494291};
+        for (String region: new String[]{"ar", "br"})
+        {
+            if (logPointByRegion.containsKey(region))
+            {
+                Integer[] oldValues = logPointByRegion.get(region);
+                oldValues[0] += 1;
+                oldValues[1] += 200;
+            }
+            else
+            {
+                logPointByRegion.put(region, new Integer[]{1, 10});
+            }
+        }
+
+        for (Map.Entry<String, Integer[]> entry: logPointByRegion.entrySet())
+        {
+            System.out.println(entry.getKey() + ": " + entry.getValue()[0] + ", " + entry.getValue()[1]);
+        }*/
+
+        /*int[] ids = {21942994, 25370429, 25429794, 25429928, 26334291, 26494291};
         DbConnector.connectToDb();
         AthleteRepository.setConnection(DbConnector.getConnection());
         for (int id: ids)
@@ -39,7 +69,7 @@ public class Demo
             AthleteRepository.insertInvalidity(id);
         }
         DbConnector.closeConnection();
-        System.out.println("Done");
+        System.out.println("Done");*/
 
        /* try
         {

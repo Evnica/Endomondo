@@ -10,10 +10,17 @@ import java.util.List;
  * Author: DS
  * Description:
  */
-public class Route
+class Route
 {
     List<SegmentPairedWithPoint> roadSegments;
-    Boolean loop = false,
-            deadEnd = false;
+    int id;
+    int deadEnds, loops;
     boolean dubious = false;
+    boolean firstDistinct = false, lastDistinct = false;
+
+    @Override
+    public String toString() {
+        return id + ", " + roadSegments.size() + " segments, loops " + loops + ", deadEnds " + deadEnds + ", dubious " +
+                            dubious + ", distinct: first " + firstDistinct + ", last " + lastDistinct;
+    }
 }

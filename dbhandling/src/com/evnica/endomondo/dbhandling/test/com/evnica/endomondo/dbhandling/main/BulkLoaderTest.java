@@ -28,7 +28,7 @@ public class BulkLoaderTest {
 
     @Test
     public void loadInDb() throws Exception {
-        BulkLoader.loadInDb("C:\\Endoproject\\toCopy\\(...-000)");
+        BulkLoader.loadInDb("C:\\Endoproject\\toCopy\\workouts\\700000-800000-workout");
     }
 
 }

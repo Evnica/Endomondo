@@ -24,7 +24,7 @@ public class MessCleaner
 {
 
 
-    public static ArrayList<Integer> getDuplicateIds(String log) throws Exception
+    static  ArrayList<Integer> getDuplicateIds(String log) throws Exception
     {
         InputStream inputStream = new FileInputStream(new File(log));
         String content = new Scanner(inputStream, "UTF-8").useDelimiter("\\A").next();
@@ -39,7 +39,7 @@ public class MessCleaner
         return ids;
     }
 
-    public static int moveDuplicates(String pathFrom, String pathTo, ArrayList<Integer> ids)
+    static int moveDuplicates(String pathFrom, String pathTo, ArrayList<Integer> ids)
     {
         int count = 0;
         for (int id: ids)
@@ -50,6 +50,7 @@ public class MessCleaner
                 if (file.renameTo(new File(pathTo + id + ".json")))
                 {
                     count++;
+                    System.out.println(id + " moved");
                 }
                 else
                 {
