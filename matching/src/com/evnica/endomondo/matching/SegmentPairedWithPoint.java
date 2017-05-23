@@ -23,6 +23,10 @@ class SegmentPairedWithPoint
     Boolean activityInDigitizationDirection = null;
     boolean complete = false;
 
+    public int getPointId() {
+        return pointId;
+    }
+
     SegmentPairedWithPoint() {
     }
 

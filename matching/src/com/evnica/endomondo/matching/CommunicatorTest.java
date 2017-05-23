@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -35,9 +36,9 @@ public class CommunicatorTest
     @Test
     public void selectWrktPointsIntoTable() throws Exception
     {
-        assertTrue(Communicator.selectWrktPointsIntoTable(691595848));
-        String extent = Communicator.calculateExtent();
-        assertTrue(Communicator.createNetworkViewForExtent(extent));
+        assertTrue(Communicator.selectWrktPointsIntoTable(651272641));
+        //String extent = Communicator.calculateExtent();
+        //assertTrue(Communicator.createNetworkViewForExtent(extent));
     }
 
     @Test
@@ -56,26 +57,40 @@ public class CommunicatorTest
     @Test
     public void intersectBuffersAndMore() throws Exception
     {
-        int wrktId = 686098981;
-        assertTrue(Communicator.selectWrktPointsIntoTable(wrktId));
-        System.out.println("Points inserted");
-        String extent = Communicator.calculateExtent();
-        assertTrue(Communicator.createNetworkViewForExtent(extent));
+        List<Integer> ids = Communicator.getWrktIds();
+        for (int id: ids)
+        {
+            try {
+                System.out.println("Starting workout " + id);
+                assertTrue(Communicator.selectWrktPointsIntoTable(id));
+                System.out.println(id +": Points inserted");
+                // String extent = Communicator.calculateExtent();
+                // assertTrue(Communicator.createNetworkViewForExtent(extent));
+                // System.out.println(id + ": Extent calculated");
+                assertTrue(Communicator.fillInWorkoutDetail(id));
+                System.out.println(id + ": Wrkt detail filled");
+                LinkedList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
+                System.out.println(id + ": Buffers intersected");
+                Route probableRoute = Communicator.restoreTrip(segments);
+                System.out.println(id + ": Trip restored");
 
-        assertTrue(Communicator.fillInWorkoutDetail(wrktId));
-
-        ArrayList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
-        //System.out.println("Segments intersected:");
-        //segments.forEach(System.out::println);
-
-        Route probableRoute = Communicator.restoreTrip(segments);
-        probableRoute.id = Communicator.currentWorkout.getId();
-        System.out.println(probableRoute);
-
-        //probableRoute.roadSegments.forEach(System.out::println);
-
-        Communicator.insertRouteIntoDb(probableRoute);
-        Communicator.insertRouteSegmentsIntoDb(probableRoute, Communicator.currentWorkout.getUserId());
+                try {
+                    Communicator.insertRouteIntoDb(probableRoute);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Communicator.insertRouteSegmentsIntoDb(probableRoute, Communicator.currentWorkout.getUserId());
+                    System.out.println("Segments inserted");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Communicator.pointCount = 0;
+            } catch (Exception e) {
+                System.out.println(id + " wrkt was faulty: ");
+                e.printStackTrace();
+            }
+        }
 
         DbConnector.closeConnection();
 
