@@ -204,7 +204,6 @@ class Communicator
 
     static boolean selectWrktPointsIntoTable(int wrktId)
     {
-
         boolean created;
         Statement statement = null;
         String query = String.format(SELECT_POINT_WRKT_INTO_TABLE, wrktId);
@@ -217,6 +216,7 @@ class Communicator
             count = statement.executeQuery(COUNT_POINTS);
             count.next();
             pointCount = count.getInt(1);
+            System.out.println(pointCount + " points selected");
             created = true;
         }
         catch (SQLException e)
@@ -362,7 +362,7 @@ class Communicator
                 }
             }
 
-            if (countDistinctPairs > 0 && countDistinctPairs < pointCount / 3)
+            /*if (countDistinctPairs > 0 && countDistinctPairs < pointCount / 4)
             {
                 ArrayList<SegmentPairedWithPoint> bigBufferPairs = new ArrayList<>();
                 try
@@ -393,9 +393,13 @@ class Communicator
 
                 if (standardPairMap.keySet().size() < bigBufferPairMap.keySet().size())
                 {
-                    unite(0, 0, standardPairs, bigBufferPairs);
+                    try {
+                        unite(0, 0, standardPairs, bigBufferPairs);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
+            }*/
         }
         catch (SQLException e)
         {
@@ -425,12 +429,15 @@ class Communicator
             }
         }
 
+        System.out.println(standardPairs.size() + " point-segment pairs determined");
+
         return standardPairs;
     }
 
     private static void unite(int i, int j, List<SegmentPairedWithPoint> standardPairs,
                               List<SegmentPairedWithPoint> bigBufferPairs)
     {
+        System.out.println("Uniting...");
         int bigIndex = i;
         int standardIndex = j;
 
@@ -859,6 +866,7 @@ class Communicator
     private static void findCandidateStatistics(Route route, int startIndex, int endIndex,
                                                 List<SegmentPairedWithPoint> probableSegments)
     {
+        System.out.println("Restoring metadata of candidates");
         for (SegmentPairedWithPoint s: route.roadSegments)
         {
             for (int j = startIndex; j < endIndex; j++)

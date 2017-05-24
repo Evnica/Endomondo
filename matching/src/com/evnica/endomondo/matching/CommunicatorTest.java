@@ -61,18 +61,10 @@ public class CommunicatorTest
         for (int id: ids)
         {
             try {
-                System.out.println("Starting workout " + id);
                 assertTrue(Communicator.selectWrktPointsIntoTable(id));
-                System.out.println(id +": Points inserted");
-                // String extent = Communicator.calculateExtent();
-                // assertTrue(Communicator.createNetworkViewForExtent(extent));
-                // System.out.println(id + ": Extent calculated");
                 assertTrue(Communicator.fillInWorkoutDetail(id));
-                System.out.println(id + ": Wrkt detail filled");
                 LinkedList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
-                System.out.println(id + ": Buffers intersected");
                 Route probableRoute = Communicator.restoreTrip(segments);
-                System.out.println(id + ": Trip restored");
 
                 try {
                     Communicator.insertRouteIntoDb(probableRoute);
@@ -81,7 +73,6 @@ public class CommunicatorTest
                 }
                 try {
                     Communicator.insertRouteSegmentsIntoDb(probableRoute, Communicator.currentWorkout.getUserId());
-                    System.out.println("Segments inserted");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
