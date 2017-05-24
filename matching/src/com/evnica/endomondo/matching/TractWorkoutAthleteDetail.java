@@ -10,9 +10,10 @@ import org.joda.time.DateTime;
  * Author: DS
  * Description:
  */
-public class TractWorkoutAthleteDetail
+class TractWorkoutAthleteDetail
 {
      String tractId;
+
      int    wrktId,
             athleteId,
             gender,
@@ -23,4 +24,7 @@ public class TractWorkoutAthleteDetail
             speed;
      DateTime startAt;
 
+     String getTractId() {
+          return tractId;
+     }
 }
