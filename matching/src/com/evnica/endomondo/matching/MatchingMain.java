@@ -25,41 +25,67 @@ public class MatchingMain
             try
             {
                 if (Communicator.selectWrktPointsIntoTable(id))
-                System.out.println(id +": Points inserted");
-
-                String extent = Communicator.calculateExtent();
-
-                if (Communicator.createNetworkViewForExtent(extent))
-                System.out.println(id + ": Extent calculated");
-
-                if (Communicator.fillInWorkoutDetail(id))
-                System.out.println(id + ": Wrkt detail filled");
-
-                LinkedList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
-                System.out.println(id + ": Buffers intersected");
-
-                Route probableRoute = Communicator.restoreTrip(segments);
-                System.out.println(id + ": Trip restored");
-
-                try
                 {
-                    Communicator.insertRouteIntoDb(probableRoute);
-                    System.out.println("Route details saved in db");
+                    System.out.println(id +": Points inserted");
+                    String extent = Communicator.calculateExtent();
+
+                    if (extent != null)
+                    {
+                        if (Communicator.createNetworkViewForExtent(extent))
+                            System.out.println(id + ": Extent calculated");
+
+                        if (Communicator.fillInWorkoutDetail(id))
+                            System.out.println(id + ": Wrkt detail filled");
+
+                        LinkedList<SegmentPairedWithPoint> segments = Communicator.intersectBuffers();
+                        System.out.println(id + ": Buffers intersected");
+                        Route probableRoute = null;
+                        if (segments != null && segments.size() > 0) {
+                            probableRoute = Communicator.restoreTrip(segments);
+                            System.out.println(id + ": Trip restored");
+                            try
+                            {
+                                Communicator.insertRouteSegmentsIntoDb(probableRoute, Communicator.currentWorkout.getUserId());
+                                System.out.println("Segments inserted");
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                        else
+                        {
+                            System.out.println("No segments were determined for " + id);
+                            probableRoute = new Route();
+                            probableRoute.id = id;
+                        }
+                        try
+                        {
+                            Communicator.insertRouteIntoDb(probableRoute);
+                            System.out.println("Route details saved in db");
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                        Communicator.pointCount = 0;
+                    }
+                    else
+                    {
+                        Route route = new Route();
+                        route.id = id;
+                        try
+                        {
+                            Communicator.insertRouteIntoDb(route);
+                            System.out.println("Route details saved in db");
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-                try
-                {
-                    Communicator.insertRouteSegmentsIntoDb(probableRoute, Communicator.currentWorkout.getUserId());
-                    System.out.println("Segments inserted");
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-                Communicator.pointCount = 0;
+
             }
             catch (Exception e)
             {

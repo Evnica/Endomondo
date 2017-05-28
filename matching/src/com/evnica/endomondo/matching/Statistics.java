@@ -17,7 +17,8 @@ public class Statistics
             trimmedMean,
             stDev,
             lowerQuartile,
-            upperQuartile;
+            upperQuartile,
+            lastNonOutlier;
     Integer totalCount,
             outlierCount;
     boolean sample30orMore = false;
@@ -33,6 +34,7 @@ public class Statistics
         s.stDev = -1.0;
         s.lowerQuartile = -1.0;
         s.upperQuartile = -1.0;
+        s.lastNonOutlier = -1.0;
         s.totalCount = 0;
         s.outlierCount = -1;
 

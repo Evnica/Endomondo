@@ -48,8 +48,9 @@ class Communicator
     private static final String INSERT_PROBABLE_ROUTE = "INSERT INTO interim.restored_route_detail (id, dead_end, loop, dbs, segment_cnt) VALUES (?, ?, ?, ?, ?)";
     private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSSZ");
     private static final String GET_CLOSEST_SEGMENT = "SELECT r.id, m.dt, r.source, r.target, r.cost, r.cost FROM network.miami_dade r, interim.matching m WHERE m.id = ? ORDER BY ST_Distance(r.geom, m.geom) ASC LIMIT 1;";
-    private static final String GET_IDS = "SELECT distinct wrkt_id FROM production.ctr_wrkt_ath_detail ORDER BY wrkt_id;";
+    private static final String GET_IDS = "SELECT distinct wrkt_id FROM production.ctr_wrkt_ath_detail WHERE distance >= 0.5 ORDER BY wrkt_id;";
     private static final String GET_PROCESSED_IDS = "SELECT distinct id FROM interim.restored_route_detail ORDER BY id;";
+    private static int processedCount = 0;
 
     static int pointCount = 0;
 
@@ -420,8 +421,9 @@ class Communicator
 
             try
             {
-                assert resultSet != null;
-                resultSet.close();
+                if (resultSet != null) {
+                    resultSet.close();
+                }
             }
             catch (SQLException e)
             {
@@ -607,21 +609,22 @@ class Communicator
                                                     if (distancePrevious < probableSegments.get(x).distance_offset)
                                                     {
                                                         distancePrevious = probableSegments.get(x).distance_offset;
+                                                        break;
                                                     }
-                                                    break;
+
                                                 }
                                             }
                                             double distanceNext = secondInPair.distance_offset;
                                             for (int x = indicesOfDistinctPairs.get(i)+1;
-                                                 x > indicesOfDistinctPairs.get(i+1); x++)
+                                                 x < indicesOfDistinctPairs.get(i+1); x++)
                                             {
-                                                if (probableSegments.get(x).segmentId == secondInPair.segmentId)
+                                                if (probableSegments.get(x).segmentId == route.roadSegments.get(0).segmentId)
                                                 {
-                                                    if (distanceNext > probableSegments.get(x).distance_offset)
+                                                    if (probableSegments.get(x).distance_offset <= distanceNext)
                                                     {
                                                         distanceNext = probableSegments.get(x).distance_offset;
+                                                        break;
                                                     }
-                                                    break;
                                                 }
                                             }
                                             // if the length of the dubious segment is not more than twice the distance between
@@ -816,7 +819,7 @@ class Communicator
                     //from last segment that must stay in the result to the end of the current resulting route
                     for (int j = lowerLimit; j < resultingRoute.size(); j++) {
                         // compare with the next segment in probable route
-                        if (probableRoute.get(index).segmentId == resultingRoute.get(j).segmentId &&
+                        if (index < probableRoute.size() && probableRoute.get(index).segmentId == resultingRoute.get(j).segmentId &&
                                 probableRoute.get(index).activityInDigitizationDirection ==
                                         resultingRoute.get(j).activityInDigitizationDirection) {
                             duplicateIndex = j;
@@ -906,6 +909,20 @@ class Communicator
                     statement.setInt(5, 0);
                 }
                 statement.executeUpdate();
+                processedCount++;
+                System.out.println(processedCount + " activities processed");
+                if (processedCount%20 == 0)
+                {
+                    try {
+                        DbConnector.closeConnection();
+                        DbConnector.connectToDb();
+                        connection = DbConnector.getConnection();
+                        System.out.println("Connection reset");
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                        System.exit(-1);
+                    }
+                }
             }
             catch (SQLException e)
             {

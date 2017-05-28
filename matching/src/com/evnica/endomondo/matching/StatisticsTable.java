@@ -10,10 +10,10 @@ package com.evnica.endomondo.matching;
  */
 public enum StatisticsTable
 {
-    DISTANCE ("tract_distances"),
-    DURATION ("tract_durations"),
-    SPEED ("tract_speeds"),
-    AGE ("tract_age_gender");
+    DISTANCE ("florida_distances"),//("tract_distances"),
+    DURATION ("florida_durations"),//("tract_durations"),
+    SPEED ("florida_speeds"),//("tract_speeds"),
+    AGE ("florida_age_gender");//("tract_age_gender");
 
     private String tableName;
 

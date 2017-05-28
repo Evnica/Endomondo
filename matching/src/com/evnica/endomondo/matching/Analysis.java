@@ -21,14 +21,17 @@ import java.util.stream.Collectors;
  */
 class Analysis
 {
-    private static final String GET_TRACT_WORKOUT_ATHLETE_DETAIL = "SELECT * FROM production.ctr_wrkt_ath_detail ORDER BY affgeoid;";
-    private static final String GET_TRACT_ATHLETE_DETAIL = "SELECT * FROM production.ctr_ath_detail ORDER BY affgeoid;";
+    private static final String GET_TRACT_WORKOUT_ATHLETE_DETAIL =
+            "SELECT * FROM production.florida_wrkt_athl ORDER BY gid";
+    //"SELECT * FROM production.ctr_wrkt_ath_detail ORDER BY affgeoid;";
+    private static final String GET_TRACT_ATHLETE_DETAIL = "SELECT * FROM production.florida_ath_county ORDER BY gid";
+    //"SELECT * FROM production.ctr_ath_detail ORDER BY affgeoid;";
     private static final String INSERT_STATS =
             "INSERT INTO production.%s (minimum, maximum, median, mean, trimmed_mean, st_dev, lower_quart," +
-            " upper_quart, total_cnt, outlier_cnt, sample_30plus, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            " upper_quart, total_cnt, outlier_cnt, sample_30plus, id, last_nonoutlier) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String INSERT_AGE_STATS =
-       "INSERT INTO production.tract_age_gender (minimum, maximum, median, mean, trimmed_mean, st_dev, lower_quart, " +
-       "upper_quart, total_cnt, outlier_cnt, sample_30plus, id, male_percent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       "INSERT INTO production.florida_age_gender (minimum, maximum, median, mean, trimmed_mean, st_dev, lower_quart, " +
+       "upper_quart, total_cnt, outlier_cnt, sample_30plus, id, last_nonoutlier, male_percent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     static Map<String, List<TractWorkoutAthleteDetail>> getTractWorkoutsFromDb(Connection connection)
     {
@@ -42,7 +45,7 @@ class Analysis
             while (resultSet.next())
             {
                 current = new TractWorkoutAthleteDetail();
-                current.tractId = resultSet.getString("affgeoid");
+                current.tractId = resultSet.getString("gid");//("affgeoid");
                 current.wrktId = resultSet.getInt("wrkt_id");
                 current.athleteId = resultSet.getInt("athlete_id");
                 current.distance = resultSet.getDouble("distance");
@@ -87,9 +90,17 @@ class Analysis
             {
                 try {
                     current = new TractAthleteDetail();
-                    current.tractId = resultSet.getString("affgeoid");
+                    current.tractId = resultSet.getString("gid");//("affgeoid");
                     current.id = resultSet.getInt("athlete_id");
-                    current.age = resultSet.getInt("age");
+                    int ageInDb = resultSet.getInt("age");
+                    if (ageInDb > 0)
+                    {
+                        current.age = ageInDb;
+                    }
+                    else
+                    {
+                        current.age = null;
+                    }
                     current.gender = resultSet.getInt("gender");
                     current.country = resultSet.getString("country");
                     tractAthletes.add(current);
@@ -116,7 +127,7 @@ class Analysis
                 .collect(Collectors.groupingBy(TractAthleteDetail::getTractId));
     }
 
-    static TractStatistics calcStatisticsForTract(String id, List<TractWorkoutAthleteDetail> workoutsInTract,
+    private static TractStatistics calcStatisticsForTract(String id, List<TractWorkoutAthleteDetail> workoutsInTract,
                                            List<TractAthleteDetail> athletesInTract)
     {
         TractStatistics statistics = new TractStatistics();
@@ -129,7 +140,7 @@ class Analysis
         for (TractWorkoutAthleteDetail entry: workoutsInTract)
         {
             distances.add(entry.distance);
-            durations.add(entry.duration);
+            durations.add(entry.duration / 60);
             speeds.add(entry.speed);
         }
 
@@ -141,6 +152,10 @@ class Analysis
                 statistics.distanceStatistics = distStat;
             }
         }
+        else
+        {
+            statistics.distanceStatistics.totalCount = distances.size();
+        }
         if (durations.size() >= 5)
         {
             Statistics durStat = calcStatisticsForASet(durations);
@@ -148,12 +163,20 @@ class Analysis
                 statistics.durationStatistics = durStat;
             }
         }
+        else
+        {
+            statistics.durationStatistics.totalCount = durations.size();
+        }
         if (speeds.size() >= 5)
         {
             Statistics speedStat = calcStatisticsForASet(speeds);
             if (speedStat != null) {
                 statistics.speedStatistics = speedStat;
             }
+        }
+        else
+        {
+            statistics.speedStatistics.totalCount = speeds.size();
         }
 
 
@@ -181,15 +204,23 @@ class Analysis
             {
                 statistics.ageStatistics = calcStatisticsForASet(ageValues);
             }
+            else
+            {
+                statistics.ageStatistics.totalCount = ageValues.size();
+            }
 
             if (maleCount + femaleCount >= 5)
             {
-                statistics.percentageOfMale = maleCount / (maleCount + femaleCount);
+                statistics.percentageOfMale = (maleCount * 1.0) / ((maleCount + femaleCount) *1.0);
             }
             else
             {
                 statistics.percentageOfMale = -1;
             }
+        }
+        else
+        {
+            statistics.ageStatistics.totalCount = athletesInTract.size();
         }
         return statistics;
     }
@@ -199,7 +230,7 @@ class Analysis
         DescriptiveStatistics statsApache = new DescriptiveStatistics();
         for (Double value: values)
         {
-            if (value != null)
+            if (value != null && value != 0)
             {
                 statsApache.addValue(value);
             }
@@ -237,6 +268,7 @@ class Analysis
                 }
                 else
                 {
+                    statistics.lastNonOutlier = sortedValues[i];
                     break;
                 }
             }
@@ -298,9 +330,10 @@ class Analysis
                 statement.setDouble(10, s.outlierCount);
                 statement.setBoolean(11, s.sample30orMore);
                 statement.setString(12, id);
+                statement.setDouble(13, s.lastNonOutlier);
                 if (table == StatisticsTable.AGE)
                 {
-                   statement.setDouble(13, malePercentage);
+                   statement.setDouble(14, malePercentage);
                 }
                 statement.executeUpdate();
             }

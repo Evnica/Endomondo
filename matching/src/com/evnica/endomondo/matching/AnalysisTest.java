@@ -56,4 +56,25 @@ public class AnalysisTest {
 
     }
 
+    @Test
+    public void calcStatisticsForTracts() throws Exception
+    {
+       DbConnector.connectToDb();
+        Map<String, List<TractWorkoutAthleteDetail>> tractDetail = Analysis.getTractWorkoutsFromDb(DbConnector.getConnection());
+        Map<String, List<TractAthleteDetail>> athInTract = Analysis.getTractAthletesFromDb(DbConnector.getConnection());
+
+        List<TractStatistics> tractStats = Analysis.processMaps(tractDetail, athInTract);
+
+        for(TractStatistics t: tractStats)
+        {
+            System.out.println("Inserting tract " + t.id);
+            System.out.println(t.id);
+            Analysis.insertTractStatisticsIntoDb(DbConnector.getConnection(), t);
+        }
+
+        DbConnector.closeConnection();
+
+
+    }
+
 }

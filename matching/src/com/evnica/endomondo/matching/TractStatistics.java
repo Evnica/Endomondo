@@ -15,5 +15,5 @@ public class TractStatistics
                 durationStatistics = Statistics.getEmpty(),
                 speedStatistics = Statistics.getEmpty(),
                 ageStatistics = Statistics.getEmpty();
-    double      percentageOfMale = -1;
+    double      percentageOfMale = -1.0;
 }

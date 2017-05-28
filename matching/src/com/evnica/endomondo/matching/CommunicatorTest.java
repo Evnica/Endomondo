@@ -36,7 +36,7 @@ public class CommunicatorTest
     @Test
     public void selectWrktPointsIntoTable() throws Exception
     {
-        assertTrue(Communicator.selectWrktPointsIntoTable(651272641));
+        assertTrue(Communicator.selectWrktPointsIntoTable(675018722));
         //String extent = Communicator.calculateExtent();
         //assertTrue(Communicator.createNetworkViewForExtent(extent));
     }

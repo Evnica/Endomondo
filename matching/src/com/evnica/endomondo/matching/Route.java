@@ -14,13 +14,15 @@ class Route
 {
     List<SegmentPairedWithPoint> roadSegments;
     int id;
-    int deadEnds, loops;
+    int deadEnds = -1, loops = -1;
     boolean dubious = false;
     boolean firstDistinct = false, lastDistinct = false;
 
     @Override
-    public String toString() {
-        return id + ", " + roadSegments.size() + " segments, loops " + loops + ", deadEnds " + deadEnds + ", dubious " +
+    public String toString()
+    {
+        int segmentCount = roadSegments != null ? roadSegments.size() : 0;
+        return id + ", " + segmentCount + " segments, loops " + loops + ", deadEnds " + deadEnds + ", dubious " +
                             dubious + ", distinct: first " + firstDistinct + ", last " + lastDistinct;
     }
 }
