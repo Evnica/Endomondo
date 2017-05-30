@@ -96,7 +96,7 @@ public abstract class Converter
 
     }
 
-    static void write(String sb, String dir, String fileName) throws Exception
+    public static void write(String sb, String dir, String fileName) throws Exception
     {
         File directory = new File((dir));
         boolean newDirCreated;
